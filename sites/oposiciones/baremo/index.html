@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de concurso-oposición: puntos de méritos y nota total</title>
+<meta name="description" content="Calcula tu puntuación total en un concurso-oposición: fase de oposición más méritos (experiencia, formación, titulaciones) con sus topes. Y qué nota necesitas en el examen para llegar al corte. Gratis y sin registro.">
+<link rel="canonical" href="https://calculadora-oposiciones.pages.dev/baremo/">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--ink:#1f2a44;--muted:#5a6275;--line:#e2ddd1;--gold:#b08d4c;--ok:#2e8b57;--bad:#c0504d;--soft:#f3ead6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,"Segoe UI",Roboto,system-ui,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:28px 16px 60px;display:grid;gap:22px}
+nav{font-size:14px;display:flex;gap:14px;flex-wrap:wrap}
+nav a{color:var(--muted)}
+h1{font-size:clamp(26px,5vw,36px);line-height:1.15;margin:0;text-wrap:balance}
+.lead{color:var(--muted);margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;display:grid;gap:14px}
+h2{margin:0;font-size:21px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+label{display:grid;gap:4px;font-size:14px;color:var(--muted);font-weight:600}
+input,select{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fffdf8;color:var(--ink);width:100%}
+input:focus,select:focus{outline:2px solid var(--gold);outline-offset:1px}
+.out{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;padding:14px 16px;background:var(--soft);border-radius:12px}
+.big{font-size:34px;font-weight:800;line-height:1.1}
+.out span{color:var(--muted);font-size:14px}
+.ok{color:var(--ok)}.bad{color:var(--bad)}.neu{color:var(--muted)}
+.note{font-size:14px;color:var(--muted);margin:0}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:15px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{font-size:13px;color:var(--muted)}
+td,th{white-space:nowrap}
+@media (max-width:480px){table{font-size:13px}th,td{padding:7px 5px}}
+tr.sel td{background:var(--soft);font-weight:700}
+.scroll{overflow-x:auto}
+footer{font-size:13px;color:var(--muted);text-align:center}
+code{background:#f0ece2;padding:1px 6px;border-radius:6px}
+
+.mer{display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:8px;align-items:end}
+.mer b{font-size:15px;align-self:center}
+@media (max-width:560px){.mer{grid-template-columns:1fr 1fr 1fr}.mer b{grid-column:1/-1}}
+.chk{display:flex;gap:8px;align-items:center;font-weight:600;color:var(--ink)}.chk input{width:auto}
+</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta property="og:type" content="website"><meta property="og:site_name" content="OpoCalc"><meta property="og:title" content="Calculadora de concurso-oposición: puntos de méritos y nota total"><meta property="og:description" content="Calcula tu puntuación total en un concurso-oposición: fase de oposición más méritos (experiencia, formación, titulaciones) con sus topes. Y qué nota necesitas en el examen para llegar al corte. Gratis y sin registro."><meta property="og:url" content="https://calculadora-oposiciones.pages.dev/baremo/"><meta property="og:image" content="https://calculadora-oposiciones.pages.dev/og.png"><meta name="twitter:card" content="summary_large_image"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"><style>.opbar{background:#1f2a44;color:#fff}.opbar .in{max-width:760px;margin:0 auto;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.opbar a{color:#fff;text-decoration:none}.opbar .lg{font:800 19px 'Inter Tight',Inter,sans-serif;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.opbar .lg i{font-style:normal;background:#f3c969;color:#1f2a44;border-radius:7px;padding:1px 7px;font-size:15px}.opbar .r{font-size:14px;opacity:.85}
+body{font-family:Inter,-apple-system,"Segoe UI",Roboto,system-ui,sans-serif}nav[aria-label="Herramientas"] a{margin-right:4px}
+.opfoot{max-width:760px;margin:0 auto;padding:0 16px 40px;font-size:13px;color:#5a6275;text-align:center}.opfoot a{color:#5a6275}</style>
+</head>
+<body>
+<div class="opbar"><div class="in"><a class="lg" href="/"><i>%</i>OpoCalc</a><span class="r">Calculadoras gratis para opositores · <a href="https://cellmate-plantillas.pages.dev/">Plantillas Cellmate</a></span></div></div>
+<main class="wrap">
+  <nav aria-label="Herramientas"><a href="../">Calculadora de nota y días</a><a href="../arriesgar/">¿Arriesgar o dejar en blanco?</a><a href="./" aria-current="page">Concurso-oposición</a><a href="https://cellmate-plantillas.pages.dev/" style="color:var(--muted)">Plantillas</a></nav>
+  <header style="display:grid;gap:8px">
+    <h1>Calculadora de concurso-oposición</h1>
+    <p class="lead">Suma tu nota de la fase de oposición y tus méritos aplicando los topes de las bases, y descubre qué nota necesitas en el examen para llegar al corte. Gratis, sin registro y sin enviar datos a ningún sitio.</p>
+  </header>
+
+  <section class="card" aria-labelledby="h-op">
+    <h2 id="h-op">1. Fase de oposición</h2>
+    <div class="grid">
+      <label>Tu puntuación<input id="op" inputmode="decimal" value="32,5"></label>
+      <label>Puntuación máxima<input id="opmax" inputmode="decimal" value="60"></label>
+      <label>Mínimo para aprobar<input id="opmin" inputmode="decimal" value="30"></label>
+    </div>
+    <label class="chk"><input type="checkbox" id="solo" checked> Los méritos solo cuentan si apruebas la oposición</label>
+  </section>
+
+  <section class="card" aria-labelledby="h-me">
+    <h2 id="h-me">2. Fase de concurso (méritos)</h2>
+    <p class="note">Copia de las bases de tu convocatoria lo que vale cada mérito y su tope. Los valores de ejemplo son inventados.</p>
+    <div class="mer"><b>Experiencia</b><label>Meses<input id="m1" inputmode="decimal" value="30"></label><label>Puntos/mes<input id="p1" inputmode="decimal" value="0,1"></label><label>Tope<input id="t1" inputmode="decimal" value="20"></label></div>
+    <div class="mer"><b>Formación</b><label>Horas<input id="m2" inputmode="decimal" value="210"></label><label>Puntos/hora<input id="p2" inputmode="decimal" value="0,02"></label><label>Tope<input id="t2" inputmode="decimal" value="10"></label></div>
+    <div class="mer"><b>Titulaciones</b><label>Cantidad<input id="m3" inputmode="decimal" value="1"></label><label>Puntos/ud.<input id="p3" inputmode="decimal" value="2"></label><label>Tope<input id="t3" inputmode="decimal" value="5"></label></div>
+    <div class="mer"><b>Otros méritos</b><label>Cantidad<input id="m4" inputmode="decimal" value="0"></label><label>Puntos/ud.<input id="p4" inputmode="decimal" value="1"></label><label>Tope<input id="t4" inputmode="decimal" value="5"></label></div>
+    <div class="grid"><label>Tope total del concurso<input id="tmax" inputmode="decimal" value="40"></label></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-res" aria-live="polite">
+    <h2 id="h-res">3. Resultado</h2>
+    <div class="out"><div class="big" id="tot">—</div><span id="totd"></span></div>
+    <div class="scroll"><table><thead><tr><th>Apartado</th><th>Sin tope</th><th>Con tope</th></tr></thead><tbody id="tb"></tbody></table></div>
+    <div class="grid"><label>Nota de corte (puntos totales)<input id="corte" inputmode="decimal" value="55"></label></div>
+    <div class="out"><div class="big" id="nec">—</div><span id="necd"></span></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-faq">
+    <h2 id="h-faq">Cómo se calcula</h2>
+    <p><strong>Méritos.</strong> Cada apartado vale cantidad × puntos por unidad, y nunca más que su tope. La suma de apartados tampoco puede pasar del tope total del concurso.</p>
+    <p><strong>Total.</strong> Puntuación de la oposición + puntos del concurso. Si marcas que los méritos solo cuentan al aprobar y no llegas al mínimo, el concurso no suma.</p>
+    <p><strong>Nota necesaria.</strong> Corte − puntos del concurso, y como poco el mínimo para aprobar. Si sale más que la puntuación máxima, con esos méritos no se llega.</p>
+    <p class="note">Cada convocatoria tiene sus propias bases (puntos por mes según el puesto, fórmulas de escalado, desempates…). Esta calculadora sirve para hacer cuentas rápidas; la puntuación válida es siempre la que publique el tribunal.</p>
+  </section>
+
+  <section class="card" aria-labelledby="h-plan" style="border-color:#b08d4c;background:#fffaf0">
+    <h2 id="h-plan">Prepara la parte que depende de ti: el examen</h2>
+    <p class="note" style="color:#1f2a44;font-size:16px">El <strong>Planificador de Oposiciones</strong> (Excel y Google Sheets) calcula la nota con penalización de cada test, controla las vueltas de cada tema y te dice si vas por encima del corte.</p>
+    <a href="https://cellmate-plantillas.pages.dev/plantillas/planificador/" style="justify-self:start;background:#1f2a44;color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:999px">Ver el planificador →</a>
+  </section>
+  <footer>Herramienta gratuita. Los cálculos se hacen en tu navegador.</footer>
+</main>
+<div class="opfoot">OpoCalc es gratuito y no guarda ningún dato: todo se calcula en tu navegador. Las cifras son orientativas; revisa siempre las bases de tu convocatoria. · <a href="https://cellmate-plantillas.pages.dev/privacidad/">Privacidad</a></div>
+<script>
+const $=id=>document.getElementById(id);
+const num=id=>{const v=parseFloat(String($(id).value).replace(',','.'));return isNaN(v)?null:v};
+const fmt=(v,d=2)=>v.toLocaleString('es-ES',{minimumFractionDigits:0,maximumFractionDigits:d});
+const NAMES=['Experiencia','Formación','Titulaciones','Otros méritos'];
+const IDS=['op','opmax','opmin','m1','p1','t1','m2','p2','t2','m3','p3','t3','m4','p4','t4','tmax','corte'];
+function calc(){
+  const op=num('op'),mx=num('opmax'),mn=num('opmin')??0,tmax=num('tmax'),corte=num('corte');
+  let rows='',bruto=0,conTope=0,ok=true;
+  for(let i=1;i<=4;i++){const m=num('m'+i)??0,p=num('p'+i)??0,t=num('t'+i);
+    if(m<0||p<0||(t!==null&&t<0))ok=false;
+    const b=m*p,c=t===null?b:Math.min(b,t);bruto+=b;conTope+=c;
+    rows+=`<tr><td>${NAMES[i-1]}</td><td>${fmt(b)}</td><td>${fmt(c)}</td></tr>`;}
+  const conc=tmax===null?conTope:Math.min(conTope,tmax);
+  rows+=`<tr class="sel"><td>Concurso${tmax!==null&&conTope>tmax?' (tope total)':''}</td><td>${fmt(bruto)}</td><td>${fmt(conc)}</td></tr>`;
+  $('tb').innerHTML=rows;
+  if(!ok||op===null||mx===null||mx<=0||op<0||op>mx||mn<0||mn>mx){$('tot').textContent='—';$('totd').textContent='Revisa los datos: la puntuación debe estar entre 0 y la máxima, y nada puede ser negativo.';$('nec').textContent='—';$('nec').className='big';$('necd').textContent='';return}
+  const aprob=op>=mn,cuenta=aprob||!$('solo').checked,tot=op+(cuenta?conc:0),maxT=mx+(tmax??conc);
+  $('tot').textContent=fmt(tot)+' puntos';
+  $('totd').textContent=(aprob?'Oposición aprobada':'No llegas al mínimo de la oposición')+` · oposición ${fmt(op)} + concurso ${fmt(cuenta?conc:0)}`+(cuenta&&tot>0?` (los méritos son el ${fmt(conc/tot*100,1)} % de tu total)`:'')+` · máximo posible ${fmt(maxT)}`;
+  if(corte===null||corte<0){$('nec').textContent='—';$('necd').textContent='Escribe la nota de corte.';return}
+  const need=Math.max(mn,corte-conc);
+  if(need>mx){$('nec').textContent='No alcanzable';$('nec').className='big bad';$('necd').textContent=`Necesitarías ${fmt(need)} en la oposición y el máximo es ${fmt(mx)}: hacen falta más méritos o un corte más bajo.`;return}
+  $('nec').className='big '+(op>=need?'ok':'neu');
+  $('nec').textContent=fmt(need)+' / '+fmt(mx);
+  $('necd').textContent=`Nota mínima en la oposición para llegar a ${fmt(corte)} con tus méritos (${fmt(need/mx*100,1)} % de la máxima). `+(op>=need?'Con tu puntuación actual llegas.':`Te faltan ${fmt(need-op)} puntos.`);
+}
+IDS.forEach(id=>$(id).addEventListener('input',calc));$('solo').addEventListener('change',calc);calc();
+</script>
+</body>
+</html>

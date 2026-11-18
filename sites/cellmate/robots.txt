@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cellmate-plantillas.pages.dev/sitemap.xml

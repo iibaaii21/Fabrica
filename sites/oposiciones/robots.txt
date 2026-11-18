@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://calculadora-oposiciones.pages.dev/sitemap.xml

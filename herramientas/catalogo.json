@@ -1,11 +1,183 @@
 [
- {"id":"planificador","cat":"Plantillas","nombre":"Planificador de Oposiciones","precio":"6,90 €","img":"productos/planificador-opositores/imagenes/portada.png","desc":"Temario por vueltas, tests con nota con penalización y gráfico de evolución, planificador semanal y resumen con cuenta atrás. Excel y Google Sheets, sin macros.","comprar":"https://payhip.com/Cellmate","boton":"Ver en la tienda"},
- {"id":"planificador-lite","cat":"Plantillas","nombre":"Planificador de Oposiciones LITE","precio":"Gratis","img":"productos/planificador-opositores-lite/imagenes/portada.png","desc":"La versión gratuita: 20 temas y 20 tests con la nota con penalización calculada sola. Ideal para probar antes de comprar.","comprar":"","extra":[["Calcula tu nota ahora","../"]]},
- {"id":"boda","cat":"Plantillas","nombre":"Organizador de Boda","precio":"5,90 €","img":"productos/organizador-boda/imagenes/portada.png","desc":"Presupuesto con pendiente y desviación automáticos, invitados con confirmaciones y menús, mesas con aviso de sillas y proveedores con fechas de pago.","comprar":""},
- {"id":"autonomos","cat":"Plantillas","nombre":"Libro de ingresos y gastos para autónomos","precio":"5,90 €","img":"productos/libro-autonomos/imagenes/portada.png","desc":"Facturas y gastos con IVA y retención automáticos, estimación trimestral de los modelos 303 y 130 y resumen anual. Herramienta de control: no sustituye a un asesor.","comprar":""},
- {"id":"sfx","cat":"Para desarrolladores","nombre":"Synth SFX Pack Vol. 1","precio":"2,99 $","img":"productos/sfx-pack-vol1/imagenes/cover.png","desc":"42 efectos de sonido retro originales (WAV) para tus juegos: interfaz, saltos, monedas, explosiones y más. Uso comercial sin atribución.","comprar":"https://iibaaii21.itch.io/42-original-retro-synth-sound-effects","boton":"Comprar en itch.io","extra":[["Escuchar los 42 sonidos","../sfx/"]]},
- {"id":"music","cat":"Para desarrolladores","nombre":"Synth Music Loops Vol. 1","precio":"3,99 $","img":"productos/music-loops-vol1/imagenes/cover.png","desc":"6 bucles de música sin corte + 2 jingles, en WAV y OGG, para menús, acción, puzles y más. Uso comercial sin atribución.","comprar":"","audio":"media/music-loops-preview.mp3"},
- {"id":"lumen","cat":"Juegos gratis","nombre":"Lumen Drift","precio":"Gratis","img":"juegos/lumen/imagenes/cover.png","desc":"Arcade de un botón: mantén para subir, suelta para caer y guía una chispa de luz por una cueva de neón infinita.","comprar":"","jugar":"../juegos/lumen/"},
- {"id":"loomlines","cat":"Juegos gratis","nombre":"Loomlines","precio":"Gratis","img":"juegos/loomlines/imagenes/cover.png","desc":"Puzle relajante con 200 niveles: une cada pareja de carretes con su hilo, sin cruces y llenando todo el tablero.","comprar":"","jugar":"../juegos/loomlines/"},
- {"id":"rootwork","cat":"Juegos gratis","nombre":"Rootwork","precio":"Gratis","img":"juegos/rootwork/imagenes/cover.png","desc":"Gira las raíces para que el agua del manantial llegue a todas las flores. 300 jardines, de 3×3 a 9×9.","comprar":"","jugar":"../juegos/rootwork/"}
+ {
+  "id": "planificador",
+  "cat": "Plantillas",
+  "nombre": "Planificador de Oposiciones",
+  "precio": "6,90 €",
+  "img": "productos/planificador-opositores/imagenes/portada.png",
+  "desc": "Temario por vueltas, tests con nota con penalización y gráfico de evolución, planificador semanal y resumen con cuenta atrás. Excel y Google Sheets, sin macros.",
+  "comprar": "https://payhip.com/Cellmate",
+  "boton": "Ver en la tienda",
+  "marca": "cellmate",
+  "puntos": [
+   "Tests con nota con penalización (1/3, 1/4 o la de tu convocatoria) y aviso de corte",
+   "Hasta 80 temas con control de vueltas: sin empezar, 1ª, 2ª, listo",
+   "Gráfico de evolución de tus notas",
+   "Planificador semanal con horas objetivo",
+   "Resumen: días hasta el examen, % de temario visto y nota media"
+  ],
+  "lema": "Organiza tu oposición en un solo archivo: temario por vueltas, tests con nota real y cuenta atrás hasta el examen.",
+  "imgs": [
+   "productos/planificador-opositores/imagenes/portada.png",
+   "productos/planificador-opositores/imagenes/tests.png",
+   "productos/planificador-opositores/imagenes/temario.png",
+   "productos/planificador-opositores/imagenes/resumen.png"
+  ]
+ },
+ {
+  "id": "planificador-lite",
+  "cat": "Plantillas",
+  "nombre": "Planificador de Oposiciones LITE",
+  "precio": "Gratis",
+  "img": "productos/planificador-opositores-lite/imagenes/portada.png",
+  "desc": "La versión gratuita: 20 temas y 20 tests con la nota con penalización calculada sola. Ideal para probar antes de comprar.",
+  "comprar": "",
+  "extra": [
+   [
+    "Calcula tu nota ahora",
+    "../"
+   ]
+  ],
+  "marca": "cellmate",
+  "puntos": [
+   "20 tests con nota con penalización automática",
+   "20 temas con control de vueltas",
+   "Resumen con cuenta atrás y nota media",
+   "Funciona en Excel y Google Sheets, sin macros"
+  ],
+  "lema": "Prueba gratis el planificador: mide tu nota real en los tests desde hoy.",
+  "imgs": [
+   "productos/planificador-opositores-lite/imagenes/portada.png",
+   "productos/planificador-opositores-lite/imagenes/lite-vs-completa.png"
+  ]
+ },
+ {
+  "id": "boda",
+  "cat": "Plantillas",
+  "nombre": "Organizador de Boda",
+  "precio": "5,90 €",
+  "img": "productos/organizador-boda/imagenes/portada.png",
+  "desc": "Presupuesto con pendiente y desviación automáticos, invitados con confirmaciones y menús, mesas con aviso de sillas y proveedores con fechas de pago.",
+  "comprar": "",
+  "marca": "cellmate",
+  "puntos": [
+   "Presupuesto con pendiente y desviación automáticos (15 partidas + 5 libres)",
+   "Hasta 40 invitaciones con adultos, niños, confirmación y menús especiales",
+   "20 mesas con aviso cuando te pasas de sillas",
+   "Proveedores con señal, pendiente y aviso de pagos vencidos",
+   "Resumen con cuenta atrás y gráfico del gasto"
+  ],
+  "lema": "Toda vuestra boda en un solo archivo: lo que cuesta, quién viene, dónde se sienta y qué falta por pagar.",
+  "imgs": [
+   "productos/organizador-boda/imagenes/portada.png",
+   "productos/organizador-boda/imagenes/invitados-mesas.png",
+   "productos/organizador-boda/imagenes/proveedores-resumen.png"
+  ]
+ },
+ {
+  "id": "autonomos",
+  "cat": "Plantillas",
+  "nombre": "Libro de ingresos y gastos para autónomos",
+  "precio": "5,90 €",
+  "img": "productos/libro-autonomos/imagenes/portada.png",
+  "desc": "Facturas y gastos con IVA y retención automáticos, estimación trimestral de los modelos 303 y 130 y resumen anual. Herramienta de control: no sustituye a un asesor.",
+  "comprar": "",
+  "marca": "cellmate",
+  "puntos": [
+   "Facturas emitidas con IVA, retención y total automáticos",
+   "Gastos con IVA deducible y 14 categorías editables",
+   "Estimación trimestral de los modelos 303 y 130",
+   "Control de facturas pendientes de cobro",
+   "Resumen anual con gráfico por meses"
+  ],
+  "lema": "Lleva tus cuentas de autónomo en un Excel, sin cuotas mensuales: IVA y pago fraccionado estimados cada trimestre.",
+  "imgs": [
+   "productos/libro-autonomos/imagenes/portada.png",
+   "productos/libro-autonomos/imagenes/facturas.png"
+  ]
+ },
+ {
+  "id": "sfx",
+  "cat": "Para desarrolladores",
+  "nombre": "Synth SFX Pack Vol. 1",
+  "precio": "2,99 $",
+  "img": "productos/sfx-pack-vol1/imagenes/cover.png",
+  "desc": "42 efectos de sonido retro originales (WAV) para tus juegos: interfaz, saltos, monedas, explosiones y más. Uso comercial sin atribución.",
+  "comprar": "https://iibaaii21.itch.io/42-original-retro-synth-sound-effects",
+  "boton": "Comprar en itch.io",
+  "extra": [
+   [
+    "Escuchar los 42 sonidos",
+    "../sfx/"
+   ]
+  ],
+  "marca": "nimbloom",
+  "imgs": [
+   "productos/sfx-pack-vol1/imagenes/cover.png",
+   "productos/sfx-pack-vol1/imagenes/captura-1.png"
+  ]
+ },
+ {
+  "id": "music",
+  "cat": "Para desarrolladores",
+  "nombre": "Synth Music Loops Vol. 1",
+  "precio": "3,99 $",
+  "img": "productos/music-loops-vol1/imagenes/cover.png",
+  "desc": "6 bucles de música sin corte + 2 jingles, en WAV y OGG, para menús, acción, puzles y más. Uso comercial sin atribución.",
+  "comprar": "",
+  "audio": "media/music-loops-preview.mp3",
+  "marca": "nimbloom",
+  "imgs": [
+   "productos/music-loops-vol1/imagenes/cover.png",
+   "productos/music-loops-vol1/imagenes/captura-1.png"
+  ]
+ },
+ {
+  "id": "lumen",
+  "cat": "Juegos gratis",
+  "nombre": "Lumen Drift",
+  "precio": "Gratis",
+  "img": "juegos/lumen/imagenes/cover.png",
+  "desc": "Arcade de un botón: mantén para subir, suelta para caer y guía una chispa de luz por una cueva de neón infinita.",
+  "comprar": "",
+  "jugar": "../juegos/lumen/",
+  "marca": "nimbloom",
+  "imgs": [
+   "juegos/lumen/imagenes/captura-1.png",
+   "juegos/lumen/imagenes/captura-2.png",
+   "juegos/lumen/imagenes/captura-3.png"
+  ]
+ },
+ {
+  "id": "loomlines",
+  "cat": "Juegos gratis",
+  "nombre": "Loomlines",
+  "precio": "Gratis",
+  "img": "juegos/loomlines/imagenes/cover.png",
+  "desc": "Puzle relajante con 200 niveles: une cada pareja de carretes con su hilo, sin cruces y llenando todo el tablero.",
+  "comprar": "",
+  "jugar": "../juegos/loomlines/",
+  "marca": "nimbloom",
+  "imgs": [
+   "juegos/loomlines/imagenes/captura-1.png",
+   "juegos/loomlines/imagenes/captura-2.png",
+   "juegos/loomlines/imagenes/captura-3.png"
+  ]
+ },
+ {
+  "id": "rootwork",
+  "cat": "Juegos gratis",
+  "nombre": "Rootwork",
+  "precio": "Gratis",
+  "img": "juegos/rootwork/imagenes/cover.png",
+  "desc": "Gira las raíces para que el agua del manantial llegue a todas las flores. 300 jardines, de 3×3 a 9×9.",
+  "comprar": "",
+  "jugar": "../juegos/rootwork/",
+  "marca": "nimbloom",
+  "imgs": [
+   "juegos/rootwork/imagenes/captura-1.png",
+   "juegos/rootwork/imagenes/captura-2.png",
+   "juegos/rootwork/imagenes/captura-3.png"
+  ]
+ }
 ]

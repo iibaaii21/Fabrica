@@ -1,4 +1,4 @@
-LOTE DEL DOMINGO 22/11/2026: 6 tareas, unos 40 minutos
+LOTE DEL DOMINGO 22/11/2026: 7 tareas, unos 52 minutos
 
 Cómo usarlo (PC con Windows):
 - Clic derecho en el zip del lote > Extraer todo.
@@ -48,3 +48,25 @@ Cómo usarlo (PC con Windows):
 3. Pricing: No payments + «Accept donations».
 4. Cover: cover.png · Screenshots: captura-1, 2 y 3.
 5. Copia el resto de campos de TEXTOS-PARA-COPIAR.txt > Public > Save.
+
+=== 7-Publicar-las-3-webs-en-Cloudflare  (~12 min, gratis, sin tarjeta) ===
+Tus 3 webs ya están hechas: Cellmate (tienda de plantillas), OpoCalc (calculadoras para opositores) y Nimbloom (juegos y sonidos). Esto las pone en internet una sola vez; después se actualizan solas.
+1. Crea una cuenta gratis en https://dash.cloudflare.com/sign-up (email y contraseña; no pide tarjeta). Confirma el email.
+2. En el menú de la izquierda: Workers & Pages > Create > pestaña Pages > Connect to Git.
+3. Elige GitHub, autoriza a Cloudflare y selecciona el repositorio iibaaii21/Fabrica.
+4. Rellena así y pulsa Save and Deploy:
+   - Project name: cellmate-plantillas   (si está cogido: cellmate-sheets o cellmateplantillas)
+   - Production branch: claude/fabrica-ingresos-legales-9iymbg
+   - Framework preset: None
+   - Build command: (déjalo vacío)
+   - Build output directory: sites/cellmate
+5. Repite los pasos 2 a 4 para la segunda web:
+   - Project name: calculadora-oposiciones   (si está cogido: opocalc-oposiciones o notaoposiciones)
+   - Build output directory: sites/oposiciones   (lo demás igual)
+6. Y para la tercera:
+   - Project name: nimbloom   (si está cogido: nimbloom-games o nimbloom-studio)
+   - Build output directory: sites/estudio   (lo demás igual)
+7. En cada uno de los 3 proyectos: entra al proyecto > Metrics (o Web Analytics) > Enable. Así contamos las visitas sin cookies.
+8. Si usaste algún nombre alternativo, escríbelo en el panel en «Orden para Claude» y yo cambio los enlaces.
+
+ÚLTIMO PASO: escribe en esta sesión de Claude (la «sala de máquinas») las palabras «conectar estadísticas».

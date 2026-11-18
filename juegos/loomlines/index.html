@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Loomlines</title>
+<style>
+  :root{--bg:#171226;--panel:#221b38;--cell:#2b2347;--ink:#f4ecff;--muted:#a99cc9;--accent:#ffcf5c}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none}
+  #app{position:fixed;inset:0;display:flex;flex-direction:column}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;min-height:56px}
+  .bar .mid{flex:1;text-align:center}
+  .title{font-weight:800;font-size:20px;letter-spacing:.5px}
+  .sub{font-size:13px;color:var(--muted);margin-top:2px}
+  button{font:inherit;color:var(--ink);background:var(--panel);border:2px solid #3a2f5e;border-radius:12px;padding:8px 14px;cursor:pointer;font-weight:700;font-size:15px;min-width:44px;min-height:44px}
+  button:hover{border-color:#5b4b90}
+  button:active{transform:translateY(1px)}
+  button.primary{background:var(--accent);color:#2a1c00;border-color:#ffe39b}
+  #stage{flex:1;position:relative;min-height:0}
+  canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .screen{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px;text-align:center;background:var(--bg)}
+  .screen.on{display:flex}
+  .logo{font-size:clamp(40px,9vw,76px);font-weight:900;letter-spacing:1px;line-height:1}
+  .logo span:nth-child(1){color:#ff6b8b}.logo span:nth-child(2){color:#ffcf5c}.logo span:nth-child(3){color:#5ce1a8}.logo span:nth-child(4){color:#5cb8ff}
+  .tag{color:var(--muted);max-width:420px;font-size:16px;line-height:1.4}
+  #grid{display:grid;grid-template-columns:repeat(5,minmax(48px,64px));gap:10px}
+  #grid button{padding:0;height:56px;font-size:17px}
+  #grid button.done{border-color:#5ce1a8}
+  #grid button.perfect{background:#1f3b33;border-color:#5ce1a8}
+  #grid button:disabled{opacity:.35;cursor:default}
+  .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  #toast{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);background:#000a;padding:8px 14px;border-radius:10px;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none;white-space:nowrap}
+  #toast.on{opacity:1}
+  #win{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:#0008}
+  #win.on{display:flex}
+  .card{background:var(--panel);border:2px solid #3a2f5e;border-radius:18px;padding:24px 28px;text-align:center;min-width:260px}
+  .card h2{margin:0 0 6px;font-size:28px}
+  #play .bar{background:transparent}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="bar" id="hud" style="display:none">
+    <button id="bMenu" aria-label="Levels">☰</button>
+    <div class="mid"><div class="title" id="hLevel">Level 1</div><div class="sub" id="hStats">Threads 0/5 · Fill 0%</div></div>
+    <button id="bSound" aria-label="Sound">🔊</button>
+  </div>
+  <div id="stage">
+    <canvas id="c"></canvas>
+    <div id="toast"></div>
+    <div id="win"><div class="card"><h2 id="wTitle">Woven!</h2><div class="sub" id="wSub"></div><div class="row" style="margin-top:16px"><button id="wLevels">Levels</button><button class="primary" id="wNext">Next ▶</button></div></div></div>
+    <div class="screen on" id="sMenu">
+      <div class="logo"><span>Loom</span><span>l</span><span>in</span><span>es</span></div>
+      <div class="tag">Drag to weave each thread between its two matching spools. Threads can't cross — and every square must be covered.</div>
+      <div class="row"><button class="primary" id="bPlay">Play</button><button id="bLevels">Levels</button></div>
+    </div>
+    <div class="screen" id="sLevels">
+      <div class="title" id="lTitle">Levels 1–20</div>
+      <div id="grid"></div>
+      <div class="row"><button id="lPrev">◀</button><button id="lBack">Menu</button><button id="lNext">▶</button></div>
+    </div>
+  </div>
+  <div class="bar" id="foot" style="display:none;justify-content:center">
+    <button id="bUndo">↶ Undo</button><button id="bReset">⟲ Reset</button><button id="bHint">💡 Hint</button>
+  </div>
+</div>
+<script>
+(() => {
+'use strict';
+const COLORS = ['#ff6b8b','#ffcf5c','#5ce1a8','#5cb8ff','#c58cff','#ff9a4d','#f2f2f2','#4de0e0','#a6d65c','#ff7ad9','#8f9bff'];
+const MAX_LEVEL = 200, PAGE = 20;
+const $ = id => document.getElementById(id);
+const cv = $('c'), ctx = cv.getContext('2d');
+
+// ---------- storage (optional) ----------
+const store = {
+  get(k, d){ try { const v = localStorage.getItem('loomlines.'+k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem('loomlines.'+k, JSON.stringify(v)); } catch(e){} }
+};
+let progress = store.get('progress', {}); // level -> 1 done, 2 perfect
+let unlocked = store.get('unlocked', 1);
+let muted = store.get('muted', false);
+
+// ---------- audio ----------
+let ac = null;
+function audio(){ if (!ac) { try { ac = new (window.AudioContext||window.webkitAudioContext)(); } catch(e){} } if (ac && ac.state === 'suspended') ac.resume(); return ac; }
+function tone(f, d=0.08, type='sine', vol=0.12, when=0){
+  if (muted) return; const a = audio(); if (!a) return;
+  const t = a.currentTime + when, o = a.createOscillator(), g = a.createGain();
+  o.type = type; o.frequency.setValueAtTime(f, t);
+  g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t+0.01); g.gain.exponentialRampToValueAtTime(0.0001, t+d);
+  o.connect(g).connect(a.destination); o.start(t); o.stop(t+d+0.02);
+}
+const SCALE = [262,294,330,392,440,523,587,659,784,880,1047];
+const sStep = n => tone(SCALE[n % SCALE.length], 0.06, 'triangle', 0.06);
+const sLink = () => { tone(523,0.12,'sine',0.12); tone(784,0.18,'sine',0.1,0.06); };
+const sWin = () => [523,659,784,1047].forEach((f,i)=>tone(f,0.25,'triangle',0.12,i*0.09));
+
+// ---------- level generation ----------
+function rng(seed){ return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function genLevel(n){
+  const size = n <= 10 ? 5 : n <= 25 ? 6 : n <= 50 ? 7 : n <= 90 ? 8 : 9;
+  for (let attempt = 0; attempt < 50; attempt++){
+    const R = rng(n*7919 + attempt*104729 + 17);
+    const N = size*size;
+    // serpentine Hamiltonian path, then randomise with backbite moves
+    let p = [];
+    for (let y=0;y<size;y++) for (let x=0;x<size;x++) p.push(y*size + (y%2 ? size-1-x : x));
+    const nb = c => { const x=c%size, y=(c/size)|0, r=[]; if(x>0)r.push(c-1); if(x<size-1)r.push(c+1); if(y>0)r.push(c-size); if(y<size-1)r.push(c+size); return r; };
+    const pos = new Int32Array(N);
+    for (let it=0; it<N*40; it++){
+      if (R() < 0.5) p.reverse();
+      p.forEach((c,i)=>pos[c]=i);
+      const end = p[N-1], ns = nb(end), m = ns[(R()*ns.length)|0], i = pos[m];
+      if (i === N-2) continue;
+      const tail = p.slice(i+1).reverse(); p = p.slice(0, i+1).concat(tail);
+    }
+    // cut into k segments, each >= 3 long
+    const k = Math.min(COLORS.length, size - 1 + Math.floor(R()*2.6));
+    const len = new Array(k).fill(3); let rest = N - 3*k;
+    while (rest > 0){ len[(R()*k)|0]++; rest--; }
+    const sols = []; let o = 0;
+    for (const l of len){ sols.push(p.slice(o, o+l)); o += l; }
+    // reject boards where a pair's spools touch (too trivial) or a thread is a straight 3-line
+    const adj = (a,b) => nb(a).includes(b);
+    if (sols.some(s => adj(s[0], s[s.length-1]))) continue;
+    return { size, sols, n };
+  }
+  // fallback (never expected): accept last attempt without the filter
+  return genLevel(n+MAX_LEVEL);
+}
+
+// ---------- game state ----------
+let L = null, paths = [], ends = null, hist = [], hints = 0, moves = 0, won = false;
+let drag = null; // {c, snap}
+let fx = []; let pulse = []; let pointer = null;
+
+function startLevel(n){
+  L = genLevel(n); won = false; hints = 0; moves = 0; hist = []; fx = [];
+  paths = L.sols.map(()=>[]); pulse = L.sols.map(()=>0);
+  ends = new Map(); L.sols.forEach((s,c)=>{ ends.set(s[0], c); ends.set(s[s.length-1], c); });
+  $('win').classList.remove('on');
+  show('play'); updateHud(); layout(); 
+}
+const isTarget = (c, cell, path) => ends.get(cell) === c && path.length && path[0] !== cell;
+const complete = c => { const p = paths[c]; return p.length > 1 && ends.get(p[0]) === c && ends.get(p[p.length-1]) === c && p[0] !== p[p.length-1]; };
+function ownerMap(){ const m = new Int16Array(L.size*L.size).fill(-1); paths.forEach((p,c)=>p.forEach(x=>m[x]=c)); ends.forEach((c,x)=>m[x]=c); return m; }
+function fillPct(){ const m = ownerMap(); let f=0, t=0; for (let i=0;i<m.length;i++){ if (ends.has(i)) continue; t++; if (m[i]>=0) f++; } return t ? Math.floor(100*f/t) : 100; }
+function stats(){ return { done: paths.filter((_,c)=>complete(c)).length, fill: fillPct() }; }
+function updateHud(){ const s = stats(); $('hLevel').textContent = 'Level ' + L.n; $('hStats').textContent = `Threads ${s.done}/${paths.length} · Fill ${s.fill}%`; }
+function cloneP(){ return paths.map(p=>p.slice()); }
+function recomputeOthers(){
+  // other threads are restored from the snapshot and cut where the active thread now runs
+  const cur = new Set(paths[drag.c]);
+  drag.snap.forEach((p,c)=>{ if (c === drag.c) return; const i = p.findIndex(x=>cur.has(x)); paths[c] = i < 0 ? p.slice() : p.slice(0, i); if (paths[c].length === 1) paths[c] = []; });
+}
+const adjCell = (a,b) => { const s=L.size, ax=a%s, ay=(a/s)|0, bx=b%s, by=(b/s)|0; return Math.abs(ax-bx)+Math.abs(ay-by) === 1; };
+function stepTo(y){
+  const c = drag.c, p = paths[c], last = p[p.length-1];
+  if (y === last || !adjCell(last, y)) return false;
+  const i = p.indexOf(y);
+  if (i >= 0){ paths[c] = p.slice(0, i+1); recomputeOthers(); sStep(paths[c].length); return true; }
+  if (complete(c)) return false;
+  const e = ends.get(y);
+  if (e !== undefined && e !== c) return false;
+  p.push(y); recomputeOthers();
+  if (complete(c)){ sLink(); pulse[c] = 1; } else sStep(p.length);
+  return true;
+}
+function down(cell){
+  if (won || cell < 0) return;
+  const e = ends.get(cell); let c = -1;
+  const before = cloneP();
+  if (e !== undefined){ c = e; paths[c] = [cell]; }
+  else { for (let k=0;k<paths.length;k++){ const i = paths[k].indexOf(cell); if (i >= 0){ c = k; paths[k] = paths[k].slice(0, i+1); break; } } }
+  if (c < 0) return;
+  drag = { c, snap: before.map((p,k)=> k===c ? [] : p), before };
+  recomputeOthers(); sStep(paths[c].length); updateHud();
+}
+function move(cell){
+  if (!drag || cell < 0) return;
+  const s = L.size; let guard = 20;
+  while (guard-- > 0){
+    const p = paths[drag.c], last = p[p.length-1];
+    if (last === cell) break;
+    const lx=last%s, ly=(last/s)|0, tx=cell%s, ty=(cell/s)|0;
+    const dx = tx-lx, dy = ty-ly;
+    const nxt = Math.abs(dx) >= Math.abs(dy) ? last + Math.sign(dx) : last + Math.sign(dy)*s;
+    if (!stepTo(nxt)) break;
+  }
+  updateHud();
+}
+function up(){
+  if (!drag) return;
+  const changed = JSON.stringify(drag.before) !== JSON.stringify(paths);
+  if (changed){ hist.push(drag.before); if (hist.length > 100) hist.shift(); moves++; }
+  drag = null; checkWin();
+}
+function checkWin(){
+  const s = stats(); updateHud();
+  if (s.done === paths.length){
+    if (s.fill === 100) return winLevel();
+    toast('All threads linked — now cover every square!');
+  }
+}
+function winLevel(){
+  won = true; sWin();
+  const perfect = hints === 0;
+  progress[L.n] = Math.max(progress[L.n]||0, perfect ? 2 : 1); store.set('progress', progress);
+  unlocked = Math.max(unlocked, Math.min(MAX_LEVEL, L.n+1)); store.set('unlocked', unlocked);
+  for (let i=0;i<70;i++) fx.push({ x: Math.random(), y: -0.05 - Math.random()*0.3, vx:(Math.random()-.5)*0.004, vy: 0.004+Math.random()*0.006, c: COLORS[i%COLORS.length], r: 3+Math.random()*4, a: Math.random()*6 });
+  setTimeout(()=>{
+    $('wTitle').textContent = perfect ? 'Perfect weave!' : 'Woven!';
+    $('wSub').textContent = `Level ${L.n} · ${moves} move${moves===1?'':'s'}` + (hints ? ` · ${hints} hint${hints>1?'s':''}` : ' · no hints');
+    $('wNext').style.display = L.n < MAX_LEVEL ? '' : 'none';
+    $('win').classList.add('on');
+  }, 650);
+}
+function hint(){
+  if (won) return;
+  const c = paths.findIndex((_,k)=>!complete(k) || paths[k].join() !== L.sols[k].join() && paths[k].join() !== L.sols[k].slice().reverse().join());
+  if (c < 0) return;
+  hist.push(cloneP()); hints++;
+  const sol = L.sols[c], cells = new Set(sol);
+  paths = paths.map((p,k)=>{ if (k===c) return sol.slice(); const i = p.findIndex(x=>cells.has(x)); const q = i<0 ? p : p.slice(0,i); return q.length>1 ? q : []; });
+  // other threads that disagree with the solution are cleared so the hint is never misleading
+  paths.forEach((p,k)=>{ if (k!==c && p.some(x=>cells.has(x))) paths[k] = []; });
+  pulse[c] = 1; sLink(); checkWin();
+}
+
+// ---------- layout & render ----------
+let dpr = 1, bx = 0, by = 0, cs = 40, W = 0, H = 0;
+function layout(){
+  const r = $('stage').getBoundingClientRect(); W = r.width; H = r.height;
+  dpr = Math.min(window.devicePixelRatio||1, 2);
+  cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr);
+  if (!L) return;
+  const pad = 14, side = Math.max(120, Math.min(W, H) - pad*2);
+  cs = Math.floor(side / L.size); const bs = cs*L.size;
+  bx = Math.round((W - bs)/2); by = Math.round((H - bs)/2);
+}
+window.addEventListener('resize', layout);
+function cellAt(px, py){ if (!L) return -1; const x = Math.floor((px-bx)/cs), y = Math.floor((py-by)/cs); return (x<0||y<0||x>=L.size||y>=L.size) ? -1 : y*L.size + x; }
+function cellAtLoose(px, py){ if (!L) return -1; const x = Math.min(L.size-1, Math.max(0, Math.floor((px-bx)/cs))), y = Math.min(L.size-1, Math.max(0, Math.floor((py-by)/cs))); return y*L.size + x; }
+const cxy = c => [bx + (c%L.size + .5)*cs, by + (((c/L.size)|0) + .5)*cs];
+function rr(x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+let tPrev = performance.now();
+function frame(t){
+  const dt = Math.min(0.05, (t - tPrev)/1000); tPrev = t;
+  ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,W,H);
+  if (L && cur === 'play'){
+    const s = L.size, m = ownerMap();
+    rr(bx-6, by-6, cs*s+12, cs*s+12, 14); ctx.fillStyle = '#221b38'; ctx.fill();
+    for (let i=0;i<s*s;i++){
+      const x = bx + (i%s)*cs, y = by + ((i/s)|0)*cs;
+      rr(x+2, y+2, cs-4, cs-4, Math.min(10, cs*.18)); ctx.fillStyle = '#2b2347'; ctx.fill();
+      if (m[i] >= 0 && !ends.has(i)){ ctx.globalAlpha = .2; ctx.fillStyle = COLORS[m[i]]; ctx.fill(); ctx.globalAlpha = 1; }
+    }
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    paths.forEach((p,c)=>{
+      if (p.length < 2) return;
+      const done = complete(c);
+      ctx.beginPath(); p.forEach((x,i)=>{ const [px,py] = cxy(x); i ? ctx.lineTo(px,py) : ctx.moveTo(px,py); });
+      ctx.strokeStyle = COLORS[c]; ctx.lineWidth = cs*.34; ctx.stroke();
+      // thread texture: a thin darker twist line along the thread
+      ctx.setLineDash([cs*.12, cs*.16]); ctx.strokeStyle = 'rgba(0,0,0,.22)'; ctx.lineWidth = cs*.08; ctx.stroke(); ctx.setLineDash([]);
+      if (done){ ctx.strokeStyle = 'rgba(255,255,255,.18)'; ctx.lineWidth = cs*.08; ctx.beginPath(); p.forEach((x,i)=>{ const [px,py] = cxy(x); i ? ctx.lineTo(px,py-cs*.06) : ctx.moveTo(px,py-cs*.06); }); ctx.stroke(); }
+    });
+    ends.forEach((c,x)=>{
+      const [px,py] = cxy(x), r = cs*.36, g = pulse[c];
+      if (g > 0){ ctx.beginPath(); ctx.arc(px,py, r*(1+g*.9), 0, 7); ctx.globalAlpha = g*.5; ctx.fillStyle = COLORS[c]; ctx.fill(); ctx.globalAlpha = 1; }
+      ctx.beginPath(); ctx.arc(px,py,r,0,7); ctx.fillStyle = COLORS[c]; ctx.fill();
+      ctx.beginPath(); ctx.arc(px,py,r*.62,0,7); ctx.strokeStyle = 'rgba(0,0,0,.25)'; ctx.lineWidth = Math.max(1.5, cs*.05); ctx.stroke();
+      ctx.beginPath(); ctx.arc(px,py,r*.22,0,7); ctx.fillStyle = 'rgba(0,0,0,.35)'; ctx.fill();
+      ctx.beginPath(); ctx.arc(px-r*.35,py-r*.35,r*.16,0,7); ctx.fillStyle = 'rgba(255,255,255,.45)'; ctx.fill();
+    });
+    pulse = pulse.map(g => Math.max(0, g - dt*1.6));
+    if (drag && pointer){ ctx.beginPath(); ctx.arc(pointer[0], pointer[1], cs*.55, 0, 7); ctx.globalAlpha = .22; ctx.fillStyle = COLORS[drag.c]; ctx.fill(); ctx.globalAlpha = 1; }
+    if (fx.length){
+      fx.forEach(f=>{ f.x += f.vx; f.y += f.vy; f.a += .1; ctx.save(); ctx.translate(f.x*W, f.y*H); ctx.rotate(f.a); ctx.fillStyle = f.c; ctx.fillRect(-f.r, -f.r/2, f.r*2, f.r); ctx.restore(); });
+      fx = fx.filter(f=>f.y < 1.1);
+    }
+  }
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+// ---------- input ----------
+const pt = e => { const r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+cv.addEventListener('pointerdown', e => { audio(); pointer = pt(e); down(cellAt(...pointer)); if (drag) { try { cv.setPointerCapture(e.pointerId); } catch(_){} } });
+cv.addEventListener('pointermove', e => { pointer = pt(e); if (drag) move(cellAtLoose(...pointer)); });
+const end = () => { up(); pointer = null; };
+cv.addEventListener('pointerup', end); cv.addEventListener('pointercancel', end);
+window.addEventListener('keydown', e => {
+  if (cur !== 'play') return;
+  if ((e.key === 'z' && (e.ctrlKey||e.metaKey)) || e.key === 'Backspace') { e.preventDefault(); undo(); }
+  if (e.key === 'r') reset();
+  if (e.key === 'h') hint();
+});
+
+// ---------- UI ----------
+let cur = 'menu', page = 0, toastT = 0;
+function toast(msg){ const t = $('toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(()=>t.classList.remove('on'), 2200); }
+function show(s){
+  cur = s;
+  $('sMenu').classList.toggle('on', s==='menu'); $('sLevels').classList.toggle('on', s==='levels');
+  $('hud').style.display = $('foot').style.display = s==='play' ? 'flex' : 'none';
+  if (s !== 'play') $('win').classList.remove('on');
+  requestAnimationFrame(layout);
+}
+function renderLevels(){
+  const g = $('grid'); g.innerHTML = '';
+  const a = page*PAGE + 1, b = Math.min(MAX_LEVEL, a + PAGE - 1);
+  $('lTitle').textContent = `Levels ${a}–${b}`;
+  for (let n=a;n<=b;n++){
+    const btn = document.createElement('button'); btn.textContent = n;
+    if (progress[n] === 2) btn.className = 'perfect'; else if (progress[n]) btn.className = 'done';
+    btn.disabled = n > unlocked; btn.onclick = () => startLevel(n); g.appendChild(btn);
+  }
+  $('lPrev').disabled = page === 0; $('lNext').disabled = b >= MAX_LEVEL;
+}
+function undo(){ if (won || !hist.length) return; paths = hist.pop(); updateHud(); }
+function reset(){ if (won) return; hist.push(cloneP()); paths = paths.map(()=>[]); updateHud(); }
+function soundIcon(){ $('bSound').textContent = muted ? '🔇' : '🔊'; }
+$('bPlay').onclick = () => startLevel(Math.min(unlocked, MAX_LEVEL));
+$('bLevels').onclick = () => { page = Math.floor((unlocked-1)/PAGE); renderLevels(); show('levels'); };
+$('lBack').onclick = () => show('menu');
+$('lPrev').onclick = () => { page = Math.max(0, page-1); renderLevels(); };
+$('lNext').onclick = () => { page++; renderLevels(); };
+$('bMenu').onclick = () => { page = Math.floor((L.n-1)/PAGE); renderLevels(); show('levels'); };
+$('bSound').onclick = () => { muted = !muted; store.set('muted', muted); soundIcon(); };
+$('bUndo').onclick = undo; $('bReset').onclick = reset; $('bHint').onclick = hint;
+$('wNext').onclick = () => startLevel(L.n + 1);
+$('wLevels').onclick = () => { page = Math.floor(L.n/PAGE); renderLevels(); show('levels'); };
+soundIcon(); layout();
+// test hook (harmless in production): lets automated checks solve a level
+window.__loom = { genLevel, state: () => ({ L, paths, won }), solve(){ paths = L.sols.map(s=>s.slice()); checkWin(); } };
+})();
+</script>
+</body>
+</html>

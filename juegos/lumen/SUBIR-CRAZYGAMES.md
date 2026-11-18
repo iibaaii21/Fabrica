@@ -32,3 +32,7 @@
 - **Uses CrazyGames SDK:** No (Basic Launch)
 - **Made with:** Plain HTML5 / JavaScript (Canvas)
 - **AI usage (si lo pregunta):** Yes — code written with AI assistance; design, testing and publishing by the developer.
+
+## Vídeos (obligatorios en CrazyGames)
+- Landscape video (16:9): videos/landscape-1920x1080.mp4
+- Portrait video (2:3): videos/portrait-1080x1620.mp4

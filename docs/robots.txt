@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://iibaaii21.github.io/Fabrica/sitemap.xml

@@ -1,0 +1,8 @@
+SYNTH MUSIC LOOPS VOL. 1 - LICENSE / LICENCIA
+
+EN: You may use this music in unlimited commercial and non-commercial projects (games, apps, videos, streams), with no attribution required. You may edit, cut and loop it. You may NOT resell or redistribute the tracks on their own or as part of another music pack or asset library, and you may NOT register them in Content ID or any similar fingerprinting system.
+
+ES: Puedes usar esta música en proyectos comerciales y no comerciales ilimitados (juegos, apps, vídeos, directos), sin necesidad de atribución. Puedes editarla, recortarla y repetirla. NO puedes revender ni redistribuir las pistas por separado ni dentro de otro pack o biblioteca de recursos, ni registrarlas en Content ID ni sistemas similares de huella digital.
+
+All music is original, composed procedurally and synthesized from scratch with code (no samples, no third-party material). AI-assisted production.
+Formats: 44.1 kHz 16-bit stereo WAV + OGG Vorbis (q6). Loops are seamless: the reverb/echo tail is folded into the start.

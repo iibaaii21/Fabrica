@@ -9,3 +9,21 @@
 **Archivo para subir:** Loomlines-web.zip (index.html en la raíz, adaptable a horizontal y vertical, táctil y ratón, sin recursos externos, sin anuncios todavía).
 **Nota de originalidad:** mecánica de género clásico (puzle de conectar parejas, tipo "numberlink"); nombre, temática de hilos/carretes, gráficos, sonidos y código son propios.
 **Pendiente técnico:** integrar el SDK del portal (CrazyGames/Poki) cuando haya cuenta: gameplayStart/Stop al entrar/salir de nivel y anuncio intersticial entre niveles.
+
+## Ajustes itch.io (añadido)
+- **Kind of project:** HTML · subir Loomlines-web.zip y marcar "This file will be played in the browser"
+- **Viewport:** 1280 × 720, "Mobile friendly" y "Fullscreen button"
+- **Pricing:** No payments (gratis; donaciones opcionales)
+- **Cover:** imagenes/cover.png · **Screenshots:** captura-1, captura-2, captura-3
+- **Genre:** Puzzle · **Tags:** puzzle, relaxing, casual, logic, colorful, brain, minimalist, singleplayer
+- **AI disclosure:** sí
+
+## Descripción (pegar tal cual)
+**Connect every pair of spools. Threads can't cross. Fill the whole board.**
+
+A calm, colorful logic puzzle with **200 hand-checked levels**, from quick warm-ups to real brain-benders. Every level has a solution.
+
+- 🧵 Drag to weave each thread between its matching spools
+- ↶ Undo, reset and hints when you're stuck
+- 📱 Smooth on phone, tablet and desktop
+- 🎧 Soft sounds, no timers, no pressure

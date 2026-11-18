@@ -1,20 +1,36 @@
-# Planificador de Oposiciones (Excel y Google Sheets)
+# Planificador de Oposiciones — página de Payhip
 
-**Precio recomendado:** 6,90 € (lanzamiento 4,90 €)
+## Ajustes
+- **Precio:** 6,90 € (opcional: cupón de lanzamiento LANZAMIENTO al 30 %)
+- **Imágenes (en este orden):** imagenes/portada.png, tests.png, temario.png, resumen.png
+- **Archivo:** Planificador-Oposiciones.xlsx
 
 ## Título
-Planificador de Oposiciones 2027 · Temario, vueltas y tests con penalización · Excel y Google Sheets
+Planificador de Oposiciones · Temario, vueltas y tests con penalización (Excel y Google Sheets)
 
-## Descripción
-Organiza tu oposición en un solo archivo:
-- **Temario:** hasta 80 temas, fechas de cada vuelta, nivel de dominio y estado automático.
-- **Tests:** apunta preguntas, aciertos y fallos; la nota con penalización (1/3, 1/4 o la que fije tu convocatoria) se calcula sola, con gráfico de evolución.
-- **Semana:** planifica mañanas y tardes y compara tus horas con tu objetivo.
-- **Resumen:** días hasta el examen, % de temario visto, nota media, mejor nota y tests por encima del corte.
+## Descripción (pegar tal cual)
+**Deja de estudiar a ciegas. Sabe cada día cuánto te falta y si vas a aprobar.**
 
-Funciona en Excel y en Google Sheets. Sin macros. Descarga inmediata.
+El planificador que organiza tu oposición en un solo archivo, sin apps ni suscripciones.
 
-*Diseñado con ayuda de IA y revisado y probado a mano.*
+**📊 Tests con nota real**
+Apunta preguntas, aciertos y fallos. La nota con penalización (1/3, 1/4 o la que fije tu convocatoria) se calcula sola, con gráfico de evolución y aviso de si superas el corte.
 
-## Etiquetas
-oposiciones, planificador estudio, plantilla excel, google sheets, test oposiciones, temario, auxiliar administrativo, opositor, organizador, penalización
+**📚 Temario bajo control**
+Hasta 80 temas. Anota cada vuelta y el estado cambia solo: sin empezar, 1ª vuelta, 2ª vuelta, listo.
+
+**🗓️ Semana planificada**
+Organiza mañanas y tardes y compara tus horas con tu objetivo semanal.
+
+**🎯 Resumen de un vistazo**
+Días hasta el examen, % de temario visto, nota media, mejor nota y % de tests por encima del corte.
+
+**Incluye**
+- Archivo .xlsx que funciona en Excel y en Google Sheets (Archivo > Importar)
+- Sin macros: abre en cualquier ordenador, también en el móvil
+- Instrucciones dentro del archivo
+- Descarga inmediata
+
+Sirve para cualquier oposición por test: Auxiliar Administrativo, Administrativo del Estado, Correos, Justicia, Policía, Sanidad…
+
+*Diseñado con ayuda de IA y probado a mano: todas las fórmulas están verificadas.*

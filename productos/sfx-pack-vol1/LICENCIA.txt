@@ -1,0 +1,7 @@
+SYNTH SFX PACK VOL. 1 - LICENSE / LICENCIA
+
+EN: You may use these sounds in unlimited commercial and non-commercial projects (games, apps, videos), with no attribution required. You may NOT resell or redistribute the sounds on their own or as part of another sound pack or asset library.
+
+ES: Puedes usar estos sonidos en proyectos comerciales y no comerciales ilimitados (juegos, apps, vídeos), sin necesidad de atribución. NO puedes revender ni redistribuir los sonidos por separado ni dentro de otro pack o biblioteca de recursos.
+
+All sounds are original, synthesized from scratch with code. 44.1 kHz, 16-bit, mono WAV.

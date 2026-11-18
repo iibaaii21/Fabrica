@@ -1,0 +1,50 @@
+LOTE DEL DOMINGO 22/11/2026: 6 tareas, unos 40 minutos
+
+Cómo usarlo (PC con Windows):
+- Clic derecho en el zip del lote > Extraer todo.
+- Cada tarea tiene su carpeta con TODO lo que necesita: archivos, imágenes y TEXTOS-PARA-COPIAR.txt.
+- Los .zip que hay DENTRO de las carpetas se suben tal cual, sin extraerlos.
+- Al terminar, en el panel marca «Lote del domingo» como hecho. Si algo falla, escríbelo en «Orden para Claude».
+
+=== 1-Payhip-Organizador-de-Boda  (~5 min) ===
+1. Abre https://payhip.com/dashboard > Add product > Digital product.
+2. Arrastra Organizador-de-Boda.xlsx al campo del archivo.
+3. Arrastra las 3 imágenes en este orden: portada, invitados-mesas, proveedores-resumen.
+4. Copia Título y Descripción de TEXTOS-PARA-COPIAR.txt (en esta misma carpeta).
+5. Precio 5,90 € > Publish.
+
+=== 2-Payhip-Libro-Autonomos  (~5 min) ===
+1. https://payhip.com/dashboard > Add product > Digital product.
+2. Arrastra Libro-Autonomos.xlsx y las imágenes portada y facturas.
+3. Copia Título y Descripción de TEXTOS-PARA-COPIAR.txt (deja la nota de que es una estimación).
+4. Precio 5,90 € > Publish.
+
+=== 3-Payhip-Planificador-LITE-gratis  (~5 min) ===
+1. https://payhip.com/dashboard > Add product > Digital product.
+2. Arrastra el .xlsx y las 2 imágenes (portada, lite-vs-completa).
+3. Copia Título y Descripción de TEXTOS-PARA-COPIAR.txt.
+4. Precio 0 € > Publish.
+5. Copia la URL del producto LITE. Edita tu Planificador de pago y pega al final de la descripción: «¿Quieres probar antes? Versión LITE gratis: <URL>».
+
+=== 4-itch-Synth-Music-Loops  (~5 min) ===
+1. https://itch.io/game/new
+2. Title: Synth Music Loops Vol. 1 · Classification: Assets · Kind of project: Downloadable.
+3. Pricing: Paid, 3,99 $, marca «Let people pay more».
+4. Uploads: arrastra Synth-Music-Loops-Vol1.zip (sin extraer). Sube también preview.mp3 y márcalo «This file is free».
+5. Cover image: cover.png · Screenshots: captura-1.png.
+6. Copia Descripción y Etiquetas de TEXTOS-PARA-COPIAR.txt. AI disclosure: Sí (audio).
+7. Visibility: Public > Save.
+
+=== 5-CrazyGames-3-juegos  (~10 min) ===
+1. https://developer.crazygames.com > Submit game (uno por juego; si ya enviaste alguno, sáltalo).
+2. Archivo: HTML5 > arrastra el zip del juego SIN extraer (p. ej. Lumen-Drift-web.zip).
+3. Imágenes: las 3 crazygames-*.png. Vídeos: landscape-1920x1080.mp4 y portrait-1080x1620.mp4.
+4. Copia cada campo de TEXTOS-PARA-COPIAR.txt de la carpeta del juego. SDK: No (Basic Launch). IA: Sí.
+5. Prueba en la Preview > Submit.
+
+=== 6-itch-3-juegos  (~10 min) ===
+1. https://itch.io/game/new (uno por juego).
+2. Kind of project: HTML > arrastra el zip del juego SIN extraer y marca «This file will be played in the browser».
+3. Pricing: No payments + «Accept donations».
+4. Cover: cover.png · Screenshots: captura-1, 2 y 3.
+5. Copia el resto de campos de TEXTOS-PARA-COPIAR.txt > Public > Save.

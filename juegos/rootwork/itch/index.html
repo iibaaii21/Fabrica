@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Rootwork</title>
+<style>
+  :root { --bg1:#0d241a; --bg2:#1a4630; --ink:#f3f7ec; --mut:#a9c4a8; --acc:#ffd166; --btn:#2e6b47; --btn2:#3f8a5d; }
+  * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
+  html,body { margin:0; height:100%; overflow:hidden; background:var(--bg1); color:var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; touch-action:none; }
+  #stage { position:fixed; inset:0; background:radial-gradient(120% 90% at 50% 20%, var(--bg2), var(--bg1)); }
+  canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .scr { position:absolute; inset:0; display:none; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:16px; text-align:center; }
+  .scr.on { display:flex; }
+  .logo { font-size:clamp(48px, 13vmin, 120px); font-weight:900; letter-spacing:-.03em; line-height:1; color:#fff;
+    text-shadow:0 4px 0 #0a1c13, 0 10px 30px #0008; }
+  .logo b { color:var(--acc); }
+  .sub { color:var(--mut); font-size:clamp(14px,2.6vmin,19px); max-width:30em; margin:0 0 10px; }
+  button { font:inherit; font-weight:800; color:var(--ink); background:var(--btn); border:0; border-radius:14px; padding:14px 26px;
+    font-size:clamp(16px,3vmin,21px); cursor:pointer; box-shadow:0 4px 0 #173a27; transition:transform .08s, background .15s; }
+  button:hover { background:var(--btn2); } button:active { transform:translateY(3px); box-shadow:0 1px 0 #173a27; }
+  button.big { font-size:clamp(20px,4vmin,28px); padding:16px 44px; background:#e0a92a; color:#2a1c05; box-shadow:0 5px 0 #8a6412; }
+  button.big:hover { background:#f0bb3a; }
+  .menuCard { background:#0b1f16cc; border-radius:24px; padding:28px 22px; display:flex; flex-direction:column; align-items:center; gap:14px; backdrop-filter:blur(3px); }
+  #hud { position:absolute; left:0; right:0; top:0; display:none; align-items:center; justify-content:space-between; padding:10px 12px; gap:8px; }
+  #hud.on { display:flex; }
+  #hud .mid { text-align:center; line-height:1.15; }
+  #hud .lv { font-weight:900; font-size:clamp(18px,3.4vmin,26px); }
+  #hud .mv { color:var(--mut); font-size:clamp(13px,2.4vmin,17px); }
+  #hud .grp { display:flex; gap:8px; }
+  .ib { padding:10px 14px; font-size:clamp(14px,2.6vmin,18px); border-radius:12px; min-width:46px; }
+  #grid { display:grid; grid-template-columns:repeat(6, minmax(44px,64px)); gap:10px; }
+  #grid button { padding:10px 0; font-size:18px; display:flex; flex-direction:column; align-items:center; gap:2px; }
+  #grid button .st { font-size:11px; color:var(--acc); letter-spacing:1px; min-height:12px; }
+  #grid button.lock { background:#1c3a2a; color:#5d7d68; box-shadow:0 4px 0 #10251a; cursor:default; }
+  .row { display:flex; gap:10px; align-items:center; justify-content:center; flex-wrap:wrap; }
+  #winCard { background:#0b1f16ee; border-radius:24px; padding:26px 30px; display:flex; flex-direction:column; align-items:center; gap:12px; }
+  #winStars { font-size:clamp(40px,9vmin,64px); letter-spacing:6px; color:var(--acc); text-shadow:0 3px 0 #6b4b0a; }
+  #winStars .off { color:#2d4a39; text-shadow:none; }
+  #winTxt { color:var(--mut); margin:0; font-size:clamp(14px,2.6vmin,18px); }
+  #help { color:var(--mut); font-size:clamp(12px,2.2vmin,15px); position:absolute; bottom:10px; left:0; right:0; text-align:center; display:none; padding:0 10px; }
+  #help.on { display:block; }
+  .more{display:block;margin-top:14px;font-size:14px;opacity:.65;color:inherit;text-decoration:none;text-align:center}
+  .more:hover{opacity:1;text-decoration:underline}
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="cv"></canvas>
+  <div id="sMenu" class="scr on">
+    <div class="menuCard">
+      <div class="logo">Root<b>work</b></div>
+      <p class="sub">Turn the root tiles so water from the spring reaches every flower in the garden.</p>
+      <button class="big" id="bPlay">Play</button>
+      <div class="row"><button id="bLevels">Levels</button><button id="bSound">Sound: on</button></div>
+      <a class="more" href="https://iibaaii21.itch.io" target="_blank" rel="noopener">More games ↗</a>
+    </div>
+  </div>
+  <div id="sLevels" class="scr">
+    <div class="menuCard">
+      <div style="font-weight:900;font-size:26px">Choose a garden</div>
+      <div id="grid"></div>
+      <div class="row"><button id="pPrev" class="ib">&#9664;</button><span id="pTxt" style="min-width:90px"></span><button id="pNext" class="ib">&#9654;</button></div>
+      <button id="bBack">Back</button>
+    </div>
+  </div>
+  <div id="sWin" class="scr">
+    <div id="winCard">
+      <div style="font-weight:900;font-size:clamp(24px,5vmin,36px)">Garden in bloom!</div>
+      <div id="winStars"></div>
+      <p id="winTxt"></p>
+      <div class="row"><button id="wRetry">Replay</button><button class="big" id="wNext">Next</button></div>
+    </div>
+  </div>
+  <div id="hud">
+    <div class="grp"><button class="ib" id="hMenu" aria-label="Menu">&#9776;</button><button class="ib" id="hReset" aria-label="Restart">&#8635;</button></div>
+    <div class="mid"><div class="lv" id="hLv">Garden 1</div><div class="mv" id="hMv">Moves 0 · Par 0</div></div>
+    <div class="grp"><button class="ib" id="hHint" aria-label="Hint">Hint</button></div>
+  </div>
+  <div id="help">Tap a tile to turn it · right-click turns it back · H hint · R restart</div>
+</div>
+<script>
+(() => {
+'use strict';
+  // ---------- portal adapter (CrazyGames SDK v3 when present; no-op elsewhere) ----------
+  const Portal = (() => {
+    const sdk = () => (window.CrazyGames && window.CrazyGames.SDK) || null;
+    let ready = false, playing = false, adBusy = false, lastAd = Date.now();
+    const p = { onPause: null, onResume: null, get adBusy(){ return adBusy; } };
+    p.init = async () => { const s = sdk(); if (!s) return; try { await s.init(); ready = true; } catch (e) { ready = false; } };
+    p.start = () => { if (ready && !playing) { playing = true; try { sdk().game.gameplayStart(); } catch (e) {} } };
+    p.stop = () => { if (ready && playing) { playing = false; try { sdk().game.gameplayStop(); } catch (e) {} } };
+    p.happy = () => { if (ready) { try { sdk().game.happytime(); } catch (e) {} } };
+    p.midgame = (done) => {
+      if (!ready || adBusy || Date.now() - lastAd < 180000) return done();
+      adBusy = true; let fin = false;
+      const end = () => { if (fin) return; fin = true; adBusy = false; lastAd = Date.now(); if (p.onResume) p.onResume(); done(); };
+      try { sdk().ad.requestAd('midgame', { adStarted: () => { if (p.onPause) p.onPause(); }, adFinished: end, adError: end }); } catch (e) { end(); }
+    };
+    return p;
+  })();
+  Portal.init();
+
+const $ = id => document.getElementById(id);
+const MAXLV = 300;
+const store = {
+  get(k, d){ try { const v = localStorage.getItem('rootwork.'+k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem('rootwork.'+k, JSON.stringify(v)); } catch(e){} }
+};
+let unlocked = Math.max(1, Math.min(MAXLV, store.get('unlocked', 1) | 0));
+let stars = store.get('stars', {}); if (typeof stars !== 'object' || !stars) stars = {};
+let soundOn = store.get('sound', true) !== false;
+
+// ---------- RNG + level generation ----------
+function rng(seed){ let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+const DIRS = [[0,-1,1,4],[1,0,2,8],[0,1,4,1],[-1,0,8,2]];
+const rotCW = m => ((m << 1) | (m >> 3)) & 15;
+const rotK = (m, k) => { for (let i = 0; i < (k & 3); i++) m = rotCW(m); return m; };
+const bits = m => (m & 1) + ((m >> 1) & 1) + ((m >> 2) & 1) + ((m >> 3) & 1);
+function sizeFor(n){ return n <= 3 ? 3 : n <= 8 ? 4 : n <= 24 ? 5 : n <= 50 ? 6 : n <= 90 ? 7 : n <= 150 ? 8 : 9; }
+function minTurns(sol, cur){ for (let k = 0; k < 4; k++) if (rotK(cur, k) === sol) return k; return 0; }
+
+function genLevel(n){
+  const R = rng(n * 7919 + 1013), sz = sizeFor(n), cnt = sz * sz;
+  const sol = new Array(cnt).fill(0);
+  const sx = sz < 4 ? 1 : 1 + Math.floor(R() * (sz - 2)), sy = sz < 4 ? 1 : 1 + Math.floor(R() * (sz - 2)), spring = sy * sz + sx;
+  const seen = new Array(cnt).fill(false); seen[spring] = true;
+  const front = [spring], bias = 0.35 + 0.3 * R();
+  let left = cnt - 1, guard = 0;
+  while (left > 0 && guard++ < 100000) {
+    const i = R() < bias ? front.length - 1 : Math.floor(R() * front.length);
+    const c = front[i], x = c % sz, y = (c / sz) | 0;
+    const opts = [];
+    if (bits(sol[c]) < 3) for (const [dx, dy, b, ob] of DIRS) {
+      const nx = x + dx, ny = y + dy; if (nx < 0 || ny < 0 || nx >= sz || ny >= sz) continue;
+      const nc = ny * sz + nx; if (!seen[nc]) opts.push([nc, b, ob]);
+    }
+    if (!opts.length) { front.splice(i, 1); if (!front.length) break; continue; }
+    const [nc, b, ob] = opts[Math.floor(R() * opts.length)];
+    sol[c] |= b; sol[nc] |= ob; seen[nc] = true; front.push(nc); left--;
+  }
+  if (left > 0) return genLevel(n + 100000); // extremely unlikely fallback
+  const pScr = Math.min(1, 0.3 + n * 0.07);
+  const start = sol.map(m => R() < pScr ? rotK(m, Math.floor(R() * 4)) : m);
+  let par = 0; for (let i = 0; i < cnt; i++) par += minTurns(sol[i], start[i]);
+  // make sure a decent number of tiles are wrong
+  for (let i = 0; par < Math.ceil(cnt * Math.min(0.55, 0.15 + n * 0.05)) && i < cnt * 4; i++) {
+    const c = Math.floor(R() * cnt); if (bits(sol[c]) === 4 || minTurns(sol[c], start[c]) > 0) continue;
+    start[c] = rotK(start[c], 1 + Math.floor(R() * 3)); par += minTurns(sol[c], start[c]);
+  }
+  const flowers = []; for (let i = 0; i < cnt; i++) if (i !== spring && bits(sol[i]) === 1) flowers.push(i);
+  const hues = flowers.map(() => Math.floor(R() * 4));
+  const specks = []; for (let i = 0; i < cnt; i++) { const s = []; for (let k = 0; k < 5; k++) s.push([R(), R(), 0.5 + R()]); specks.push(s); }
+  return { n, sz, cnt, sol, start, spring, flowers, hues, par, specks };
+}
+
+// ---------- state ----------
+let L = null, base = [], turns = [], vang = [], wet = [], wetT = [], moves = 0, won = false, hinted = false, flash = [], bloomT = {};
+function startLevel(n){
+  n = Math.max(1, Math.min(MAXLV, n));
+  L = genLevel(n); base = L.start.slice(); turns = new Array(L.cnt).fill(0); vang = new Array(L.cnt).fill(0);
+  wetT = new Array(L.cnt).fill(0); flash = new Array(L.cnt).fill(0); bloomT = {}; moves = 0; won = false; hinted = false;
+  computeWater(true); show('play'); updateHud(); layout(); Portal.start();
+}
+const cur = i => rotK(base[i], turns[i]);
+function computeWater(silent){
+  const sz = L.sz, w = new Array(L.cnt).fill(false), q = [L.spring]; w[L.spring] = true;
+  while (q.length) { const c = q.pop(), x = c % sz, y = (c / sz) | 0, m = cur(c);
+    for (const [dx, dy, b, ob] of DIRS) { if (!(m & b)) continue; const nx = x + dx, ny = y + dy;
+      if (nx < 0 || ny < 0 || nx >= sz || ny >= sz) continue; const nc = ny * sz + nx;
+      if (!w[nc] && (cur(nc) & ob)) { w[nc] = true; q.push(nc); } } }
+  if (!silent) { let newF = 0; for (const f of L.flowers) if (w[f] && !wet[f]) newF++; if (newF) sfx.bloom(newF); }
+  wet = w;
+}
+function rotate(c, dir){
+  if (won || Portal.adBusy) return;
+  turns[c] = (turns[c] + (dir > 0 ? 1 : 3)) & 3; vang[c] -= dir * Math.PI / 2; moves++;
+  sfx.tap(); computeWater(false); updateHud(); checkWin();
+}
+function checkWin(){
+  if (won) return; for (let i = 0; i < L.cnt; i++) if (!wet[i]) return;
+  won = true; Portal.stop();
+  const extra = Math.ceil(L.par * 0.5) + 2;
+  let s = moves <= L.par ? 3 : moves <= L.par + extra ? 2 : 1; if (hinted) s = Math.min(s, 2);
+  const prev = stars[L.n] | 0; if (s > prev) { stars[L.n] = s; store.set('stars', stars); }
+  if (L.n >= unlocked && L.n < MAXLV) { unlocked = L.n + 1; store.set('unlocked', unlocked); }
+  if (s === 3) Portal.happy();
+  sfx.win(); petals(L);
+  setTimeout(() => {
+    $('winStars').innerHTML = [0,1,2].map(i => i < s ? '&#9733;' : '<span class="off">&#9733;</span>').join('');
+    $('winTxt').textContent = s === 3 ? `Perfect! ${moves} moves (par ${L.par}).` : `${moves} moves · par ${L.par}${hinted ? ' · hint used' : ''}. Match par for 3 stars.`;
+    $('wNext').style.display = L.n < MAXLV ? '' : 'none';
+    show('win');
+  }, 900);
+}
+function hint(){
+  if (won || !L) return;
+  const cand = []; for (let i = 0; i < L.cnt; i++) if (cur(i) !== L.sol[i]) cand.push(i);
+  if (!cand.length) return;
+  cand.sort((a, b) => (wet[b] ? 1 : 0) - (wet[a] ? 1 : 0) || nearSpring(a) - nearSpring(b));
+  const c = cand[0]; hinted = true; let k = 0;
+  while (cur(c) !== L.sol[c] && k++ < 4) { turns[c] = (turns[c] + 1) & 3; vang[c] -= Math.PI / 2; }
+  flash[c] = 1; sfx.tap(); computeWater(false); updateHud(); checkWin();
+}
+function nearSpring(c){ const sz = L.sz; return Math.abs(c % sz - L.spring % sz) + Math.abs(((c / sz) | 0) - ((L.spring / sz) | 0)); }
+function updateHud(){ $('hLv').textContent = 'Garden ' + L.n; $('hMv').textContent = `Moves ${moves} · Par ${L.par}`; }
+
+// ---------- audio ----------
+let ac = null;
+function actx(){ if (!soundOn) return null; try { if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)(); if (ac.state === 'suspended') ac.resume(); } catch(e){ ac = null; } return ac; }
+function tone(f, t0, d, type, vol){ const a = actx(); if (!a) return; const o = a.createOscillator(), g = a.createGain(); o.type = type; o.frequency.value = f;
+  const t = a.currentTime + t0; g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + d);
+  o.connect(g); g.connect(a.destination); o.start(t); o.stop(t + d + 0.02); }
+const PENTA = [523.25, 587.33, 659.25, 783.99, 880, 1046.5, 1174.66];
+let bloomIdx = 0;
+const sfx = {
+  tap(){ tone(180 + Math.random() * 30, 0, 0.07, 'triangle', 0.18); tone(90, 0, 0.05, 'sine', 0.12); },
+  bloom(k){ for (let i = 0; i < Math.min(k, 3); i++) { tone(PENTA[bloomIdx % PENTA.length], i * 0.08, 0.5, 'sine', 0.12); bloomIdx++; } },
+  win(){ [0, 2, 4, 5].forEach((p, i) => tone(PENTA[p], i * 0.11, 0.7, 'triangle', 0.14)); }
+};
+
+// ---------- rendering ----------
+const cv = $('cv'), g = cv.getContext('2d');
+let W = 0, H = 0, DPR = 1, bx = 0, by = 0, ts = 0, menuL = genLevel(37);
+function layout(){
+  DPR = Math.min(2, window.devicePixelRatio || 1); W = innerWidth; H = innerHeight;
+  cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
+  const lv = (screen_ === 'play' || screen_ === 'win') ? L : menuL;
+  const top = screen_ === 'play' || screen_ === 'win' ? 70 : 16, bot = screen_ === 'play' || screen_ === 'win' ? 34 : 16;
+  const avail = Math.min(W - 24, H - top - bot);
+  ts = Math.floor(avail / lv.sz); bx = Math.round((W - ts * lv.sz) / 2); by = Math.round(top + (H - top - bot - ts * lv.sz) / 2);
+}
+addEventListener('resize', layout);
+const FLOWER = [['#ff7eb6','#ffd0e6'],['#ffd166','#fff1c4'],['#b69cff','#e6dcff'],['#ff9f80','#ffe0d4']];
+function rr(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
+function drawBoard(lv, t, demo){
+  const sz = lv.sz, s = ts;
+  // frame
+  g.fillStyle = '#0a1a12'; rr(bx - 10, by - 10, s * sz + 20, s * sz + 20, 18); g.fill();
+  for (let c = 0; c < lv.cnt; c++) {
+    const x = bx + (c % sz) * s, y = by + ((c / sz) | 0) * s, cx = x + s / 2, cy = y + s / 2;
+    const isWet = demo ? true : wet[c];
+    if (!demo) { wetT[c] += ((isWet ? 1 : 0) - wetT[c]) * 0.18; flash[c] *= 0.95; vang[c] *= 0.72; if (Math.abs(vang[c]) < 0.002) vang[c] = 0; }
+    const wt = demo ? 1 : wetT[c];
+    // soil tile
+    g.fillStyle = wt > 0.5 ? '#6a4a30' : '#5a3b25'; rr(x + 2, y + 2, s - 4, s - 4, s * 0.16); g.fill();
+    g.fillStyle = '#ffffff10'; rr(x + 2, y + 2, s - 4, (s - 4) * 0.45, s * 0.16); g.fill();
+    g.fillStyle = '#00000022'; for (const [px, py, pr] of lv.specks[c]) { g.beginPath(); g.arc(x + 6 + px * (s - 12), y + 6 + py * (s - 12), pr * s * 0.025, 0, 7); g.fill(); }
+    if (!demo && flash[c] > 0.02) { g.strokeStyle = `rgba(255,209,102,${flash[c]})`; g.lineWidth = 4; rr(x + 3, y + 3, s - 6, s - 6, s * 0.16); g.stroke(); }
+    // roots
+    const m = demo ? lv.sol[c] : base[c], ang = demo ? 0 : turns[c] * Math.PI / 2 + vang[c];
+    g.save(); g.translate(cx, cy); g.rotate(ang); g.lineCap = 'butt';
+    const arms = []; for (let k = 0; k < 4; k++) if (m & (1 << k)) arms.push(k);
+    const seg = (lw, col) => { g.strokeStyle = col; g.lineWidth = lw; g.beginPath(); for (const k of arms) { const a = -Math.PI / 2 + k * Math.PI / 2; g.moveTo(0, 0); g.lineTo(Math.cos(a) * s / 2, Math.sin(a) * s / 2); } g.stroke();
+      if (arms.length) { g.fillStyle = col; g.beginPath(); g.arc(0, 0, lw / 2, 0, 7); g.fill(); } };
+    seg(s * 0.30, '#2a170c');
+    seg(s * 0.17, '#b08a5c');
+    if (wt > 0.01) { g.globalAlpha = wt; seg(s * 0.17, '#3fb6ee');
+      g.setLineDash([s * 0.08, s * 0.16]); g.lineDashOffset = -t * 0.04 * s / 40; seg(s * 0.06, '#c9f1ff'); g.setLineDash([]); g.globalAlpha = 1; }
+    g.restore();
+    // spring
+    if (c === lv.spring) {
+      g.fillStyle = '#7d8a93'; g.beginPath(); g.arc(cx, cy, s * 0.30, 0, 7); g.fill();
+      g.fillStyle = '#a9b6bf'; g.beginPath(); g.arc(cx, cy - s * 0.02, s * 0.27, 0, 7); g.fill();
+      g.fillStyle = '#2f9fdc'; g.beginPath(); g.arc(cx, cy, s * 0.20, 0, 7); g.fill();
+      const rp = (t / 1400) % 1; g.strokeStyle = `rgba(220,245,255,${0.8 * (1 - rp)})`; g.lineWidth = 2; g.beginPath(); g.arc(cx, cy, s * 0.05 + rp * s * 0.14, 0, 7); g.stroke();
+    }
+  }
+  // flowers drawn last so petals overlap neighbours slightly
+  lv.flowers.forEach((c, k) => {
+    const cx = bx + (c % sz) * s + s / 2, cy = by + ((c / sz) | 0) * s + s / 2, on = demo ? 1 : wetT[c];
+    const [pc, pl] = FLOWER[lv.hues[k]], R = s * (0.13 + 0.15 * on), sway = Math.sin(t / 700 + c) * 0.08;
+    g.save(); g.translate(cx, cy); g.rotate(sway + on * 0.4);
+    if (on < 0.5) { g.fillStyle = '#4f9a4a'; for (let i = 0; i < 4; i++) { g.rotate(Math.PI / 2); g.beginPath(); g.ellipse(0, -s * 0.09, s * 0.07, s * 0.12, 0, 0, 7); g.fill(); }
+      g.fillStyle = pc; g.beginPath(); g.arc(0, 0, s * 0.07, 0, 7); g.fill(); }
+    else { for (let i = 0; i < 6; i++) { g.rotate(Math.PI / 3); g.fillStyle = pc; g.beginPath(); g.ellipse(0, -R * 0.62, R * 0.36, R * 0.62, 0, 0, 7); g.fill();
+        g.fillStyle = pl; g.beginPath(); g.ellipse(0, -R * 0.66, R * 0.15, R * 0.34, 0, 0, 7); g.fill(); }
+      g.fillStyle = '#ffe08a'; g.beginPath(); g.arc(0, 0, R * 0.32, 0, 7); g.fill(); g.fillStyle = '#e09a2a'; g.beginPath(); g.arc(0, 0, R * 0.14, 0, 7); g.fill(); }
+    g.restore();
+  });
+}
+let parts = [];
+function petals(lv){ for (const c of lv.flowers) { const cx = bx + (c % lv.sz) * ts + ts / 2, cy = by + ((c / lv.sz) | 0) * ts + ts / 2;
+  for (let i = 0; i < 6; i++) parts.push({ x: cx, y: cy, vx: (Math.random() - .5) * 5, vy: -2 - Math.random() * 4, r: Math.random() * 6, life: 1, col: FLOWER[i % 4][0] }); } }
+function frame(t){
+  g.setTransform(DPR, 0, 0, DPR, 0, 0); g.clearRect(0, 0, W, H);
+  if (screen_ === 'play' || screen_ === 'win') drawBoard(L, t, false); else { drawBoard(menuL, t, true); g.fillStyle = '#0b1f16a0'; g.fillRect(0, 0, W, H); }
+  parts = parts.filter(p => p.life > 0);
+  for (const p of parts) { p.x += p.vx; p.y += p.vy; p.vy += 0.12; p.vx *= 0.99; p.r += 0.1; p.life -= 0.012;
+    g.save(); g.globalAlpha = Math.max(0, p.life); g.translate(p.x, p.y); g.rotate(p.r); g.fillStyle = p.col; g.beginPath(); g.ellipse(0, 0, 5, 9, 0, 0, 7); g.fill(); g.restore(); }
+  requestAnimationFrame(frame);
+}
+
+// ---------- screens & input ----------
+let screen_ = 'menu', page = 0;
+function show(s){
+  screen_ = s; for (const [id, k] of [['sMenu','menu'],['sLevels','levels'],['sWin','win']]) $(id).classList.toggle('on', s === k);
+  $('hud').classList.toggle('on', s === 'play' || s === 'win'); $('help').classList.toggle('on', s === 'play');
+  if (s !== 'play') Portal.stop(); layout();
+}
+function cellAt(ev){ if (!L) return -1; const r = cv.getBoundingClientRect(), x = ev.clientX - r.left - bx, y = ev.clientY - r.top - by;
+  if (x < 0 || y < 0) return -1; const cx = Math.floor(x / ts), cy = Math.floor(y / ts); if (cx >= L.sz || cy >= L.sz) return -1; return cy * L.sz + cx; }
+cv.addEventListener('pointerdown', ev => { if (screen_ !== 'play') return; const c = cellAt(ev); if (c >= 0) rotate(c, ev.button === 2 ? -1 : 1); });
+cv.addEventListener('contextmenu', ev => ev.preventDefault());
+addEventListener('keydown', ev => { if (screen_ !== 'play') return; const k = ev.key.toLowerCase();
+  if (k === 'h') hint(); else if (k === 'r') startLevel(L.n); else if (k === 'escape') show('menu'); });
+function buildGrid(){
+  const g2 = $('grid'); g2.innerHTML = ''; const per = 30, pages = Math.ceil(MAXLV / per); page = Math.max(0, Math.min(page, pages - 1));
+  for (let i = page * per + 1; i <= Math.min(MAXLV, (page + 1) * per); i++) {
+    const b = document.createElement('button'), st = stars[i] | 0; b.innerHTML = `${i}<span class="st">${'&#9733;'.repeat(st)}</span>`;
+    if (i > unlocked) b.className = 'lock'; else b.onclick = () => startLevel(i); g2.appendChild(b); }
+  $('pTxt').textContent = `${page + 1} / ${pages}`;
+}
+$('bPlay').onclick = () => { actx(); startLevel(unlocked); };
+$('bLevels').onclick = () => { page = Math.floor((unlocked - 1) / 30); buildGrid(); show('levels'); };
+$('pPrev').onclick = () => { page--; buildGrid(); }; $('pNext').onclick = () => { page++; buildGrid(); };
+$('bBack').onclick = () => show('menu');
+const sndLbl = () => { $('bSound').textContent = 'Sound: ' + (soundOn ? 'on' : 'off'); }; sndLbl();
+$('bSound').onclick = () => { soundOn = !soundOn; store.set('sound', soundOn); sndLbl(); };
+$('hMenu').onclick = () => show('menu'); $('hReset').onclick = () => startLevel(L.n); $('hHint').onclick = hint;
+$('wRetry').onclick = () => startLevel(L.n);
+$('wNext').onclick = () => Portal.midgame(() => startLevel(L.n + 1));
+Portal.onPause = () => { try { if (ac) ac.suspend(); } catch(e){} };
+Portal.onResume = () => { try { if (ac && soundOn) ac.resume(); } catch(e){} };
+window.__root = { genLevel, go: startLevel, state: () => ({ L, turns, wet, moves, won }), peek(f){ for (let i = 0; i < L.cnt; i++) if (((i * 37) % 100) / 100 < f) { let k = 0; while (cur(i) !== L.sol[i] && k++ < 4) turns[i] = (turns[i] + 1) & 3; } computeWater(true); wetT = wet.map(w => w ? 1 : 0); }, solve(){ for (let i = 0; i < L.cnt; i++) { let k = 0; while (cur(i) !== L.sol[i] && k++ < 4) { turns[i] = (turns[i] + 1) & 3; moves++; } } computeWater(true); updateHud(); checkWin(); } };
+layout(); requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

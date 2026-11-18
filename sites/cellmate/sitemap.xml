@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://cellmate-plantillas.pages.dev/</loc></url>
+  <url><loc>https://cellmate-plantillas.pages.dev/calculadora-autonomos/</loc></url>
   <url><loc>https://cellmate-plantillas.pages.dev/legal/</loc></url>
   <url><loc>https://cellmate-plantillas.pages.dev/privacidad/</loc></url>
   <url><loc>https://cellmate-plantillas.pages.dev/plantillas/planificador/</loc></url>
   <url><loc>https://cellmate-plantillas.pages.dev/plantillas/planificador-lite/</loc></url>
   <url><loc>https://cellmate-plantillas.pages.dev/plantillas/boda/</loc></url>
   <url><loc>https://cellmate-plantillas.pages.dev/plantillas/autonomos/</loc></url>
+  <url><loc>https://cellmate-plantillas.pages.dev/plantillas/alquileres/</loc></url>
 </urlset>

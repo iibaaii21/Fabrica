@@ -97,6 +97,28 @@
   ]
  },
  {
+  "id": "alquileres",
+  "cat": "Plantillas",
+  "nombre": "Control de alquileres para propietarios",
+  "precio": "6,90 €",
+  "img": "productos/control-alquileres/imagenes/portada.png",
+  "desc": "Cobros mes a mes con aviso de impagos, gastos por inmueble y categoría, beneficio y rentabilidad bruta y neta de hasta 10 pisos. Herramienta de organización: no calcula impuestos.",
+  "comprar": "",
+  "marca": "cellmate",
+  "puntos": [
+   "Hasta 10 viviendas o locales con inquilino, renta, fianza y contrato",
+   "Cada recibo se marca solo: cobrado, parcial o pendiente",
+   "Beneficio neto y rentabilidad bruta y neta por inmueble",
+   "Vista mes a mes con gráfico de ingresos y gastos",
+   "Aviso cuando un contrato vence en 90 días o menos"
+  ],
+  "lema": "Sabe en un vistazo quién te debe, cuánto te cuesta cada piso y cuánto te renta de verdad.",
+  "imgs": [
+   "productos/control-alquileres/imagenes/portada.png",
+   "productos/control-alquileres/imagenes/cobros.png"
+  ]
+ },
+ {
   "id": "sfx",
   "cat": "Para desarrolladores",
   "nombre": "Synth SFX Pack Vol. 1",
@@ -130,6 +152,29 @@
   "imgs": [
    "productos/music-loops-vol1/imagenes/cover.png",
    "productos/music-loops-vol1/imagenes/captura-1.png"
+  ]
+ },
+ {
+  "id": "pixel-icons",
+  "marca": "nimbloom",
+  "cat": "Para desarrolladores",
+  "nombre": "Pixel Icons Vol. 1",
+  "precio": "2,99 $",
+  "comprar": "",
+  "desc": "73 iconos pixel art 16×16 originales: armas, pociones, gemas, comida, herramientas y botones de interfaz. PNG en 16/32/64 px y spritesheet con atlas JSON.",
+  "lema": "Todo lo que necesita tu inventario, tu tienda o tu HUD, con un estilo coherente.",
+  "puntos": [
+   "73 iconos (61 diseños + variantes de color)",
+   "PNG a 16, 32 y 64 px, fondo transparente",
+   "Spritesheet + atlas JSON por nombre",
+   "Uso comercial sin atribución"
+  ],
+  "img": "productos/pixel-icons-vol1/imagenes/cover.png",
+  "imgs": [
+   "productos/pixel-icons-vol1/imagenes/cover.png",
+   "productos/pixel-icons-vol1/imagenes/captura-1.png",
+   "productos/pixel-icons-vol1/imagenes/captura-2.png",
+   "productos/pixel-icons-vol1/imagenes/captura-3.png"
   ]
  },
  {

@@ -1,4 +1,4 @@
-LOTE DEL DOMINGO 22/11/2026: 7 tareas, unos 52 minutos
+LOTE DEL DOMINGO 22/11/2026: 9 tareas, unos 63 minutos
 
 Cómo usarlo (PC con Windows):
 - Clic derecho en el zip del lote > Extraer todo.
@@ -68,5 +68,20 @@ Tus 3 webs ya están hechas: Cellmate (tienda de plantillas), OpoCalc (calculado
    - Build output directory: sites/estudio   (lo demás igual)
 7. En cada uno de los 3 proyectos: entra al proyecto > Metrics (o Web Analytics) > Enable. Así contamos las visitas sin cookies.
 8. Si usaste algún nombre alternativo, escríbelo en el panel en «Orden para Claude» y yo cambio los enlaces.
+
+=== 8-itch-Pixel-Icons  (~6 min) ===
+1. https://itch.io/game/new
+2. Title: Pixel Icons Vol. 1 — 73 RPG & UI icons (16×16) · Classification: Assets · Kind of project: Downloadable.
+3. Pricing: Paid, 2,99 $, marca «Let people pay more».
+4. Uploads: arrastra Pixel-Icons-Vol1.zip (sin extraer). Sube también Pixel-Icons-Vol1-Free-Sample.zip y márcalo «This file is free».
+5. Cover image: cover.png · Screenshots: captura-1, captura-2 y captura-3.
+6. Copia Short description, Descripción y Etiquetas de TEXTOS-PARA-COPIAR.txt. AI disclosure: Sí (gráficos).
+7. Visibility: Public > Save.
+
+=== 9-Payhip-Control-Alquileres  (~5 min) ===
+1. https://payhip.com/dashboard > Add product > Digital product.
+2. Arrastra Control-Alquileres.xlsx y las 2 imágenes en este orden: portada, cobros.
+3. Copia Título y Descripción de TEXTOS-PARA-COPIAR.txt (deja la nota de que no calcula impuestos).
+4. Precio 6,90 € > Publish.
 
 ÚLTIMO PASO: escribe en esta sesión de Claude (la «sala de máquinas») las palabras «conectar estadísticas».

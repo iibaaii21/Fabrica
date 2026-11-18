@@ -120,7 +120,7 @@ img.mfirst{display:none}
 
 def cm_top():
     return f'''<header class="top"><div class="w"><a class="logo" href="/"><i>C</i>Cellmate</a>
-<nav class="m"><a href="/#plantillas">Plantillas</a><a class="hide" href="{BASE['oposiciones']}/">Calculadoras</a><a href="/legal/">Legal</a></nav></div></header>'''
+<nav class="m"><a href="/#plantillas">Plantillas</a><a href="/calculadora-autonomos/">IVA e IRPF</a><a class="hide" href="{BASE['oposiciones']}/">Opositores</a><a href="/legal/">Legal</a></nav></div></header>'''
 
 
 def cm_foot():
@@ -138,18 +138,20 @@ def build_cellmate():
         img(site, p['img'], f'{k}.jpg', 800)
         cards += f'''<a class="card" href="/plantillas/{k}/"><img src="/img/{k}.jpg" width="800" height="800" alt="{e(p['nombre'])}" loading="lazy">
 <div class="b"><span class="tag">{'Gratis' if p['precio'] == 'Gratis' else 'Excel · Google Sheets'}</span><h3>{e(p['nombre'])}</h3><p>{e(p.get('lema', p['desc']))}</p><span class="price">{e(p['precio'])}</span></div></a>'''
-    w(site, 'index.html', head(site, 'Cellmate · Plantillas de Excel y Google Sheets en español', 'Plantillas de Excel y Google Sheets listas para usar: planificador de oposiciones, organizador de boda y libro de ingresos y gastos para autónomos. Pago único, sin suscripciones.', '/', CM_CSS) + cm_top() + f'''
+    w(site, 'index.html', head(site, 'Cellmate · Plantillas de Excel y Google Sheets en español', 'Plantillas de Excel y Google Sheets listas para usar: planificador de oposiciones, organizador de boda, libro de autónomos y control de alquileres. Pago único, sin suscripciones.', '/', CM_CSS) + cm_top() + f'''
 <main><section class="hero"><div class="w"><div class="eyebrow">Excel · Google Sheets · LibreOffice</div>
 <h1>Plantillas que hacen las cuentas por ti.</h1>
-<p class="lead">Organiza tu oposición, tu boda o tus cuentas de autónomo en un solo archivo. Sin apps, sin suscripciones y sin macros: lo abres y funciona.</p>
+<p class="lead">Organiza tu oposición, tu boda, tus cuentas de autónomo o tus pisos de alquiler en un solo archivo. Sin apps, sin suscripciones y sin macros: lo abres y funciona.</p>
 <div class="badges"><span>Pago único</span><span>Descarga inmediata</span><span>Fórmulas verificadas</span><span>En español</span></div></div></section>
 <section class="w" id="plantillas"><h2>Plantillas</h2><div class="grid">{cards}</div></section>
+<section class="w" style="padding-bottom:40px"><div class="cta" style="background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap"><div><span class="tag">Gratis</span><h2 style="margin:8px 0 4px;font-size:24px">Calculadora trimestral de IVA e IRPF para autónomos</h2><p style="margin:0;color:var(--muted)">Modelo 303 y modelo 130 en un minuto, sin registrarte.</p></div><a class="btn" href="/calculadora-autonomos/">Calcular ahora</a></div></section>
 <section class="w"><h2 style="margin-bottom:18px">Por qué Cellmate</h2><div class="why">
 <div><b>Funciona en todas partes</b><p>Excel, Google Sheets (Archivo &gt; Importar) y LibreOffice. También en el móvil.</p></div>
 <div><b>Sin macros ni trucos</b><p>Solo fórmulas. Nada se ejecuta a escondidas y tus datos no salen de tu ordenador.</p></div>
 <div><b>Verificadas a mano</b><p>Cada fórmula se comprueba con datos de prueba antes de publicar la plantilla.</p></div>
 <div><b>Instrucciones dentro</b><p>Cada archivo explica en su primera hoja qué rellenar y qué se calcula solo.</p></div></div></section></main>''' + cm_foot())
-    paths = ['/', '/legal/', '/privacidad/']
+    paths = ['/', '/calculadora-autonomos/', '/legal/', '/privacidad/']
+    w(site, 'calculadora-autonomos/index.html', head(site, 'Calculadora de IVA e IRPF trimestral para autónomos (modelos 303 y 130) · Cellmate', 'Calcula gratis cuánto pagas cada trimestre como autónomo: IVA del modelo 303 y pago fraccionado del IRPF del modelo 130, con gastos de difícil justificación y retenciones.', '/calculadora-autonomos/', CM_CSS) + cm_top() + open(os.path.join(R, 'herramientas/calc_autonomos.html')).read() + cm_foot())
     for k in ids:
         p = P[k]
         gal = ''
@@ -164,7 +166,9 @@ def build_cellmate():
         if k in ('planificador', 'planificador-lite'):
             extra = f'<p class="note">¿Quieres calcular una nota ahora mismo? Usa las <a href="{BASE["oposiciones"]}/">calculadoras gratuitas para opositores</a>.</p>'
         if k == 'autonomos':
-            extra = '<p class="note">Herramienta de control y estimación: no sustituye al asesoramiento fiscal ni a los programas de la Agencia Tributaria.</p>'
+            extra = '<p class="note">Herramienta de control y estimación: no sustituye al asesoramiento fiscal ni a los programas de la Agencia Tributaria.</p><p class="note">¿Solo quieres saber cuánto pagas este trimestre? Prueba la <a href="/calculadora-autonomos/">calculadora gratuita de IVA e IRPF para autónomos</a>.</p>'
+        if k == 'alquileres':
+            extra = '<p class="note">Herramienta de organización: no calcula impuestos ni sustituye al asesoramiento fiscal.</p>'
         pts = ''.join(f'<li>{e(x)}</li>' for x in p.get('puntos', []))
         w(site, f'plantillas/{k}/index.html', head(site, f'{p["nombre"]} · Cellmate', p.get('lema', p['desc']), f'/plantillas/{k}/', CM_CSS) + cm_top() + f'''
 <main class="w"><section class="prod"><div class="gal">{gal}</div>
@@ -271,6 +275,7 @@ EN = {
     'rootwork': 'Turn the root tiles so water from the spring reaches every flower. 300 gardens, from 3×3 to 9×9.',
     'sfx': '42 original retro sound effects for your game: UI, pickups, movement, combat and states. WAV, royalty-free.',
     'music': '6 seamless game music loops and 2 stingers, WAV + OGG. Menu, action, puzzle, dungeon, racer and town themes.',
+    'pixel-icons': '73 original 16×16 pixel-art icons: weapons, potions, gems, food, tools and UI buttons. PNG 16/32/64 px + spritesheet with JSON atlas.',
 }
 
 
@@ -279,13 +284,13 @@ def nb_top():
 
 
 def nb_foot():
-    return f'<footer class="f"><div class="w"><span>© 2026 Nimbloom · Small games and game-ready audio</span><span><a href="/legal/">Legal &amp; privacy</a> · <a href="{ITCH}" rel="noopener">itch.io</a></span></div></footer></body></html>'
+    return f'<footer class="f"><div class="w"><span>© 2026 Nimbloom · Small games and game-ready assets</span><span><a href="/legal/">Legal &amp; privacy</a> · <a href="{ITCH}" rel="noopener">itch.io</a></span></div></footer></body></html>'
 
 
 def build_estudio():
     site = 'estudio'
     cards = ''
-    paths = ['/', '/legal/', '/sounds/', '/music/']
+    paths = ['/', '/legal/', '/sounds/', '/music/', '/icons/']
     for g, name, chips in GAMES:
         img(site, P[g]['img'], f'{g}.jpg', 900)
         cards += f'<a class="card" href="/games/{g}/"><img src="/img/{g}.jpg" width="900" height="714" alt="{name}" loading="lazy"><div class="b"><div class="chips">{"".join(f"<span>{c}</span>" for c in chips)}</div><h3>{name}</h3><p>{EN[g]}</p></div></a>'
@@ -303,16 +308,16 @@ def build_estudio():
 <div class="shots">{shots}</div></main>''' + nb_foot())
         paths += [f'/games/{g}/', f'/play/{g}/']
     acards = ''
-    for k, href, label in [('sfx', '/sounds/', 'Listen to all 42'), ('music', '/music/', 'Listen to the preview')]:
+    for k, href, label in [('sfx', '/sounds/', 'Listen to all 42'), ('music', '/music/', 'Listen to the preview'), ('pixel-icons', '/icons/', 'See all 73 + free sample')]:
         img(site, P[k]['img'], f'{k}.jpg', 900)
         acards += f'<a class="card" href="{href}"><img src="/img/{k}.jpg" width="900" height="714" alt="{e(P[k]["nombre"])}" loading="lazy"><div class="b"><div class="chips"><span>{e(P[k]["precio"])}</span><span>royalty-free</span></div><h3>{e(P[k]["nombre"])}</h3><p>{EN[k]}</p><p style="color:var(--lime);font-weight:700">{label} →</p></div></a>'
-    w(site, 'index.html', head(site, 'Nimbloom · Small games and game-ready audio', 'Nimbloom makes small, polished browser games you can play for free, plus original sound effects and music loops for game developers.', '/', NB_CSS) + nb_top() + f'''
+    w(site, 'index.html', head(site, 'Nimbloom · Small games and game-ready audio', 'Nimbloom makes small, polished browser games you can play for free, plus original sound effects, music loops and pixel-art icons for game developers.', '/', NB_CSS) + nb_top() + f'''
 <main><section class="hero"><div class="w"><div class="eyebrow">Indie studio · games &amp; audio</div>
 <h1>Small games.<br><em>Big</em> “one more go”.</h1>
-<p class="lead">We make polished little games you can play right now in your browser, and original sound effects and music that other developers use in theirs.</p>
-<div class="cta"><a class="btn" href="#games">Play our games</a><a class="btn alt" href="#assets">Audio for developers</a></div></div></section>
+<p class="lead">We make polished little games you can play right now in your browser, plus original sound effects, music and pixel art that other developers use in theirs.</p>
+<div class="cta"><a class="btn" href="#games">Play our games</a><a class="btn alt" href="#assets">Assets for developers</a></div></div></section>
 <section class="s w" id="games"><h2>Games</h2><p class="sub">Free to play on desktop and mobile. No downloads, no sign-up.</p><div class="grid">{cards}</div></section>
-<section class="s w" id="assets"><h2>Assets for developers</h2><p class="sub">Original, synthesized from scratch, royalty-free for commercial games.</p><div class="grid">{acards}</div></section></main>''' + nb_foot())
+<section class="s w" id="assets"><h2>Assets for developers</h2><p class="sub">Original, made from scratch, royalty-free for commercial games.</p><div class="grid">{acards}</div></section></main>''' + nb_foot())
     # sonidos: demo existente reubicada
     src = os.path.join(R, 'docs/sfx')
     dst = os.path.join(S, site, 'sounds')
@@ -335,12 +340,26 @@ def build_estudio():
 <div class="cta">{buy}<a class="btn alt" href="/sounds/">Sound effects pack</a></div>
 <p class="sub" style="margin-top:18px">Seamless loops (no click at the loop point) · consistent loudness · works in Godot, Unity, GameMaker and HTML5 · royalty-free, no attribution required.</p></div>
 <div class="shots" style="grid-template-columns:1fr">{shots}</div></div></main>''' + nb_foot())
+    # iconos pixel art: página con todos los iconos y muestra gratis descargable
+    pk = P['pixel-icons']
+    shutil.copy(os.path.join(R, 'productos/pixel-icons-vol1/Pixel-Icons-Vol1-Free-Sample.zip'), os.path.join(S, site, 'media/Pixel-Icons-Vol1-Free-Sample.zip'))
+    shots = ''
+    for i, srcp in enumerate(pk['imgs'][1:]):
+        wd, ht = img(site, srcp, f'icons-{i}.jpg', 1280)
+        shots += f'<img src="/img/icons-{i}.jpg" width="{wd}" height="{ht}" alt="Pixel Icons Vol. 1 image {i + 1}" loading="lazy">'
+    buy = f'<a class="btn" href="{e(pk["comprar"])}" rel="noopener">Buy on itch.io · {e(pk["precio"])}</a>' if pk.get('comprar') else '<span class="btn alt">Full pack coming soon to itch.io</span>'
+    w(site, 'icons/index.html', head(site, 'Pixel Icons Vol. 1 · 73 RPG & UI icons 16×16 · Nimbloom', EN['pixel-icons'], '/icons/', NB_CSS) + nb_top() + f'''
+<main class="w game"><div><div class="eyebrow">Pixel art · 16×16 · PNG + spritesheet</div><h1 style="font-size:clamp(34px,5.4vw,58px)">Pixel Icons Vol.&nbsp;1</h1><p class="lead">{EN['pixel-icons']}</p>
+<div class="cta"><a class="btn" href="/media/Pixel-Icons-Vol1-Free-Sample.zip" download>Download 12 icons free</a>{buy}</div>
+<p class="sub" style="margin-top:18px">One consistent palette and a 1 px outline, so every icon reads on light or dark backgrounds · pre-scaled to 32 and 64 px with no blur · import notes for Godot, Unity, GameMaker and HTML5 · royalty-free, no attribution required. The free sample uses the same licence.</p></div>
+<div class="shots" style="grid-template-columns:1fr">{shots}</div>
+<div class="cta" style="margin-top:0"><a class="btn alt" href="/sounds/">Sound effects pack</a><a class="btn alt" href="/music/">Music loops</a></div></main>''' + nb_foot())
     w(site, 'legal/index.html', head(site, 'Legal & privacy · Nimbloom', 'Legal notice and privacy policy for Nimbloom.', '/legal/', NB_CSS) + nb_top() + f'''
 <main class="w legal"><h1 style="font-size:40px">Legal &amp; privacy</h1>
 <p>Nimbloom is an independent game and audio label. Games on this site are free to play. Paid assets are sold and delivered through <a href="{ITCH}">itch.io</a>, which processes payments and taxes.</p>
 <h2>Privacy</h2><p>This site has no accounts, forms or advertising cookies. Games store your progress and best scores only in your own browser (local storage). Visits are counted with Cloudflare Web Analytics, which does not use cookies or identify visitors.</p>
-<h2>Assets licence</h2><p>Sound effects and music are licensed for use in your own commercial and non-commercial projects without attribution. Reselling or redistributing the files as they are is not allowed. The full licence is included in each download.</p>
-<h2>AI</h2><p>Our games and audio are made with the help of AI tools, then designed, tested and polished by hand.</p></main>''' + nb_foot())
+<h2>Assets licence</h2><p>Sound effects, music and pixel art are licensed for use in your own commercial and non-commercial projects without attribution. Reselling or redistributing the files as they are is not allowed. The full licence is included in each download.</p>
+<h2>AI</h2><p>Our games, audio and graphics are made with the help of AI tools, then designed, tested and polished by hand.</p></main>''' + nb_foot())
     w(site, '404.html', head(site, 'Not found · Nimbloom', 'This page does not exist.', '/404', NB_CSS) + nb_top() + '<main class="w legal"><h1 style="font-size:40px">Nothing grows here</h1><p><a class="btn" href="/">Back to Nimbloom</a></p></main>' + nb_foot())
     w(site, 'favicon.svg', '<svg xmlns="http://www.w3.org/2000/svg" ' + NB_LOGO[5:])
     seo_files(site, paths)

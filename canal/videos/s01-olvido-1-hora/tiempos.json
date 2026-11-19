@@ -1,0 +1,77 @@
+{
+ "dur": 38.056,
+ "segs": [
+  {
+   "ini": 0.35,
+   "fin": 2.926,
+   "texto": "¿No te acuerdas de lo que estudiaste hace una hora?",
+   "esc": "A"
+  },
+  {
+   "ini": 3.246,
+   "fin": 5.135,
+   "texto": "Tranquilo, no es que estudies mal.",
+   "esc": "A"
+  },
+  {
+   "ini": 5.455,
+   "fin": 7.302,
+   "texto": "Es tu cerebro haciendo limpieza.",
+   "esc": "A"
+  },
+  {
+   "ini": 7.622,
+   "fin": 13.5,
+   "texto": "En 1885, el psicólogo Hermann Ebbinghaus midió cuánto olvidamos con el tiempo.",
+   "esc": "B"
+  },
+  {
+   "ini": 13.82,
+   "fin": 17.205,
+   "texto": "Y vio que, en solo una hora, se puede olvidar más de la mitad.",
+   "esc": "B"
+  },
+  {
+   "ini": 17.525,
+   "fin": 19.982,
+   "texto": "Pero hay dos trucos que cambian esa curva.",
+   "esc": "C"
+  },
+  {
+   "ini": 20.302,
+   "fin": 23.462,
+   "texto": "Uno: cierra los apuntes e intenta explicarlo sin mirar.",
+   "esc": "C"
+  },
+  {
+   "ini": 23.782,
+   "fin": 26.967,
+   "texto": "Obligarte a recordar le dice a tu cerebro que eso importa.",
+   "esc": "C"
+  },
+  {
+   "ini": 27.287,
+   "fin": 29.578,
+   "texto": "Dos: repasa poco, pero en días distintos.",
+   "esc": "D"
+  },
+  {
+   "ini": 29.898,
+   "fin": 32.334,
+   "texto": "Hoy, mañana, en tres días, y en una semana.",
+   "esc": "D"
+  },
+  {
+   "ini": 32.654,
+   "fin": 35.194,
+   "texto": "Cada repaso hace que olvides más despacio.",
+   "esc": "D"
+  },
+  {
+   "ini": 35.514,
+   "fin": 37.736,
+   "texto": "Guárdalo para tu próxima tarde de estudio.",
+   "esc": "E"
+  }
+ ]
+}

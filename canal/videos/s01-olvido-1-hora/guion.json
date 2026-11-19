@@ -1,0 +1,15 @@
+{"titulo":"¿No te acuerdas de lo que estudiaste hace una hora?","voz":"ef_dora","velocidad":1.0,
+"frases":[
+{"t":"¿No te acuerdas de lo que estudiaste hace una hora?","esc":"A"},
+{"t":"Tranquilo, no es que estudies mal.","esc":"A"},
+{"t":"Es tu cerebro haciendo limpieza.","esc":"A"},
+{"t":"En mil ochocientos ochenta y cinco, el psicólogo Hermann Ebbinghaus midió cuánto olvidamos con el tiempo.","esc":"B","pantalla":"En 1885, el psicólogo Hermann Ebbinghaus midió cuánto olvidamos con el tiempo."},
+{"t":"Y vio que, en solo una hora, se puede olvidar más de la mitad.","esc":"B"},
+{"t":"Pero hay dos trucos que cambian esa curva.","esc":"C"},
+{"t":"Uno: cierra los apuntes e intenta explicarlo sin mirar.","esc":"C"},
+{"t":"Obligarte a recordar le dice a tu cerebro que eso importa.","esc":"C"},
+{"t":"Dos: repasa poco, pero en días distintos.","esc":"D"},
+{"t":"Hoy, mañana, en tres días, y en una semana.","esc":"D"},
+{"t":"Cada repaso hace que olvides más despacio.","esc":"D"},
+{"t":"Guárdalo para tu próxima tarde de estudio.","esc":"E"}
+]}

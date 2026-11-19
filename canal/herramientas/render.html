@@ -22,6 +22,8 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 const W = 1080, H = 1920;
 let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
@@ -40,6 +42,17 @@ const composer = new EffectComposer(renderer);
 composer.addPass(new RenderPass(scene, camera));
 composer.addPass(new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), 0.55, 0.5, 0.72));
 composer.addPass(new OutputPass());
+const pmrem = new THREE.PMREMGenerator(renderer); scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+const finish = new ShaderPass({ uniforms: { tDiffuse: { value: null }, t: { value: 0 }, punch: { value: 0 } },
+  vertexShader: 'varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }',
+  fragmentShader: `uniform sampler2D tDiffuse; uniform float t; uniform float punch; varying vec2 vUv;
+    float h(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233)) + t*91.7) * 43758.5453); }
+    void main(){ vec2 c = vUv-0.5; float ab = 0.0012 + punch*0.006;
+      vec3 col = vec3(texture2D(tDiffuse, vUv + c*ab).r, texture2D(tDiffuse, vUv).g, texture2D(tDiffuse, vUv - c*ab).b);
+      float v = smoothstep(0.85, 0.25, length(c*vec2(0.9,1.2))); col *= mix(0.62, 1.0, v);
+      col = (col - 0.5) * 1.06 + 0.5; col += (h(vUv*vec2(1080.,1920.)) - 0.5) * 0.035;
+      gl_FragColor = vec4(col, 1.0); }` });
+composer.addPass(finish);
 
 // background gradient sphere
 const bgGeo = new THREE.SphereGeometry(250, 32, 16);
@@ -59,7 +72,7 @@ const floaters = [];
 const fGeos = [new THREE.IcosahedronGeometry(1, 0), new THREE.TorusGeometry(0.8, 0.28, 16, 40), new THREE.OctahedronGeometry(1, 0), new THREE.TorusKnotGeometry(0.6, 0.2, 80, 12)];
 const palette = [C.coral, C.amber, C.cyan, C.lime, C.violet];
 for (let i = 0; i < 70; i++) {
-  const m = new THREE.Mesh(fGeos[i % 4], new THREE.MeshStandardMaterial({ color: palette[i % 5], roughness: 0.25, metalness: 0.35, emissive: palette[i % 5], emissiveIntensity: 0.12 }));
+  const m = new THREE.Mesh(fGeos[i % 4], new THREE.MeshPhysicalMaterial({ color: palette[i % 5], roughness: 0.18, metalness: 0.2, clearcoat: 1, clearcoatRoughness: 0.15, emissive: palette[i % 5], emissiveIntensity: 0.1 }));
   const base = new THREE.Vector3(rnd() * 200 - 20, rnd() * 50 - 25, -10 - rnd() * 40);
   if (Math.abs(base.y) < 9 && base.z > -16) base.z -= 14;
   m.userData = { base, sp: 0.2 + rnd() * 0.5, ph: rnd() * 6.28, s: 0.5 + rnd() * 1.3 };
@@ -144,6 +157,7 @@ const bm = new THREE.Shape(); bm.moveTo(-1.6, 2.4); bm.lineTo(1.6, 2.4); bm.line
 const bookmark = new THREE.Mesh(new THREE.ExtrudeGeometry(bm, { depth: 0.6, bevelEnabled: true, bevelThickness: 0.15, bevelSize: 0.15, bevelSegments: 4 }), new THREE.MeshStandardMaterial({ color: C.amber, emissive: C.amber, emissiveIntensity: 0.25, roughness: 0.25, metalness: 0.3 }));
 bookmark.position.set(ST.E.x, 0.5, 0); scene.add(bookmark);
 
+scene.traverse(o => { if (o.isMesh && o.material && !o.material.isMeshPhysicalMaterial && o.material.isMeshStandardMaterial) o.material.envMapIntensity = 0.12; });
 // ---------- timeline ----------
 let T = null;
 window.setup = (timing) => { T = timing; };
@@ -162,7 +176,7 @@ function setCaption(t) {
   const cap = document.getElementById('cap'), hook = document.getElementById('hook'), badge = document.getElementById('badge');
   const i = T.segs.findIndex(s => t >= s.ini && t <= s.fin + 0.3);
   hook.hidden = !(t < T.segs[0].fin + 0.3);
-  if (!hook.hidden) hook.innerHTML = '¿NO TE ACUERDAS DE LO QUE ESTUDIASTE <em>HACE 1 HORA?</em>';
+  if (!hook.hidden) hook.innerHTML = '¿NO TE ACUERDAS DE LO QUE ESTUDIASTE <em>HACE 1 HORA?</em>'; hook.style.transform = `scale(${1 + 0.18 * Math.max(0, 1 - t / 0.35)})`; hook.style.opacity = Math.min(1, t / 0.12);
   const c = T.segs[2] ? null : null;
   const bt = t >= firstIni('C') - 0.2 && t < firstIni('D') - 0.2 ? 'TRUCO 1 · RECUERDO ACTIVO' : t >= firstIni('D') - 0.2 && t < firstIni('E') - 0.2 ? 'TRUCO 2 · REPASO ESPACIADO' : '';
   badge.hidden = !bt; badge.textContent = bt;
@@ -172,7 +186,9 @@ function setCaption(t) {
   const p = clamp01((t - s.ini) / (s.fin - s.ini)) * total;
   for (let k = 0; k < words.length; k++) { acc += words[k].length + 1; if (p < acc) { wi = k; break; } wi = k; }
   const g0 = Math.floor(wi / 3) * 3; const grp = words.slice(g0, g0 + 3);
-  cap.innerHTML = grp.map((w, k) => `<span class="${g0 + k === wi ? 'on' : ''}">${w.replace(/[<>&]/g, '')}</span>`).join(' ');
+  let wStart = s.ini; { let acc2 = 0; for (let k = 0; k < wi; k++) acc2 += words[k].length + 1; wStart = s.ini + (acc2 / total) * (s.fin - s.ini); }
+  const wp = Math.max(0, Math.min(1, (t - wStart) / 0.12));
+  cap.innerHTML = grp.map((w, k) => `<span class="${g0 + k === wi ? 'on' : ''}" style="display:inline-block;${g0 + k === wi ? `transform:scale(${1 + 0.14 * (1 - wp)}) translateY(${-8 * (1 - wp)}px)` : ''}">${w.replace(/[<>&]/g, '')}</span>`).join(' ');
   const pop = clamp01(((t - s.ini) * 30) % 30 / 4);
   cap.style.transform = `scale(${1 + 0.06 * (1 - ease(pop))})`;
 }
@@ -190,6 +206,8 @@ window.renderAt = (t) => {
   const cx = lerp(pa[0], pb[0], k), cy = lerp(pa[1], pb[1], k), cz = lerp(pa[2], pb[2], k) + Math.sin(k * Math.PI) * 5;
   camera.position.set(cx + Math.sin(t * 0.45) * 1.3, cy + Math.cos(t * 0.37) * 0.8, cz - Math.sin(t * 0.2) * 0.8);
   camera.lookAt(cx + Math.sin(t * 0.3) * 0.3, cy * 0.4, 0);
+  { let pk = 0; for (const L of ['B','C','D','E']) { const st = firstIni(L) - 0.9; const q = (t - st) / 1.1; if (q > 0 && q < 1) pk = Math.max(pk, Math.sin(q * Math.PI)); }
+    camera.rotation.z += pk * 0.06 * Math.sin(t * 3); camera.fov = 50 + pk * 9 - Math.max(0, 1 - t / 0.5) * 6; camera.updateProjectionMatrix(); finish.uniforms.punch.value = pk; finish.uniforms.t.value = t; }
   p1.position.set(cx - 6, cy + 6, 6); p2.position.set(cx + 6, cy - 5, 5);
   // A: pages fly
   const ta = T.segs[1].ini - 0.1;

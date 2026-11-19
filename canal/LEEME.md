@@ -16,7 +16,7 @@ Canal educativo en español: explicaciones sencillas (ESO, Bachillerato, univers
    - Tarda unos 4 s de CPU por cada segundo de audio.
 3. **Escena 3D**: copia `render.html` a `videos/<id>/escena.html` y adapta las estaciones al tema del vídeo (objetos y animaciones propios de cada tema; nada de la misma plantilla con otro texto). Requiere `npm install three@0.160.0` en `herramientas/`. En three 0.160, el grosor de TextGeometry es `height` (no `depth`).
 4. **Render**: `node frames.js videos/<id> test` (fotogramas de prueba: MÍRALOS y corrige) → `node frames.js videos/<id> full` → `video-mudo.mp4` (1080x1920 a 30 fps; unos 6 min por Short de 40 s).
-5. **Audio**: `./mix.sh videos/<id> ../../productos/music-loops-vol1/ogg/03_puzzle_thinking_96bpm_loop.ogg` → `final.mp4` (voz + música propia con ducking, -14 LUFS).
+5. **Audio**: `python3 sfx.py videos/<id> ../../productos/sfx-pack-vol1/wav` (pista de efectos sincronizada; adapta las marcas a cada escena) y luego `./mix.sh videos/<id> ../../productos/music-loops-vol1/ogg/03_puzzle_thinking_96bpm_loop.ogg` → `final.mp4` (voz + música propia con ducking, -14 LUFS).
 6. **Miniatura**: `python3 thumb.py <fotograma.jpg> 'TEXTO <em>GANCHO</em>' 'PASTILLA' videos/<id>/miniatura-1280x720.png`.
 7. **Ficha**: `videos/<id>/PUBLICAR.txt` con título, descripción (con enlaces a OpoCalc o Cellmate cuando encaje), etiquetas, contenido alterado o sintético (No, salvo que se muestre algo realista inventado) y audiencia "no creado para niños".
 

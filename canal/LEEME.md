@@ -2,9 +2,11 @@
 
 Canal educativo en español: explicaciones sencillas (ESO, Bachillerato, universidad), datos curiosos que ayudan a aprender y técnicas de estudio. Ganchos rápidos en el primer segundo ("¿No te acuerdas de lo que estudiaste hace una hora?"), voz calmada y clara, visuales 3D con movimiento fluido.
 
-## Decisiones de Ibai (no cambiar sin que él lo pida)
-- **Estilo visual: NEÓN.** Fondo oscuro morado/azul, figuras 3D brillantes con bloom, curvas luminosas, cámara siempre en movimiento suave, subtítulos blancos en mayúsculas con la palabra activa en amarillo (#ffc145), barra de progreso arriba. Referencia: `herramientas/render.html` y `videos/s01-olvido-1-hora/`.
-- **Voz: "voz 2".** Chatterbox multilingüe (licencia MIT, añade marca de agua inaudible) con el timbre de `herramientas/voz-ref.wav`, expresividad 0.45 y cfg 0.5. **Origen de `voz-ref.wav`:** es 100 % sintética, generada con Kokoro (Apache 2.0, voz `ef_dora`, velocidad 0.95) leyendo una frase neutra de prueba. No es la grabación de ninguna persona real, así que no hace falta permiso de nadie ni hay timbre clonado de una persona.
+## Decisiones de Ibai (19/11, definitivas; no cambiar sin que él lo pida)
+- **Idioma: español.** Canal **"Modo Examen"**.
+- **Estilo: STICKMAN v2 colorido** (`herramientas/stick.html` + `stickframes.js`): fondos de color por sección, mucho movimiento, partículas, temblor, barridos, textos grandes con contorno y subtítulos palabra a palabra también en los vídeos largos. Formatos "Todas las X ordenadas / explicadas / qué pasaría si" (ver `ESTRATEGIA.md`). Más color, movimiento, dopamina y gancho que la competencia. El estilo neón 3D queda RETIRADO.
+- **Voz: "voz B".** Chatterbox con el timbre de `herramientas/voz-ref-B.wav` (100 % sintético: Kokoro `bm_george`), `language_id` "es", **cfg 0.0** (quita el acento inglés), expresividad 0.45-0.5. En el guion: `"lang": "es", "cfg": 0.0`.
+- **Ritmo:** 1 Short (vertical, `1080 1920 captions`) y 1 vídeo largo de más de 8 min (`1920 1080 captions`) al día.
 
 ## Pipeline (gratis, sin GPU)
 1. **Guion**: `videos/<id>/guion.json`: `{titulo, frases: [{t (texto para la voz, números en letra), pantalla? (texto de subtítulos), esc (estación 3D A..E)}], fuentes: [...]}`. Cada dato, verificado con búsqueda web y con la fuente anotada; si un dato es dudoso, se quita.

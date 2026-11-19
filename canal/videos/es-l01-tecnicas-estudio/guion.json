@@ -1,0 +1,2242 @@
+{
+ "titulo": "Todas las técnicas de estudio, ordenadas de inútil a genial",
+ "lang": "es",
+ "frases": [
+  {
+   "t": "La mayoría de los estudiantes pasan horas estudiando, y no recuerdan casi nada.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "read",
+      "face": "neutral",
+      "hold": "book"
+     }
+    ],
+    "props": [
+     {
+      "k": "clock",
+      "x": 0.7,
+      "y": 0.38,
+      "s": 1.1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y no es porque sean vagos.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.45,
+      "pose": "shrug",
+      "face": "neutral"
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Es porque están usando las técnicas equivocadas.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "sitsad",
+      "face": "sad"
+     }
+    ],
+    "props": [
+     {
+      "k": "gradeF",
+      "x": 0.7,
+      "y": 0.45,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Así que hoy vamos a ordenar todas las técnicas de estudio, desde las completamente inútiles,",
+   "v": {
+    "head": "TODAS LAS TÉCNICAS DE ESTUDIO",
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "cross",
+      "x": 0.68,
+      "y": 0.45,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "hasta la que es prácticamente un truco.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "trophy",
+      "x": 0.78,
+      "y": 0.45,
+      "s": 1,
+      "float": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y quédate hasta el final, porque la número uno es justo la que menos usan los estudiantes.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "think",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "question",
+      "x": 0.7,
+      "y": 0.35,
+      "s": 1.2
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Pero primero, tienes que saber contra qué estás luchando.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "stand",
+      "face": "focus"
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En mil ochocientos ochenta y cinco, un psicólogo alemán llamado Hermann Ebbinghaus memorizó listas de sílabas sin sentido, y midió lo rápido que las olvidaba.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "read",
+      "face": "neutral",
+      "hold": "notes"
+     }
+    ],
+    "big": "1885",
+    "bigx": 0.7,
+    "bigy": 0.25,
+    "bigs": 110,
+    "bigc": "#f6c23e"
+   },
+   "esc": "A",
+   "pantalla": "En 1885, un psicólogo alemán llamado Hermann Ebbinghaus memorizó listas de sílabas sin sentido, y midió lo rápido que las olvidaba."
+  },
+  {
+   "t": "El resultado se llama la curva del olvido. Los recuerdos se borran muy rápido al principio, y luego más despacio.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "graph",
+      "x": 0.68,
+      "y": 0.42,
+      "s": 1.3
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En la primera hora, una buena parte de lo que has aprendido ya puede haber desaparecido.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "graph",
+      "x": 0.7,
+      "y": 0.42,
+      "s": 1.1
+     },
+     {
+      "k": "arrowdown",
+      "x": 0.86,
+      "y": 0.3,
+      "s": 0.7,
+      "d": 0.3
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "La buena noticia es que algunas técnicas aplanan esa curva. La mala, es que casi todo el mundo usa las otras.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "shrug",
+      "face": "smirk"
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número catorce. Releer.",
+   "v": {
+    "head": "#14 RELEER",
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "read",
+      "face": "neutral",
+      "hold": "book"
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Lees el tema. Luego lo vuelves a leer. Y otra vez.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "read",
+      "face": "neutral",
+      "hold": "book"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.62,
+      "y": 0.4,
+      "s": 0.8
+     },
+     {
+      "k": "book",
+      "x": 0.75,
+      "y": 0.4,
+      "s": 0.8,
+      "d": 0.4
+     },
+     {
+      "k": "book",
+      "x": 0.88,
+      "y": 0.4,
+      "s": 0.8,
+      "d": 0.8
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "A la tercera, todo te suena, así que tu cerebro cree que ya te lo sabes.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "stand",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "brain",
+      "x": 0.7,
+      "y": 0.38,
+      "s": 1.1,
+      "float": 1
+     },
+     {
+      "k": "check",
+      "x": 0.84,
+      "y": 0.25,
+      "s": 0.7,
+      "d": 0.5
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Pero que algo te suene no es lo mismo que recordarlo.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "cross",
+      "x": 0.72,
+      "y": 0.4,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En una famosa revisión de técnicas de estudio de dos mil trece, releer recibió la nota de utilidad baja.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.65,
+      "y": 0.4,
+      "s": 1,
+      "label": "Revisión 2013"
+     }
+    ],
+    "big": "UTILIDAD BAJA",
+    "bigx": 0.68,
+    "bigy": 0.18,
+    "bigs": 90
+   },
+   "esc": "A",
+   "pantalla": "En una famosa revisión de técnicas de estudio de 2013, releer recibió la nota de utilidad baja."
+  },
+  {
+   "t": "Parece productivo. Casi nunca lo es.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.45,
+      "pose": "facepalm",
+      "face": "sad"
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Si de verdad quieres releer, hazlo después de intentar recordarlo sin mirar. Ahí sí ayuda.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.7,
+      "y": 0.42,
+      "s": 1
+     },
+     {
+      "k": "check",
+      "x": 0.84,
+      "y": 0.3,
+      "s": 0.6,
+      "d": 0.4
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número trece. Subrayar.",
+   "v": {
+    "head": "#13 SUBRAYAR",
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "desk",
+      "x": 0.47,
+      "y": 0.72,
+      "s": 1
+     },
+     {
+      "k": "notes",
+      "x": 0.53,
+      "y": 0.6,
+      "s": 0.6
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Coges un fosforito amarillo, y de repente toda la página es amarilla.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "hold",
+      "face": "happy",
+      "hold": "pencil"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.68,
+      "y": 0.42,
+      "s": 1.2
+     }
+    ],
+    "big": "100% AMARILLO",
+    "bigx": 0.7,
+    "bigy": 0.18,
+    "bigs": 80,
+    "bigc": "#f6c23e"
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Subrayar te dice qué parece importante. No te lo mete en la cabeza.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "shrug",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "brain",
+      "x": 0.72,
+      "y": 0.4,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Misma revisión, mismo veredicto. Utilidad baja.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "stand",
+      "face": "smirk"
+     }
+    ],
+    "big": "UTILIDAD BAJA",
+    "bigx": 0.7,
+    "bigy": 0.3,
+    "bigs": 90
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y lo peor es que subrayar te vuelve perezoso, porque el rotulador piensa por ti.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "sitsad",
+      "face": "sad"
+     }
+    ],
+    "props": [
+     {
+      "k": "pencil",
+      "x": 0.7,
+      "y": 0.4,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Si te encanta tu fosforito, úsalo solo cuando hayas terminado de leer, y solo para una frase por página.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "pointup",
+      "face": "smirk"
+     }
+    ],
+    "big": "1 POR PÁGINA",
+    "bigx": 0.7,
+    "bigy": 0.3,
+    "bigs": 80,
+    "bigc": "#3a7bd5"
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número doce. La noche sin dormir.",
+   "v": {
+    "head": "#12 EL ATRACÓN",
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "desk",
+      "x": 0.47,
+      "y": 0.72,
+      "s": 1
+     },
+     {
+      "k": "coffee",
+      "x": 0.6,
+      "y": 0.6,
+      "s": 0.6,
+      "anim": 1
+     },
+     {
+      "k": "clock",
+      "x": 0.75,
+      "y": 0.3,
+      "s": 0.9
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Son las tres de la mañana, el examen es a las nueve, y vas por tu quinto café.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "dizzy",
+      "face": "dead"
+     }
+    ],
+    "props": [
+     {
+      "k": "coffee",
+      "x": 0.65,
+      "y": 0.5,
+      "s": 0.8,
+      "anim": 1
+     },
+     {
+      "k": "coffee",
+      "x": 0.75,
+      "y": 0.5,
+      "s": 0.8,
+      "d": 0.2
+     },
+     {
+      "k": "coffee",
+      "x": 0.85,
+      "y": 0.5,
+      "s": 0.8,
+      "d": 0.4
+     }
+    ],
+    "big": "3:00 AM",
+    "bigx": 0.7,
+    "bigy": 0.2,
+    "bigs": 90
+   },
+   "esc": "A",
+   "pantalla": "Son las 3 de la mañana, el examen es a las 9, y vas por tu quinto café."
+  },
+  {
+   "t": "El problema es que tu cerebro guarda los recuerdos mientras duermes.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "sleep",
+      "face": "sleep",
+      "y": 0.7
+     }
+    ],
+    "props": [
+     {
+      "k": "bed",
+      "x": 0.52,
+      "y": 0.72,
+      "s": 1.3
+     },
+     {
+      "k": "brain",
+      "x": 0.75,
+      "y": 0.3,
+      "s": 0.9,
+      "float": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Si te saltas el sueño, te saltas el guardado.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "sad",
+      "face": "sad"
+     }
+    ],
+    "props": [
+     {
+      "k": "battery",
+      "x": 0.7,
+      "y": 0.4,
+      "s": 1,
+      "anim": "low"
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Puede que mañana apruebes. Dentro de una semana, no queda nada.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "shrug",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "calendar",
+      "x": 0.72,
+      "y": 0.4,
+      "s": 1,
+      "label": "1 semana después"
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Darse un atracón es como un préstamo rápido. Te dan el dinero ahora, y lo devuelves con intereses después.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "hold",
+      "face": "smirk",
+      "hold": "exam"
+     }
+    ],
+    "props": [
+     {
+      "k": "arrowdown",
+      "x": 0.72,
+      "y": 0.4,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Normalmente en el examen final, cuando vuelves a necesitar todo aquello.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "gradeF",
+      "x": 0.72,
+      "y": 0.42,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número once. Estudiar con el móvil al lado.",
+   "v": {
+    "head": "#11 EL MÓVIL AL LADO",
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "read",
+      "face": "neutral",
+      "hold": "book"
+     }
+    ],
+    "props": [
+     {
+      "k": "phone",
+      "x": 0.62,
+      "y": 0.45,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Una notificación. Solo una. Y cuarenta minutos después estás viendo vídeos de cómo se construyen los puentes.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "hold",
+      "face": "happy",
+      "hold": "phone"
+     }
+    ],
+    "props": [
+     {
+      "k": "gamepad",
+      "x": 0.72,
+      "y": 0.35,
+      "s": 0.9,
+      "d": 0.6
+     }
+    ],
+    "big": "40 MIN",
+    "bigx": 0.75,
+    "bigy": 0.6,
+    "bigs": 80
+   },
+   "esc": "A",
+   "pantalla": "Una notificación. Solo una. Y 40 minutos después estás viendo vídeos de cómo se construyen los puentes."
+  },
+  {
+   "t": "Cada vez que cambias de tarea, tu cerebro paga un peaje, y la concentración tarda un buen rato en volver.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.45,
+      "pose": "dizzy",
+      "face": "dead"
+     }
+    ],
+    "props": [
+     {
+      "k": "arrowdown",
+      "x": 0.75,
+      "y": 0.4,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Deja el móvil en otra habitación. No boca abajo. En otra habitación.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "angry"
+     }
+    ],
+    "props": [
+     {
+      "k": "phone",
+      "x": 0.75,
+      "y": 0.45,
+      "s": 0.8
+     },
+     {
+      "k": "cross",
+      "x": 0.75,
+      "y": 0.45,
+      "s": 0.9,
+      "d": 0.3
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Lo mismo pasa con estudiar con una serie de fondo. Tu cerebro no hace dos cosas. Hace dos cosas mal.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "dizzy",
+      "face": "dead"
+     }
+    ],
+    "props": [
+     {
+      "k": "gamepad",
+      "x": 0.72,
+      "y": 0.4,
+      "s": 0.9
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número diez. Resumir.",
+   "v": {
+    "head": "#10 RESUMIR",
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "desk",
+      "x": 0.47,
+      "y": 0.72,
+      "s": 1
+     },
+     {
+      "k": "notes",
+      "x": 0.53,
+      "y": 0.6,
+      "s": 0.6
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Hacer un resumen puede ayudar, pero solo si lo haces bien.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "stand",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.7,
+      "y": 0.4,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Casi todo el mundo copia el libro con menos palabras, que es básicamente releer con pasos extra.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "facepalm",
+      "face": "sad"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.65,
+      "y": 0.4,
+      "s": 0.9
+     },
+     {
+      "k": "notes",
+      "x": 0.8,
+      "y": 0.4,
+      "s": 0.9
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "La revisión también le dio utilidad baja, sobre todo porque es difícil hacerlo bien.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "shrug",
+      "face": "neutral"
+     }
+    ],
+    "big": "UTILIDAD BAJA",
+    "bigx": 0.7,
+    "bigy": 0.25,
+    "bigs": 80
+   },
+   "esc": "A"
+  },
+  {
+   "t": "El truco es cerrar el libro primero, y resumir de memoria. Ahora sí estás trabajando.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "desk",
+      "x": 0.42,
+      "y": 0.72,
+      "s": 1
+     },
+     {
+      "k": "book",
+      "x": 0.72,
+      "y": 0.4,
+      "s": 0.8
+     },
+     {
+      "k": "cross",
+      "x": 0.72,
+      "y": 0.4,
+      "s": 0.5,
+      "d": 0.4
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número nueve. Las reglas mnemotécnicas.",
+   "v": {
+    "head": "#9 MNEMOTECNIA",
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "think",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "bulb",
+      "x": 0.7,
+      "y": 0.35,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Frases absurdas y siglas, donde la primera letra de cada palabra te recuerda algo.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "big": "M.V.T.M.J.S.U.N.",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 70,
+    "bigc": "#3a7bd5"
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Son geniales para listas cortas, como el orden de los planetas.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "check",
+      "x": 0.75,
+      "y": 0.4,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Pero no te van a ayudar a entender nada. Son un atajo, no una estrategia.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "stand",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "cross",
+      "x": 0.72,
+      "y": 0.4,
+      "s": 0.8
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Saber que tu tía Marta significa los planetas no quiere decir que sepas algo de los planetas.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "facepalm",
+      "face": "sad"
+     }
+    ],
+    "props": [
+     {
+      "k": "question",
+      "x": 0.72,
+      "y": 0.35,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número ocho. Los mapas mentales.",
+   "v": {
+    "head": "#8 MAPAS MENTALES",
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "bulb",
+      "x": 0.6,
+      "y": 0.3,
+      "s": 0.6
+     },
+     {
+      "k": "book",
+      "x": 0.75,
+      "y": 0.45,
+      "s": 0.6,
+      "d": 0.2
+     },
+     {
+      "k": "brain",
+      "x": 0.88,
+      "y": 0.3,
+      "s": 0.6,
+      "d": 0.4
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Pones una idea en el centro, y dibujas ramas hacia todo lo que está conectado con ella.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "desk",
+      "x": 0.42,
+      "y": 0.72,
+      "s": 1
+     },
+     {
+      "k": "notes",
+      "x": 0.48,
+      "y": 0.6,
+      "s": 0.6
+     },
+     {
+      "k": "graph",
+      "x": 0.72,
+      "y": 0.35,
+      "s": 0.9
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Están bien para ordenar un tema y ver la idea general.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "stand",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "check",
+      "x": 0.72,
+      "y": 0.4,
+      "s": 0.9
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Pero no te pases tres horas dejándolo bonito. Eso es manualidades, no estudiar.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "facepalm",
+      "face": "sad"
+     }
+    ],
+    "props": [
+     {
+      "k": "pencil",
+      "x": 0.72,
+      "y": 0.4,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número siete. La técnica Pomodoro.",
+   "v": {
+    "head": "#7 POMODORO",
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "stand",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "clock",
+      "x": 0.7,
+      "y": 0.4,
+      "s": 1.2
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Trabajas veinticinco minutos, descansas cinco, y repites.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "desk",
+      "x": 0.42,
+      "y": 0.72,
+      "s": 1
+     },
+     {
+      "k": "clock",
+      "x": 0.72,
+      "y": 0.3,
+      "s": 0.9
+     }
+    ],
+    "big": "25 + 5",
+    "bigx": 0.75,
+    "bigy": 0.6,
+    "bigs": 90,
+    "bigc": "#e8483f"
+   },
+   "esc": "A",
+   "pantalla": "Trabajas 25 minutos, descansas 5, y repites."
+  },
+  {
+   "t": "No hará que recuerdes más, pero hace que empezar duela mucho menos.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "shrug",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "arrowup",
+      "x": 0.72,
+      "y": 0.4,
+      "s": 0.9
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y para casi todo el mundo, empezar es lo más difícil.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "think",
+      "face": "smirk"
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Veinticinco minutos suena fácil. Tu cerebro acepta. Y una vez que empiezas, sueles seguir.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "write",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "desk",
+      "x": 0.42,
+      "y": 0.72,
+      "s": 1
+     },
+     {
+      "k": "clock",
+      "x": 0.72,
+      "y": 0.3,
+      "s": 0.9
+     }
+    ]
+   },
+   "esc": "A",
+   "pantalla": "25 minutos suena fácil. Tu cerebro acepta. Y una vez que empiezas, sueles seguir."
+  },
+  {
+   "t": "Eso sí, que el descanso de cinco minutos no se convierta en uno de dos horas.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "sleep",
+      "face": "sleep",
+      "y": 0.7
+     }
+    ],
+    "props": [
+     {
+      "k": "bed",
+      "x": 0.52,
+      "y": 0.72,
+      "s": 1.3
+     },
+     {
+      "k": "phone",
+      "x": 0.75,
+      "y": 0.4,
+      "s": 0.7
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número seis. La técnica Feynman.",
+   "v": {
+    "head": "#6 TÉCNICA FEYNMAN",
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "bulb",
+      "x": 0.7,
+      "y": 0.35,
+      "s": 1,
+      "anim": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Coges un tema, y lo explicas con palabras sencillas, como si se lo enseñaras a un niño de doce años.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "happy"
+     },
+     {
+      "id": "kid",
+      "x": 0.68,
+      "pose": "think",
+      "face": "neutral",
+      "s": 0.7,
+      "flip": true
+     }
+    ]
+   },
+   "esc": "A",
+   "pantalla": "Coges un tema, y lo explicas con palabras sencillas, como si se lo enseñaras a un niño de 12 años."
+  },
+  {
+   "t": "En cuanto te atascas, has encontrado justo lo que todavía no entiendes.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "question",
+      "x": 0.7,
+      "y": 0.35,
+      "s": 1.1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Vuelves, rellenas ese hueco, y lo intentas otra vez.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "read",
+      "face": "focus",
+      "hold": "book"
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Si no puedes explicarlo de forma sencilla, todavía no lo entiendes bien. Y no pasa nada. Ahora ya lo sabes.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "shrug",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "bulb",
+      "x": 0.72,
+      "y": 0.35,
+      "s": 1,
+      "anim": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número cinco. Preguntarse por qué.",
+   "v": {
+    "head": "#5 PREGUNTAR POR QUÉ",
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "think",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "question",
+      "x": 0.62,
+      "y": 0.3,
+      "s": 0.9
+     },
+     {
+      "k": "question",
+      "x": 0.75,
+      "y": 0.38,
+      "s": 0.8,
+      "d": 0.3
+     },
+     {
+      "k": "question",
+      "x": 0.86,
+      "y": 0.3,
+      "s": 0.7,
+      "d": 0.6
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En vez de memorizar un dato sin más, te preguntas por qué es verdad.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.72,
+      "y": 0.4,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Los investigadores lo llaman interrogación elaborativa, y conecta lo nuevo con lo que ya sabes.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "brain",
+      "x": 0.7,
+      "y": 0.4,
+      "s": 1.1,
+      "float": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Utilidad moderada. No es magia, pero es útil de verdad.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "stand",
+      "face": "happy"
+     }
+    ],
+    "big": "MODERADA",
+    "bigx": 0.7,
+    "bigy": 0.25,
+    "bigs": 90,
+    "bigc": "#f08a2c"
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Por ejemplo, en vez de memorizar que el aire caliente sube, pregúntate por qué. Porque es menos denso. ¿Y por qué? Y ya estás aprendiendo física.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "arrowup",
+      "x": 0.68,
+      "y": 0.4,
+      "s": 1
+     },
+     {
+      "k": "question",
+      "x": 0.82,
+      "y": 0.3,
+      "s": 0.8,
+      "d": 0.4
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número cuatro. Intercalar.",
+   "v": {
+    "head": "#4 INTERCALAR",
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "stand",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.62,
+      "y": 0.4,
+      "s": 0.7
+     },
+     {
+      "k": "notes",
+      "x": 0.74,
+      "y": 0.4,
+      "s": 0.7
+     },
+     {
+      "k": "exam",
+      "x": 0.86,
+      "y": 0.4,
+      "s": 0.7
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En vez de hacer veinte problemas del mismo tipo, mezclas tipos distintos.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "desk",
+      "x": 0.42,
+      "y": 0.72,
+      "s": 1
+     },
+     {
+      "k": "card",
+      "x": 0.7,
+      "y": 0.3,
+      "s": 0.8
+     },
+     {
+      "k": "card",
+      "x": 0.82,
+      "y": 0.38,
+      "s": 0.8,
+      "d": 0.3
+     }
+    ]
+   },
+   "esc": "A",
+   "pantalla": "En vez de hacer 20 problemas del mismo tipo, mezclas tipos distintos."
+  },
+  {
+   "t": "Se hace más difícil, y justo por eso funciona.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "dizzy",
+      "face": "dead"
+     }
+    ],
+    "props": [
+     {
+      "k": "arrowup",
+      "x": 0.72,
+      "y": 0.4,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Tu cerebro tiene que decidir qué método usar, igual que en un examen de verdad.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.7,
+      "y": 0.42,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Porque en el examen, nadie te dice de qué tema sale la pregunta.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.72,
+      "y": 0.42,
+      "s": 1
+     },
+     {
+      "k": "question",
+      "x": 0.85,
+      "y": 0.3,
+      "s": 0.7,
+      "d": 0.3
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número tres. Dormir.",
+   "v": {
+    "head": "#3 DORMIR",
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "sleep",
+      "face": "sleep",
+      "y": 0.7
+     }
+    ],
+    "props": [
+     {
+      "k": "bed",
+      "x": 0.52,
+      "y": 0.72,
+      "s": 1.3
+     },
+     {
+      "k": "zzz",
+      "x": 0.64,
+      "y": 0.45,
+      "s": 1,
+      "float": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Sí, dormir es una técnica de estudio.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "point",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "bed",
+      "x": 0.7,
+      "y": 0.72,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Mientras duermes, tu cerebro repasa lo que has aprendido y lo pasa a la memoria a largo plazo.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "sleep",
+      "face": "sleep",
+      "y": 0.7
+     }
+    ],
+    "props": [
+     {
+      "k": "bed",
+      "x": 0.42,
+      "y": 0.72,
+      "s": 1.3
+     },
+     {
+      "k": "brain",
+      "x": 0.72,
+      "y": 0.32,
+      "s": 1,
+      "float": 1
+     },
+     {
+      "k": "arrowup",
+      "x": 0.86,
+      "y": 0.32,
+      "s": 0.7,
+      "d": 0.4
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Una buena noche de sueño antes de un examen gana casi siempre a una noche más de estudio.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.45,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "gradeA",
+      "x": 0.75,
+      "y": 0.42,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "O sea, que técnicamente, irte pronto a la cama es estudiar. De nada.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "stand",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "bed",
+      "x": 0.72,
+      "y": 0.72,
+      "s": 1
+     },
+     {
+      "k": "zzz",
+      "x": 0.78,
+      "y": 0.45,
+      "s": 0.8,
+      "float": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número dos. La repetición espaciada.",
+   "v": {
+    "head": "#2 REPETICIÓN ESPACIADA",
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "stand",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "calendar",
+      "x": 0.7,
+      "y": 0.4,
+      "s": 1.2
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En vez de estudiar algo cinco veces el mismo día, lo estudias hoy, otra vez mañana, luego dentro de tres días, y luego dentro de una semana.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "calendar",
+      "x": 0.6,
+      "y": 0.4,
+      "s": 0.7,
+      "label": "Día 1"
+     },
+     {
+      "k": "calendar",
+      "x": 0.72,
+      "y": 0.4,
+      "s": 0.7,
+      "d": 0.6,
+      "label": "Día 2"
+     },
+     {
+      "k": "calendar",
+      "x": 0.84,
+      "y": 0.4,
+      "s": 0.7,
+      "d": 1.2,
+      "label": "Día 5"
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Cada vez que vuelves justo antes de olvidarlo, el recuerdo se hace más fuerte, y se borra más despacio.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "think",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "graph",
+      "x": 0.68,
+      "y": 0.4,
+      "s": 1.2
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "La revisión le dio la nota más alta posible. Utilidad alta.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "big": "UTILIDAD ALTA",
+    "bigx": 0.7,
+    "bigy": 0.25,
+    "bigs": 90,
+    "bigc": "#3fb06b"
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Las aplicaciones de tarjetas de memoria funcionan justo con esta idea.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "hold",
+      "face": "happy",
+      "hold": "phone"
+     }
+    ],
+    "props": [
+     {
+      "k": "card",
+      "x": 0.72,
+      "y": 0.4,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Diez minutos al día, repartidos durante la semana, ganan a tres horas la noche anterior.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "big": "10 MIN > 3 H",
+    "bigx": 0.7,
+    "bigy": 0.3,
+    "bigs": 90,
+    "bigc": "#3fb06b"
+   },
+   "esc": "A",
+   "pantalla": "10 minutos al día, repartidos durante la semana, ganan a 3 horas la noche anterior."
+  },
+  {
+   "t": "Y el número uno. El recuerdo activo.",
+   "v": {
+    "head": "#1 RECUERDO ACTIVO",
+    "chars": [
+     {
+      "x": 0.45,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "trophy",
+      "x": 0.75,
+      "y": 0.42,
+      "s": 1.2,
+      "float": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Cierra el libro, e intenta recordar lo que acabas de estudiar, sin mirar.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.7,
+      "y": 0.45,
+      "s": 1
+     },
+     {
+      "k": "cross",
+      "x": 0.7,
+      "y": 0.45,
+      "s": 0.6,
+      "d": 0.4
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Escríbelo, dilo en voz alta, o responde preguntas de práctica.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "desk",
+      "x": 0.42,
+      "y": 0.72,
+      "s": 1
+     },
+     {
+      "k": "card",
+      "x": 0.72,
+      "y": 0.3,
+      "s": 0.9
+     },
+     {
+      "k": "exam",
+      "x": 0.85,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.3
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Es incómodo, porque te das cuenta de todo lo que no sabes.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "sad",
+      "face": "sad"
+     }
+    ],
+    "props": [
+     {
+      "k": "question",
+      "x": 0.72,
+      "y": 0.35,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Pero cada vez que sacas un recuerdo de tu cerebro, haces que sea más fácil encontrarlo la próxima vez.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "pointup",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "brain",
+      "x": 0.7,
+      "y": 0.4,
+      "s": 1.1,
+      "float": 1
+     },
+     {
+      "k": "arrowup",
+      "x": 0.84,
+      "y": 0.3,
+      "s": 0.8,
+      "d": 0.4
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En la misma revisión, hacerse tests de práctica recibió la nota más alta. Y aquí viene lo curioso.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "smirk"
+     }
+    ],
+    "big": "UTILIDAD ALTA",
+    "bigx": 0.7,
+    "bigy": 0.25,
+    "bigs": 90,
+    "bigc": "#3fb06b"
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Es la técnica que menos usan los estudiantes, porque releer parece más fácil.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "facepalm",
+      "face": "sad"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.72,
+      "y": 0.45,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Así que este es el plan. Ponte a prueba, repártelo en el tiempo, y duerme.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "card",
+      "x": 0.6,
+      "y": 0.4,
+      "s": 0.7
+     },
+     {
+      "k": "calendar",
+      "x": 0.74,
+      "y": 0.4,
+      "s": 0.7,
+      "d": 0.3
+     },
+     {
+      "k": "bed",
+      "x": 0.88,
+      "y": 0.5,
+      "s": 0.6,
+      "d": 0.6
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Menos tiempo estudiando. Mucho más recordado.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.45,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "gradeA",
+      "x": 0.75,
+      "y": 0.42,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Si te ha servido, ya sabes qué hacer. Ponte a prueba con esto mañana.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "calendar",
+      "x": 0.72,
+      "y": 0.4,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Ahora cierra este vídeo, e intenta recordar las catorce. Suerte.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "stand",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "question",
+      "x": 0.72,
+      "y": 0.35,
+      "s": 1
+     }
+    ]
+   },
+   "esc": "A"
+  }
+ ],
+ "fuentes": [
+  "Dunlosky, Rawson, Marsh, Nathan & Willingham (2013), Improving Students' Learning With Effective Learning Techniques, Psychological Science in the Public Interest, doi:10.1177/1529100612453266",
+  "APS press release: Which Study Strategies Make the Grade?"
+ ],
+ "cfg": 0.0,
+ "expresividad": 0.45
+}

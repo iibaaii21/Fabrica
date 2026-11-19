@@ -70,9 +70,9 @@ function stickman(cx, ground, pose, face, scale, flip, t, id, holdItem) {
   const legs = [limb(hip, ll, L.th, L.sh), limb(hip, rl, L.th, L.sh)], arms = [limb(shoulder, la, L.ua, L.fa), limb(shoulder, ra, L.ua, L.fa)];
   if ((pose.sitY || 0) < 0.5 && lie < 0.5) { const fm = Math.max(legs[0][2][1], legs[1][2][1]); const dy = (ground - jump) - fm;
     const sh = q => { q[1] += dy; }; [hip, neck, shoulder].forEach(sh); legs.forEach(l => l.slice(1).forEach(sh)); arms.forEach(l => l.slice(1).forEach(sh)); }
-  legs.forEach((p, i) => line(p, 8, INK, false, null, seed + i * 10));
-  line([hip, neck], 8, INK, false, null, seed + 30);
-  arms.forEach((p, i) => line(p, 8, INK, false, null, seed + 40 + i * 10));
+  legs.forEach((p, i) => line(p, 10, INK, false, null, seed + i * 10));
+  line([hip, neck], 10, INK, false, null, seed + 30);
+  arms.forEach((p, i) => line(p, 10, INK, false, null, seed + 40 + i * 10));
   // held item in front hand
   if (holdItem) { const hnd = arms[1][2]; x.save(); x.translate(hnd[0], hnd[1]); drawProp(holdItem, 0, 0, 0.55 * scale, t, false); x.restore(); }
   // head
@@ -142,41 +142,61 @@ window.setup = (cfg) => { CFG = cfg; W = cfg.w; H = cfg.h; cv.width = W; cv.heig
 function beatAt(t) { const b = CFG.beats; let i = 0; for (let k = 0; k < b.length; k++) if (t >= b[k].ini - 0.05) i = k; return i; }
 function findPrevChar(i, id) { for (let k = i - 1; k >= 0; k--) { const c = (CFG.beats[k].v.chars || []).find(c => (c.id || 'me') === id); if (c) return c; } return null; }
 
+const PALS = [['#ffe9b3','#ffc979','#ffffff','#f3a64a'],['#c9e8ff','#8fc8ff','#ffffff','#5b9be0'],['#ffd1dc','#ff9fb5','#ffffff','#e2708c'],['#d4f5d0','#9fe39a','#ffffff','#5fbf6a'],['#e3d5ff','#b89cff','#ffffff','#8a6cdf'],['#ffe0c7','#ffb38a','#ffffff','#e98b5c']];
+function sectionOf(i) { let sec = 0; for (let k = 0; k <= i; k++) if (CFG.beats[k].v && CFG.beats[k].v.head) sec++; return sec; }
+function fxParticles(c, r, bt, t, k) {
+  const pose = c.pose;
+  if (pose === 'cheer' || c.confetti) { for (let n = 0; n < 34; n++) { const a = n * 2.39, sp = (260 + (n * 37) % 240) * S, tt = Math.min(bt, 2.2); const px = r.head[0] + Math.cos(a) * sp * tt * 0.6, py = r.head[1] - 60 * S + Math.sin(a) * sp * tt * 0.45 - sp * tt * 0.5 + 420 * S * tt * tt * 0.5;
+      x.save(); x.translate(px, py); x.rotate(t * 6 + n); x.fillStyle = ['#e8483f','#3a7bd5','#f6c23e','#3fb06b','#8a5cd6'][n % 5]; x.globalAlpha = Math.max(0, 1 - bt / 2.4); x.fillRect(-7 * S, -4 * S, 14 * S, 8 * S); x.restore(); } }
+  if (pose === 'shock' || c.face === 'shock') { for (let n = 0; n < 8; n++) { const a = -Math.PI / 2 + (n - 3.5) * 0.32, r1 = 70 * S + Math.sin(t * 12 + n) * 6 * S; line([[r.head[0] + Math.cos(a) * r1, r.head[1] + Math.sin(a) * r1], [r.head[0] + Math.cos(a) * (r1 + 34 * S), r.head[1] + Math.sin(a) * (r1 + 34 * S)]], 6, INK, false, null, 900 + n); }
+      const dy = (bt * 160 * S) % (80 * S); x.fillStyle = '#5ab8ff'; x.beginPath(); x.ellipse(r.head[0] + 58 * S, r.head[1] - 10 * S + dy, 9 * S, 14 * S, 0, 0, Math.PI * 2); x.fill(); }
+  if (pose === 'run' || pose === 'walk') { for (let n = 0; n < 4; n++) line([[r.head[0] - (140 + n * 16) * S, r.head[1] + (40 + n * 50) * S], [r.head[0] - (230 + n * 24) * S, r.head[1] + (40 + n * 50) * S]], 6, 'rgba(0,0,0,0.35)', false, null, 950 + n); }
+  if (c.face === 'happy' && pose !== 'cheer') { for (let n = 0; n < 3; n++) { const a = t * 2 + n * 2.1; drawStar(r.head[0] + Math.cos(a) * 90 * S, r.head[1] - 60 * S + Math.sin(a) * 30 * S, 10 * S, '#f6c23e'); } }
+}
+function drawStar(px, py, rr, col) { x.beginPath(); for (let n = 0; n < 10; n++) { const a = n * Math.PI / 5 - Math.PI / 2, q = n % 2 ? rr * 0.45 : rr; x.lineTo(px + Math.cos(a) * q, py + Math.sin(a) * q); } x.closePath(); x.fillStyle = col; x.fill(); x.lineWidth = 3 * S; x.strokeStyle = INK; x.stroke(); }
 window.renderAt = (t) => {
   boil = Math.floor(t * 8); const i = beatAt(t), B = CFG.beats[i], v = B.v || {}; const bt = t - B.ini; const span = Math.max(0.5, B.fin - B.ini);
   // camera
   const cut = Math.max(0, 1 - bt / 0.25); const zoom = (v.zoom || (H > W ? 1.0 : 1.22)) * (1 + 0.04 * ease(bt / (span + 0.4))) + cut * 0.035;
-  x.setTransform(1, 0, 0, 1, 0, 0); x.fillStyle = v.bg || PAPER; x.fillRect(0, 0, W, H);
-  // paper grain
-  for (let g = 0; g < 120; g++) { const gx = (Math.sin(g * 91.3 + boil) * 0.5 + 0.5) * W, gy = (Math.sin(g * 47.7 + boil * 3.1) * 0.5 + 0.5) * H; x.fillStyle = 'rgba(0,0,0,0.035)'; x.fillRect(gx, gy, 2 * S, 2 * S); }
+  x.setTransform(1, 0, 0, 1, 0, 0);
+  const pal = PALS[(v.pal ?? sectionOf(i)) % PALS.length];
+  { const gr = x.createLinearGradient(0, 0, 0, H); gr.addColorStop(0, pal[0]); gr.addColorStop(1, pal[1]); x.fillStyle = gr; x.fillRect(0, 0, W, H);
+    x.globalAlpha = 0.12; for (let k = 0; k < 14; k++) { const r = (120 + (k * 53) % 220) * S, ox = ((k * 197 + t * (12 + k % 5 * 6) * S) % (W + 2 * r)) - r, oy = ((k * 311) % 100) / 100 * H * 0.75; x.beginPath(); x.arc(ox, oy, r, 0, Math.PI * 2); x.fillStyle = pal[2]; x.fill(); }
+    x.globalAlpha = 0.18; for (let k = 0; k < 40; k++) { const ox = ((k * 97 + t * 30) % W), oy = ((k * 211) % H) * 0.7 + Math.sin(t + k) * 10; x.fillStyle = '#ffffff'; x.fillRect(ox, oy, 5 * S, 5 * S); } x.globalAlpha = 1; }
   const fx = (v.focus ? v.focus[0] : 0.5) * W, fy = (v.focus ? v.focus[1] : 0.55) * H;
-  x.translate(W / 2, H / 2); x.scale(zoom, zoom); x.translate(-fx, -fy);
+  const whip = Math.pow(Math.max(0, 1 - bt / 0.22), 2) * (i % 2 ? 1 : -1) * W * 0.12;
+  const shocky = (v.chars || []).some(c => c.pose === 'shock' || c.face === 'shock') || v.shake; const shk = shocky ? Math.max(0, 1 - bt / 0.5) * 14 * S : 0;
+  x.translate(W / 2 + whip + (Math.random() - 0.5) * shk, H / 2 + (Math.random() - 0.5) * shk); x.scale(zoom, zoom); x.rotate(Math.sin(t * 0.4) * 0.006 + whip / W * 0.05); x.translate(-fx, -fy);
   const ground = (v.ground || 0.8) * H;
-  if (v.ground !== 0) line([[-W * 0.2, ground], [W * 1.2, ground]], 6, '#d9d6cf', false, null, 999);
+  if (v.ground !== 0) { x.fillStyle = pal[3]; x.fillRect(-W * 0.3, ground, W * 1.6, H); x.fillStyle = 'rgba(0,0,0,0.12)'; x.fillRect(-W * 0.3, ground, W * 1.6, 14 * S); line([[-W * 0.3, ground], [W * 1.3, ground]], 7, INK, false, null, 999); }
   // props
   (v.props || []).forEach((p, k) => { const kin = back((bt - (p.d || 0)) / 0.35); if (kin <= 0.01) return; const fl = Math.sin(t * 2 + k) * 6 * S * (p.float ? 1 : 0);
     const px = p.x * W + (p.dx || 0) * W * ease(bt / span), py = p.y * H + fl;
-    x.save(); x.translate(px, py); x.scale(kin, kin); x.translate(-px, -py); drawProp(p.k, px, py, (p.s || 1) * 1.5 * (H > W ? 1.35 : 1), t, p.anim); x.restore();
+    x.save(); x.translate(px, py); x.scale(kin, kin); x.rotate(Math.sin(t * 1.7 + k) * 0.05); x.translate(-px, -py + Math.sin(t * 2.3 + k) * 5 * S); drawProp(p.k, px, py, (p.s || 1) * 1.5 * (H > W ? 1.35 : 1), t, p.anim); x.restore();
     if (p.label) text(p.label, px, py + (p.ly || 95) * (p.s || 1) * 1.5 * S, p.lsize || 48, p.lcol || INK, 800); });
   // characters
   (v.chars || []).forEach((c, k) => { const id = c.id || 'me'; const prev = findPrevChar(i, id); const pa = P[(prev && prev.pose) || c.pose] || P.stand, pb = P[c.pose] || P.stand;
     const pk = ease(bt / 0.3); const pose = poseAt(pa, pb, pk);
     const cx0 = prev ? prev.x : c.x; const cx = lerp(cx0, c.x, ease(bt / Math.min(span, (c.move || 0.5)))) * W + (c.walk ? (bt * c.walk * W) : 0);
+    { const gy = c.y ? c.y * H : ground; x.fillStyle = 'rgba(0,0,0,0.18)'; x.beginPath(); x.ellipse(cx + (pose.lie > 0.5 ? 120 * S : 0), gy + 4 * S, (pose.lie > 0.5 ? 220 : 90) * S, 16 * S, 0, 0, Math.PI * 2); x.fill(); }
     if (pose.sitY > 0.5 && !c.nochair) drawProp('chair', cx - (c.flip ? -1 : 1) * 10 * S, (c.y ? c.y * H : ground) - 80 * 1.4 * S, 1.4, t, false);
     const r = stickman(cx, c.y ? c.y * H : ground, pose, c.face || 'neutral', (c.s || 1) * 1.4, c.flip, t, k + (id === 'me' ? 0 : 7), c.hold);
+    fxParticles(c, r, bt, t, k);
     if (c.say) { const kin = back((bt - 0.15) / 0.3); if (kin > 0) { const bx = r.head[0] + (c.flip ? -1 : 1) * 230 * S, by = r.head[1] - 130 * S; x.save(); x.translate(bx, by); x.scale(kin, kin);
       x.font = `800 ${44 * S}px Inter, sans-serif`; const tw = Math.min(700 * S, x.measureText(c.say).width + 60 * S); rect(-tw / 2, -46 * S, tw, 92 * S, '#ffffff', 5, 77); text(c.say, 0, 0, 44, INK, 800); x.restore(); } } });
   // big text / numbers
-  if (v.big) { const kin = back((bt - (v.bigd || 0.1)) / 0.35); if (kin > 0) { x.save(); const bx = (v.bigx ?? 0.5) * W, by = (v.bigy ?? 0.3) * H; x.translate(bx, by); x.scale(kin, kin); x.rotate(-0.04);
-    text(v.big, 0, 0, v.bigs || 120, v.bigc || COL.red, 900); x.restore(); } }
+  if (v.big) { const kin = back((bt - (v.bigd || 0.1)) / 0.35); if (kin > 0) { x.save(); const bx = (v.bigx ?? 0.5) * W, by = Math.max(v.bigy ?? 0.3, 0.27) * H; x.translate(bx, by); x.scale(kin, kin); x.rotate(-0.04);
+    x.save(); x.rotate(t * 0.6); for (let n = 0; n < 12; n++) { x.rotate(Math.PI / 6); x.beginPath(); x.moveTo(0, 0); x.lineTo(-40 * S, -(v.bigs || 120) * 2.2 * S); x.lineTo(40 * S, -(v.bigs || 120) * 2.2 * S); x.closePath(); x.fillStyle = 'rgba(255,255,255,0.35)'; x.fill(); } x.restore();
+    x.font = `900 ${(v.bigs || 120) * S}px "Inter Display", Inter, sans-serif`; x.textAlign = 'center'; x.textBaseline = 'middle';
+    x.lineJoin = 'round'; x.lineWidth = 22 * S; x.strokeStyle = INK; x.fillStyle = 'rgba(0,0,0,0.25)'; x.fillText(v.big, 8 * S, 10 * S); x.strokeText(v.big, 0, 0); x.fillStyle = v.bigc || COL.red; x.fillText(v.big, 0, 0); x.restore(); } }
   x.setTransform(1, 0, 0, 1, 0, 0);
   // header (screen space)
   if (v.head) { const kin = ease(bt / 0.25); x.save(); x.globalAlpha = 1; const hs = 66 * S; x.font = `900 ${hs}px "Inter Display", Inter, sans-serif`; const tw = x.measureText(v.head).width + 60 * S;
-    const hx = W / 2, hy = (H > W ? 300 : 100 * S); x.translate(0, (1 - kin) * -120 * S); rect(hx - tw / 2, hy - hs * 0.85, tw, hs * 1.7, COL.yellow, 6, 555); text(v.head, hx, hy + 2 * S, 66, INK, 900); x.restore(); }
+    const hx = W / 2, hy = (H > W ? 300 : 100 * S); x.translate(0, (1 - kin) * -120 * S); x.fillStyle = 'rgba(0,0,0,0.25)'; x.fillRect(hx - tw / 2 + 10 * S, hy - hs * 0.85 + 10 * S, tw, hs * 1.7); rect(hx - tw / 2, hy - hs * 0.85, tw, hs * 1.7, '#ffffff', 7, 555); text(v.head, hx, hy + 2 * S, 66, INK, 900); x.restore(); }
   // captions (shorts)
   if (CFG.captions) { const words = B.texto.split(/\s+/); const p = Math.max(0, Math.min(1, (t - B.ini) / span)); const tot = words.reduce((a, w) => a + w.length + 1, 0); let acc = 0, wi = words.length - 1;
     for (let k2 = 0; k2 < words.length; k2++) { acc += words[k2].length + 1; if (p * tot < acc) { wi = k2; break; } }
-    const gn = H > W ? 2 : 3; const g0 = Math.floor(wi / gn) * gn; const grp = words.slice(g0, g0 + gn); const cy = H * 0.72; let fs = 104;
+    const gn = H > W ? 2 : 3; const g0 = Math.floor(wi / gn) * gn; const grp = words.slice(g0, g0 + gn); const cy = H > W ? H * 0.72 : H * 0.9; let fs = H > W ? 104 : 78 * S;
     x.font = `900 ${fs}px "Inter Display", Inter, sans-serif`; let tw0 = grp.reduce((a, w) => a + x.measureText(w.toUpperCase() + ' ').width, 0); if (tw0 > W * 0.88) { fs = fs * W * 0.88 / tw0; x.font = `900 ${fs}px "Inter Display", Inter, sans-serif`; }
     x.textAlign = 'left'; x.textBaseline = 'middle';
     const ws = grp.map(w => x.measureText(w.toUpperCase() + ' ').width); let cx2 = W / 2 - ws.reduce((a, b) => a + b, 0) / 2;

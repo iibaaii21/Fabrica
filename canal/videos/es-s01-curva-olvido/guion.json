@@ -1,0 +1,239 @@
+{
+ "titulo": "¿Por qué olvidas lo que estudiaste hace 1 hora?",
+ "lang": "es",
+ "frases": [
+  {
+   "t": "Estudias dos horas. Una hora después, ya has olvidado la mitad.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.42,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.74,
+      "y": 0.32,
+      "s": 0.8
+     }
+    ],
+    "big": "-50%",
+    "bigx": 0.72,
+    "bigy": 0.24,
+    "bigs": 130,
+    "ground": 0.6
+   },
+   "esc": "A"
+  },
+  {
+   "t": "No es que seas tonto. Es la curva del olvido.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "graph",
+      "x": 0.68,
+      "y": 0.38,
+      "s": 0.9
+     }
+    ],
+    "ground": 0.6
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En mil ochocientos ochenta y cinco, un psicólogo llamado Ebbinghaus puso a prueba su propia memoria,",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "read",
+      "face": "neutral",
+      "hold": "notes"
+     }
+    ],
+    "big": "1885",
+    "bigx": 0.72,
+    "bigy": 0.24,
+    "bigs": 120,
+    "bigc": "#f6c23e",
+    "ground": 0.6
+   },
+   "esc": "A",
+   "pantalla": "En 1885, un psicólogo llamado Ebbinghaus puso a prueba su propia memoria,"
+  },
+  {
+   "t": "y descubrió que los recuerdos caen muy rápido al principio, y luego más despacio.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "sad",
+      "face": "sad"
+     }
+    ],
+    "props": [
+     {
+      "k": "graph",
+      "x": 0.66,
+      "y": 0.38,
+      "s": 0.85
+     },
+     {
+      "k": "arrowdown",
+      "x": 0.8,
+      "y": 0.25,
+      "s": 0.5,
+      "d": 0.3
+     }
+    ],
+    "ground": 0.6
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Releer tus apuntes no lo arregla. Solo hace que te suenen.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "read",
+      "face": "neutral",
+      "hold": "book"
+     }
+    ],
+    "props": [
+     {
+      "k": "cross",
+      "x": 0.78,
+      "y": 0.3,
+      "s": 0.8,
+      "d": 0.3
+     }
+    ],
+    "ground": 0.6
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Lo que lo arregla es cerrar el libro, y obligarte a recordar.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.75,
+      "y": 0.38,
+      "s": 0.8
+     },
+     {
+      "k": "cross",
+      "x": 0.75,
+      "y": 0.38,
+      "s": 0.5,
+      "d": 0.4
+     }
+    ],
+    "ground": 0.6
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y luego hacerlo otra vez mañana, y otra dentro de tres días.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "calendar",
+      "x": 0.6,
+      "y": 0.3,
+      "s": 0.55,
+      "label": "Día 1"
+     },
+     {
+      "k": "calendar",
+      "x": 0.78,
+      "y": 0.3,
+      "s": 0.55,
+      "d": 0.5,
+      "label": "Día 3"
+     }
+    ],
+    "ground": 0.6
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Cada vez que lo vuelves a sacar, la curva se aplana.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.42,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "arrowup",
+      "x": 0.78,
+      "y": 0.32,
+      "s": 1
+     }
+    ],
+    "ground": 0.6
+   },
+   "esc": "A"
+  },
+  {
+   "t": "He ordenado todas las técnicas de estudio, de inútil a genial. El vídeo completo está en el canal.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.4,
+      "pose": "pointup",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "trophy",
+      "x": 0.75,
+      "y": 0.33,
+      "s": 0.9,
+      "float": 1
+     }
+    ],
+    "ground": 0.6
+   },
+   "esc": "A"
+  }
+ ],
+ "fuentes": [
+  "Ebbinghaus (1885), Über das Gedächtnis; forgetting curve",
+  "Dunlosky et al. (2013), Psychological Science in the Public Interest"
+ ],
+ "cfg": 0.0,
+ "expresividad": 0.5
+}

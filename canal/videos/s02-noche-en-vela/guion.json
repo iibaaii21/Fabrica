@@ -1,0 +1,54 @@
+{
+ "titulo": "¿Vas a pasar la noche en vela antes del examen?",
+ "voz": "chatterbox-voz2",
+ "velocidad": 1.0,
+ "frases": [
+  {
+   "t": "¿Vas a pasar la noche en vela antes del examen?",
+   "esc": "A"
+  },
+  {
+   "t": "Espera, porque te puede salir caro.",
+   "esc": "A"
+  },
+  {
+   "t": "Mientras duermes, tu cerebro ordena y guarda lo que aprendiste durante el día.",
+   "esc": "B"
+  },
+  {
+   "t": "En mil novecientos veinticuatro, dos psicólogos ya lo comprobaron.",
+   "esc": "C",
+   "pantalla": "En 1924, dos psicólogos ya lo comprobaron."
+  },
+  {
+   "t": "Después de dormir, se olvidaba menos que después de pasar las mismas horas despierto.",
+   "esc": "C"
+  },
+  {
+   "t": "Y en dos mil siete, en Harvard, quien estudió tras una noche sin dormir recordó hasta un cuarenta por ciento menos.",
+   "esc": "D",
+   "pantalla": "Y en 2007, en Harvard, quien estudió tras una noche sin dormir recordó hasta un 40 % menos."
+  },
+  {
+   "t": "Así que estudia de día y repasa un poco antes de acostarte.",
+   "esc": "E"
+  },
+  {
+   "t": "Y luego duerme. Dormir también es estudiar.",
+   "esc": "E"
+  },
+  {
+   "t": "Si vas justo de tiempo, recorta horas de estudio antes que horas de sueño.",
+   "esc": "E"
+  },
+  {
+   "t": "Guárdalo para la semana de exámenes y sígueme para más trucos que funcionan.",
+   "esc": "E"
+  }
+ ],
+ "fuentes": [
+  "Jenkins, J. G. y Dallenbach, K. M. (1924). Obliviscence during sleep and waking. American Journal of Psychology, 35, 605-612. (Se olvida menos si el intervalo incluye sueño.)",
+  "Yoo, S.-S., Hu, P. T., Gujar, N., Jolesz, F. A. y Walker, M. P. (2007). A deficit in the ability to form new human memories without sleep. Nature Neuroscience, 10, 385-392. https://pubmed.ncbi.nlm.nih.gov/17293859/ · Harvard Gazette (2007): resultados «hasta un 40 % peores» tras unas 35 h sin dormir.",
+  "Gais, S., Lucas, B. y Born, J. (2006). Sleep after learning aids memory recall. Learning & Memory, 13, 259-262. (Aprender poco antes de dormir favorece el recuerdo.)"
+ ]
+}

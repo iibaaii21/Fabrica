@@ -9,15 +9,21 @@ for L in ['B','C','D','E']:
     try: st=first(L)-0.9
     except StopIteration: continue
     cues+= [(st,'move_whoosh_01',0.55),(st+0.95,'combat_hit_02',0.25)]
-try:
-    cues+= [(first('B'),'misc_pop_01',0.35)]
-    s4=segs[4]; cues+=[(s4['ini']+0.2,'misc_bounce_01',0.25),(s4['ini']+(s4['fin']-s4['ini'])*0.45,'combat_hit_01',0.35)]
-    s6=segs[6]; cues+=[(s6['ini']+0.6,'move_dash_01',0.4)]
-    s7=segs[7]; cues+=[(s7['ini'],'pickup_powerup_01',0.18)]
-    s8,s10=segs[8],segs[10]; span=s10['fin']-s8['ini']-0.3
-    for r in [0,0.22,0.47,0.73]: cues.append((s8['ini']+0.3+r*span,'ui_click_01',0.5))
-    cues.append((first('E')-0.2,'state_levelup_01',0.3))
-except Exception as e: print('aviso',e)
+import os
+if os.path.exists(d+'/sfx.json'):
+    # marcas propias del vídeo: [{"seg": i, "pos": 0..1 (fracción del segmento) o "off": segundos, "s": sonido, "g": ganancia}]
+    for c in json.load(open(d+'/sfx.json')):
+        s=segs[c['seg']]; t=s['ini']+c.get('off',0)+c.get('pos',0)*(s['fin']-s['ini']); cues.append((t,c['s'],c.get('g',0.35)))
+else:
+ try:
+     cues+= [(first('B'),'misc_pop_01',0.35)]
+     s4=segs[4]; cues+=[(s4['ini']+0.2,'misc_bounce_01',0.25),(s4['ini']+(s4['fin']-s4['ini'])*0.45,'combat_hit_01',0.35)]
+     s6=segs[6]; cues+=[(s6['ini']+0.6,'move_dash_01',0.4)]
+     s7=segs[7]; cues+=[(s7['ini'],'pickup_powerup_01',0.18)]
+     s8,s10=segs[8],segs[10]; span=s10['fin']-s8['ini']-0.3
+     for r in [0,0.22,0.47,0.73]: cues.append((s8['ini']+0.3+r*span,'ui_click_01',0.5))
+     cues.append((first('E')-0.2,'state_levelup_01',0.3))
+ except Exception as e: print('aviso',e)
 out=np.zeros(int((T['dur']+1)*SR))
 for t,n,g in cues:
     a=load(n)*g; i=int(max(0,t)*SR); j=min(len(out),i+len(a)); out[i:j]+=a[:j-i]

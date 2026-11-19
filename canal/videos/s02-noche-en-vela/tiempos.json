@@ -1,0 +1,65 @@
+{
+ "dur": 39.846,
+ "segs": [
+  {
+   "ini": 0.35,
+   "fin": 2.857,
+   "texto": "¿Vas a pasar la noche en vela antes del examen?",
+   "esc": "A"
+  },
+  {
+   "ini": 3.157,
+   "fin": 4.829,
+   "texto": "Espera, porque te puede salir caro.",
+   "esc": "A"
+  },
+  {
+   "ini": 5.129,
+   "fin": 9.568,
+   "texto": "Mientras duermes, tu cerebro ordena y guarda lo que aprendiste durante el día.",
+   "esc": "B"
+  },
+  {
+   "ini": 9.868,
+   "fin": 12.968,
+   "texto": "En 1924, dos psicólogos ya lo comprobaron.",
+   "esc": "C"
+  },
+  {
+   "ini": 13.268,
+   "fin": 18.178,
+   "texto": "Después de dormir, se olvidaba menos que después de pasar las mismas horas despierto.",
+   "esc": "C"
+  },
+  {
+   "ini": 18.478,
+   "fin": 24.073,
+   "texto": "Y en 2007, en Harvard, quien estudió tras una noche sin dormir recordó hasta un 40 % menos.",
+   "esc": "D"
+  },
+  {
+   "ini": 24.373,
+   "fin": 27.684,
+   "texto": "Así que estudia de día y repasa un poco antes de acostarte.",
+   "esc": "E"
+  },
+  {
+   "ini": 27.984,
+   "fin": 30.574,
+   "texto": "Y luego duerme. Dormir también es estudiar.",
+   "esc": "E"
+  },
+  {
+   "ini": 30.874,
+   "fin": 35.244,
+   "texto": "Si vas justo de tiempo, recorta horas de estudio antes que horas de sueño.",
+   "esc": "E"
+  },
+  {
+   "ini": 35.544,
+   "fin": 39.546,
+   "texto": "Guárdalo para la semana de exámenes y sígueme para más trucos que funcionan.",
+   "esc": "E"
+  }
+ ]
+}

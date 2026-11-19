@@ -1,0 +1,222 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#0d0b2a}
+#c{position:absolute;inset:0}
+#ov{position:absolute;inset:0;pointer-events:none;font-family:"Inter Display",Inter,sans-serif}
+#hook{position:absolute;left:70px;right:70px;top:250px;text-align:center;font-weight:900;font-size:104px;line-height:1.02;color:#fff;letter-spacing:-.02em;text-shadow:0 8px 40px rgba(0,0,0,.55)}
+#hook em{font-style:normal;color:#ffc145}
+#cap{position:absolute;left:60px;right:60px;top:1330px;text-align:center;font-weight:900;font-size:92px;line-height:1.05;color:#fff;text-transform:uppercase;letter-spacing:-.01em;
+ -webkit-text-stroke:10px #0d0b2a;paint-order:stroke fill;text-shadow:0 10px 30px rgba(0,0,0,.5)}
+#cap span.on{color:#ffc145}
+#badge{position:absolute;left:50%;top:180px;transform:translateX(-50%);font-weight:900;font-size:56px;color:#0d0b2a;background:#ffc145;padding:14px 34px;border-radius:999px;letter-spacing:.02em;white-space:nowrap}
+#bar{position:absolute;left:0;top:0;height:10px;background:linear-gradient(90deg,#ff5d73,#ffc145,#3ee6ff)}
+</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+</head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<div id="ov"><div id="bar"></div><div id="badge" hidden></div><div id="hook" hidden></div><div id="cap"></div></div>
+<script type="module">
+import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+const W = 1080, H = 1920;
+let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+const C = { coral: 0xff5d73, amber: 0xffc145, cyan: 0x3ee6ff, lime: 0xa6ff5c, violet: 0x8a6cff };
+const ease = x => x < 0 ? 0 : x > 1 ? 1 : x * x * (3 - 2 * x);
+const clamp01 = x => Math.max(0, Math.min(1, x));
+const lerp = (a, b, t) => a + (b - a) * t;
+
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: true, preserveDrawingBuffer: true });
+renderer.setSize(W, H, false); renderer.setPixelRatio(1);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x120c33, 0.018);
+const camera = new THREE.PerspectiveCamera(50, W / H, 0.1, 400);
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+composer.addPass(new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), 0.55, 0.5, 0.72));
+composer.addPass(new OutputPass());
+
+// background gradient sphere
+const bgGeo = new THREE.SphereGeometry(250, 32, 16);
+const bgMat = new THREE.ShaderMaterial({ side: THREE.BackSide, depthWrite: false, fog: false,
+  uniforms: { t: { value: 0 } },
+  vertexShader: 'varying vec3 p; void main(){ p = normalize(position); gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.); }',
+  fragmentShader: 'varying vec3 p; uniform float t; void main(){ float h = p.y*0.5+0.5; vec3 a = vec3(0.05,0.04,0.16), b = vec3(0.16,0.06,0.26), c = vec3(0.02,0.10,0.20); vec3 col = mix(a,b,h); col = mix(col, c, 0.5+0.5*sin(p.x*3.0+t*0.2)); gl_FragColor = vec4(col*0.9,1.); }' });
+scene.add(new THREE.Mesh(bgGeo, bgMat));
+
+scene.add(new THREE.AmbientLight(0x8877ff, 0.55));
+const key = new THREE.DirectionalLight(0xffffff, 1.6); key.position.set(10, 20, 15); scene.add(key);
+const p1 = new THREE.PointLight(C.coral, 30, 60); scene.add(p1);
+const p2 = new THREE.PointLight(C.cyan, 30, 60); scene.add(p2);
+
+// floating shapes across the whole world
+const floaters = [];
+const fGeos = [new THREE.IcosahedronGeometry(1, 0), new THREE.TorusGeometry(0.8, 0.28, 16, 40), new THREE.OctahedronGeometry(1, 0), new THREE.TorusKnotGeometry(0.6, 0.2, 80, 12)];
+const palette = [C.coral, C.amber, C.cyan, C.lime, C.violet];
+for (let i = 0; i < 70; i++) {
+  const m = new THREE.Mesh(fGeos[i % 4], new THREE.MeshStandardMaterial({ color: palette[i % 5], roughness: 0.25, metalness: 0.35, emissive: palette[i % 5], emissiveIntensity: 0.12 }));
+  const base = new THREE.Vector3(rnd() * 200 - 20, rnd() * 50 - 25, -10 - rnd() * 40);
+  if (Math.abs(base.y) < 9 && base.z > -16) base.z -= 14;
+  m.userData = { base, sp: 0.2 + rnd() * 0.5, ph: rnd() * 6.28, s: 0.5 + rnd() * 1.3 };
+  m.scale.setScalar(m.userData.s); scene.add(m); floaters.push(m);
+}
+// particles
+const pg = new THREE.BufferGeometry(); const pp = [];
+for (let i = 0; i < 2500; i++) pp.push(rnd() * 220 - 30, rnd() * 80 - 40, rnd() * 70 - 60);
+pg.setAttribute('position', new THREE.Float32BufferAttribute(pp, 3));
+const particles = new THREE.Points(pg, new THREE.PointsMaterial({ color: 0xcfc6ff, size: 0.12, transparent: true, opacity: 0.8 }));
+scene.add(particles);
+
+// helpers: canvas text texture
+function textTex(lines, opts = {}) {
+  const w = opts.w || 1024, h = opts.h || 512, cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+  const x = cv.getContext('2d');
+  if (opts.bg) { x.fillStyle = opts.bg; x.beginPath(); x.roundRect(0, 0, w, h, opts.r ?? 48); x.fill(); }
+  if (opts.lined) { x.strokeStyle = 'rgba(80,110,200,.35)'; x.lineWidth = 4; for (let y = 120; y < h; y += 70) { x.beginPath(); x.moveTo(40, y); x.lineTo(w - 40, y); x.stroke(); } x.strokeStyle = 'rgba(255,93,115,.6)'; x.beginPath(); x.moveTo(110, 0); x.lineTo(110, h); x.stroke(); }
+  x.textAlign = 'center'; x.textBaseline = 'middle';
+  const lh = opts.lh || 1.1, fs = opts.fs || 120;
+  lines.forEach((l, i) => { x.font = `${opts.weight || 900} ${fs}px "Inter Display", Inter, sans-serif`; x.fillStyle = opts.color || '#fff'; x.fillText(l, w / 2, h / 2 + (i - (lines.length - 1) / 2) * fs * lh); });
+  const t = new THREE.CanvasTexture(cv); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t;
+}
+function label(lines, scale, opts) { const m = new THREE.Mesh(new THREE.PlaneGeometry(scale * 2, scale), new THREE.MeshBasicMaterial({ map: textTex(lines, opts), transparent: true, depthWrite: false })); return m; }
+
+// curve helper: progressive tube
+function tube(points, color, r = 0.16) {
+  const curve = new THREE.CatmullRomCurve3(points);
+  const g = new THREE.TubeGeometry(curve, points.length * 6, r, 12, false);
+  const m = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.9, roughness: 0.3 }));
+  m.userData.total = g.index.count; g.setDrawRange(0, 0); return m;
+}
+
+// ---------- stations ----------
+const ST = { A: new THREE.Vector3(0, 0, 0), B: new THREE.Vector3(40, 0, 0), C: new THREE.Vector3(80, 0, 0), D: new THREE.Vector3(120, 0, 0), E: new THREE.Vector3(160, 0, 0) };
+
+// A: notebook pages that fly away
+const pages = [];
+const pageTex = textTex(['', '', ''], { w: 512, h: 700, bg: '#f4f1ea', lined: true, r: 18 });
+for (let i = 0; i < 14; i++) {
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(4.2, 5.6), new THREE.MeshStandardMaterial({ map: pageTex, side: THREE.DoubleSide, roughness: 0.9, transparent: true }));
+  m.position.set(ST.A.x + (i % 2 ? 0.08 : -0.08), -1.5 + i * 0.02, -i * 0.04); m.rotation.z = (rnd() - 0.5) * 0.2;
+  m.userData = { dir: new THREE.Vector3(rnd() * 2 - 1, rnd() * 1.5 - 0.2, rnd() * 0.6 + 0.3).normalize(), spin: new THREE.Vector3(rnd() * 4, rnd() * 4, rnd() * 4), delay: i * 0.12, z0: m.position.z, rz: m.rotation.z };
+  scene.add(m); pages.push(m);
+}
+
+// B: year + forgetting curve
+const year = label(['1885'], 3.2, { fs: 300, color: '#ffc145' }); year.position.set(ST.B.x, 4.6, -1); scene.add(year);
+const who = label(['Hermann Ebbinghaus'], 2.3, { fs: 96, weight: 700, color: '#e9e4ff' }); who.position.set(ST.B.x, 2.3, -1); scene.add(who);
+const axisMat = new THREE.MeshStandardMaterial({ color: 0xbfb6ff, emissive: 0x6f63c7, emissiveIntensity: 0.6 });
+const axX = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.08, 0.08), axisMat); axX.position.set(ST.B.x, -5.5, 0); scene.add(axX);
+const axY = new THREE.Mesh(new THREE.BoxGeometry(0.08, 6.4, 0.08), axisMat); axY.position.set(ST.B.x - 4.8, -2.3, 0); scene.add(axY);
+const fPts = []; for (let i = 0; i <= 40; i++) { const u = i / 40; const ret = 0.25 + 0.75 * Math.exp(-u * 5.2); fPts.push(new THREE.Vector3(ST.B.x - 4.7 + u * 9.3, -5.5 + ret * 6, 0.1)); }
+const fCurve = tube(fPts, C.coral, 0.18); scene.add(fCurve);
+const hourDot = new THREE.Mesh(new THREE.SphereGeometry(0.34, 24, 16), new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xffffff, emissiveIntensity: 2 }));
+const hu = 0.16, hret = 0.25 + 0.75 * Math.exp(-hu * 5.2); hourDot.position.set(ST.B.x - 4.7 + hu * 9.3, -5.5 + hret * 6, 0.2); scene.add(hourDot);
+const minus = label(['−56 %'], 2.4, { fs: 230, color: '#ff5d73' }); minus.position.set(ST.B.x + 1.2, -0.6, 0.8); scene.add(minus);
+const minusSub = label(['en 1 hora'], 2.2, { fs: 120, weight: 700, color: '#ffffff' }); minusSub.position.set(ST.B.x + 1.2, -2.2, 0.8); scene.add(minusSub);
+
+// C: flipping card + neuron network
+const card = new THREE.Group(); card.position.set(ST.C.x, 1.2, 0); scene.add(card);
+const front = new THREE.Mesh(new THREE.PlaneGeometry(6.4, 8.6), new THREE.MeshStandardMaterial({ map: textTex(['APUNTES', '📚'.length ? '' : ''], { w: 640, h: 860, bg: '#ffc145', fs: 120, color: '#1b1340', r: 46 }), roughness: 0.5 }));
+const back = new THREE.Mesh(new THREE.PlaneGeometry(6.4, 8.6), new THREE.MeshStandardMaterial({ map: textTex(['¿Lo sabes', 'explicar', 'sin mirar?'], { w: 640, h: 860, bg: '#3ee6ff', fs: 104, color: '#0d0b2a', r: 46 }), roughness: 0.5 }));
+back.rotation.y = Math.PI; card.add(front, back);
+const edge = new THREE.Mesh(new THREE.BoxGeometry(6.5, 8.7, 0.02), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.4 })); edge.position.z = -0.025; front.position.z = 0.002; back.position.z = -0.052; card.add(edge);
+const neurons = new THREE.Group(); neurons.position.set(ST.C.x, -5.6, 1); scene.add(neurons);
+const nPts = []; for (let i = 0; i < 26; i++) { const v = new THREE.Vector3((rnd() - 0.5) * 9, (rnd() - 0.5) * 3.4, (rnd() - 0.5) * 3); nPts.push(v); const s = new THREE.Mesh(new THREE.SphereGeometry(0.16, 12, 8), new THREE.MeshStandardMaterial({ color: C.lime, emissive: C.lime, emissiveIntensity: 0.2 })); s.position.copy(v); s.userData.ph = rnd(); neurons.add(s); }
+const lineGeo = new THREE.BufferGeometry(); const lp = [];
+for (let i = 0; i < nPts.length; i++) for (let j = i + 1; j < nPts.length; j++) if (nPts[i].distanceTo(nPts[j]) < 2.6) lp.push(nPts[i].x, nPts[i].y, nPts[i].z, nPts[j].x, nPts[j].y, nPts[j].z);
+lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(lp, 3));
+const nLines = new THREE.LineSegments(lineGeo, new THREE.LineBasicMaterial({ color: C.lime, transparent: true, opacity: 0.25 })); neurons.add(nLines);
+
+// D: spaced repetition sawtooth
+const dPts = []; const resets = [0, 0.22, 0.47, 0.73]; const ks = [5.2, 3.0, 1.7, 0.9];
+for (let s = 0; s < 4; s++) { const a = resets[s], b = s < 3 ? resets[s + 1] : 1; for (let i = 0; i <= 14; i++) { const u = a + (b - a) * i / 14; const ret = 0.25 + 0.75 * Math.exp(-(u - a) * ks[s] * 2.2); dPts.push(new THREE.Vector3(ST.D.x - 4.7 + u * 9.3, -5.5 + ret * 6, 0.1)); } }
+const dCurve = tube(dPts, C.lime, 0.17); scene.add(dCurve);
+const dAxX = axX.clone(); dAxX.position.x = ST.D.x; scene.add(dAxX); const dAxY = axY.clone(); dAxY.position.x = ST.D.x - 4.8; scene.add(dAxY);
+const dLabels = ['HOY', 'MAÑANA', '3 DÍAS', '1 SEMANA'].map((t, i) => { const l = label([t], 1.7, { fs: 150, color: ['#ffc145', '#3ee6ff', '#ff5d73', '#a6ff5c'][i] }); l.position.set(ST.D.x - 4.7 + resets[i] * 9.3 + 0.9, 1.6 + (i % 2) * 1.3, 0.4); scene.add(l); return l; });
+
+// E: bookmark
+const bm = new THREE.Shape(); bm.moveTo(-1.6, 2.4); bm.lineTo(1.6, 2.4); bm.lineTo(1.6, -2.4); bm.lineTo(0, -1.2); bm.lineTo(-1.6, -2.4); bm.lineTo(-1.6, 2.4);
+const bookmark = new THREE.Mesh(new THREE.ExtrudeGeometry(bm, { depth: 0.6, bevelEnabled: true, bevelThickness: 0.15, bevelSize: 0.15, bevelSegments: 4 }), new THREE.MeshStandardMaterial({ color: C.amber, emissive: C.amber, emissiveIntensity: 0.25, roughness: 0.25, metalness: 0.3 }));
+bookmark.position.set(ST.E.x, 0.5, 0); scene.add(bookmark);
+
+// ---------- timeline ----------
+let T = null;
+window.setup = (timing) => { T = timing; };
+const segOf = t => T.segs.findIndex(s => t >= s.ini - 0.0 && t < (s.fin + 0.33));
+function stationAt(t) {
+  // camera target follows the scene letter of the current/next segment
+  const s = T.segs; let cur = s[0];
+  for (const x of s) if (t >= x.ini - 0.6) cur = x;
+  return cur.esc;
+}
+const camPose = { A: [0, 0.5, 14], B: [40, -0.5, 19.5], C: [80, -1.2, 16], D: [120, -1.2, 21.5], E: [160, 0.3, 12] };
+let camPrev = null;
+function firstIni(letter) { return T.segs.find(s => s.esc === letter).ini; }
+
+function setCaption(t) {
+  const cap = document.getElementById('cap'), hook = document.getElementById('hook'), badge = document.getElementById('badge');
+  const i = T.segs.findIndex(s => t >= s.ini && t <= s.fin + 0.3);
+  hook.hidden = !(t < T.segs[0].fin + 0.3);
+  if (!hook.hidden) hook.innerHTML = '¿NO TE ACUERDAS DE LO QUE ESTUDIASTE <em>HACE 1 HORA?</em>';
+  const c = T.segs[2] ? null : null;
+  const bt = t >= firstIni('C') - 0.2 && t < firstIni('D') - 0.2 ? 'TRUCO 1 · RECUERDO ACTIVO' : t >= firstIni('D') - 0.2 && t < firstIni('E') - 0.2 ? 'TRUCO 2 · REPASO ESPACIADO' : '';
+  badge.hidden = !bt; badge.textContent = bt;
+  if (i < 0 || i === 0) { cap.innerHTML = ''; return; }
+  const s = T.segs[i]; const words = s.texto.split(/\s+/);
+  const total = words.reduce((a, w) => a + w.length + 1, 0); let acc = 0; let wi = 0;
+  const p = clamp01((t - s.ini) / (s.fin - s.ini)) * total;
+  for (let k = 0; k < words.length; k++) { acc += words[k].length + 1; if (p < acc) { wi = k; break; } wi = k; }
+  const g0 = Math.floor(wi / 3) * 3; const grp = words.slice(g0, g0 + 3);
+  cap.innerHTML = grp.map((w, k) => `<span class="${g0 + k === wi ? 'on' : ''}">${w.replace(/[<>&]/g, '')}</span>`).join(' ');
+  const pop = clamp01(((t - s.ini) * 30) % 30 / 4);
+  cap.style.transform = `scale(${1 + 0.06 * (1 - ease(pop))})`;
+}
+
+window.renderAt = (t) => {
+  bgMat.uniforms.t.value = t;
+  document.getElementById('bar').style.width = (100 * t / T.dur) + '%';
+  // floaters & particles
+  for (const m of floaters) { const u = m.userData; m.position.set(u.base.x + Math.sin(t * u.sp + u.ph) * 1.2, u.base.y + Math.cos(t * u.sp * 0.8 + u.ph) * 1.4, u.base.z); m.rotation.set(t * u.sp, t * u.sp * 0.7, 0); }
+  particles.rotation.y = Math.sin(t * 0.05) * 0.02; particles.position.y = Math.sin(t * 0.3) * 0.4;
+  // camera
+  const letters = ['A', 'B', 'C', 'D', 'E']; let a = 'A', b = 'A', k = 0;
+  for (let i = 1; i < letters.length; i++) { const st = firstIni(letters[i]) - 0.9; if (t >= st) { a = letters[i - 1]; b = letters[i]; k = ease((t - st) / 1.1); } }
+  const pa = camPose[a], pb = camPose[b];
+  const cx = lerp(pa[0], pb[0], k), cy = lerp(pa[1], pb[1], k), cz = lerp(pa[2], pb[2], k) + Math.sin(k * Math.PI) * 5;
+  camera.position.set(cx + Math.sin(t * 0.45) * 1.3, cy + Math.cos(t * 0.37) * 0.8, cz - Math.sin(t * 0.2) * 0.8);
+  camera.lookAt(cx + Math.sin(t * 0.3) * 0.3, cy * 0.4, 0);
+  p1.position.set(cx - 6, cy + 6, 6); p2.position.set(cx + 6, cy - 5, 5);
+  // A: pages fly
+  const ta = T.segs[1].ini - 0.1;
+  for (const m of pages) { const u = m.userData; const q = Math.max(0, t - ta - u.delay); const f = q * q * 2.2 + q * 3;
+    m.position.set(ST.A.x + u.dir.x * f + (m === pages[0] ? 0 : 0), -1.5 + u.dir.y * f + Math.sin(t * 2 + u.delay) * 0.05, u.z0 + u.dir.z * f);
+    m.rotation.set(u.spin.x * q, u.spin.y * q, u.rz + u.spin.z * q); m.material.opacity = 1 - clamp01((q - 1.2) / 1.2); }
+  // B
+  const tb = firstIni('B'); year.scale.setScalar(ease((t - tb) / 0.6)); who.scale.setScalar(ease((t - tb - 0.8) / 0.6)); year.rotation.y = Math.sin(t * 0.8) * 0.15;
+  const s4 = T.segs[4]; const prog = clamp01((t - s4.ini + 0.4) / (s4.fin - s4.ini - 0.2));
+  fCurve.geometry.setDrawRange(0, Math.floor(fCurve.userData.total * ease(prog) / 3) * 3);
+  const hp = clamp01((prog - 0.2) / 0.2); hourDot.scale.setScalar(ease(hp) * (1 + 0.15 * Math.sin(t * 8)));
+  minus.scale.setScalar(ease((prog - 0.35) / 0.3)); minusSub.scale.setScalar(ease((prog - 0.45) / 0.3));
+  // C
+  const s6 = T.segs[6]; const flip = ease((t - s6.ini - 0.6) / 0.9);
+  card.rotation.y = flip * Math.PI + Math.sin(t * 0.9) * 0.12; card.rotation.x = Math.sin(t * 0.6) * 0.08; card.position.y = 1.2 + Math.sin(t * 1.3) * 0.15;
+  const s7 = T.segs[7]; const glow = clamp01((t - s7.ini) / (s7.fin - s7.ini));
+  neurons.children.forEach((n, i) => { if (n.material && n.material.emissiveIntensity !== undefined && n.isMesh) { const on = glow > n.userData.ph ? 1 : 0; n.material.emissiveIntensity = 0.2 + on * (2.2 + Math.sin(t * 6 + i) * 0.6); } });
+  nLines.material.opacity = 0.2 + 0.6 * glow; neurons.rotation.y = Math.sin(t * 0.4) * 0.3;
+  // D
+  const s8 = T.segs[8], s10 = T.segs[10]; const dprog = clamp01((t - s8.ini - 0.3) / (s10.fin - s8.ini - 0.3));
+  dCurve.geometry.setDrawRange(0, Math.floor(dCurve.userData.total * dprog / 3) * 3);
+  dLabels.forEach((l, i) => { const at = resets[i]; l.scale.setScalar(ease((dprog - at) / 0.06)); l.position.y += 0; });
+  // E
+  const te = firstIni('E'); const be = ease((t - te + 0.4) / 0.8);
+  bookmark.scale.setScalar(0.001 + be); bookmark.rotation.y = t * 1.2; bookmark.position.y = 0.5 + Math.sin(t * 2) * 0.25;
+  setCaption(t);
+  composer.render();
+};
+window.ready = true;
+</script></body></html>

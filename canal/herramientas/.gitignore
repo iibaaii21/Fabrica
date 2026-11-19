@@ -1,3 +1,5 @@
 node_modules/
 kokoro/
 tts-venv/
+cb-venv/
+cb-model/

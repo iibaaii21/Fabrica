@@ -60,7 +60,7 @@ function stickman(cx, ground, pose, face, scale, flip, t, id, holdItem) {
   const legLen = L.th + L.sh; const sitDrop = (pose.sitY || 0) * L.th * 0.95;
   const jump = (pose.jump || 0) * s * Math.abs(Math.sin(t * 5 + id));
   let hip = [cx, ground - legLen + sitDrop - jump + bob * 0.3];
-  if (lie > 0.01) { x.translate(cx, ground - 22 * s * lie); x.rotate(-Math.PI / 2 * lie * f); x.translate(-cx, -(ground - 22 * s * lie)); hip = [cx, ground - legLen]; }
+  if (lie > 0.01) { x.translate(cx + 250 * s * lie * f, ground - 22 * s * lie); x.rotate(-Math.PI / 2 * lie * f); x.translate(-cx, -(ground - 22 * s * lie)); hip = [cx, ground - legLen]; }
   const lean = (pose.lean || 0) * Math.PI / 180 * f;
   const neck = [hip[0] + Math.sin(lean) * L.torso, hip[1] - Math.cos(lean) * L.torso + bob];
   const dir = (a) => [Math.sin(a * Math.PI / 180) * f, Math.cos(a * Math.PI / 180)];
@@ -138,14 +138,14 @@ function drawProp(k, px, py, s0, t, anim) {
 
 // ---------- scene rendering ----------
 let last = {};
-window.setup = (cfg) => { CFG = cfg; W = cfg.w; H = cfg.h; cv.width = W; cv.height = H; S = Math.min(W / 1920, H / 1080) * (H > W ? 1.75 : 1); };
+window.setup = (cfg) => { CFG = cfg; W = cfg.w; H = cfg.h; cv.width = W; cv.height = H; S = H > W ? 1.18 : Math.min(W / 1920, H / 1080); };
 function beatAt(t) { const b = CFG.beats; let i = 0; for (let k = 0; k < b.length; k++) if (t >= b[k].ini - 0.05) i = k; return i; }
 function findPrevChar(i, id) { for (let k = i - 1; k >= 0; k--) { const c = (CFG.beats[k].v.chars || []).find(c => (c.id || 'me') === id); if (c) return c; } return null; }
 
 window.renderAt = (t) => {
   boil = Math.floor(t * 8); const i = beatAt(t), B = CFG.beats[i], v = B.v || {}; const bt = t - B.ini; const span = Math.max(0.5, B.fin - B.ini);
   // camera
-  const cut = Math.max(0, 1 - bt / 0.25); const zoom = (v.zoom || 1.22) * (1 + 0.04 * ease(bt / (span + 0.4))) + cut * 0.035;
+  const cut = Math.max(0, 1 - bt / 0.25); const zoom = (v.zoom || (H > W ? 1.0 : 1.22)) * (1 + 0.04 * ease(bt / (span + 0.4))) + cut * 0.035;
   x.setTransform(1, 0, 0, 1, 0, 0); x.fillStyle = v.bg || PAPER; x.fillRect(0, 0, W, H);
   // paper grain
   for (let g = 0; g < 120; g++) { const gx = (Math.sin(g * 91.3 + boil) * 0.5 + 0.5) * W, gy = (Math.sin(g * 47.7 + boil * 3.1) * 0.5 + 0.5) * H; x.fillStyle = 'rgba(0,0,0,0.035)'; x.fillRect(gx, gy, 2 * S, 2 * S); }
@@ -156,7 +156,7 @@ window.renderAt = (t) => {
   // props
   (v.props || []).forEach((p, k) => { const kin = back((bt - (p.d || 0)) / 0.35); if (kin <= 0.01) return; const fl = Math.sin(t * 2 + k) * 6 * S * (p.float ? 1 : 0);
     const px = p.x * W + (p.dx || 0) * W * ease(bt / span), py = p.y * H + fl;
-    x.save(); x.translate(px, py); x.scale(kin, kin); x.translate(-px, -py); drawProp(p.k, px, py, (p.s || 1) * 1.5, t, p.anim); x.restore();
+    x.save(); x.translate(px, py); x.scale(kin, kin); x.translate(-px, -py); drawProp(p.k, px, py, (p.s || 1) * 1.5 * (H > W ? 1.35 : 1), t, p.anim); x.restore();
     if (p.label) text(p.label, px, py + (p.ly || 95) * (p.s || 1) * 1.5 * S, p.lsize || 48, p.lcol || INK, 800); });
   // characters
   (v.chars || []).forEach((c, k) => { const id = c.id || 'me'; const prev = findPrevChar(i, id); const pa = P[(prev && prev.pose) || c.pose] || P.stand, pb = P[c.pose] || P.stand;
@@ -176,8 +176,9 @@ window.renderAt = (t) => {
   // captions (shorts)
   if (CFG.captions) { const words = B.texto.split(/\s+/); const p = Math.max(0, Math.min(1, (t - B.ini) / span)); const tot = words.reduce((a, w) => a + w.length + 1, 0); let acc = 0, wi = words.length - 1;
     for (let k2 = 0; k2 < words.length; k2++) { acc += words[k2].length + 1; if (p * tot < acc) { wi = k2; break; } }
-    const g0 = Math.floor(wi / 3) * 3; const grp = words.slice(g0, g0 + 3); const cy = H * 0.73; const fs = 92;
-    x.font = `900 ${fs}px "Inter Display", Inter, sans-serif`; x.textAlign = 'left'; x.textBaseline = 'middle';
+    const gn = H > W ? 2 : 3; const g0 = Math.floor(wi / gn) * gn; const grp = words.slice(g0, g0 + gn); const cy = H * 0.72; let fs = 104;
+    x.font = `900 ${fs}px "Inter Display", Inter, sans-serif`; let tw0 = grp.reduce((a, w) => a + x.measureText(w.toUpperCase() + ' ').width, 0); if (tw0 > W * 0.88) { fs = fs * W * 0.88 / tw0; x.font = `900 ${fs}px "Inter Display", Inter, sans-serif`; }
+    x.textAlign = 'left'; x.textBaseline = 'middle';
     const ws = grp.map(w => x.measureText(w.toUpperCase() + ' ').width); let cx2 = W / 2 - ws.reduce((a, b) => a + b, 0) / 2;
     grp.forEach((w, k2) => { const on = g0 + k2 === wi; x.lineWidth = 16; x.strokeStyle = INK; x.lineJoin = 'round'; x.strokeText(w.toUpperCase(), cx2, cy); x.fillStyle = on ? COL.yellow : '#ffffff'; x.fillText(w.toUpperCase(), cx2, cy); cx2 += ws[k2]; }); }
   // progress bar

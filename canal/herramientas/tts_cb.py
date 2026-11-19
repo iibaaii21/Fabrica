@@ -17,7 +17,7 @@ for f in g['frases']:
     esperado=max(0.8,len(f['t'])/17); mejor=None
     for intento in range(4):
         torch.manual_seed(1234+intento*101)
-        w=m.generate(f['t'],language_id="es",audio_prompt_path=ref,exaggeration=g.get('expresividad',0.45),cfg_weight=g.get('cfg',0.5))
+        w=m.generate(f['t'],language_id=g.get("lang","es"),audio_prompt_path=ref,exaggeration=g.get('expresividad',0.45),cfg_weight=g.get('cfg',0.5))
         a=recorta(w.squeeze(0).numpy().astype(float)); dur=len(a)/SR; sm=silencio_max(a)
         pena=abs(np.log(dur/esperado))+max(0,sm-0.45)*3
         if mejor is None or pena<mejor[0]: mejor=(pena,a)

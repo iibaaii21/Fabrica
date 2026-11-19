@@ -4,7 +4,7 @@ Canal educativo en español: explicaciones sencillas (ESO, Bachillerato, univers
 
 ## Decisiones de Ibai (no cambiar sin que él lo pida)
 - **Estilo visual: NEÓN.** Fondo oscuro morado/azul, figuras 3D brillantes con bloom, curvas luminosas, cámara siempre en movimiento suave, subtítulos blancos en mayúsculas con la palabra activa en amarillo (#ffc145), barra de progreso arriba. Referencia: `herramientas/render.html` y `videos/s01-olvido-1-hora/`.
-- **Voz: "voz 2".** Chatterbox multilingüe (licencia MIT, añade marca de agua inaudible) con el timbre de `herramientas/voz-ref.wav`, expresividad 0.45 y cfg 0.5.
+- **Voz: "voz 2".** Chatterbox multilingüe (licencia MIT, añade marca de agua inaudible) con el timbre de `herramientas/voz-ref.wav`, expresividad 0.45 y cfg 0.5. **Origen de `voz-ref.wav`:** es 100 % sintética, generada con Kokoro (Apache 2.0, voz `ef_dora`, velocidad 0.95) leyendo una frase neutra de prueba. No es la grabación de ninguna persona real, así que no hace falta permiso de nadie ni hay timbre clonado de una persona.
 
 ## Pipeline (gratis, sin GPU)
 1. **Guion**: `videos/<id>/guion.json`: `{titulo, frases: [{t (texto para la voz, números en letra), pantalla? (texto de subtítulos), esc (estación 3D A..E)}], fuentes: [...]}`. Cada dato, verificado con búsqueda web y con la fuente anotada; si un dato es dudoso, se quita.

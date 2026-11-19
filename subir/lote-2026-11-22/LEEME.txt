@@ -1,4 +1,4 @@
-LOTE DEL DOMINGO 22/11/2026: 9 tareas, unos 63 minutos
+LOTE DEL DOMINGO 22/11/2026: 9 tareas, unos 69 minutos
 
 Cómo usarlo (PC con Windows):
 - Clic derecho en el zip del lote > Extraer todo.
@@ -35,17 +35,17 @@ Cómo usarlo (PC con Windows):
 6. Copia Descripción y Etiquetas de TEXTOS-PARA-COPIAR.txt. AI disclosure: Sí (audio).
 7. Visibility: Public > Save.
 
-=== 5-CrazyGames-3-juegos  (~10 min) ===
+=== 5-CrazyGames-4-juegos  (~13 min) ===
 1. https://developer.crazygames.com > Submit game (uno por juego; si ya enviaste alguno, sáltalo).
-2. Archivo: HTML5 > arrastra el zip del juego SIN extraer (p. ej. Lumen-Drift-web.zip).
+2. Archivo: HTML5 > arrastra el zip del juego SIN extraer (p. ej. Lumen-Drift-web.zip). Hay 4 carpetas: lumen, loomlines, rootwork y lunavault (nuevo).
 3. Imágenes: las 3 crazygames-*.png. Vídeos: landscape-1920x1080.mp4 y portrait-1080x1620.mp4.
 4. Copia cada campo de TEXTOS-PARA-COPIAR.txt de la carpeta del juego. SDK: No (Basic Launch). IA: Sí.
 5. Prueba en la Preview > Submit.
 
-=== 6-itch-3-juegos  (~10 min) ===
+=== 6-itch-4-juegos  (~13 min) ===
 1. https://itch.io/game/new (uno por juego).
 2. Kind of project: HTML > arrastra el zip del juego SIN extraer y marca «This file will be played in the browser».
-3. Pricing: No payments + «Accept donations».
+3. Pricing: No payments + «Accept donations». Lunavault es vertical: en Embed options pon 720 × 1100 y orientación Portrait (lo pone en su TEXTOS).
 4. Cover: cover.png · Screenshots: captura-1, 2 y 3.
 5. Copia el resto de campos de TEXTOS-PARA-COPIAR.txt > Public > Save.
 

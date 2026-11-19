@@ -224,5 +224,21 @@
    "juegos/rootwork/imagenes/captura-2.png",
    "juegos/rootwork/imagenes/captura-3.png"
   ]
+ },
+ {
+  "id": "lunavault",
+  "cat": "Juegos gratis",
+  "nombre": "Lunavault",
+  "precio": "Gratis",
+  "img": "juegos/lunavault/imagenes/cover.png",
+  "desc": "Arcade de un toque: salta de luna en luna, encadena aterrizajes perfectos y sube todo lo que puedas.",
+  "comprar": "",
+  "jugar": "../juegos/lunavault/",
+  "marca": "nimbloom",
+  "imgs": [
+   "juegos/lunavault/imagenes/captura-1.png",
+   "juegos/lunavault/imagenes/captura-2.png",
+   "juegos/lunavault/imagenes/captura-3.png"
+  ]
  }
 ]

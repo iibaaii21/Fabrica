@@ -1,0 +1,187 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;overflow:hidden;background:#fbfaf6}canvas{display:block}</style>
+</head><body><canvas id="c"></canvas>
+<script>
+// ===== Stickman engine: a fixed character, smooth poses, props, headers, camera =====
+const cv = document.getElementById('c'), x = cv.getContext('2d');
+let W = 1920, H = 1080, S = 1, CFG = null;
+const INK = '#151515', PAPER = '#fbfaf6';
+const COL = { red: '#e8483f', blue: '#3a7bd5', yellow: '#f6c23e', green: '#3fb06b', purple: '#8a5cd6', orange: '#f08a2c', pink: '#f07aa8', gray: '#9aa0a6', skin: '#ffffff', brown: '#8a5a3c' };
+const ease = t => t < 0 ? 0 : t > 1 ? 1 : t * t * (3 - 2 * t);
+const back = t => { t = Math.max(0, Math.min(1, t)); const c = 1.9; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); };
+const lerp = (a, b, k) => a + (b - a) * k;
+let boil = 0; const jit = (i, a = 1.6) => { const s = Math.sin(i * 127.1 + boil * 311.7) * 43758.5453; return (s - Math.floor(s) - 0.5) * a * S; };
+
+// ---------- poses: angles in degrees, 0 = straight down, + = toward the front ----------
+const P = {
+  stand:   { lean: 0, la: [-14, 8], ra: [14, -8], ll: [-9, 0], rl: [9, 0] },
+  point:   { lean: 0, la: [-14, 8], ra: [95, -5], ll: [-9, 0], rl: [9, 0] },
+  pointup: { lean: -3, la: [-14, 8], ra: [150, -10], ll: [-9, 0], rl: [9, 0] },
+  think:   { lean: 3, la: [-10, 5], ra: [35, 125], ll: [-9, 0], rl: [9, 0], head: 8 },
+  shock:   { lean: -6, la: [-150, -20], ra: [150, 20], ll: [-18, 0], rl: [18, 0], jump: 14 },
+  cheer:   { lean: 0, la: [-160, -10], ra: [160, 10], ll: [-12, 0], rl: [12, 0], jump: 22 },
+  sad:     { lean: 14, la: [-4, 2], ra: [4, -2], ll: [-6, 0], rl: [6, 0], head: 22 },
+  shrug:   { lean: 0, la: [-60, -95], ra: [60, 95], ll: [-9, 0], rl: [9, 0] },
+  facepalm:{ lean: 8, la: [-10, 5], ra: [40, 150], ll: [-9, 0], rl: [9, 0], head: 16 },
+  hold:    { lean: 0, la: [-14, 8], ra: [60, 40], ll: [-9, 0], rl: [9, 0] },
+  read:    { lean: 6, la: [40, 60], ra: [40, 60], ll: [-9, 0], rl: [9, 0], head: 18 },
+  sit:     { lean: -2, la: [50, 40], ra: [55, 45], ll: [85, -85], rl: [80, -80], sitY: 1 },
+  sitsad:  { lean: 18, la: [20, 10], ra: [25, 10], ll: [85, -85], rl: [80, -80], sitY: 1, head: 20 },
+  write:   { lean: 14, la: [30, 30], ra: [70, 50], ll: [85, -85], rl: [80, -80], sitY: 1, head: 15 },
+  sleep:   { lean: 0, la: [-14, 8], ra: [14, -8], ll: [-6, 0], rl: [6, 0], lie: 1 },
+  walk:    { lean: 2, la: [-14, 8], ra: [14, -8], ll: [-9, 0], rl: [9, 0], cyc: 1 },
+  run:     { lean: 12, la: [-30, 70], ra: [30, 70], ll: [-9, 0], rl: [9, 0], cyc: 2 },
+  fall:    { lean: 70, la: [-120, -30], ra: [120, 30], ll: [-40, 10], rl: [30, 20], jump: 0 },
+  dizzy:   { lean: -8, la: [-40, -30], ra: [45, 30], ll: [-14, 0], rl: [16, 0], wob: 1 },
+};
+function poseAt(a, b, k) { const o = {}; for (const key of ['lean', 'jump', 'head', 'sitY', 'lie', 'cyc', 'wob']) o[key] = lerp(a[key] || 0, b[key] || 0, k);
+  for (const l of ['la', 'ra', 'll', 'rl']) o[l] = [lerp(a[l][0], b[l][0], k), lerp(a[l][1], b[l][1], k)]; return o; }
+
+// ---------- drawing helpers with hand-drawn wobble ----------
+function line(pts, w = 7, col = INK, close = false, fill = null, seedBase = 0) {
+  x.beginPath(); pts.forEach((p, i) => { const px = p[0] + jit(seedBase + i), py = p[1] + jit(seedBase + i + 50); i ? x.lineTo(px, py) : x.moveTo(px, py); });
+  if (close) x.closePath(); if (fill) { x.fillStyle = fill; x.fill(); } x.lineWidth = w * S; x.strokeStyle = col; x.lineCap = 'round'; x.lineJoin = 'round'; x.stroke();
+}
+function circle(cx, cy, r, w = 7, fill = PAPER, col = INK, seed = 0) { const pts = []; for (let i = 0; i < 24; i++) { const a = i / 24 * Math.PI * 2; pts.push([cx + Math.cos(a) * r, cy + Math.sin(a) * r]); } line(pts, w, col, true, fill, seed); }
+function rect(x0, y0, w0, h0, fill, w = 6, seed = 0) { line([[x0, y0], [x0 + w0, y0], [x0 + w0, y0 + h0], [x0, y0 + h0]], w, INK, true, fill, seed); }
+function text(t, px, py, size, col = INK, weight = 900, align = 'center') { x.font = `${weight} ${size * S}px "Inter Display", Inter, sans-serif`; x.textAlign = align; x.textBaseline = 'middle'; x.fillStyle = col; x.fillText(t, px, py); }
+
+// ---------- the stickman ----------
+function stickman(cx, ground, pose, face, scale, flip, t, id, holdItem) {
+  const s = scale * S, f = flip ? -1 : 1; const L = { torso: 125 * s, head: 40 * s, ua: 70 * s, fa: 66 * s, th: 82 * s, sh: 80 * s };
+  x.save();
+  let lie = pose.lie || 0; const bob = Math.sin(t * 2.2 + id) * 2.5 * s;
+  // walking cycle
+  let ll = pose.ll.slice(), rl = pose.rl.slice(), la = pose.la.slice(), ra = pose.ra.slice();
+  if (pose.cyc > 0.01) { const sp = pose.cyc > 1.5 ? 11 : 6.5, amp = pose.cyc > 1.5 ? 42 : 26, ph = Math.sin(t * sp + id);
+    ll[0] += ph * amp * Math.min(1, pose.cyc); rl[0] -= ph * amp * Math.min(1, pose.cyc); ll[1] -= Math.max(0, ph) * 30; rl[1] -= Math.max(0, -ph) * 30; la[0] -= ph * amp * 0.7; ra[0] += ph * amp * 0.7; }
+  if (pose.wob > 0.01) { const w = Math.sin(t * 6) * 10 * pose.wob; la[0] += w; ra[0] -= w; }
+  const legLen = L.th + L.sh; const sitDrop = (pose.sitY || 0) * L.th * 0.95;
+  const jump = (pose.jump || 0) * s * Math.abs(Math.sin(t * 5 + id));
+  let hip = [cx, ground - legLen + sitDrop - jump + bob * 0.3];
+  if (lie > 0.01) { x.translate(cx, ground - 22 * s * lie); x.rotate(-Math.PI / 2 * lie * f); x.translate(-cx, -(ground - 22 * s * lie)); hip = [cx, ground - legLen]; }
+  const lean = (pose.lean || 0) * Math.PI / 180 * f;
+  const neck = [hip[0] + Math.sin(lean) * L.torso, hip[1] - Math.cos(lean) * L.torso + bob];
+  const dir = (a) => [Math.sin(a * Math.PI / 180) * f, Math.cos(a * Math.PI / 180)];
+  const limb = (o, a, len1, len2) => { const d1 = dir(a[0]); const p1 = [o[0] + d1[0] * len1, o[1] + d1[1] * len1]; const d2 = dir(a[0] + a[1]); const p2 = [p1[0] + d2[0] * len2, p1[1] + d2[1] * len2]; return [o, p1, p2]; };
+  const shoulder = [lerp(hip[0], neck[0], 0.86), lerp(hip[1], neck[1], 0.86)];
+  const seed = id * 100;
+  const legs = [limb(hip, ll, L.th, L.sh), limb(hip, rl, L.th, L.sh)], arms = [limb(shoulder, la, L.ua, L.fa), limb(shoulder, ra, L.ua, L.fa)];
+  if ((pose.sitY || 0) < 0.5 && lie < 0.5) { const fm = Math.max(legs[0][2][1], legs[1][2][1]); const dy = (ground - jump) - fm;
+    const sh = q => { q[1] += dy; }; [hip, neck, shoulder].forEach(sh); legs.forEach(l => l.slice(1).forEach(sh)); arms.forEach(l => l.slice(1).forEach(sh)); }
+  legs.forEach((p, i) => line(p, 8, INK, false, null, seed + i * 10));
+  line([hip, neck], 8, INK, false, null, seed + 30);
+  arms.forEach((p, i) => line(p, 8, INK, false, null, seed + 40 + i * 10));
+  // held item in front hand
+  if (holdItem) { const hnd = arms[1][2]; x.save(); x.translate(hnd[0], hnd[1]); drawProp(holdItem, 0, 0, 0.55 * scale, t, false); x.restore(); }
+  // head
+  const ha = ((pose.head || 0) * Math.PI / 180) * f; const hc = [neck[0] + Math.sin(lean + ha) * L.head * 1.05, neck[1] - Math.cos(lean + ha) * L.head * 1.05];
+  circle(hc[0], hc[1], L.head, 8, '#ffffff', INK, seed + 60);
+  drawFace(hc[0], hc[1], L.head, face, f, t, id);
+  x.restore();
+  return { head: hc, hand: arms[1][2] };
+}
+function drawFace(cx, cy, r, face, f, t, id) {
+  const ex = r * 0.34, ey = -r * 0.12; const blink = (Math.sin(t * 1.3 + id * 2) > 0.985) ? 0.15 : 1;
+  const eye = (dx) => { x.beginPath(); x.ellipse(cx + dx * f + r * 0.12 * f, cy + ey, 5.5 * S, 6.5 * S * blink, 0, 0, Math.PI * 2); x.fillStyle = INK; x.fill(); };
+  if (face === 'sleep') { line([[cx - ex - 6, cy + ey], [cx - ex + 8, cy + ey]], 4); line([[cx + ex - 8, cy + ey], [cx + ex + 6, cy + ey]], 4); }
+  else if (face === 'dead') { for (const dx of [-ex, ex]) { line([[cx + dx - 7, cy + ey - 7], [cx + dx + 7, cy + ey + 7]], 4); line([[cx + dx + 7, cy + ey - 7], [cx + dx - 7, cy + ey + 7]], 4); } }
+  else if (face === 'shock') { for (const dx of [-ex, ex]) circle(cx + dx * f + r * 0.1 * f, cy + ey, 8 * S, 3.5, '#ffffff'), eye(dx); }
+  else { eye(-ex); eye(ex); }
+  if (face === 'angry' || face === 'focus') { line([[cx - ex - 10, cy + ey - 16], [cx - ex + 8, cy + ey - 10]], 4); line([[cx + ex + 10, cy + ey - 16], [cx + ex - 8, cy + ey - 10]], 4); }
+  const my = cy + r * 0.42, mx = cx + r * 0.12 * f;
+  if (face === 'happy') { x.beginPath(); x.arc(mx, my - 8 * S, 12 * S, 0.15 * Math.PI, 0.85 * Math.PI); x.lineWidth = 4.5 * S; x.strokeStyle = INK; x.stroke(); }
+  else if (face === 'sad' || face === 'dead') { x.beginPath(); x.arc(mx, my + 8 * S, 11 * S, 1.15 * Math.PI, 1.85 * Math.PI); x.lineWidth = 4.5 * S; x.stroke(); }
+  else if (face === 'shock') { x.beginPath(); x.ellipse(mx, my, 7 * S, 10 * S, 0, 0, Math.PI * 2); x.fillStyle = INK; x.fill(); }
+  else if (face === 'smirk') line([[mx - 10, my + 2], [mx + 4, my], [mx + 12, my - 6]], 4.5);
+  else if (face !== 'sleep') line([[mx - 9, my], [mx + 9, my]], 4.5);
+}
+
+// ---------- props ----------
+function drawProp(k, px, py, s0, t, anim) {
+  const s = s0 * S; x.save(); x.translate(px, py); x.scale(s / S, s / S); const sd = k.length * 13;
+  switch (k) {
+    case 'book': rect(-50, -36, 100, 72, COL.blue, 6, sd); line([[0, -36], [0, 36]], 5); line([[-38, -14], [-10, -14]], 4); line([[-38, 2], [-14, 2]], 4); break;
+    case 'notes': rect(-44, -58, 88, 116, '#ffffff', 6, sd); for (let i = 0; i < 5; i++) line([[-30, -36 + i * 20], [30 - (i % 2) * 14, -36 + i * 20]], 4, '#7aa6e8', false, null, sd + i); break;
+    case 'brain': { const pts = []; for (let i = 0; i < 28; i++) { const a = i / 28 * Math.PI * 2; const r = 58 + Math.sin(a * 7) * 6; pts.push([Math.cos(a) * r * 1.15, Math.sin(a) * r * 0.85]); } line(pts, 6, INK, true, COL.pink, sd); line([[0, -48], [6, -10], [-6, 20], [0, 46]], 4); line([[-40, -10], [-18, 4]], 4); line([[34, 12], [14, -6]], 4); break; }
+    case 'clock': circle(0, 0, 54, 6, '#ffffff', INK, sd); { const a = t * 2; line([[0, 0], [Math.sin(a) * 34, -Math.cos(a) * 34]], 5); line([[0, 0], [Math.sin(a / 12) * 22, -Math.cos(a / 12) * 22]], 6); } break;
+    case 'phone': rect(-30, -56, 60, 112, '#2b2b2b', 6, sd); rect(-22, -44, 44, 82, '#7fc8ff', 3, sd + 1); break;
+    case 'bed': rect(-110, 0, 220, 40, COL.blue, 6, sd); rect(-110, -30, 50, 30, '#ffffff', 5, sd + 1); line([[-110, 40], [-110, 62]], 6); line([[110, 40], [110, 62]], 6); break;
+    case 'desk': rect(-130, -10, 260, 20, COL.brown, 6, sd); line([[-115, 10], [-115, 120]], 7); line([[115, 10], [115, 120]], 7); break;
+    case 'bulb': circle(0, -10, 42, 6, COL.yellow, INK, sd); rect(-18, 30, 36, 24, COL.gray, 5, sd + 1); if (anim) for (let i = 0; i < 6; i++) { const a = -Math.PI / 2 + (i - 2.5) * 0.45; line([[Math.cos(a) * 58, -10 + Math.sin(a) * 58], [Math.cos(a) * 78, -10 + Math.sin(a) * 78]], 5); } break;
+    case 'card': rect(-62, -40, 124, 80, '#ffffff', 6, sd); text('?', 0, 2, 56, COL.red); break;
+    case 'calendar': rect(-56, -50, 112, 100, '#ffffff', 6, sd); rect(-56, -50, 112, 26, COL.red, 6, sd + 1); for (let r = 0; r < 3; r++) for (let c = 0; c < 4; c++) rect(-44 + c * 24, -14 + r * 20, 14, 12, (r * 4 + c) % 3 === 0 ? COL.green : '#eeeeee', 2, sd + r * 4 + c); break;
+    case 'exam': rect(-50, -64, 100, 128, '#ffffff', 6, sd); for (let i = 0; i < 4; i++) line([[-34, -30 + i * 20], [34, -30 + i * 20]], 4, '#bbbbbb'); break;
+    case 'gradeA': rect(-50, -64, 100, 128, '#ffffff', 6, sd); text('A+', 0, 4, 64, COL.green); break;
+    case 'gradeF': rect(-50, -64, 100, 128, '#ffffff', 6, sd); text('F', 0, 4, 72, COL.red); break;
+    case 'coffee': line([[-30, -36], [30, -36], [24, 40], [-24, 40]], 6, INK, true, '#ffffff', sd); line([[30, -16], [48, -10], [46, 14], [27, 18]], 6); if (anim) for (let i = 0; i < 3; i++) line([[-14 + i * 14, -50], [-8 + i * 14, -70], [-14 + i * 14, -90]], 4, COL.gray, false, null, sd + i + Math.floor(t * 4)); break;
+    case 'zzz': text('Z', 0, 0, 40); text('z', 30, -30, 30); text('z', 52, -54, 22); break;
+    case 'question': text('?', 0, 0, 120, COL.red); break;
+    case 'exclaim': text('!', 0, 0, 130, COL.red); break;
+    case 'heart': line([[0, 40], [-50, -6], [-44, -40], [-14, -44], [0, -20], [14, -44], [44, -40], [50, -6]], 6, INK, true, COL.red, sd); break;
+    case 'check': circle(0, 0, 50, 6, COL.green, INK, sd); line([[-24, 2], [-6, 20], [26, -18]], 9, '#ffffff'); break;
+    case 'cross': circle(0, 0, 50, 6, COL.red, INK, sd); line([[-20, -20], [20, 20]], 9, '#ffffff'); line([[20, -20], [-20, 20]], 9, '#ffffff'); break;
+    case 'trophy': line([[-40, -50], [40, -50], [30, 10], [-30, 10]], 6, INK, true, COL.yellow, sd); rect(-10, 10, 20, 26, COL.yellow, 5, sd + 1); rect(-34, 36, 68, 16, COL.brown, 5, sd + 2); break;
+    case 'battery': rect(-60, -28, 120, 56, '#ffffff', 6, sd); rect(60, -12, 10, 24, INK, 3, sd + 1); { const lvl = anim === 'low' ? 0.15 : 0.9; rect(-52, -20, 104 * lvl, 40, lvl < 0.3 ? COL.red : COL.green, 3, sd + 2); } break;
+    case 'arrowup': line([[0, 50], [0, -50]], 9, COL.green); line([[-30, -20], [0, -52], [30, -20]], 9, COL.green); break;
+    case 'arrowdown': line([[0, -50], [0, 50]], 9, COL.red); line([[-30, 20], [0, 52], [30, 20]], 9, COL.red); break;
+    case 'graph': { line([[-80, -60], [-80, 60], [90, 60]], 6); const pts = []; for (let i = 0; i <= 20; i++) { const u = i / 20; pts.push([-80 + u * 165, 60 - (0.2 + 0.8 * Math.exp(-u * 4)) * 110]); } line(pts, 7, COL.red); } break;
+    case 'gamepad': rect(-70, -30, 140, 60, '#444', 6, sd); circle(-36, 0, 12, 4, '#222'); circle(36, -8, 8, 4, COL.red); circle(50, 8, 8, 4, COL.blue); break;
+    case 'pencil': x.rotate(-0.6); rect(-12, -70, 24, 110, COL.yellow, 6, sd); line([[-12, 40], [0, 66], [12, 40]], 6, INK, true, '#f2d2a9', sd + 1); break;
+    case 'water': line([[-26, -50], [26, -50], [20, 50], [-20, 50]], 6, INK, true, '#bfe6ff', sd); break;
+    case 'chair': line([[-40, 0], [40, 0]], 8); line([[-34, 0], [-34, 78]], 7); line([[34, 0], [34, 78]], 7); line([[40, 0], [44, -90]], 7); break;
+    case 'teacher': break;
+  }
+  x.restore();
+}
+
+// ---------- scene rendering ----------
+let last = {};
+window.setup = (cfg) => { CFG = cfg; W = cfg.w; H = cfg.h; cv.width = W; cv.height = H; S = Math.min(W / 1920, H / 1080) * (H > W ? 1.75 : 1); };
+function beatAt(t) { const b = CFG.beats; let i = 0; for (let k = 0; k < b.length; k++) if (t >= b[k].ini - 0.05) i = k; return i; }
+function findPrevChar(i, id) { for (let k = i - 1; k >= 0; k--) { const c = (CFG.beats[k].v.chars || []).find(c => (c.id || 'me') === id); if (c) return c; } return null; }
+
+window.renderAt = (t) => {
+  boil = Math.floor(t * 8); const i = beatAt(t), B = CFG.beats[i], v = B.v || {}; const bt = t - B.ini; const span = Math.max(0.5, B.fin - B.ini);
+  // camera
+  const cut = Math.max(0, 1 - bt / 0.25); const zoom = (v.zoom || 1.22) * (1 + 0.04 * ease(bt / (span + 0.4))) + cut * 0.035;
+  x.setTransform(1, 0, 0, 1, 0, 0); x.fillStyle = v.bg || PAPER; x.fillRect(0, 0, W, H);
+  // paper grain
+  for (let g = 0; g < 120; g++) { const gx = (Math.sin(g * 91.3 + boil) * 0.5 + 0.5) * W, gy = (Math.sin(g * 47.7 + boil * 3.1) * 0.5 + 0.5) * H; x.fillStyle = 'rgba(0,0,0,0.035)'; x.fillRect(gx, gy, 2 * S, 2 * S); }
+  const fx = (v.focus ? v.focus[0] : 0.5) * W, fy = (v.focus ? v.focus[1] : 0.55) * H;
+  x.translate(W / 2, H / 2); x.scale(zoom, zoom); x.translate(-fx, -fy);
+  const ground = (v.ground || 0.8) * H;
+  if (v.ground !== 0) line([[-W * 0.2, ground], [W * 1.2, ground]], 6, '#d9d6cf', false, null, 999);
+  // props
+  (v.props || []).forEach((p, k) => { const kin = back((bt - (p.d || 0)) / 0.35); if (kin <= 0.01) return; const fl = Math.sin(t * 2 + k) * 6 * S * (p.float ? 1 : 0);
+    const px = p.x * W + (p.dx || 0) * W * ease(bt / span), py = p.y * H + fl;
+    x.save(); x.translate(px, py); x.scale(kin, kin); x.translate(-px, -py); drawProp(p.k, px, py, (p.s || 1) * 1.5, t, p.anim); x.restore();
+    if (p.label) text(p.label, px, py + (p.ly || 95) * (p.s || 1) * 1.5 * S, p.lsize || 48, p.lcol || INK, 800); });
+  // characters
+  (v.chars || []).forEach((c, k) => { const id = c.id || 'me'; const prev = findPrevChar(i, id); const pa = P[(prev && prev.pose) || c.pose] || P.stand, pb = P[c.pose] || P.stand;
+    const pk = ease(bt / 0.3); const pose = poseAt(pa, pb, pk);
+    const cx0 = prev ? prev.x : c.x; const cx = lerp(cx0, c.x, ease(bt / Math.min(span, (c.move || 0.5)))) * W + (c.walk ? (bt * c.walk * W) : 0);
+    if (pose.sitY > 0.5 && !c.nochair) drawProp('chair', cx - (c.flip ? -1 : 1) * 10 * S, (c.y ? c.y * H : ground) - 80 * 1.4 * S, 1.4, t, false);
+    const r = stickman(cx, c.y ? c.y * H : ground, pose, c.face || 'neutral', (c.s || 1) * 1.4, c.flip, t, k + (id === 'me' ? 0 : 7), c.hold);
+    if (c.say) { const kin = back((bt - 0.15) / 0.3); if (kin > 0) { const bx = r.head[0] + (c.flip ? -1 : 1) * 230 * S, by = r.head[1] - 130 * S; x.save(); x.translate(bx, by); x.scale(kin, kin);
+      x.font = `800 ${44 * S}px Inter, sans-serif`; const tw = Math.min(700 * S, x.measureText(c.say).width + 60 * S); rect(-tw / 2, -46 * S, tw, 92 * S, '#ffffff', 5, 77); text(c.say, 0, 0, 44, INK, 800); x.restore(); } } });
+  // big text / numbers
+  if (v.big) { const kin = back((bt - (v.bigd || 0.1)) / 0.35); if (kin > 0) { x.save(); const bx = (v.bigx ?? 0.5) * W, by = (v.bigy ?? 0.3) * H; x.translate(bx, by); x.scale(kin, kin); x.rotate(-0.04);
+    text(v.big, 0, 0, v.bigs || 120, v.bigc || COL.red, 900); x.restore(); } }
+  x.setTransform(1, 0, 0, 1, 0, 0);
+  // header (screen space)
+  if (v.head) { const kin = ease(bt / 0.25); x.save(); x.globalAlpha = 1; const hs = 66 * S; x.font = `900 ${hs}px "Inter Display", Inter, sans-serif`; const tw = x.measureText(v.head).width + 60 * S;
+    const hx = W / 2, hy = (H > W ? 300 : 100 * S); x.translate(0, (1 - kin) * -120 * S); rect(hx - tw / 2, hy - hs * 0.85, tw, hs * 1.7, COL.yellow, 6, 555); text(v.head, hx, hy + 2 * S, 66, INK, 900); x.restore(); }
+  // captions (shorts)
+  if (CFG.captions) { const words = B.texto.split(/\s+/); const p = Math.max(0, Math.min(1, (t - B.ini) / span)); const tot = words.reduce((a, w) => a + w.length + 1, 0); let acc = 0, wi = words.length - 1;
+    for (let k2 = 0; k2 < words.length; k2++) { acc += words[k2].length + 1; if (p * tot < acc) { wi = k2; break; } }
+    const g0 = Math.floor(wi / 3) * 3; const grp = words.slice(g0, g0 + 3); const cy = H * 0.73; const fs = 92;
+    x.font = `900 ${fs}px "Inter Display", Inter, sans-serif`; x.textAlign = 'left'; x.textBaseline = 'middle';
+    const ws = grp.map(w => x.measureText(w.toUpperCase() + ' ').width); let cx2 = W / 2 - ws.reduce((a, b) => a + b, 0) / 2;
+    grp.forEach((w, k2) => { const on = g0 + k2 === wi; x.lineWidth = 16; x.strokeStyle = INK; x.lineJoin = 'round'; x.strokeText(w.toUpperCase(), cx2, cy); x.fillStyle = on ? COL.yellow : '#ffffff'; x.fillText(w.toUpperCase(), cx2, cy); cx2 += ws[k2]; }); }
+  // progress bar
+  x.fillStyle = COL.red; x.fillRect(0, 0, W * t / CFG.dur, (H > W ? 12 : 8));
+};
+window.ready = true;
+</script></body></html>

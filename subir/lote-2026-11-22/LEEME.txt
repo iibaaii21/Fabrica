@@ -1,6 +1,7 @@
-LOTE DEL DOMINGO 22/11/2026: 9 tareas, unos 69 minutos
+LOTE DEL DOMINGO 22/11/2026: 11 tareas, unos 79 minutos
 
 Cómo usarlo (PC con Windows):
+- El lote va en DOS zips (parte-1 y parte-2) porque pesa mucho: descarga los dos y extráelos en la misma carpeta.
 - Clic derecho en el zip del lote > Extraer todo.
 - Cada tarea tiene su carpeta con TODO lo que necesita: archivos, imágenes y TEXTOS-PARA-COPIAR.txt.
 - Los .zip que hay DENTRO de las carpetas se suben tal cual, sin extraerlos.
@@ -83,5 +84,20 @@ Tus 3 webs ya están hechas: Cellmate (tienda de plantillas), OpoCalc (calculado
 2. Arrastra Control-Alquileres.xlsx y las 2 imágenes en este orden: portada, cobros.
 3. Copia Título y Descripción de TEXTOS-PARA-COPIAR.txt (deja la nota de que no calcula impuestos).
 4. Precio 6,90 € > Publish.
+
+=== 10-YouTube-crear-canal-Modo-Examen  (~5 min) ===
+1. Entra en https://www.youtube.com con tu cuenta de Google > foto de perfil > Configuración > «Añadir o administrar tus canales» > «Crear un canal».
+   (Así se crea como cuenta de marca, separado de tu canal personal.)
+2. Nombre: Modo Examen. Identificador: @ModoExamen (si está cogido, los alternativos de CANAL.txt).
+3. Personalizar canal > Imagen: sube avatar-800x800.png como foto y banner-2560x1440.png como banner.
+4. Información básica: pega la descripción y las palabras clave de CANAL.txt.
+5. Verifica el teléfono en https://www.youtube.com/verify (1 min, gratis): hace falta para miniaturas personalizadas y vídeos largos.
+
+=== 11-YouTube-programar-Short-s01  (~5 min) ===
+1. En YouTube Studio (estando en el canal Modo Examen): Crear > Subir vídeos > arrastra short.mp4.
+2. Título, descripción y etiquetas: cópialos de PUBLICAR.txt.
+3. Audiencia: «No, no es contenido creado para niños». Contenido alterado o sintético: lo que dice PUBLICAR.txt.
+4. Miniatura: si te deja, sube miniatura-1280x720.png (en los Shorts a veces solo se puede elegir un fotograma desde la app del móvil; si no aparece la opción, sáltalo).
+5. Visibilidad: Programar > lunes 23/11 a las 18:00 > Programar.
 
 ÚLTIMO PASO: escribe en esta sesión de Claude (la «sala de máquinas») las palabras «conectar estadísticas».

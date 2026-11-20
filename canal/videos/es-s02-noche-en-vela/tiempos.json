@@ -1,0 +1,77 @@
+{
+ "dur": 53.717,
+ "segs": [
+  {
+   "ini": 0.312,
+   "fin": 3.579,
+   "texto": "Son las 3:00 y te quedan 6 temas.",
+   "esc": "A"
+  },
+  {
+   "ini": 3.847,
+   "fin": 5.706,
+   "texto": "Plan: no dormir. Mal plan.",
+   "esc": "A"
+  },
+  {
+   "ini": 5.974,
+   "fin": 11.114,
+   "texto": "Mientras duermes, tu cerebro guarda lo que aprendiste durante el día.",
+   "esc": "A"
+  },
+  {
+   "ini": 11.382,
+   "fin": 15.812,
+   "texto": "En 1924, dos psicólogos ya lo comprobaron:",
+   "esc": "A"
+  },
+  {
+   "ini": 16.08,
+   "fin": 20.71,
+   "texto": "se olvidaba menos después de dormir que tras pasar las mismas horas despierto.",
+   "esc": "A"
+  },
+  {
+   "ini": 20.978,
+   "fin": 24.44,
+   "texto": "Y en 2007, en Harvard, lo probaron al revés.",
+   "esc": "A"
+  },
+  {
+   "ini": 24.708,
+   "fin": 30.232,
+   "texto": "Un grupo pasó la noche sin dormir y, al día siguiente, tuvo que aprender cosas nuevas.",
+   "esc": "A"
+  },
+  {
+   "ini": 30.5,
+   "fin": 33.429,
+   "texto": "Recordaron hasta un 40 % menos.",
+   "esc": "A"
+  },
+  {
+   "ini": 33.697,
+   "fin": 39.006,
+   "texto": "Tu cerebro sin dormir es como un móvil al 1 %: funciona, pero fatal.",
+   "esc": "A"
+  },
+  {
+   "ini": 39.274,
+   "fin": 43.785,
+   "texto": "Así que estudia de día, repasa un poco antes de acostarte, y duerme.",
+   "esc": "A"
+  },
+  {
+   "ini": 44.053,
+   "fin": 48.626,
+   "texto": "Si vas justo de tiempo, recorta horas de estudio, no horas de sueño.",
+   "esc": "A"
+  },
+  {
+   "ini": 48.894,
+   "fin": 53.449,
+   "texto": "Guárdalo para la semana de exámenes. Y sígueme para más trucos que funcionan.",
+   "esc": "A"
+  }
+ ]
+}

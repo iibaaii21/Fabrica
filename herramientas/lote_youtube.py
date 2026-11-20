@@ -60,7 +60,7 @@ def main():
         f = v['fecha']
         L.append(f'   {v["id"].ljust(W)}| {(DIAS[f.weekday()] + f" {f:%d/%m/%Y} a las " + v["hora"]).ljust(31)}| {v["titulo"]}')
     L += ['1. En YouTube Studio (en el canal Modo Examen): Crear > Subir vídeos > arrastra a la vez el short.mp4 o video.mp4 de cada carpeta.',
-          '2. Para cada vídeo, copia título, descripción y etiquetas de su PUBLICAR.txt' + (' (en los largos, pega también los capítulos de CAPITULOS.txt al final de la descripción).' if any(v['extra'] for v in vids) else '.'),
+          '2. Para cada vídeo, copia título, descripción y etiquetas de su PUBLICAR.txt' + (' (en los largos, los capítulos ya van dentro de la descripción: no los borres).' if any(v['extra'] for v in vids) else '.'),
           '3. Audiencia: «No, no es contenido creado para niños». Contenido alterado o sintético: lo que dice su PUBLICAR.txt.',
           '4. Miniatura: sube su miniatura-1280x720.png (en los Shorts a veces solo se elige un fotograma desde la app; si no aparece la opción, sáltalo).',
           '5. Visibilidad: Programar > la fecha y hora de la tabla > Programar.',
@@ -74,6 +74,8 @@ def main():
     nz = 2 + len(partes)
     pal = {3: 'TRES', 4: 'CUATRO', 5: 'CINCO'}[nz]
     t = re.sub(r'- El lote va en \w+ zips \([^)]*\)', f'- El lote va en {pal} zips ({", ".join(f"parte-{k}" for k in range(1, nz))} y parte-{nz})', t)
+    tot = sum(int(x) for x in re.findall(r'^=== .*?\(~(\d+) min', t, re.M))
+    t = re.sub(r'(LOTE DEL DOMINGO [^:]*: \d+ tareas, unos )\d+( minutos)', lambda m: m.group(1) + str(tot) + m.group(2), t)
     open(lp, 'w', encoding='utf-8', newline='').write(t.replace('\n', '\r\n'))
     # --- zips
     for f in os.listdir(lote):

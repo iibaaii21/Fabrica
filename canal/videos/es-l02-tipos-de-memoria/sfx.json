@@ -1,0 +1,302 @@
+[
+{
+"seg": 0,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 5,
+"off": 0.0,
+"s": "move_whoosh_01",
+"g": 0.45
+},
+{
+"seg": 7,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 9,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 10,
+"off": 0.3,
+"s": "ui_confirm_01",
+"g": 0.3
+},
+{
+"seg": 11,
+"off": 0.3,
+"s": "ui_error_01",
+"g": 0.28
+},
+{
+"seg": 13,
+"off": 0.0,
+"s": "move_whoosh_01",
+"g": 0.45
+},
+{
+"seg": 14,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 17,
+"off": 0.0,
+"s": "move_whoosh_01",
+"g": 0.45
+},
+{
+"seg": 21,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 21,
+"off": 0.3,
+"s": "ui_confirm_01",
+"g": 0.3
+},
+{
+"seg": 22,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 22,
+"off": 0.3,
+"s": "ui_error_01",
+"g": 0.28
+},
+{
+"seg": 23,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 25,
+"off": 0.0,
+"s": "move_whoosh_01",
+"g": 0.45
+},
+{
+"seg": 31,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 32,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 34,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 34,
+"off": 0.3,
+"s": "ui_confirm_01",
+"g": 0.3
+},
+{
+"seg": 36,
+"off": 0.0,
+"s": "move_whoosh_01",
+"g": 0.45
+},
+{
+"seg": 41,
+"off": 0.0,
+"s": "move_whoosh_01",
+"g": 0.45
+},
+{
+"seg": 44,
+"off": 0.3,
+"s": "ui_confirm_01",
+"g": 0.3
+},
+{
+"seg": 45,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 47,
+"off": 0.0,
+"s": "move_whoosh_01",
+"g": 0.45
+},
+{
+"seg": 56,
+"off": 0.3,
+"s": "ui_confirm_01",
+"g": 0.3
+},
+{
+"seg": 57,
+"off": 0.0,
+"s": "move_whoosh_01",
+"g": 0.45
+},
+{
+"seg": 59,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 62,
+"off": 0.0,
+"s": "move_whoosh_01",
+"g": 0.45
+},
+{
+"seg": 64,
+"off": 0.1,
+"s": "misc_pop_01",
+"g": 0.25
+},
+{
+"seg": 65,
+"off": 0.3,
+"s": "ui_error_01",
+"g": 0.28
+},
+{
+"seg": 66,
+"off": 0.3,
+"s": "ui_confirm_01",
+"g": 0.3
+},
+{
+"seg": 68,
+"off": 0.0,
+"s": "move_whoosh_01",
+"g": 0.45
+},
+{
+"seg": 69,
+"off": 0.1,
+"s": "misc_pop_01",
+"g": 0.25
+},
+{
+"seg": 73,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 75,
+"off": 0.0,
+"s": "move_whoosh_01",
+"g": 0.45
+},
+{
+"seg": 78,
+"off": 0.1,
+"s": "misc_pop_01",
+"g": 0.25
+},
+{
+"seg": 79,
+"off": 0.3,
+"s": "ui_error_01",
+"g": 0.28
+},
+{
+"seg": 80,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 83,
+"off": 0.0,
+"s": "move_whoosh_01",
+"g": 0.45
+},
+{
+"seg": 85,
+"off": 0.3,
+"s": "ui_confirm_01",
+"g": 0.3
+},
+{
+"seg": 86,
+"off": 0.3,
+"s": "ui_error_01",
+"g": 0.28
+},
+{
+"seg": 90,
+"off": 0.0,
+"s": "move_whoosh_01",
+"g": 0.45
+},
+{
+"seg": 93,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 93,
+"off": 0.3,
+"s": "ui_error_01",
+"g": 0.28
+},
+{
+"seg": 94,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 95,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 96,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 97,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 97,
+"off": 0.3,
+"s": "ui_confirm_01",
+"g": 0.3
+},
+{
+"seg": 99,
+"off": 0.2,
+"s": "state_win_01",
+"g": 0.3
+}
+]

@@ -162,6 +162,15 @@ g={"titulo":"Todos los tipos de memoria explicados","lang":"es","cfg":0.0,"expre
 "Loftus, E. F. y Pickrell, J. E. (1995). The formation of false memories. Psychiatric Annals, 25, 720-725. (6 de 24 participantes, el 25 %.)",
 "Murdock, B. B. (1962). The serial position effect of free recall. Journal of Experimental Psychology, 64, 482-488.",
 "Priming de repetición y semántico: Meyer, D. E. y Schvaneveldt, R. W. (1971). Journal of Experimental Psychology, 90, 227-234."]}
+# --- ajustes tras revisar fotogramas 1920x1080 (cabeza tapando la pizarra, insignias cortadas arriba)
+for f in F:
+    ps=f["v"].get("props",[])
+    if any(p.get("y")==0.25 for p in ps):
+        for p in ps:
+            if p.get("y")==0.25: p["y"]=0.42; p["x"]=0.78
+            elif p.get("x")==0.7: p["x"]=0.6
+for i in (28,33,38):
+    F[i]["v"]["chars"][0].update(x=0.84, flip=True)
 json.dump(g,open("guion.json","w"),ensure_ascii=False,indent=1)
 w=sum(len(f["t"].split()) for f in F); c=sum(len(f["t"]) for f in F)
 print(len(F),"frases",w,"palabras",round(c/15+0.3*len(F)),"s aprox")

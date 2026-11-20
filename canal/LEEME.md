@@ -16,13 +16,19 @@ Canal educativo en español: explicaciones sencillas (ESO, Bachillerato, univers
    - Uso: `cb-venv/bin/python tts_cb.py videos/<id> cb-model voz-ref.wav` → `voz.wav` + `tiempos.json`.
    - El script repite sola cada frase que sale demasiado larga, demasiado corta o con silencios raros.
    - Tarda unos 4 s de CPU por cada segundo de audio.
-3. **Escena 3D**: copia `render.html` a `videos/<id>/escena.html` y adapta las estaciones al tema del vídeo (objetos y animaciones propios de cada tema; nada de la misma plantilla con otro texto). Requiere `npm install three@0.160.0` en `herramientas/`. En three 0.160, el grosor de TextGeometry es `height` (no `depth`).
-4. **Render**: `node frames.js videos/<id> test` (fotogramas de prueba: MÍRALOS y corrige) → `node frames.js videos/<id> full` → `video-mudo.mp4` (1080x1920 a 30 fps; unos 6 min por Short de 40 s).
-5. **Audio**: `python3 sfx.py videos/<id> ../../productos/sfx-pack-vol1/wav` (pista de efectos sincronizada; adapta las marcas a cada escena) y luego `./mix.sh videos/<id> ../../productos/music-loops-vol1/ogg/03_puzzle_thinking_96bpm_loop.ogg` → `final.mp4` (voz + música propia con ducking, -14 LUFS).
-6. **Miniatura**: `python3 thumb.py <fotograma.jpg> 'TEXTO <em>GANCHO</em>' 'PASTILLA' videos/<id>/miniatura-1280x720.png`.
-7. **Ficha**: `videos/<id>/PUBLICAR.txt` con título, descripción (con enlaces a OpoCalc o Cellmate cuando encaje), etiquetas, contenido alterado o sintético (No, salvo que se muestre algo realista inventado) y audiencia "no creado para niños".
+3. **Escenas (stickman v2)**: cada frase lleva `v: {chars:[{x,y?,pose,face,flip?}], props:[{k,x,y,s,d,anim?}], big, bigx, bigy, bigs, bigc, head, wipe, bg, board, boards, ground}`.
+   - `head`: rótulo de sección (con `wipe`: barrido de 3 bandas de color al empezar).
+   - `bg`: fondos dibujados `bedroom` (noche, estrellas), `classroom` (pizarra con `board`, tamaño `boards`), `lab` (estanterías con matraces) y `library`. Sin `bg`, paleta de color por sección.
+   - Props nuevos: `moon`, `pillow`, `alarm` (tiembla con `anim`), `flask` (burbujas), `lamp` (cono de luz), `scale` (`anim` 'left'/'right').
+   - Con pizarra, el personaje fuera de ella (`x≈0.84, flip`) o la cabeza tapa el texto. Los props por encima de `y≈0.3` se cortan en 16:9.
+4. **Render**: `node stickbeats.js ../videos/<id> 960 540 0,1,2,...` (fotograma de cada frase: haz una hoja de contacto, MÍRALA y corrige) → `node stickframes.js ../videos/<id> full 1920 1080 captions` (o `1080 1920` para Shorts) → `video-mudo.mp4`. Un Short de 54 s tarda ~1 min; un largo de 9 min, ~15 min.
+   - Si la voz de un Short pasa de 55 s: `ffmpeg -i voz.wav -af atempo=1.12` y escala `tiempos.json` por el mismo factor (guarda los originales como `voz-orig.wav`/`tiempos-orig.json`).
+   - Voz del largo (100 frases): ~1 h 30 de CPU. Lánzala en segundo plano y no compitas por CPU con otros renders.
+5. **Audio**: `python3 sfx.py videos/<id> ../../productos/sfx-pack-vol1/wav` (`sfx.json`: `[{seg, off, s, g}]`; whoosh en cada `head`, golpe en cada `big`, confirm/error en check/cross) y luego `./mix.sh videos/<id> ../../productos/music-loops-vol1/ogg/<pista>.ogg` → `final.mp4` (voz + música propia con ducking, -14 LUFS). Renombra a `short.mp4` o `video.mp4`.
+6. **Miniatura**: `node stickthumb.js spec.json videos/<id>/miniatura-1280x720.png` (`{t, title con <em>, tw, fs, pill, v}`: dibuja una escena stickman a 1280x720 con título).
+7. **Ficha**: `videos/<id>/PUBLICAR.txt` (y `CAPITULOS.txt` en los largos, con los inicios de cada `head` sacados de `tiempos.json`) con título, descripción (con enlaces a OpoCalc o Cellmate cuando encaje), etiquetas, contenido alterado o sintético (No, salvo que se muestre algo realista inventado) y audiencia "no creado para niños".
 
 ## Ritmo y calidad
-- 2 Shorts por semana (30-55 s, vertical) y 1 vídeo largo cada 2 semanas (6-10 min, 1920x1080, capítulos).
+- 1 Short (35-55 s, vertical) y 1 vídeo largo (más de 8 min, 1920x1080, capítulos) al día, de temas distintos.
 - YouTube desmonetiza el contenido repetitivo hecho en serie: cada vídeo con guion original, datos comprobados y escena propia.
-- Publicación: en el Lote del domingo, programando cada vídeo en días distintos.
+- Publicación: en el Lote del domingo con `python3 herramientas/lote_youtube.py subir/lote-AAAA-MM-DD <lunes> <ids...>` (Shorts a las 14:00, largos a las 18:00, uno por día).

@@ -10,7 +10,7 @@ Thanks for the feedback on the first version. Rootwork has been rebuilt with muc
 - Undo, hints you earn by playing, pause menu and settings (sound, music, vibration, reset progress).
 - Much more juice: water flows tile by tile, bouncy rotations, flowers burst into bloom with particles and notes, a celebration with stars, generative ambient music and a living animated background for each world.
 - Keyboard controls (arrows + space), mouse and touch. Tested at 60 fps on desktop and mobile.
-- CrazyGames SDK v3 integrated: gameplayStart/Stop, happytime on world completion, midgame ads only between gardens (never before the 3rd garden, at most every 3 minutes) and an optional rewarded ad for hints. The game pauses and mutes during ads.
+- CrazyGames SDK v3 adapter built in and ready for Full Launch (gameplayStart/Stop, happytime on world completion, midgame ads only between gardens, optional rewarded hints, pause and mute during ads). This Basic Launch build ships without the SDK script.
 - English and Spanish (automatic).
 
 ## Comparación

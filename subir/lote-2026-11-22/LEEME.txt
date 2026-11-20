@@ -41,7 +41,7 @@ Cómo usarlo (PC con Windows):
 2. Archivo: HTML5 > arrastra el zip del juego SIN extraer (p. ej. Lumen-Drift-web.zip). Hay 4 carpetas: lumen, loomlines, rootwork y lunavault (nuevo).
 3. Imágenes: las 3 crazygames-*.png. Vídeos: landscape-1920x1080.mp4 y portrait-1080x1620.mp4.
 4. Copia cada campo de TEXTOS-PARA-COPIAR.txt de la carpeta del juego. SDK: No (Basic Launch). IA: Sí.
-   ROOTWORK va en VERSIÓN 2 (rehecho para cumplir lo que piden los portales): sube Rootwork-crazygames.zip (lleva el SDK: «SDK: Yes»). Si ya lo habías enviado, actualízalo y pega CAMBIOS-V2.txt en la nota de reenvío. Los otros 3 juegos, solo si aún no los enviaste.
+   ROOTWORK va en VERSIÓN 2 (rehecho para cumplir lo que piden los portales): sube Rootwork-web.zip («SDK: No», Basic Launch). Si ya lo habías enviado, actualízalo y pega CAMBIOS-V2.txt en la nota de reenvío. Los otros 3 juegos, solo si aún no los enviaste.
 5. Prueba en la Preview > Submit.
 
 === 6-itch-4-juegos  (~13 min) ===

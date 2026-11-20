@@ -2,275 +2,510 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Rootwork</title>
 <style>
-  :root { --bg1:#0d241a; --bg2:#1a4630; --ink:#f3f7ec; --mut:#a9c4a8; --acc:#ffd166; --btn:#2e6b47; --btn2:#3f8a5d; }
+  :root { --ink:#f3f7ec; --mut:#b9cfb8; --acc:#ffd166; --btn:#2e6b47; --btn2:#3f8a5d; --card:#0b1f16e6; }
   * { box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
-  html,body { margin:0; height:100%; overflow:hidden; background:var(--bg1); color:var(--ink);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; touch-action:none; }
-  #stage { position:fixed; inset:0; background:radial-gradient(120% 90% at 50% 20%, var(--bg2), var(--bg1)); }
+  html,body { margin:0; height:100%; overflow:hidden; background:#0d241a; color:var(--ink);
+    font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; touch-action:none; }
+  #stage { position:fixed; inset:0; }
   canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
   .scr { position:absolute; inset:0; display:none; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:16px; text-align:center; }
-  .scr.on { display:flex; }
-  .logo { font-size:clamp(48px, 13vmin, 120px); font-weight:900; letter-spacing:-.03em; line-height:1; color:#fff;
-    text-shadow:0 4px 0 #0a1c13, 0 10px 30px #0008; }
+  .scr.on { display:flex; animation:fadeIn .22s ease-out; }
+  .scr.dim { background:#06120cb0; }
+  @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
+  @keyframes popIn { 0% { transform:scale(.6); opacity:0 } 70% { transform:scale(1.08); opacity:1 } 100% { transform:scale(1) } }
+  @keyframes bob { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-6px) } }
+  .card { background:var(--card); border-radius:26px; padding:26px 22px; display:flex; flex-direction:column; align-items:center; gap:14px;
+    box-shadow:0 20px 60px #0008, inset 0 1px 0 #ffffff14; max-width:min(560px, 94vw); max-height:94vh; overflow:auto; animation:popIn .32s cubic-bezier(.2,.9,.3,1.2); }
+  .logo { font-size:clamp(52px, 14vmin, 128px); font-weight:900; letter-spacing:-.04em; line-height:.95; color:#fff;
+    text-shadow:0 5px 0 #0a1c13, 0 12px 34px #000a; animation:bob 3.2s ease-in-out infinite; }
   .logo b { color:var(--acc); }
-  .sub { color:var(--mut); font-size:clamp(14px,2.6vmin,19px); max-width:30em; margin:0 0 10px; }
-  button { font:inherit; font-weight:800; color:var(--ink); background:var(--btn); border:0; border-radius:14px; padding:14px 26px;
-    font-size:clamp(16px,3vmin,21px); cursor:pointer; box-shadow:0 4px 0 #173a27; transition:transform .08s, background .15s; }
+  .sub { color:var(--mut); font-size:clamp(14px,2.6vmin,18px); max-width:28em; margin:0; line-height:1.35; }
+  h2 { margin:0; font-size:clamp(22px,4.6vmin,32px); font-weight:900; letter-spacing:-.02em; }
+  button { font:inherit; font-weight:800; color:var(--ink); background:var(--btn); border:0; border-radius:14px; padding:13px 24px;
+    font-size:clamp(15px,2.8vmin,20px); cursor:pointer; box-shadow:0 4px 0 #173a27; transition:transform .08s, background .15s, filter .15s; }
   button:hover { background:var(--btn2); } button:active { transform:translateY(3px); box-shadow:0 1px 0 #173a27; }
-  button.big { font-size:clamp(20px,4vmin,28px); padding:16px 44px; background:#e0a92a; color:#2a1c05; box-shadow:0 5px 0 #8a6412; }
+  button:disabled { filter:grayscale(1) brightness(.7); cursor:default; }
+  button.big { font-size:clamp(20px,4.2vmin,30px); padding:16px 48px; background:#e0a92a; color:#2a1c05; box-shadow:0 5px 0 #8a6412; }
   button.big:hover { background:#f0bb3a; }
-  .menuCard { background:#0b1f16cc; border-radius:24px; padding:28px 22px; display:flex; flex-direction:column; align-items:center; gap:14px; backdrop-filter:blur(3px); }
-  #hud { position:absolute; left:0; right:0; top:0; display:none; align-items:center; justify-content:space-between; padding:10px 12px; gap:8px; }
+  button.ghost { background:#ffffff14; box-shadow:none; }
+  .row { display:flex; gap:10px; align-items:center; justify-content:center; flex-wrap:wrap; }
+  .pill { display:inline-flex; gap:6px; align-items:center; background:#00000040; border-radius:999px; padding:6px 14px; font-weight:800; color:var(--acc); }
+  #hud { position:absolute; left:0; right:0; top:0; display:none; align-items:center; justify-content:space-between; padding:10px 12px; gap:8px;
+    padding-top:max(10px, env(safe-area-inset-top)); }
   #hud.on { display:flex; }
-  #hud .mid { text-align:center; line-height:1.15; }
-  #hud .lv { font-weight:900; font-size:clamp(18px,3.4vmin,26px); }
-  #hud .mv { color:var(--mut); font-size:clamp(13px,2.4vmin,17px); }
+  #hud .mid { text-align:center; line-height:1.15; min-width:0; }
+  #hud .lv { font-weight:900; font-size:clamp(16px,3.2vmin,24px); white-space:nowrap; }
+  #hud .mv { color:var(--mut); font-size:clamp(12px,2.3vmin,16px); white-space:nowrap; }
   #hud .grp { display:flex; gap:8px; }
-  .ib { padding:10px 14px; font-size:clamp(14px,2.6vmin,18px); border-radius:12px; min-width:46px; }
-  #grid { display:grid; grid-template-columns:repeat(6, minmax(44px,64px)); gap:10px; }
-  #grid button { padding:10px 0; font-size:18px; display:flex; flex-direction:column; align-items:center; gap:2px; }
+  .ib { padding:9px 12px; font-size:clamp(15px,2.6vmin,19px); border-radius:12px; min-width:44px; position:relative; }
+  .ib .n { position:absolute; top:-6px; right:-6px; background:var(--acc); color:#2a1c05; border-radius:999px; font-size:12px; min-width:20px; height:20px; line-height:20px; padding:0 5px; }
+  #worlds { display:grid; grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); gap:12px; width:min(560px, 86vw); }
+  .wcard { border-radius:18px; padding:14px 10px 12px; display:flex; flex-direction:column; gap:6px; align-items:center; position:relative; overflow:hidden; }
+  .wcard .wn { font-size:17px; font-weight:900; } .wcard .ws { font-size:13px; color:#fff; opacity:.85; }
+  .wcard .wm { font-size:12px; font-weight:700; opacity:.75; }
+  .wcard.lock { filter:grayscale(.85) brightness(.6); }
+  #grid { display:grid; grid-template-columns:repeat(5, minmax(46px,62px)); gap:10px; }
+  #grid button { padding:9px 0 7px; font-size:18px; display:flex; flex-direction:column; align-items:center; gap:2px; }
   #grid button .st { font-size:11px; color:var(--acc); letter-spacing:1px; min-height:12px; }
   #grid button.lock { background:#1c3a2a; color:#5d7d68; box-shadow:0 4px 0 #10251a; cursor:default; }
-  .row { display:flex; gap:10px; align-items:center; justify-content:center; flex-wrap:wrap; }
-  #winCard { background:#0b1f16ee; border-radius:24px; padding:26px 30px; display:flex; flex-direction:column; align-items:center; gap:12px; }
-  #winStars { font-size:clamp(40px,9vmin,64px); letter-spacing:6px; color:var(--acc); text-shadow:0 3px 0 #6b4b0a; }
-  #winStars .off { color:#2d4a39; text-shadow:none; }
+  #grid button.cur { outline:3px solid var(--acc); outline-offset:2px; }
+  #winStars { font-size:clamp(46px,10vmin,72px); letter-spacing:6px; display:flex; gap:6px; }
+  #winStars span { color:#2d4a39; display:inline-block; transform:scale(.4); transition:transform .3s cubic-bezier(.2,.9,.3,1.6), color .2s; }
+  #winStars span.on { color:var(--acc); text-shadow:0 3px 0 #6b4b0a, 0 0 24px #ffd16688; transform:scale(1); }
+  #winStars span.off { transform:scale(.85); }
   #winTxt { color:var(--mut); margin:0; font-size:clamp(14px,2.6vmin,18px); }
-  #help { color:var(--mut); font-size:clamp(12px,2.2vmin,15px); position:absolute; bottom:10px; left:0; right:0; text-align:center; display:none; padding:0 10px; }
-  #help.on { display:block; }
-  .more{display:block;margin-top:14px;font-size:14px;opacity:.65;color:inherit;text-decoration:none;text-align:center}
-  .more:hover{opacity:1;text-decoration:underline}
+  #bubble { position:absolute; left:50%; transform:translateX(-50%); bottom:max(14px, env(safe-area-inset-bottom)); background:#fff; color:#17301f; font-weight:800;
+    padding:10px 16px; border-radius:16px; font-size:clamp(14px,2.6vmin,18px); box-shadow:0 8px 24px #0006; display:none; max-width:92vw; text-align:center; }
+  #bubble.on { display:block; animation:popIn .3s ease-out; }
+  .set { display:flex; flex-direction:column; gap:10px; width:min(340px, 80vw); }
+  .set button { display:flex; justify-content:space-between; }
+  .toast { position:absolute; top:76px; left:50%; transform:translateX(-50%); background:var(--acc); color:#2a1c05; font-weight:900; border-radius:999px; padding:8px 18px; pointer-events:none; opacity:0; transition:opacity .25s, top .25s; }
+  .toast.on { opacity:1; top:84px; }
+  .icon { width:76px; height:76px; border-radius:20px; display:flex; align-items:center; justify-content:center; font-size:40px; box-shadow:inset 0 -5px 0 #0003; }
 </style>
 </head>
 <body>
 <div id="stage">
   <canvas id="cv"></canvas>
+
   <div id="sMenu" class="scr on">
-    <div class="menuCard">
-      <div class="logo">Root<b>work</b></div>
-      <p class="sub">Turn the root tiles so water from the spring reaches every flower in the garden.</p>
-      <button class="big" id="bPlay">Play</button>
-      <div class="row"><button id="bLevels">Levels</button><button id="bSound">Sound: on</button></div>
-      <a class="more" href="https://iibaaii21.itch.io" target="_blank" rel="noopener">More games ↗</a>
-    </div>
+    <div class="logo">Root<b>work</b></div>
+    <p class="sub" data-t="tagline"></p>
+    <button class="big" id="bPlay" data-t="play"></button>
+    <div class="row"><button id="bWorlds" data-t="worlds"></button><button id="bDaily"></button></div>
+    <div class="row"><span class="pill" id="mStars"></span><button class="ghost ib" id="bSettings" aria-label="Settings">&#9881;</button></div>
+    <a href="https://iibaaii21.itch.io" target="_blank" rel="noopener" style="color:inherit;opacity:.6;font-size:14px;text-decoration:none">More games ↗</a>
   </div>
-  <div id="sLevels" class="scr">
-    <div class="menuCard">
-      <div style="font-weight:900;font-size:26px">Choose a garden</div>
-      <div id="grid"></div>
-      <div class="row"><button id="pPrev" class="ib">&#9664;</button><span id="pTxt" style="min-width:90px"></span><button id="pNext" class="ib">&#9654;</button></div>
-      <button id="bBack">Back</button>
-    </div>
-  </div>
-  <div id="sWin" class="scr">
-    <div id="winCard">
-      <div style="font-weight:900;font-size:clamp(24px,5vmin,36px)">Garden in bloom!</div>
-      <div id="winStars"></div>
-      <p id="winTxt"></p>
-      <div class="row"><button id="wRetry">Replay</button><button class="big" id="wNext">Next</button></div>
-    </div>
-  </div>
+
+  <div id="sWorlds" class="scr dim"><div class="card">
+    <h2 data-t="worlds"></h2>
+    <div id="worlds"></div>
+    <button id="wBack" data-t="back"></button>
+  </div></div>
+
+  <div id="sLevels" class="scr dim"><div class="card">
+    <h2 id="lvTitle"></h2>
+    <span class="pill" id="lvStars"></span>
+    <div id="grid"></div>
+    <button id="lBack" data-t="back"></button>
+  </div></div>
+
+  <div id="sWin" class="scr"><div class="card">
+    <h2 id="winHead"></h2>
+    <div id="winStars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+    <p id="winTxt"></p>
+    <div class="row"><button id="wRetry" class="ib" aria-label="Replay">&#8635;</button><button id="wLevels" class="ib" aria-label="Levels">&#9638;</button><button class="big" id="wNext" data-t="next"></button></div>
+  </div></div>
+
+  <div id="sModal" class="scr dim"><div class="card" id="mCard"></div></div>
+
   <div id="hud">
-    <div class="grp"><button class="ib" id="hMenu" aria-label="Menu">&#9776;</button><button class="ib" id="hReset" aria-label="Restart">&#8635;</button></div>
-    <div class="mid"><div class="lv" id="hLv">Garden 1</div><div class="mv" id="hMv">Moves 0 · Par 0</div></div>
-    <div class="grp"><button class="ib" id="hHint" aria-label="Hint">Hint</button></div>
+    <div class="grp"><button class="ib" id="hPause" aria-label="Pause">&#10074;&#10074;</button><button class="ib" id="hUndo" aria-label="Undo">&#8630;</button></div>
+    <div class="mid"><div class="lv" id="hLv"></div><div class="mv" id="hMv"></div></div>
+    <div class="grp"><button class="ib" id="hReset" aria-label="Restart">&#8635;</button><button class="ib" id="hHint" aria-label="Hint">&#128161;<span class="n" id="hN"></span></button></div>
   </div>
-  <div id="help">Tap a tile to turn it · right-click turns it back · H hint · R restart</div>
+  <div id="bubble"></div>
+  <div class="toast" id="toast"></div>
 </div>
 <script>
 (() => {
 'use strict';
-  // ---------- portal adapter (CrazyGames SDK v3 when present; no-op elsewhere) ----------
-  const Portal = (() => {
-    const sdk = () => (window.CrazyGames && window.CrazyGames.SDK) || null;
-    let ready = false, playing = false, adBusy = false, lastAd = Date.now();
-    const p = { onPause: null, onResume: null, get adBusy(){ return adBusy; } };
-    p.init = async () => { const s = sdk(); if (!s) return; try { await s.init(); ready = true; } catch (e) { ready = false; } };
-    p.start = () => { if (ready && !playing) { playing = true; try { sdk().game.gameplayStart(); } catch (e) {} } };
-    p.stop = () => { if (ready && playing) { playing = false; try { sdk().game.gameplayStop(); } catch (e) {} } };
-    p.happy = () => { if (ready) { try { sdk().game.happytime(); } catch (e) {} } };
-    p.midgame = (done) => {
-      if (!ready || adBusy || Date.now() - lastAd < 180000) return done();
-      adBusy = true; let fin = false;
-      const end = () => { if (fin) return; fin = true; adBusy = false; lastAd = Date.now(); if (p.onResume) p.onResume(); done(); };
-      try { sdk().ad.requestAd('midgame', { adStarted: () => { if (p.onPause) p.onPause(); }, adFinished: end, adError: end }); } catch (e) { end(); }
-    };
-    return p;
-  })();
-  Portal.init();
-
 const $ = id => document.getElementById(id);
-const MAXLV = 300;
-const store = {
-  get(k, d){ try { const v = localStorage.getItem('rootwork.'+k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
-  set(k, v){ try { localStorage.setItem('rootwork.'+k, JSON.stringify(v)); } catch(e){} }
-};
-let unlocked = Math.max(1, Math.min(MAXLV, store.get('unlocked', 1) | 0));
-let stars = store.get('stars', {}); if (typeof stars !== 'object' || !stars) stars = {};
-let soundOn = store.get('sound', true) !== false;
 
-// ---------- RNG + level generation ----------
+// ================= i18n =================
+const LANG = /^es/i.test(navigator.language || '') ? 'es' : 'en';
+const TX = {
+  en: { tagline:'Turn the roots. Water every flower.', play:'Play', worlds:'Worlds', back:'Back', next:'Next', daily:'Daily garden', dailyDone:'Daily ✓',
+    settings:'Settings', sound:'Sound', music:'Music', vibration:'Vibration', on:'on', off:'off', reset:'Reset progress', resetQ:'Erase all stars and progress?', yes:'Yes, erase', no:'Cancel',
+    paused:'Paused', resume:'Resume', restart:'Restart', levels:'Levels', moves:'Moves', par:'Par', garden:'Garden',
+    bloom:'Garden in bloom!', perfect:'Perfect! {m} moves — par {p}.', good:'{m} moves · par {p}. Match par for ★★★', hintUsed:' · hint used',
+    need:'{n} ★ to open', locked:'Locked', worldDone:'World complete!', worldDoneTxt:'+2 hints. A new world is waiting.', ok:'OK',
+    noHints:'No hints left', noHintsTxt:'You earn a hint every 3 gardens you finish.', watchAd:'Watch an ad: +2 hints', hints:'hints',
+    t1:'Tap the glowing tile to turn it', t1b:'Keep turning until water reaches the flower', t2:'Every root tile must get water', t3:'Finish within par for 3 stars. Undo is free!',
+    dailyHead:'Daily garden', dailyTxt:'A new garden every day. Streak: {s} day(s).', dailyWin:'Daily garden done! Streak: {s}',
+    mech_meadow:'Turn tiles to connect the spring to every flower.', mech_orchard:'Stones can\'t be turned. Plan around them.', mech_marsh:'Pools break the grid. Roots only grow on soil.',
+    mech_delta:'Two springs! Each feeds its own network.', mech_night:'Pools and twin springs, under the stars.', mech_crystal:'Three springs, stones and pools. Everything you know.',
+    newWorld:'New world', go:'Let\'s go', stars:'stars', streak:'streak' },
+  es: { tagline:'Gira las raíces. Riega todas las flores.', play:'Jugar', worlds:'Mundos', back:'Volver', next:'Siguiente', daily:'Jardín del día', dailyDone:'Del día ✓',
+    settings:'Ajustes', sound:'Sonido', music:'Música', vibration:'Vibración', on:'sí', off:'no', reset:'Borrar progreso', resetQ:'¿Borrar todas las estrellas y el progreso?', yes:'Sí, borrar', no:'Cancelar',
+    paused:'Pausa', resume:'Seguir', restart:'Reiniciar', levels:'Niveles', moves:'Movs', par:'Par', garden:'Jardín',
+    bloom:'¡Jardín en flor!', perfect:'¡Perfecto! {m} movimientos — par {p}.', good:'{m} movimientos · par {p}. Iguala el par para ★★★', hintUsed:' · con pista',
+    need:'{n} ★ para abrir', locked:'Cerrado', worldDone:'¡Mundo completado!', worldDoneTxt:'+2 pistas. Te espera un mundo nuevo.', ok:'Vale',
+    noHints:'Sin pistas', noHintsTxt:'Ganas una pista cada 3 jardines terminados.', watchAd:'Ver anuncio: +2 pistas', hints:'pistas',
+    t1:'Toca la pieza que brilla para girarla', t1b:'Sigue girando hasta que el agua llegue a la flor', t2:'Todas las raíces tienen que recibir agua', t3:'Termina en el par para 3 estrellas. ¡Deshacer es gratis!',
+    dailyHead:'Jardín del día', dailyTxt:'Un jardín nuevo cada día. Racha: {s} día(s).', dailyWin:'¡Jardín del día hecho! Racha: {s}',
+    mech_meadow:'Gira las piezas para unir el manantial con cada flor.', mech_orchard:'Las piedras no se pueden girar. Planea alrededor.', mech_marsh:'Los charcos rompen el tablero. Las raíces solo crecen en la tierra.',
+    mech_delta:'¡Dos manantiales! Cada uno riega su propia red.', mech_night:'Charcos y manantiales gemelos, bajo las estrellas.', mech_crystal:'Tres manantiales, piedras y charcos. Todo lo que sabes.',
+    newWorld:'Mundo nuevo', go:'Vamos', stars:'estrellas', streak:'racha' }
+};
+const T = (k, v) => { let s = (TX[LANG][k] ?? TX.en[k] ?? k); if (v) for (const x in v) s = s.replace('{' + x + '}', v[x]); return s; };
+document.documentElement.lang = LANG;
+document.querySelectorAll('[data-t]').forEach(e => e.textContent = T(e.dataset.t));
+
+// ================= portal adapter (CrazyGames SDK v3 if loaded; no-op elsewhere) =================
+const Portal = (() => {
+  let s = null, ready = false, playing = false, adBusy = false, lastAd = Date.now(), levelsDone = 0;
+  const p = { onPause: null, onResume: null, get adBusy(){ return adBusy; }, get ready(){ return ready; } };
+  p.init = async () => {
+    const sdk = window.CrazyGames && window.CrazyGames.SDK; if (!sdk) return;
+    try { await sdk.init(); s = sdk; ready = (s.environment || 'crazygames') !== 'disabled'; } catch (e) { ready = false; }
+  };
+  p.loading = on => { if (!ready) return; try { on ? s.game.loadingStart() : s.game.loadingStop(); } catch (e) {} };
+  p.start = () => { if (ready && !playing) { playing = true; try { s.game.gameplayStart(); } catch (e) {} } };
+  p.stop = () => { if (ready && playing) { playing = false; try { s.game.gameplayStop(); } catch (e) {} } };
+  p.happy = () => { if (ready) { try { s.game.happytime(); } catch (e) {} } };
+  p.data = () => (ready && s.data && typeof s.data.getItem === 'function') ? s.data : null;
+  const ad = (kind, onDone) => {
+    if (!ready || adBusy) return onDone(false);
+    adBusy = true; let fin = false; p.stop(); if (p.onPause) p.onPause();
+    const end = ok => { if (fin) return; fin = true; adBusy = false; lastAd = Date.now(); if (p.onResume) p.onResume(); onDone(ok); };
+    try { s.ad.requestAd(kind, { adStarted: () => {}, adFinished: () => end(true), adError: () => end(false) }); } catch (e) { end(false); }
+  };
+  // midgame only between gardens, never before the 3rd finished garden of a session, at most every 3 minutes
+  p.between = done => { levelsDone++; if (!ready || levelsDone < 3 || Date.now() - lastAd < 180000) return done(); ad('midgame', () => done()); };
+  p.rewarded = done => ad('rewarded', done);
+  return p;
+})();
+
+// ================= storage (localStorage + CrazyGames data module when present) =================
+const KEY = 'rootwork2.';
+const store = {
+  get(k, d){ try { const src = Portal.data() || localStorage; const v = src.getItem(KEY + k); return v === null || v === undefined ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v){ const j = JSON.stringify(v); try { localStorage.setItem(KEY + k, j); } catch (e) {} try { const dd = Portal.data(); if (dd) dd.setItem(KEY + k, j); } catch (e) {} }
+};
+let P; // progress
+function loadProgress(){
+  P = { stars: store.get('stars', {}), hints: store.get('hints', 3), sound: store.get('sound', true), music: store.get('music', true), vib: store.get('vib', true),
+    seen: store.get('seen', {}), finished: store.get('finished', 0), daily: store.get('daily', { last: '', streak: 0, best: {} }) };
+  if (typeof P.stars !== 'object' || !P.stars) P.stars = {};
+}
+const save = () => { for (const k of ['stars','hints','sound','music','vib','seen','finished','daily']) store.set(k, P[k]); };
+
+// ================= worlds =================
+const PER = 25;
+const WORLDS = [
+  { id:'meadow',  en:'Meadow',        es:'Pradera',          sz:[3,6], stones:0,   holes:0,   springs:1, need:0,
+    bg:['#1f5a3a','#0d241a'], soil:['#5a3b25','#6d4a2e'], card:'linear-gradient(160deg,#3f9a5d,#1d5136)', amb:'pollen', icon:'🌱' },
+  { id:'orchard', en:'Orchard',       es:'Huerto',           sz:[4,7], stones:.16, holes:0,   springs:1, need:30,
+    bg:['#6b4a1f','#23160a'], soil:['#5e3d22','#73502f'], card:'linear-gradient(160deg,#d9922f,#6b3f12)', amb:'leaves', icon:'🍎' },
+  { id:'marsh',   en:'Marsh',         es:'Marisma',          sz:[5,7], stones:0,   holes:.2,  springs:1, need:65,
+    bg:['#1d6a66','#082624'], soil:['#4e3a26','#62492f'], card:'linear-gradient(160deg,#2fb3a5,#0f4a47)', amb:'bubbles', icon:'🐸' },
+  { id:'delta',   en:'River Delta',   es:'Delta',            sz:[5,8], stones:.08, holes:0,   springs:2, need:105,
+    bg:['#2b5f9a','#0b1d33'], soil:['#5b3f2a','#704f34'], card:'linear-gradient(160deg,#4d8fe0,#173b6b)', amb:'mist', icon:'🌊' },
+  { id:'night',   en:'Night Garden',  es:'Jardín nocturno',  sz:[6,8], stones:0,   holes:.15, springs:2, need:150,
+    bg:['#3a2a6b','#0a0820'], soil:['#3f3048','#52405c'], card:'linear-gradient(160deg,#6b52c9,#1c1446)', amb:'fireflies', icon:'🌙' },
+  { id:'crystal', en:'Crystal Caves', es:'Cuevas de cristal',sz:[6,9], stones:.12, holes:.14, springs:3, need:200,
+    bg:['#6a2f7d','#16081f'], soil:['#47364f','#5b4766'], card:'linear-gradient(160deg,#c45bd6,#3d1150)', amb:'sparkle', icon:'💎' },
+];
+const NLV = WORLDS.length * PER;
+const wname = w => w[LANG] || w.en;
+const totalStars = () => Object.values(P.stars).reduce((a, b) => a + (b | 0), 0);
+const worldStars = wi => { let s = 0; for (let i = 1; i <= PER; i++) s += P.stars[wi * PER + i] | 0; return s; };
+const worldDone = wi => { for (let i = 1; i <= PER; i++) if (!P.stars[wi * PER + i]) return false; return true; };
+const worldOpen = wi => wi === 0 || (totalStars() >= WORLDS[wi].need && P.stars[(wi - 1) * PER + PER - 4]);
+const levelOpen = gid => { const wi = Math.floor((gid - 1) / PER), i = (gid - 1) % PER; return worldOpen(wi) && (i === 0 || !!P.stars[gid - 1]); };
+function nextLevel(){ for (let g = 1; g <= NLV; g++) if (!P.stars[g] && levelOpen(g)) return g; let best = 1; for (let g = 1; g <= NLV; g++) if (levelOpen(g)) best = g; return best; }
+
+// ================= RNG + generation =================
 function rng(seed){ let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
 const DIRS = [[0,-1,1,4],[1,0,2,8],[0,1,4,1],[-1,0,8,2]];
 const rotCW = m => ((m << 1) | (m >> 3)) & 15;
 const rotK = (m, k) => { for (let i = 0; i < (k & 3); i++) m = rotCW(m); return m; };
 const bits = m => (m & 1) + ((m >> 1) & 1) + ((m >> 2) & 1) + ((m >> 3) & 1);
-function sizeFor(n){ return n <= 3 ? 3 : n <= 8 ? 4 : n <= 24 ? 5 : n <= 50 ? 6 : n <= 90 ? 7 : n <= 150 ? 8 : 9; }
 function minTurns(sol, cur){ for (let k = 0; k < 4; k++) if (rotK(cur, k) === sol) return k; return 0; }
+const nb = (c, sz, d) => { const x = c % sz + DIRS[d][0], y = ((c / sz) | 0) + DIRS[d][1]; return (x < 0 || y < 0 || x >= sz || y >= sz) ? -1 : y * sz + x; };
 
-function genLevel(n){
-  const R = rng(n * 7919 + 1013), sz = sizeFor(n), cnt = sz * sz;
-  const sol = new Array(cnt).fill(0);
-  const sx = sz < 4 ? 1 : 1 + Math.floor(R() * (sz - 2)), sy = sz < 4 ? 1 : 1 + Math.floor(R() * (sz - 2)), spring = sy * sz + sx;
-  const seen = new Array(cnt).fill(false); seen[spring] = true;
-  const front = [spring], bias = 0.35 + 0.3 * R();
-  let left = cnt - 1, guard = 0;
-  while (left > 0 && guard++ < 100000) {
-    const i = R() < bias ? front.length - 1 : Math.floor(R() * front.length);
-    const c = front[i], x = c % sz, y = (c / sz) | 0;
-    const opts = [];
-    if (bits(sol[c]) < 3) for (const [dx, dy, b, ob] of DIRS) {
-      const nx = x + dx, ny = y + dy; if (nx < 0 || ny < 0 || nx >= sz || ny >= sz) continue;
-      const nc = ny * sz + nx; if (!seen[nc]) opts.push([nc, b, ob]);
+function genBoard(seed, sz, o){
+  const cnt = sz * sz;
+  for (let att = 0; att < 80; att++) {
+    const R = rng(seed + att * 104729);
+    const hole = new Array(cnt).fill(false);
+    if (o.holes > 0) { const nh = Math.round(cnt * o.holes); for (let k = 0; k < nh; k++) hole[Math.floor(R() * cnt)] = true; }
+    const live0 = []; for (let i = 0; i < cnt; i++) if (!hole[i]) live0.push(i);
+    if (live0.length < 4) continue;
+    const spring = live0[Math.floor(R() * live0.length)];
+    const sol = new Array(cnt).fill(0), seen = new Array(cnt).fill(false); seen[spring] = true;
+    const front = [spring], bias = 0.35 + 0.3 * R();
+    while (front.length) {
+      const i = R() < bias ? front.length - 1 : Math.floor(R() * front.length), c = front[i], opts = [];
+      if (bits(sol[c]) < 3) for (let d = 0; d < 4; d++) { const n = nb(c, sz, d); if (n >= 0 && !hole[n] && !seen[n]) opts.push([n, d]); }
+      if (!opts.length) { front.splice(i, 1); continue; }
+      const [n, d] = opts[Math.floor(R() * opts.length)];
+      sol[c] |= DIRS[d][2]; sol[n] |= DIRS[d][3]; seen[n] = true; front.push(n);
     }
-    if (!opts.length) { front.splice(i, 1); if (!front.length) break; continue; }
-    const [nc, b, ob] = opts[Math.floor(R() * opts.length)];
-    sol[c] |= b; sol[nc] |= ob; seen[nc] = true; front.push(nc); left--;
+    for (let i = 0; i < cnt; i++) if (!seen[i]) hole[i] = true;
+    const live = []; for (let i = 0; i < cnt; i++) if (!hole[i]) live.push(i);
+    if (live.length < Math.max(4, cnt * (o.holes ? 0.62 : 1))) continue;
+    // extra springs: cut tree edges
+    const springs = [spring]; let okS = true;
+    const comp = (start, cutA, cutB) => { const out = [start], vis = new Set([start]);
+      for (let q = 0; q < out.length; q++) { const c = out[q]; for (let d = 0; d < 4; d++) { if (!(sol[c] & DIRS[d][2])) continue; const n = nb(c, sz, d);
+        if ((c === cutA && n === cutB) || (c === cutB && n === cutA) || vis.has(n)) continue; vis.add(n); out.push(n); } } return out; };
+    for (let k = 1; k < o.springs && okS; k++) {
+      const edges = []; for (const c of live) for (const d of [1, 2]) if (sol[c] & DIRS[d][2]) edges.push([c, nb(c, sz, d), d]);
+      for (let i = edges.length - 1; i > 0; i--) { const j = Math.floor(R() * (i + 1)); [edges[i], edges[j]] = [edges[j], edges[i]]; }
+      const minSz = Math.max(4, Math.floor(live.length / (o.springs * 2.2)));
+      let done = false;
+      for (const [a, b, d] of edges) {
+        const A = comp(a, a, b), B = comp(b, a, b);
+        if (A.length < minSz || B.length < minSz) continue;
+        const sa = springs.some(s => A.includes(s)), sb = springs.some(s => B.includes(s));
+        if (sa === sb) continue;
+        sol[a] &= ~DIRS[d][2]; sol[b] &= ~DIRS[d][3];
+        const side = sa ? B : A, pref = side.filter(c => bits(sol[c]) >= 2);
+        const pool = pref.length ? pref : side; springs.push(pool[Math.floor(R() * pool.length)]); done = true; break;
+      }
+      if (!done) okS = false;
+    }
+    if (!okS) continue;
+    const isSpring = new Array(cnt).fill(false); springs.forEach(s => isSpring[s] = true);
+    if (live.some(c => bits(sol[c]) === 0)) continue;
+    const flowers = live.filter(c => !isSpring[c] && bits(sol[c]) === 1);
+    if (flowers.length < o.springs) continue;
+    const stone = new Array(cnt).fill(false);
+    if (o.stones > 0) { const cand = live.filter(c => !isSpring[c] && bits(sol[c]) >= 2 && bits(sol[c]) < 4);
+      const ns = Math.round(live.length * o.stones); for (let k = 0; k < ns && cand.length; k++) stone[cand.splice(Math.floor(R() * cand.length), 1)[0]] = true; }
+    const movable = live.filter(c => !stone[c] && bits(sol[c]) < 4);
+    const start = sol.slice();
+    for (const c of movable) if (R() < o.scr) start[c] = rotK(sol[c], 1 + Math.floor(R() * 3));
+    let par = 0; for (const c of live) par += minTurns(sol[c], start[c]);
+    const want = o.fixedPar || Math.ceil(live.length * o.minFrac);
+    for (let i = 0; par < want && i < cnt * 6; i++) { const c = movable[Math.floor(R() * movable.length)];
+      if (minTurns(sol[c], start[c]) > 0 || bits(sol[c]) === 4) continue; start[c] = rotK(start[c], 1 + Math.floor(R() * 3)); par += minTurns(sol[c], start[c]); }
+    if (par === 0) continue;
+    const hues = flowers.map(() => Math.floor(R() * 4));
+    const specks = []; for (let i = 0; i < cnt; i++) { const s = []; for (let k = 0; k < 4; k++) s.push([R(), R(), 0.5 + R()]); specks.push(s); }
+    return { sz, cnt, sol, start, springs, isSpring, flowers, hues, par, specks, hole, stone, live };
   }
-  if (left > 0) return genLevel(n + 100000); // extremely unlikely fallback
-  const pScr = Math.min(1, 0.3 + n * 0.07);
-  const start = sol.map(m => R() < pScr ? rotK(m, Math.floor(R() * 4)) : m);
-  let par = 0; for (let i = 0; i < cnt; i++) par += minTurns(sol[i], start[i]);
-  // make sure a decent number of tiles are wrong
-  for (let i = 0; par < Math.ceil(cnt * Math.min(0.55, 0.15 + n * 0.05)) && i < cnt * 4; i++) {
-    const c = Math.floor(R() * cnt); if (bits(sol[c]) === 4 || minTurns(sol[c], start[c]) > 0) continue;
-    start[c] = rotK(start[c], 1 + Math.floor(R() * 3)); par += minTurns(sol[c], start[c]);
-  }
-  const flowers = []; for (let i = 0; i < cnt; i++) if (i !== spring && bits(sol[i]) === 1) flowers.push(i);
-  const hues = flowers.map(() => Math.floor(R() * 4));
-  const specks = []; for (let i = 0; i < cnt; i++) { const s = []; for (let k = 0; k < 5; k++) s.push([R(), R(), 0.5 + R()]); specks.push(s); }
-  return { n, sz, cnt, sol, start, spring, flowers, hues, par, specks };
+  return genBoard(seed + 7, sz, { ...o, holes: 0, springs: 1, stones: 0 });
+}
+function levelSpec(gid){
+  const wi = Math.floor((gid - 1) / PER), i = (gid - 1) % PER, w = WORLDS[wi];
+  let sz = Math.round(w.sz[0] + (w.sz[1] - w.sz[0]) * (i / (PER - 1)) ** 0.9);
+  const o = { stones: w.stones, holes: w.holes, springs: w.springs, scr: Math.min(1, 0.25 + i * 0.035 + wi * 0.08), minFrac: Math.min(0.6, 0.22 + i * 0.012 + wi * 0.05) };
+  if (wi === 0 && i < 3) { sz = 3; o.fixedPar = [1, 3, 5][i]; o.scr = 0; }
+  if (i === 0 && wi > 0) { sz = Math.max(4, w.sz[0]); o.minFrac = 0.25; }
+  if (w.springs > 1) sz = Math.max(sz, 5);
+  return { wi, i, sz, o, seed: gid * 7919 + 1013 };
+}
+function genLevel(gid){ const s = levelSpec(gid); const b = genBoard(s.seed, s.sz, s.o); return Object.assign(b, { gid, wi: s.wi, idx: s.i, world: WORLDS[s.wi] }); }
+function dayKey(d = new Date()){ return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate(); }
+function genDaily(){
+  const k = dayKey(), wi = (Math.floor(Date.UTC(Math.floor(k / 10000), (Math.floor(k / 100) % 100) - 1, k % 100) / 864e5)) % WORLDS.length, w = WORLDS[wi];
+  const b = genBoard(k * 31 + 7, 7, { stones: w.stones, holes: w.holes, springs: w.springs, scr: 1, minFrac: 0.5 });
+  return Object.assign(b, { gid: 0, daily: k, wi, idx: 0, world: w });
 }
 
-// ---------- state ----------
-let L = null, base = [], turns = [], vang = [], wet = [], wetT = [], moves = 0, won = false, hinted = false, flash = [], bloomT = {};
-function startLevel(n){
-  n = Math.max(1, Math.min(MAXLV, n));
-  L = genLevel(n); base = L.start.slice(); turns = new Array(L.cnt).fill(0); vang = new Array(L.cnt).fill(0);
-  wetT = new Array(L.cnt).fill(0); flash = new Array(L.cnt).fill(0); bloomT = {}; moves = 0; won = false; hinted = false;
-  computeWater(true); show('play'); updateHud(); layout(); Portal.start();
+// ================= audio =================
+let ac = null, master = null, musicGain = null;
+function actx(){
+  try { if (!ac) { ac = new (window.AudioContext || window.webkitAudioContext)(); master = ac.createGain(); master.gain.value = 1; master.connect(ac.destination);
+      musicGain = ac.createGain(); musicGain.gain.value = 0; musicGain.connect(master); }
+    if (ac.state === 'suspended' && !Portal.adBusy) ac.resume(); } catch (e) { ac = null; }
+  return ac;
 }
-const cur = i => rotK(base[i], turns[i]);
-function computeWater(silent){
-  const sz = L.sz, w = new Array(L.cnt).fill(false), q = [L.spring]; w[L.spring] = true;
-  while (q.length) { const c = q.pop(), x = c % sz, y = (c / sz) | 0, m = cur(c);
-    for (const [dx, dy, b, ob] of DIRS) { if (!(m & b)) continue; const nx = x + dx, ny = y + dy;
-      if (nx < 0 || ny < 0 || nx >= sz || ny >= sz) continue; const nc = ny * sz + nx;
-      if (!w[nc] && (cur(nc) & ob)) { w[nc] = true; q.push(nc); } } }
-  if (!silent) { let newF = 0; for (const f of L.flowers) if (w[f] && !wet[f]) newF++; if (newF) sfx.bloom(newF); }
+function tone(f, t0, d, type, vol, dest){ if (!P.sound && dest !== musicGain) return; const a = actx(); if (!a) return;
+  const o = a.createOscillator(), g = a.createGain(); o.type = type; o.frequency.value = f;
+  const t = a.currentTime + t0; g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.012); g.gain.exponentialRampToValueAtTime(0.0001, t + d);
+  o.connect(g); g.connect(dest || master); o.start(t); o.stop(t + d + 0.05); }
+const PENTA = [523.25, 587.33, 659.25, 783.99, 880, 1046.5, 1174.66, 1318.5];
+let bloomIdx = 0;
+const sfx = {
+  tap(){ tone(170 + Math.random() * 40, 0, 0.08, 'triangle', 0.2); tone(85, 0, 0.06, 'sine', 0.14); },
+  thunk(){ tone(70, 0, 0.12, 'square', 0.06); tone(55, 0.02, 0.1, 'sine', 0.2); },
+  drip(){ tone(900 + Math.random() * 500, 0, 0.06, 'sine', 0.05); },
+  bloom(){ tone(PENTA[bloomIdx % PENTA.length], 0, 0.6, 'sine', 0.13); tone(PENTA[bloomIdx % PENTA.length] * 2, 0.03, 0.35, 'sine', 0.04); bloomIdx++; },
+  win(){ [0, 2, 4, 5, 7].forEach((p, i) => tone(PENTA[p], i * 0.09, 0.8, 'triangle', 0.13)); },
+  star(k){ tone(PENTA[3 + k * 2] || 1400, 0, 0.4, 'triangle', 0.16); tone((PENTA[3 + k * 2] || 1400) * 1.5, 0.05, 0.3, 'sine', 0.05); },
+  ui(){ tone(440, 0, 0.05, 'triangle', 0.07); }
+};
+// gentle generative music
+const MSCALE = [261.63, 293.66, 329.63, 392, 440, 523.25, 587.33, 659.25];
+let musicT = 0, chord = 0;
+function musicTick(now){
+  if (!ac || !musicGain) return;
+  const target = (P.music && !Portal.adBusy && !document.hidden) ? 0.5 : 0;
+  musicGain.gain.value += (target - musicGain.gain.value) * 0.05;
+  if (target === 0 || now < musicT) return;
+  musicT = now + 520;
+  const beat = Math.floor(now / 520);
+  if (beat % 8 === 0) { chord = (chord + 1 + Math.floor(Math.random() * 2)) % 4; const root = [130.81, 110, 146.83, 98][chord];
+    tone(root, 0, 4.2, 'sine', 0.05, musicGain); tone(root * 1.5, 0.1, 4, 'sine', 0.025, musicGain); }
+  if (Math.random() < 0.55) tone(MSCALE[Math.floor(Math.random() * MSCALE.length)] * (Math.random() < 0.3 ? 2 : 1), 0, 1.6, 'triangle', 0.03, musicGain);
+}
+const buzz = ms => { if (P.vib && navigator.vibrate) try { navigator.vibrate(ms); } catch (e) {} };
+
+// ================= state =================
+let L = null, turns = [], vang = [], vvel = [], squash = [], wet = [], wetT = [], wetAt = [], bloomed = [], flash = [], undo = [];
+let moves = 0, won = false, hinted = false, tut = null, kbd = -1, kbdOn = false, shake = 0, winGlow = 0, lastTouched = -1;
+function startLevel(gidOrBoard){
+  L = typeof gidOrBoard === 'number' ? genLevel(Math.max(1, Math.min(NLV, gidOrBoard))) : gidOrBoard;
+  const n = L.cnt; turns = new Array(n).fill(0); vang = new Array(n).fill(0); vvel = new Array(n).fill(0); squash = new Array(n).fill(1);
+  wetT = new Array(n).fill(0); wetAt = new Array(n).fill(0); bloomed = new Array(n).fill(false); flash = new Array(n).fill(0); wet = new Array(n).fill(false);
+  undo = []; moves = 0; won = false; hinted = false; winGlow = 0; parts = []; kbd = L.springs[0];
+  setupTut(); computeWater(); show('play'); updateHud(); layout(); Portal.start();
+  if (L.gid && !P.seen['w' + L.wi] && L.idx === 0) { P.seen['w' + L.wi] = 1; save(); introWorld(L.wi); }
+}
+const cur = i => rotK(L.start[i], turns[i]);
+function computeWater(){
+  const now = performance.now(), sz = L.sz, w = new Array(L.cnt).fill(false), dist = new Array(L.cnt).fill(0), q = [];
+  for (const s of L.springs) { w[s] = true; q.push(s); }
+  for (let qi = 0; qi < q.length; qi++) { const c = q[qi], m = cur(c);
+    for (let d = 0; d < 4; d++) { if (!(m & DIRS[d][2])) continue; const n = nb(c, sz, d); if (n < 0 || L.hole[n] || w[n]) continue;
+      if (cur(n) & DIRS[d][3]) { w[n] = true; dist[n] = dist[c] + 1; q.push(n); } } }
+  let dmin = 1e9; for (let i = 0; i < L.cnt; i++) if (w[i] && !wet[i]) dmin = Math.min(dmin, dist[i]);
+  for (let i = 0; i < L.cnt; i++) { if (w[i] && !wet[i]) wetAt[i] = now + (dist[i] - dmin) * 70; if (!w[i]) bloomed[i] = false; }
   wet = w;
 }
 function rotate(c, dir){
-  if (won || Portal.adBusy) return;
-  turns[c] = (turns[c] + (dir > 0 ? 1 : 3)) & 3; vang[c] -= dir * Math.PI / 2; moves++;
-  sfx.tap(); computeWater(false); updateHud(); checkWin();
+  if (won || Portal.adBusy || screen_ !== 'play' || c < 0 || L.hole[c]) return;
+  lastTouched = c;
+  if (L.stone[c] || bits(L.sol[c]) === 4) { vvel[c] += 0.12 * (Math.random() < 0.5 ? -1 : 1); squash[c] = 0.94; sfx.thunk(); buzz(20); return; }
+  turns[c] = (turns[c] + (dir > 0 ? 1 : 3)) & 3; vang[c] -= dir * Math.PI / 2; squash[c] = 0.86; moves++; undo.push([c, dir]);
+  sfx.tap(); buzz(8); computeWater(); updateHud(); tutStep(); checkWin();
 }
+function doUndo(){ if (won || !undo.length || Portal.adBusy) return; const [c, dir] = undo.pop(); turns[c] = (turns[c] + (dir > 0 ? 3 : 1)) & 3; vang[c] += dir * Math.PI / 2; squash[c] = 0.9; moves = Math.max(0, moves - 1); sfx.ui(); computeWater(); updateHud(); }
+function allWet(){ for (const c of L.live) if (!wet[c]) return false; return true; }
 function checkWin(){
-  if (won) return; for (let i = 0; i < L.cnt; i++) if (!wet[i]) return;
-  won = true; Portal.stop();
+  if (won || !allWet()) return;
+  won = true; Portal.stop(); $('bubble').classList.remove('on'); tut = null;
   const extra = Math.ceil(L.par * 0.5) + 2;
   let s = moves <= L.par ? 3 : moves <= L.par + extra ? 2 : 1; if (hinted) s = Math.min(s, 2);
-  const prev = stars[L.n] | 0; if (s > prev) { stars[L.n] = s; store.set('stars', stars); }
-  if (L.n >= unlocked && L.n < MAXLV) { unlocked = L.n + 1; store.set('unlocked', unlocked); }
-  if (s === 3) Portal.happy();
-  sfx.win(); petals(L);
+  let worldJustDone = false, msg = '';
+  if (L.daily) { const D = P.daily; if (D.last !== String(L.daily)) { const y = new Date(); y.setDate(y.getDate() - 1); D.streak = D.last === String(dayKey(y)) ? D.streak + 1 : 1; D.last = String(L.daily); P.hints++; Portal.happy(); }
+    D.best[L.daily] = Math.min(D.best[L.daily] || 1e9, moves); msg = T('dailyWin', { s: D.streak }); }
+  else { const was = worldDone(L.wi), prev = P.stars[L.gid] | 0; if (!prev) { P.finished++; if (P.finished % 3 === 0) { P.hints++; toast('+1 💡'); } }
+    if (s > prev) P.stars[L.gid] = s; if (!was && worldDone(L.wi)) { worldJustDone = true; P.hints += 2; Portal.happy(); } }
+  save();
+  setTimeout(() => { winGlow = 1; shake = 7; sfx.win(); buzz([20, 40, 30]); petals(true); }, 520);
   setTimeout(() => {
-    $('winStars').innerHTML = [0,1,2].map(i => i < s ? '&#9733;' : '<span class="off">&#9733;</span>').join('');
-    $('winTxt').textContent = s === 3 ? `Perfect! ${moves} moves (par ${L.par}).` : `${moves} moves · par ${L.par}${hinted ? ' · hint used' : ''}. Match par for 3 stars.`;
-    $('wNext').style.display = L.n < MAXLV ? '' : 'none';
+    $('winHead').textContent = L.daily ? T('dailyHead') : T('bloom');
+    $('winTxt').textContent = msg || (s === 3 ? T('perfect', { m: moves, p: L.par }) : T('good', { m: moves, p: L.par }) + (hinted ? T('hintUsed') : ''));
+    const st = $('winStars').children; for (let k = 0; k < 3; k++) st[k].className = '';
+    $('winStars').style.display = L.daily ? 'none' : 'flex';
+    $('wNext').style.display = L.daily || L.gid >= NLV ? 'none' : ''; $('wLevels').style.display = L.daily ? 'none' : '';
     show('win');
-  }, 900);
+    if (!L.daily) for (let k = 0; k < 3; k++) setTimeout(() => { st[k].className = k < s ? 'on' : 'off'; if (k < s) { sfx.star(k); buzz(12); } }, 250 + k * 260);
+    if (worldJustDone) setTimeout(() => modal(`<div class="icon" style="background:${WORLDS[L.wi].card}">${WORLDS[L.wi].icon}</div><h2>${T('worldDone')}</h2><p class="sub">${T('worldDoneTxt')}</p>`, [[T('ok'), null, 'big']]), 1300);
+  }, 1500);
 }
 function hint(){
-  if (won || !L) return;
-  const cand = []; for (let i = 0; i < L.cnt; i++) if (cur(i) !== L.sol[i]) cand.push(i);
-  if (!cand.length) return;
-  cand.sort((a, b) => (wet[b] ? 1 : 0) - (wet[a] ? 1 : 0) || nearSpring(a) - nearSpring(b));
-  const c = cand[0]; hinted = true; let k = 0;
-  while (cur(c) !== L.sol[c] && k++ < 4) { turns[c] = (turns[c] + 1) & 3; vang[c] -= Math.PI / 2; }
-  flash[c] = 1; sfx.tap(); computeWater(false); updateHud(); checkWin();
+  if (won || !L || Portal.adBusy) return;
+  if (P.hints <= 0) { noHints(); return; }
+  const cand = L.live.filter(i => cur(i) !== L.sol[i] && !L.stone[i]); if (!cand.length) return;
+  const near = c => Math.min(...L.springs.map(s => Math.abs(c % L.sz - s % L.sz) + Math.abs(((c / L.sz) | 0) - ((s / L.sz) | 0))));
+  cand.sort((a, b) => (wet[b] ? 1 : 0) - (wet[a] ? 1 : 0) || near(a) - near(b));
+  const c = cand[0]; hinted = true; P.hints--; save(); let k = 0;
+  while (cur(c) !== L.sol[c] && k++ < 4) { turns[c] = (turns[c] + 1) & 3; vang[c] -= Math.PI / 2; moves++; }
+  flash[c] = 1; squash[c] = 0.8; sfx.tap(); computeWater(); updateHud(); checkWin();
 }
-function nearSpring(c){ const sz = L.sz; return Math.abs(c % sz - L.spring % sz) + Math.abs(((c / sz) | 0) - ((L.spring / sz) | 0)); }
-function updateHud(){ $('hLv').textContent = 'Garden ' + L.n; $('hMv').textContent = `Moves ${moves} · Par ${L.par}`; }
+function noHints(){
+  const btns = [[T('ok'), null]];
+  if (Portal.ready) btns.unshift([T('watchAd'), () => Portal.rewarded(ok => { if (ok) { P.hints += 2; save(); updateHud(); toast('+2 💡'); } }), 'big']);
+  modal(`<h2>${T('noHints')}</h2><p class="sub">${T('noHintsTxt')}</p>`, btns);
+}
+function updateHud(){
+  if (!L) return;
+  $('hLv').textContent = L.daily ? T('dailyHead') : `${wname(L.world)} · ${L.idx + 1}`;
+  $('hMv').textContent = `${T('moves')} ${moves} · ${T('par')} ${L.par}`;
+  $('hN').textContent = P.hints; $('hUndo').disabled = !undo.length;
+}
 
-// ---------- audio ----------
-let ac = null;
-function actx(){ if (!soundOn) return null; try { if (!ac) ac = new (window.AudioContext || window.webkitAudioContext)(); if (ac.state === 'suspended') ac.resume(); } catch(e){ ac = null; } return ac; }
-function tone(f, t0, d, type, vol){ const a = actx(); if (!a) return; const o = a.createOscillator(), g = a.createGain(); o.type = type; o.frequency.value = f;
-  const t = a.currentTime + t0; g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + d);
-  o.connect(g); g.connect(a.destination); o.start(t); o.stop(t + d + 0.02); }
-const PENTA = [523.25, 587.33, 659.25, 783.99, 880, 1046.5, 1174.66];
-let bloomIdx = 0;
-const sfx = {
-  tap(){ tone(180 + Math.random() * 30, 0, 0.07, 'triangle', 0.18); tone(90, 0, 0.05, 'sine', 0.12); },
-  bloom(k){ for (let i = 0; i < Math.min(k, 3); i++) { tone(PENTA[bloomIdx % PENTA.length], i * 0.08, 0.5, 'sine', 0.12); bloomIdx++; } },
-  win(){ [0, 2, 4, 5].forEach((p, i) => tone(PENTA[p], i * 0.11, 0.7, 'triangle', 0.14)); }
-};
+// ================= tutorial =================
+function setupTut(){
+  tut = null; $('bubble').classList.remove('on');
+  if (L.daily) return;
+  if (L.gid === 1) tut = { k: 't1', hand: true };
+  else if (L.gid === 2) tut = { k: 't2' };
+  else if (L.gid === 3) tut = { k: 't3' };
+  if (tut) bubble(T(tut.k));
+}
+function tutTarget(){ if (!tut || !tut.hand || won) return -1; const c = L.live.filter(i => cur(i) !== L.sol[i] && !L.stone[i]);
+  c.sort((a, b) => (wet[b] ? 1 : 0) - (wet[a] ? 1 : 0)); return c.length ? c[0] : -1; }
+function tutStep(){ if (tut && tut.hand && moves === 1) bubble(T('t1b')); }
+function bubble(txt){ const b = $('bubble'); b.textContent = txt; b.classList.remove('on'); void b.offsetWidth; b.classList.add('on'); }
+let toastT = 0; function toast(t){ const e = $('toast'); e.textContent = t; e.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => e.classList.remove('on'), 1400); }
 
-// ---------- rendering ----------
+// ================= rendering =================
 const cv = $('cv'), g = cv.getContext('2d');
-let W = 0, H = 0, DPR = 1, bx = 0, by = 0, ts = 0, menuL = genLevel(37);
+let W = 0, H = 0, DPR = 1, bx = 0, by = 0, ts = 0, menuL = null, amb = [];
+function boardFor(){ return (screen_ === 'play' || screen_ === 'win' || screen_ === 'modal' && L) ? L : menuL; }
 function layout(){
   DPR = Math.min(2, window.devicePixelRatio || 1); W = innerWidth; H = innerHeight;
   cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
-  const lv = (screen_ === 'play' || screen_ === 'win') ? L : menuL;
-  const top = screen_ === 'play' || screen_ === 'win' ? 70 : 16, bot = screen_ === 'play' || screen_ === 'win' ? 34 : 16;
-  const avail = Math.min(W - 24, H - top - bot);
+  const lv = boardFor(); if (!lv) return;
+  const inGame = lv === L, top = inGame ? 72 : 20, bot = inGame ? 64 : 20;
+  const avail = Math.min(W - 28, H - top - bot);
   ts = Math.floor(avail / lv.sz); bx = Math.round((W - ts * lv.sz) / 2); by = Math.round(top + (H - top - bot - ts * lv.sz) / 2);
 }
 addEventListener('resize', layout);
 const FLOWER = [['#ff7eb6','#ffd0e6'],['#ffd166','#fff1c4'],['#b69cff','#e6dcff'],['#ff9f80','#ffe0d4']];
 function rr(x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
+function drawBG(world, t){
+  const gr = g.createRadialGradient(W / 2, H * 0.2, 10, W / 2, H * 0.4, Math.max(W, H)); gr.addColorStop(0, world.bg[0]); gr.addColorStop(1, world.bg[1]);
+  g.fillStyle = gr; g.fillRect(0, 0, W, H);
+  if (amb.length < 36) for (let i = amb.length; i < 36; i++) amb.push({ x: Math.random(), y: Math.random(), s: 0.5 + Math.random(), p: Math.random() * 6.28 });
+  for (const a of amb) {
+    const k = world.amb; let x = a.x * W, y = a.y * H;
+    if (k === 'pollen') { a.y -= 0.00015 * a.s; x += Math.sin(t / 1400 + a.p) * 14; g.fillStyle = 'rgba(255,240,170,.35)'; g.beginPath(); g.arc(x, y, 1.6 * a.s, 0, 7); g.fill(); }
+    else if (k === 'leaves') { a.y += 0.00035 * a.s; x += Math.sin(t / 900 + a.p) * 22; g.save(); g.translate(x, y); g.rotate(t / 700 + a.p); g.fillStyle = 'rgba(230,140,50,.35)'; g.beginPath(); g.ellipse(0, 0, 3 * a.s, 6 * a.s, 0, 0, 7); g.fill(); g.restore(); }
+    else if (k === 'bubbles') { a.y -= 0.0003 * a.s; g.strokeStyle = 'rgba(190,255,245,.3)'; g.lineWidth = 1.2; g.beginPath(); g.arc(x + Math.sin(t / 600 + a.p) * 4, y, 3 * a.s, 0, 7); g.stroke(); }
+    else if (k === 'mist') { a.x += 0.00008 * a.s; g.fillStyle = 'rgba(200,225,255,.05)'; g.beginPath(); g.ellipse(x, y, 90 * a.s, 22 * a.s, 0, 0, 7); g.fill(); }
+    else if (k === 'fireflies') { x += Math.sin(t / 1100 + a.p) * 30; y += Math.cos(t / 1300 + a.p * 2) * 20; const al = 0.25 + 0.5 * (0.5 + 0.5 * Math.sin(t / 400 + a.p * 5));
+      g.fillStyle = `rgba(220,255,140,${al})`; g.shadowColor = '#e6ff8a'; g.shadowBlur = 12; g.beginPath(); g.arc(x, y, 2.2 * a.s, 0, 7); g.fill(); g.shadowBlur = 0; }
+    else if (k === 'sparkle') { const al = Math.max(0, Math.sin(t / 500 + a.p * 7)); g.fillStyle = `rgba(255,230,255,${0.6 * al})`; g.save(); g.translate(x, y); g.rotate(0.785);
+      g.fillRect(-0.8, -5 * a.s * al, 1.6, 10 * a.s * al); g.fillRect(-5 * a.s * al, -0.8, 10 * a.s * al, 1.6); g.restore(); }
+    if (a.y < -0.05) a.y = 1.05; if (a.y > 1.05) a.y = -0.05; if (a.x > 1.1) a.x = -0.1;
+  }
+}
 function drawBoard(lv, t, demo){
-  const sz = lv.sz, s = ts;
-  // frame
-  g.fillStyle = '#0a1a12'; rr(bx - 10, by - 10, s * sz + 20, s * sz + 20, 18); g.fill();
+  const sz = lv.sz, s = ts, now = performance.now(), world = lv.world;
+  g.fillStyle = '#0000004d'; rr(bx - 12, by - 6, s * sz + 24, s * sz + 24, 20); g.fill();
+  g.fillStyle = '#0a1a12d0'; rr(bx - 10, by - 10, s * sz + 20, s * sz + 20, 18); g.fill();
+  if (winGlow > 0.01) { g.strokeStyle = `rgba(255,220,120,${winGlow})`; g.lineWidth = 6; rr(bx - 10, by - 10, s * sz + 20, s * sz + 20, 18); g.stroke(); }
   for (let c = 0; c < lv.cnt; c++) {
     const x = bx + (c % sz) * s, y = by + ((c / sz) | 0) * s, cx = x + s / 2, cy = y + s / 2;
-    const isWet = demo ? true : wet[c];
-    if (!demo) { wetT[c] += ((isWet ? 1 : 0) - wetT[c]) * 0.18; flash[c] *= 0.95; vang[c] *= 0.72; if (Math.abs(vang[c]) < 0.002) vang[c] = 0; }
-    const wt = demo ? 1 : wetT[c];
-    // soil tile
-    g.fillStyle = wt > 0.5 ? '#6a4a30' : '#5a3b25'; rr(x + 2, y + 2, s - 4, s - 4, s * 0.16); g.fill();
-    g.fillStyle = '#ffffff10'; rr(x + 2, y + 2, s - 4, (s - 4) * 0.45, s * 0.16); g.fill();
-    g.fillStyle = '#00000022'; for (const [px, py, pr] of lv.specks[c]) { g.beginPath(); g.arc(x + 6 + px * (s - 12), y + 6 + py * (s - 12), pr * s * 0.025, 0, 7); g.fill(); }
+    if (lv.hole[c]) { g.fillStyle = '#ffffff0a'; rr(x + 5, y + 5, s - 10, s - 10, s * 0.3); g.fill();
+      const rp = ((t / 2600) + c * 0.37) % 1; g.strokeStyle = `rgba(160,220,255,${0.18 * (1 - rp)})`; g.lineWidth = 1.5; g.beginPath(); g.ellipse(cx, cy, s * 0.1 + rp * s * 0.25, (s * 0.1 + rp * s * 0.25) * 0.5, 0, 0, 7); g.stroke(); continue; }
+    if (!demo) {
+      const want = wet[c] && now >= wetAt[c] ? 1 : 0, before = wetT[c];
+      wetT[c] += (want - wetT[c]) * (want ? 0.2 : 0.3);
+      if (want && before < 0.15 && wetT[c] >= 0.15 && !lv.isSpring[c]) { drops(cx, cy, 3); if (Math.random() < 0.4) sfx.drip(); }
+      flash[c] *= 0.95; vvel[c] += -vang[c] * 0.3; vvel[c] *= 0.6; vang[c] += vvel[c]; if (Math.abs(vang[c]) < 0.001 && Math.abs(vvel[c]) < 0.001) { vang[c] = 0; vvel[c] = 0; }
+      squash[c] += (1 - squash[c]) * 0.25;
+    }
+    const wt = demo ? (lv === menuL ? menuWet(c, t) : 1) : wetT[c], sq = demo ? 1 : squash[c];
+    g.save(); g.translate(cx, cy); g.scale(sq, sq); g.translate(-cx, -cy);
+    const stone = lv.stone[c];
+    g.fillStyle = stone ? (wt > 0.5 ? '#7d8288' : '#6d7278') : (wt > 0.5 ? world.soil[1] : world.soil[0]); rr(x + 2, y + 2, s - 4, s - 4, s * 0.16); g.fill();
+    g.fillStyle = '#ffffff12'; rr(x + 2, y + 2, s - 4, (s - 4) * 0.45, s * 0.16); g.fill();
+    g.fillStyle = '#00000026'; for (const [px, py, pr] of lv.specks[c]) { g.beginPath(); g.arc(x + 6 + px * (s - 12), y + 6 + py * (s - 12), pr * s * (stone ? 0.05 : 0.025), 0, 7); g.fill(); }
+    if (stone) { g.strokeStyle = '#00000040'; g.lineWidth = 1.5; g.beginPath(); g.moveTo(x + s * 0.18, y + s * 0.25); g.lineTo(x + s * 0.32, y + s * 0.35); g.lineTo(x + s * 0.28, y + s * 0.48); g.stroke(); }
     if (!demo && flash[c] > 0.02) { g.strokeStyle = `rgba(255,209,102,${flash[c]})`; g.lineWidth = 4; rr(x + 3, y + 3, s - 6, s - 6, s * 0.16); g.stroke(); }
-    // roots
-    const m = demo ? lv.sol[c] : base[c], ang = demo ? 0 : turns[c] * Math.PI / 2 + vang[c];
-    g.save(); g.translate(cx, cy); g.rotate(ang); g.lineCap = 'butt';
+    if (!demo && kbdOn && c === kbd && screen_ === 'play') { g.strokeStyle = '#ffffffcc'; g.lineWidth = 3; g.setLineDash([6, 5]); rr(x + 4, y + 4, s - 8, s - 8, s * 0.16); g.stroke(); g.setLineDash([]); }
+    const m = demo ? lv.sol[c] : lv.start[c], ang = demo ? 0 : turns[c] * Math.PI / 2 + vang[c];
+    g.save(); g.translate(cx, cy); g.rotate(ang);
     const arms = []; for (let k = 0; k < 4; k++) if (m & (1 << k)) arms.push(k);
     const seg = (lw, col) => { g.strokeStyle = col; g.lineWidth = lw; g.beginPath(); for (const k of arms) { const a = -Math.PI / 2 + k * Math.PI / 2; g.moveTo(0, 0); g.lineTo(Math.cos(a) * s / 2, Math.sin(a) * s / 2); } g.stroke();
       if (arms.length) { g.fillStyle = col; g.beginPath(); g.arc(0, 0, lw / 2, 0, 7); g.fill(); } };
-    seg(s * 0.30, '#2a170c');
-    seg(s * 0.17, '#b08a5c');
-    if (wt > 0.01) { g.globalAlpha = wt; seg(s * 0.17, '#3fb6ee');
-      g.setLineDash([s * 0.08, s * 0.16]); g.lineDashOffset = -t * 0.04 * s / 40; seg(s * 0.06, '#c9f1ff'); g.setLineDash([]); g.globalAlpha = 1; }
+    g.lineCap = 'butt'; seg(s * 0.30, '#2a170c'); seg(s * 0.17, stone ? '#9a8c78' : '#b08a5c');
+    if (wt > 0.01) { g.globalAlpha = Math.min(1, wt); seg(s * 0.17, '#3fb6ee'); g.setLineDash([s * 0.08, s * 0.16]); g.lineDashOffset = -t * 0.04 * s / 40; seg(s * 0.06, '#c9f1ff'); g.setLineDash([]); g.globalAlpha = 1; }
     g.restore();
-    // spring
-    if (c === lv.spring) {
-      g.fillStyle = '#7d8a93'; g.beginPath(); g.arc(cx, cy, s * 0.30, 0, 7); g.fill();
-      g.fillStyle = '#a9b6bf'; g.beginPath(); g.arc(cx, cy - s * 0.02, s * 0.27, 0, 7); g.fill();
-      g.fillStyle = '#2f9fdc'; g.beginPath(); g.arc(cx, cy, s * 0.20, 0, 7); g.fill();
-      const rp = (t / 1400) % 1; g.strokeStyle = `rgba(220,245,255,${0.8 * (1 - rp)})`; g.lineWidth = 2; g.beginPath(); g.arc(cx, cy, s * 0.05 + rp * s * 0.14, 0, 7); g.stroke();
-    }
+    if (lv.isSpring[c]) { const p = 1 + Math.sin(t / 500 + c) * 0.04;
+      g.fillStyle = '#7d8a93'; g.beginPath(); g.arc(cx, cy, s * 0.30 * p, 0, 7); g.fill(); g.fillStyle = '#a9b6bf'; g.beginPath(); g.arc(cx, cy - s * 0.02, s * 0.27 * p, 0, 7); g.fill();
+      g.fillStyle = '#2f9fdc'; g.beginPath(); g.arc(cx, cy, s * 0.2, 0, 7); g.fill();
+      const rp = (t / 1400 + c * 0.13) % 1; g.strokeStyle = `rgba(220,245,255,${0.8 * (1 - rp)})`; g.lineWidth = 2; g.beginPath(); g.arc(cx, cy, s * 0.05 + rp * s * 0.14, 0, 7); g.stroke(); }
+    g.restore();
   }
-  // flowers drawn last so petals overlap neighbours slightly
   lv.flowers.forEach((c, k) => {
-    const cx = bx + (c % sz) * s + s / 2, cy = by + ((c / sz) | 0) * s + s / 2, on = demo ? 1 : wetT[c];
-    const [pc, pl] = FLOWER[lv.hues[k]], R = s * (0.13 + 0.15 * on), sway = Math.sin(t / 700 + c) * 0.08;
+    const cx = bx + (c % sz) * s + s / 2, cy = by + ((c / sz) | 0) * s + s / 2;
+    const on = demo ? (lv === menuL ? menuWet(c, t) : 1) : wetT[c];
+    if (!demo && on > 0.55 && !bloomed[c]) { bloomed[c] = true; bloomTime[c] = now; sfx.bloom(); burst(cx, cy, FLOWER[lv.hues[k]][0], 12); buzz(10); }
+    const [pc, pl] = FLOWER[lv.hues[k]], pop = !demo && bloomed[c] ? 1 + Math.max(0, 0.25 - (now - (bloomTime[c] || 0)) / 1600) : 1;
+    const R = s * (0.13 + 0.15 * on) * pop, sway = Math.sin(t / 700 + c) * 0.08;
     g.save(); g.translate(cx, cy); g.rotate(sway + on * 0.4);
     if (on < 0.5) { g.fillStyle = '#4f9a4a'; for (let i = 0; i < 4; i++) { g.rotate(Math.PI / 2); g.beginPath(); g.ellipse(0, -s * 0.09, s * 0.07, s * 0.12, 0, 0, 7); g.fill(); }
       g.fillStyle = pc; g.beginPath(); g.arc(0, 0, s * 0.07, 0, 7); g.fill(); }
@@ -279,52 +514,134 @@ function drawBoard(lv, t, demo){
       g.fillStyle = '#ffe08a'; g.beginPath(); g.arc(0, 0, R * 0.32, 0, 7); g.fill(); g.fillStyle = '#e09a2a'; g.beginPath(); g.arc(0, 0, R * 0.14, 0, 7); g.fill(); }
     g.restore();
   });
+  // tutorial hand
+  const tt = demo ? -1 : tutTarget();
+  if (tt >= 0 && screen_ === 'play') { const cx = bx + (tt % sz) * s + s / 2, cy = by + ((tt / sz) | 0) * s + s / 2, b = Math.sin(t / 220) * 6;
+    const pulse = 0.5 + 0.5 * Math.sin(t / 220); g.strokeStyle = `rgba(255,209,102,${0.5 + 0.5 * pulse})`; g.lineWidth = 4; rr(cx - s / 2 + 3, cy - s / 2 + 3, s - 6, s - 6, s * 0.16); g.stroke();
+    g.font = `${Math.round(s * 0.55)}px system-ui, sans-serif`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('👆', cx + s * 0.25, cy + s * 0.45 + b); }
 }
+const bloomTime = {};
+// menu demo: water sweeps through the solved board in a loop
+function menuWet(c, t){ const ph = (t / 5200) % 1, d = menuDist[c] / (menuMaxD || 1); const v = Math.min(1, Math.max(0, (ph * 1.6 - d) * 6)); return ph > 0.92 ? v * (1 - (ph - 0.92) / 0.08) : v; }
+let menuDist = [], menuMaxD = 1;
+function setupMenuBoard(){ menuL = genLevel(PER * 1 + 18); menuL.world = WORLDS[0];
+  const sz = menuL.sz; menuDist = new Array(menuL.cnt).fill(0); const q = [...menuL.springs], seen = new Set(q);
+  for (let i = 0; i < q.length; i++) { const c = q[i]; for (let d = 0; d < 4; d++) if (menuL.sol[c] & DIRS[d][2]) { const n = nb(c, sz, d); if (!seen.has(n)) { seen.add(n); menuDist[n] = menuDist[c] + 1; q.push(n); } } }
+  menuMaxD = Math.max(...menuDist); }
 let parts = [];
-function petals(lv){ for (const c of lv.flowers) { const cx = bx + (c % lv.sz) * ts + ts / 2, cy = by + ((c / lv.sz) | 0) * ts + ts / 2;
-  for (let i = 0; i < 6; i++) parts.push({ x: cx, y: cy, vx: (Math.random() - .5) * 5, vy: -2 - Math.random() * 4, r: Math.random() * 6, life: 1, col: FLOWER[i % 4][0] }); } }
+function burst(x, y, col, n){ for (let i = 0; i < n && parts.length < 500; i++) { const a = Math.random() * 6.28, v = 1.5 + Math.random() * 3.5; parts.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 1.5, r: Math.random() * 6, life: 1, col, k: 'petal' }); } }
+function drops(x, y, n){ for (let i = 0; i < n && parts.length < 500; i++) parts.push({ x, y, vx: (Math.random() - .5) * 3, vy: -1 - Math.random() * 2.5, r: 0, life: 0.7, col: '#9fe3ff', k: 'drop' }); }
+function petals(){ if (!L) return; for (const c of L.flowers) { const cx = bx + (c % L.sz) * ts + ts / 2, cy = by + ((c / L.sz) | 0) * ts + ts / 2; burst(cx, cy, FLOWER[c % 4][0], 10); }
+  for (let i = 0; i < 60 && parts.length < 600; i++) parts.push({ x: Math.random() * W, y: -20 - Math.random() * 200, vx: (Math.random() - .5) * 2, vy: 1 + Math.random() * 2, r: Math.random() * 6, life: 2.2, col: FLOWER[i % 4][0], k: 'petal' }); }
+let lastT = 0;
 function frame(t){
-  g.setTransform(DPR, 0, 0, DPR, 0, 0); g.clearRect(0, 0, W, H);
-  if (screen_ === 'play' || screen_ === 'win') drawBoard(L, t, false); else { drawBoard(menuL, t, true); g.fillStyle = '#0b1f16a0'; g.fillRect(0, 0, W, H); }
+  const dt = Math.min(50, t - lastT || 16); lastT = t;
+  g.setTransform(DPR, 0, 0, DPR, 0, 0);
+  const lv = boardFor();
+  drawBG(lv && lv !== menuL ? lv.world : WORLDS[0], t);
+  if (shake > 0.2) { g.translate((Math.random() - .5) * shake, (Math.random() - .5) * shake); shake *= 0.86; } else shake = 0;
+  winGlow *= 0.985;
+  if (lv) drawBoard(lv, t, lv === menuL);
+  if (lv === menuL) { g.fillStyle = '#06120c8c'; g.fillRect(-10, -10, W + 20, H + 20); }
   parts = parts.filter(p => p.life > 0);
-  for (const p of parts) { p.x += p.vx; p.y += p.vy; p.vy += 0.12; p.vx *= 0.99; p.r += 0.1; p.life -= 0.012;
-    g.save(); g.globalAlpha = Math.max(0, p.life); g.translate(p.x, p.y); g.rotate(p.r); g.fillStyle = p.col; g.beginPath(); g.ellipse(0, 0, 5, 9, 0, 0, 7); g.fill(); g.restore(); }
+  for (const p of parts) { p.x += p.vx * dt / 16; p.y += p.vy * dt / 16; p.vy += (p.k === 'drop' ? 0.2 : 0.08) * dt / 16; p.vx *= 0.99; p.r += 0.08; p.life -= 0.012 * dt / 16;
+    g.save(); g.globalAlpha = Math.max(0, Math.min(1, p.life)); g.translate(p.x, p.y); g.rotate(p.r); g.fillStyle = p.col; g.beginPath();
+    if (p.k === 'drop') g.arc(0, 0, 2.2, 0, 7); else g.ellipse(0, 0, 4, 8, 0, 0, 7); g.fill(); g.restore(); }
+  musicTick(t);
   requestAnimationFrame(frame);
 }
 
-// ---------- screens & input ----------
-let screen_ = 'menu', page = 0;
+// ================= screens & input =================
+let screen_ = 'menu', curWorld = 0, modalBack = null;
 function show(s){
-  screen_ = s; for (const [id, k] of [['sMenu','menu'],['sLevels','levels'],['sWin','win']]) $(id).classList.toggle('on', s === k);
-  $('hud').classList.toggle('on', s === 'play' || s === 'win'); $('help').classList.toggle('on', s === 'play');
-  if (s !== 'play') Portal.stop(); layout();
+  screen_ = s; for (const [id, k] of [['sMenu','menu'],['sWorlds','worlds'],['sLevels','levels'],['sWin','win'],['sModal','modal']]) $(id).classList.toggle('on', s === k);
+  const inGame = s === 'play' || s === 'win' || (s === 'modal' && modalBack === 'play');
+  $('hud').classList.toggle('on', inGame);
+  if (s === 'play') { Portal.start(); if (tut && !won) $('bubble').classList.add('on'); } else { Portal.stop(); $('bubble').classList.remove('on'); }
+  if (s === 'menu') refreshMenu();
+  layout();
 }
+function modal(html, btns, back){
+  modalBack = back || (screen_ === 'modal' ? modalBack : screen_);
+  const c = $('mCard'); c.innerHTML = html + '<div class="row" id="mBtns"></div>'; c.style.animation = 'none'; void c.offsetWidth; c.style.animation = '';
+  for (const [label, fn, cls] of btns) { const b = document.createElement('button'); b.textContent = label; if (cls) b.className = cls;
+    b.onclick = () => { sfx.ui(); const to = modalBack; show(to === 'win' ? 'win' : to); if (fn) fn(); }; $('mBtns').appendChild(b); }
+  show('modal');
+}
+function introWorld(wi){ const w = WORLDS[wi];
+  setTimeout(() => modal(`<div class="icon" style="background:${w.card}">${w.icon}</div><span class="pill">${T('newWorld')}</span><h2>${wname(w)}</h2><p class="sub">${T('mech_' + w.id)}</p>`, [[T('go'), null, 'big']], 'play'), 60); }
+function pause(){ if (screen_ !== 'play' || won) return; sfx.ui();
+  modal(`<h2>${T('paused')}</h2>`, [[T('levels'), () => openLevels(L.wi)], [T('settings'), () => settings('play')], [T('resume'), null, 'big']], 'play'); }
+function settings(back){
+  const lbl = k => `<span>${T(k)}</span><span>${P[k === 'vibration' ? 'vib' : k] ? T('on') : T('off')}</span>`;
+  modal(`<h2>${T('settings')}</h2><div class="set"><button id="s1">${lbl('sound')}</button><button id="s2">${lbl('music')}</button><button id="s3">${lbl('vibration')}</button><button id="s4" class="ghost">${T('reset')}</button></div>`, [[T('back'), null, 'big']], back || screen_);
+  const tg = k => () => { P[k] = !P[k]; save(); actx(); sfx.ui(); settings(modalBack); };
+  $('s1').onclick = tg('sound'); $('s2').onclick = tg('music'); $('s3').onclick = tg('vib');
+  $('s4').onclick = () => { const b = modalBack; modal(`<h2>${T('resetQ')}</h2>`, [[T('no'), () => settings(b)], [T('yes'), () => { P.stars = {}; P.finished = 0; P.hints = 3; P.seen = {}; save(); refreshMenu(); }, 'big']], b); };
+}
+function refreshMenu(){
+  $('mStars').textContent = `★ ${totalStars()} / ${NLV * 3}`;
+  $('bDaily').textContent = P.daily.last === String(dayKey()) ? T('dailyDone') : '📅 ' + T('daily');
+  $('bPlay').textContent = T('play') + (totalStars() ? ` · ${wname(WORLDS[Math.floor((nextLevel() - 1) / PER)])} ${((nextLevel() - 1) % PER) + 1}` : '');
+}
+function openWorlds(){
+  const box = $('worlds'); box.innerHTML = '';
+  WORLDS.forEach((w, wi) => { const open = worldOpen(wi), b = document.createElement('button'); b.className = 'wcard' + (open ? '' : ' lock'); b.style.background = w.card;
+    b.innerHTML = `<div style="font-size:30px">${open ? w.icon : '🔒'}</div><div class="wn">${wname(w)}</div><div class="ws">★ ${worldStars(wi)} / ${PER * 3}</div><div class="wm">${open ? (worldDone(wi) ? '✓' : '') : T('need', { n: w.need })}</div>`;
+    b.onclick = () => { sfx.ui(); if (open) openLevels(wi); else toast(T('need', { n: w.need })); }; box.appendChild(b); });
+  show('worlds');
+}
+function openLevels(wi){
+  curWorld = wi; const g2 = $('grid'); g2.innerHTML = ''; const nx = nextLevel();
+  $('lvTitle').textContent = WORLDS[wi].icon + ' ' + wname(WORLDS[wi]); $('lvStars').textContent = `★ ${worldStars(wi)} / ${PER * 3}`;
+  for (let i = 1; i <= PER; i++) { const gid = wi * PER + i, b = document.createElement('button'), st = P.stars[gid] | 0;
+    b.innerHTML = `${i}<span class="st">${'★'.repeat(st)}</span>`;
+    if (!levelOpen(gid)) b.className = 'lock'; else { if (gid === nx) b.className = 'cur'; b.onclick = () => { sfx.ui(); startLevel(gid); }; }
+    g2.appendChild(b); }
+  show('levels');
+}
+function openDaily(){ const done = P.daily.last === String(dayKey());
+  modal(`<div class="icon" style="background:linear-gradient(160deg,#ffd166,#e0802a)">📅</div><h2>${T('dailyHead')}</h2><p class="sub">${T('dailyTxt', { s: P.daily.streak || 0 })}</p>`,
+    [[T('back'), null], [done ? T('restart') : T('play'), () => startLevel(genDaily()), 'big']], 'menu'); }
 function cellAt(ev){ if (!L) return -1; const r = cv.getBoundingClientRect(), x = ev.clientX - r.left - bx, y = ev.clientY - r.top - by;
   if (x < 0 || y < 0) return -1; const cx = Math.floor(x / ts), cy = Math.floor(y / ts); if (cx >= L.sz || cy >= L.sz) return -1; return cy * L.sz + cx; }
-cv.addEventListener('pointerdown', ev => { if (screen_ !== 'play') return; const c = cellAt(ev); if (c >= 0) rotate(c, ev.button === 2 ? -1 : 1); });
+cv.addEventListener('pointerdown', ev => { actx(); if (screen_ !== 'play') return; kbdOn = false; const c = cellAt(ev); if (c >= 0) rotate(c, ev.button === 2 ? -1 : 1); });
 cv.addEventListener('contextmenu', ev => ev.preventDefault());
-addEventListener('keydown', ev => { if (screen_ !== 'play') return; const k = ev.key.toLowerCase();
-  if (k === 'h') hint(); else if (k === 'r') startLevel(L.n); else if (k === 'escape') show('menu'); });
-function buildGrid(){
-  const g2 = $('grid'); g2.innerHTML = ''; const per = 30, pages = Math.ceil(MAXLV / per); page = Math.max(0, Math.min(page, pages - 1));
-  for (let i = page * per + 1; i <= Math.min(MAXLV, (page + 1) * per); i++) {
-    const b = document.createElement('button'), st = stars[i] | 0; b.innerHTML = `${i}<span class="st">${'&#9733;'.repeat(st)}</span>`;
-    if (i > unlocked) b.className = 'lock'; else b.onclick = () => startLevel(i); g2.appendChild(b); }
-  $('pTxt').textContent = `${page + 1} / ${pages}`;
-}
-$('bPlay').onclick = () => { actx(); startLevel(unlocked); };
-$('bLevels').onclick = () => { page = Math.floor((unlocked - 1) / 30); buildGrid(); show('levels'); };
-$('pPrev').onclick = () => { page--; buildGrid(); }; $('pNext').onclick = () => { page++; buildGrid(); };
-$('bBack').onclick = () => show('menu');
-const sndLbl = () => { $('bSound').textContent = 'Sound: ' + (soundOn ? 'on' : 'off'); }; sndLbl();
-$('bSound').onclick = () => { soundOn = !soundOn; store.set('sound', soundOn); sndLbl(); };
-$('hMenu').onclick = () => show('menu'); $('hReset').onclick = () => startLevel(L.n); $('hHint').onclick = hint;
-$('wRetry').onclick = () => startLevel(L.n);
-$('wNext').onclick = () => Portal.midgame(() => startLevel(L.n + 1));
-Portal.onPause = () => { try { if (ac) ac.suspend(); } catch(e){} };
-Portal.onResume = () => { try { if (ac && soundOn) ac.resume(); } catch(e){} };
-window.__root = { genLevel, go: startLevel, state: () => ({ L, turns, wet, moves, won }), peek(f){ for (let i = 0; i < L.cnt; i++) if (((i * 37) % 100) / 100 < f) { let k = 0; while (cur(i) !== L.sol[i] && k++ < 4) turns[i] = (turns[i] + 1) & 3; } computeWater(true); wetT = wet.map(w => w ? 1 : 0); }, solve(){ for (let i = 0; i < L.cnt; i++) { let k = 0; while (cur(i) !== L.sol[i] && k++ < 4) { turns[i] = (turns[i] + 1) & 3; moves++; } } computeWater(true); updateHud(); checkWin(); } };
-layout(); requestAnimationFrame(frame);
+addEventListener('keydown', ev => {
+  if ([' ', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(ev.key)) ev.preventDefault();
+  if (screen_ !== 'play' || !L) { if (ev.key === 'Escape' && screen_ === 'modal' && modalBack === 'play') show('play'); return; }
+  const k = ev.key.toLowerCase(), sz = L.sz;
+  const mv = (dx, dy) => { kbdOn = true; let x = kbd % sz, y = (kbd / sz) | 0; for (let i = 0; i < sz; i++) { x = (x + dx + sz) % sz; y = (y + dy + sz) % sz; if (!L.hole[y * sz + x]) break; } kbd = y * sz + x; };
+  if (k === 'arrowleft' || k === 'a') mv(-1, 0); else if (k === 'arrowright' || k === 'd') mv(1, 0); else if (k === 'arrowup' || k === 'w') mv(0, -1); else if (k === 'arrowdown' || k === 's') mv(0, 1);
+  else if (k === ' ' || k === 'enter') { kbdOn = true; rotate(kbd, ev.shiftKey ? -1 : 1); } else if (k === 'q') { kbdOn = true; rotate(kbd, -1); }
+  else if (k === 'h') hint(); else if (k === 'r') restart(); else if (k === 'z' || (k === 'z' && (ev.ctrlKey || ev.metaKey))) doUndo(); else if (k === 'escape' || k === 'p') pause();
+});
+function restart(){ if (!L) return; sfx.ui(); startLevel(L.daily ? genDaily() : L.gid); }
+$('bPlay').onclick = () => { actx(); sfx.ui(); startLevel(nextLevel()); };
+$('bWorlds').onclick = () => { actx(); sfx.ui(); openWorlds(); };
+$('bDaily').onclick = () => { actx(); sfx.ui(); openDaily(); };
+$('bSettings').onclick = () => { actx(); sfx.ui(); settings('menu'); };
+$('wBack').onclick = () => { sfx.ui(); show('menu'); };
+$('lBack').onclick = () => { sfx.ui(); openWorlds(); };
+$('hPause').onclick = pause; $('hReset').onclick = restart; $('hHint').onclick = hint; $('hUndo').onclick = doUndo;
+$('wRetry').onclick = restart;
+$('wLevels').onclick = () => { sfx.ui(); openLevels(L.wi); };
+$('wNext').onclick = () => { sfx.ui(); const n = L.gid + 1; Portal.between(() => { if (levelOpen(n)) startLevel(n); else openWorlds(); }); };
+Portal.onPause = () => { try { if (ac) ac.suspend(); } catch (e) {} };
+Portal.onResume = () => { try { if (ac) ac.resume(); } catch (e) {} };
+document.addEventListener('visibilitychange', () => { if (document.hidden) Portal.stop(); else if (screen_ === 'play') Portal.start(); });
+
+// test / capture hooks
+window.__root = { genLevel, genDaily, levelSpec, NLV, WORLDS, go: startLevel, state: () => ({ L, turns, wet, moves, won, screen: screen_ }),
+  peek(f){ for (let i = 0; i < L.cnt; i++) if (!L.hole[i] && ((i * 37) % 100) / 100 < f) { let k = 0; while (cur(i) !== L.sol[i] && k++ < 4) turns[i] = (turns[i] + 1) & 3; } computeWater(); wetAt.fill(0); },
+  solve(){ for (const i of L.live) { let k = 0; while (cur(i) !== L.sol[i] && k++ < 4) { turns[i] = (turns[i] + 1) & 3; moves++; } } computeWater(); updateHud(); checkWin(); },
+  progress: () => P, setProgress(o){ Object.assign(P, o); save(); refreshMenu(); } };
+
+(async () => {
+  await Portal.init(); Portal.loading(true);
+  loadProgress(); setupMenuBoard(); refreshMenu(); layout(); requestAnimationFrame(frame);
+  Portal.loading(false);
+})();
 })();
 </script>
 </body>

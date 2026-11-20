@@ -1,35 +1,36 @@
-# Subir Rootwork a CrazyGames (≈10 min)
+# Subir o reenviar Rootwork v2 a CrazyGames (≈10 min)
 
-> Igual que Loomlines y Lumen Drift: se sube como **Basic Launch**, sin SDK obligatorio. El juego trae un adaptador que solo se activa si el SDK de CrazyGames está presente; en este zip no lo está, así que no hace nada. Sin enlaces externos ni marca.
+> **Versión 2 (20/11):** el juego se ha rehecho tras el rechazo («más calidad y profundidad»). Lo que ha cambiado y el texto para la nota de reenvío: CAMBIOS-V2.md. Esta vez se sube **con el SDK de CrazyGames v3** (Rootwork-crazygames.zip).
+> - **Si ya lo enviaste:** en developer.crazygames.com abre Rootwork y sube la versión nueva (o haz un envío nuevo si no te deja). Pega el texto de CAMBIOS-V2.md en la nota o comentario del reenvío.
+> - **Si no:** envío normal.
 
 ## Archivos
-- Zip del juego: [Rootwork-web.zip](https://github.com/iibaaii21/Fabrica/raw/claude/fabrica-ingresos-legales-9iymbg/juegos/rootwork/Rootwork-web.zip) (≈9 KB, index.html en la raíz)
-- Imágenes:
-  - Horizontal 1920×1080: [crazygames-1920x1080.png](https://github.com/iibaaii21/Fabrica/raw/claude/fabrica-ingresos-legales-9iymbg/juegos/rootwork/imagenes/crazygames-1920x1080.png)
-  - Vertical 800×1200: [crazygames-800x1200.png](https://github.com/iibaaii21/Fabrica/raw/claude/fabrica-ingresos-legales-9iymbg/juegos/rootwork/imagenes/crazygames-800x1200.png)
-  - Cuadrada 800×800: [crazygames-800x800.png](https://github.com/iibaaii21/Fabrica/raw/claude/fabrica-ingresos-legales-9iymbg/juegos/rootwork/imagenes/crazygames-800x800.png)
+- Zip del juego: [Rootwork-crazygames.zip](https://github.com/iibaaii21/Fabrica/raw/claude/fabrica-ingresos-legales-9iymbg/juegos/rootwork/Rootwork-crazygames.zip) (18 KB, index.html en la raíz, carga el SDK v3)
+- Imágenes: crazygames-1920x1080.png · crazygames-800x1200.png · crazygames-800x800.png
+- Vídeos: landscape-1920x1080.mp4 · portrait-1080x1620.mp4 (juego real, versión 2)
 
 ## Pasos
-1. https://developer.crazygames.com → **Submit game**.
-2. Rellena los campos de abajo.
-3. Archivo: **HTML5**, sube el zip.
-4. Pruébalo en la **QA Tool / Preview** (ratón y móvil).
+1. https://developer.crazygames.com → Rootwork (si ya existe) o **Submit game**.
+2. Archivo: **HTML5** → sube Rootwork-crazygames.zip sin extraerlo.
+3. Rellena o actualiza los campos de abajo, las imágenes y los vídeos.
+4. **QA Tool / Preview:** juega el primer jardín (la mano te guía), abre Mundos y el Jardín del día, en ratón y en móvil.
 5. Envía y marca "hecho" en el panel.
 
 ## Campos (copiar y pegar)
 - **Game name:** Rootwork
 - **Category / Genre:** Puzzle (alternativa: Casual)
-- **Tags:** puzzle, logic, relaxing, rotate, connect, casual, garden, mobile
+- **Tags:** puzzle, logic, relaxing, rotate, connect, garden, daily, mobile
 - **Orientation / Devices:** Landscape y portrait (se adapta) · Desktop + Mobile
-- **Short description:** Turn the root tiles until water from the spring reaches every flower in the garden.
+- **Short description:** Turn the roots, water every flower — 150 gardens in 6 worlds, plus a new garden every day.
 - **Description:**
-  Rootwork is a calm, satisfying rotation puzzle. Every garden hides a network of roots: tap the tiles to turn them and guide fresh water from the spring to every corner of the soil. Watch the water rush through each new connection and the flowers burst into bloom as it reaches them. 300 gardens grow from tiny 3×3 warm-ups to sprawling 9×9 mazes. Match each garden's par for 3 stars, or use a hint if you get stuck. No timers, no pressure.
-- **Controls:** Click or tap a tile to turn it. Right-click turns it back. H hint, R restart, Esc menu.
-- **Multiplayer:** No · **Save progress:** Yes, locally (levels and stars)
-- **Uses CrazyGames SDK:** No (Basic Launch)
+  Rootwork is a relaxing garden puzzle with real depth. Tap the root tiles to turn them and guide water from the spring to every flower — watch it rush through each new connection as the garden bursts into bloom.
+  
+  Travel through 6 worlds and 150 gardens: a sunny Meadow, an Orchard full of stones that won't budge, a Marsh where pools break the grid, a River Delta with twin springs, a firefly-lit Night Garden and the Crystal Caves, where everything comes together. Match each garden's par for 3 stars and collect stars to open new worlds. Come back every day for the Daily Garden and keep your streak alive.
+  
+  Undo is free, hints are earned by playing, and there are no timers. Plays great with mouse, touch or keyboard, in landscape or portrait.
+- **Controls:** Click or tap a tile to turn it (right-click turns it back). Keyboard: arrows to move, Space to turn, Z undo, H hint, R restart, Esc pause.
+- **Multiplayer:** No · **Save progress:** Yes (locally, and through the CrazyGames SDK data module when available)
+- **Uses CrazyGames SDK:** Yes — v3 (gameplay start/stop, loading, happytime, midgame and rewarded ads, data)
 - **Made with:** Plain HTML5 / JavaScript (Canvas)
-- **AI usage (si lo pregunta):** Yes — code and graphics made with AI assistance; design, testing and publishing by the developer.
-
-## Vídeos (obligatorios en CrazyGames)
-- Landscape video (16:9): videos/landscape-1920x1080.mp4
-- Portrait video (2:3): videos/portrait-1080x1620.mp4
+- **AI usage (si lo pregunta):** Yes — code made with AI assistance; game design, level tuning, testing and publishing by the developer.
+- **Resubmission note (si lo pide):** pega el bloque en inglés de CAMBIOS-V2.md.

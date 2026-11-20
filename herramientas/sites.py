@@ -268,11 +268,11 @@ footer.f .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}f
 @media(max-width:820px){.two{grid-template-columns:1fr}.hero{padding:50px 0 30px}nav.m{gap:14px;font-size:14px}.frame{aspect-ratio:3/4}}
 '''
 NB_LOGO = '<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#21193a" stroke="#33295a"/><path d="M16 25c0-6 0-9-5-12 4 0 5 2 5 4 0-5 2-8 7-9-3 3-5 7-5 17z" fill="#b6f36a"/><circle cx="11" cy="12" r="2.6" fill="#ff7ab6"/></svg>'
-GAMES = [('lumen', 'Lumen Drift', ['arcade', 'one button', 'endless']), ('loomlines', 'Loomlines', ['puzzle', 'logic', '200 levels']), ('rootwork', 'Rootwork', ['puzzle', 'relaxing', '300 levels']), ('lunavault', 'Lunavault', ['one tap', 'space', 'endless'])]
+GAMES = [('lumen', 'Lumen Drift', ['arcade', 'one button', 'endless']), ('loomlines', 'Loomlines', ['puzzle', 'logic', '200 levels']), ('rootwork', 'Rootwork', ['puzzle', '6 worlds', 'daily garden']), ('lunavault', 'Lunavault', ['one tap', 'space', 'endless'])]
 EN = {
     'lumen': 'Hold to rise, release to fall. Guide a spark of light through an endless neon cave that keeps getting faster.',
     'loomlines': 'Connect every pair of spools without crossing threads and fill the whole board. Calm, colourful logic.',
-    'rootwork': 'Turn the root tiles so water from the spring reaches every flower. 300 gardens, from 3×3 to 9×9.',
+    'rootwork': 'Turn the root tiles so water reaches every flower. 150 gardens in 6 worlds, stones, pools, twin springs and a new garden every day.',
     'lunavault': 'Tap to leap from moon to moon. Fly through the centre for perfect combos and see how high you can climb.',
     'sfx': '42 original retro sound effects for your game: UI, pickups, movement, combat and states. WAV, royalty-free.',
     'music': '6 seamless game music loops and 2 stingers, WAV + OGG. Menu, action, puzzle, dungeon, racer and town themes.',

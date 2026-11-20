@@ -1,10 +1,10 @@
-# Subir Rootwork a itch.io (≈8 min, gratis con donaciones)
+# Subir Rootwork a itch.io (≈8 min, gratis con donaciones) — versión 2 (20/11). Si ya estaba publicado: Edit game → Uploads → borra el zip viejo, sube el nuevo y actualiza descripción, portada y capturas
 
 Usa **este** zip: lleva un enlace discreto "More games ↗" a tu perfil (https://iibaaii21.itch.io) solo en la pantalla de título. El zip de portales (CrazyGames) va sin enlaces.
 
 ## Archivos
 - Zip: [Rootwork-itch.zip](https://github.com/iibaaii21/Fabrica/raw/claude/fabrica-ingresos-legales-9iymbg/juegos/rootwork/Rootwork-itch.zip)
-- Portada (630×500 recomendado por itch; la imagen es 1260×1000, misma proporción): [cover.png](https://github.com/iibaaii21/Fabrica/raw/claude/fabrica-ingresos-legales-9iymbg/juegos/rootwork/imagenes/cover.png)
+- Portada (630×500, el tamaño que recomienda itch): [cover.png](https://github.com/iibaaii21/Fabrica/raw/claude/fabrica-ingresos-legales-9iymbg/juegos/rootwork/imagenes/cover.png)
 - Capturas: [captura-1](https://github.com/iibaaii21/Fabrica/raw/claude/fabrica-ingresos-legales-9iymbg/juegos/rootwork/imagenes/captura-1.png) · [captura-2](https://github.com/iibaaii21/Fabrica/raw/claude/fabrica-ingresos-legales-9iymbg/juegos/rootwork/imagenes/captura-2.png) · [captura-3](https://github.com/iibaaii21/Fabrica/raw/claude/fabrica-ingresos-legales-9iymbg/juegos/rootwork/imagenes/captura-3.png)
 
 ## Pasos
@@ -17,7 +17,7 @@ Usa **este** zip: lleva un enlace discreto "More games ↗" a tu perfil (https:/
 ## Campos (copiar y pegar)
 - **Title:** Rootwork
 - **Project URL:** rootwork
-- **Short description or tagline:** Turn the roots. Water every flower. A relaxing rotation puzzle with 300 gardens.
+- **Short description or tagline:** Turn the roots. Water every flower. 150 gardens in 6 worlds, plus a Daily Garden.
 - **Classification:** Games · **Kind of project:** HTML
 - **Release status:** Released
 - **Pricing:** **No payments** → activa **"Accept donations"** (sugerido 2,00 $)
@@ -26,15 +26,16 @@ Usa **este** zip: lleva un enlace discreto "More games ↗" a tu perfil (https:/
 
 **Turn the roots. Water every flower.**
 
-Rootwork is a calm, satisfying rotation puzzle. Every garden hides a network of roots — tap the tiles to turn them and guide fresh water from the spring to every corner of the soil. Watch the water rush through each new connection and the flowers bloom as it reaches them.
+Rootwork is a relaxing garden puzzle with real depth. Tap the root tiles to turn them and guide water from the spring to every flower — watch it rush through each new connection as the garden bursts into bloom.
 
-- 🌱 300 gardens, from tiny 3×3 warm-ups to sprawling 9×9 mazes
-- ⭐ Earn up to 3 stars by matching each garden's par
-- 💡 Stuck? A hint turns one tile the right way
-- 🎧 Relaxing sound, no timers, no pressure
-- 📱 Desktop and mobile, portrait or landscape
+- 🌍 6 worlds, 150 gardens: Meadow, Orchard, Marsh, River Delta, Night Garden and Crystal Caves
+- 🪨 A new twist in every world: stones, pools and twin or triple springs
+- ⭐ Match par for 3 stars and collect stars to open new worlds
+- 📅 Daily Garden with a streak to keep alive
+- ↶ Free undo, hints you earn by playing, no timers
+- 🎧 Gentle sound and generative music · 📱 mouse, touch or keyboard, landscape or portrait
 
-**Controls:** click or tap a tile to turn it (right-click turns it back). H hint, R reset, Esc menu.
+Controls:** click or tap a tile to turn it (right-click turns it back). H hint, R reset, Esc menu.
 
 Free to play. If you enjoy it, an optional tip helps me make more games. ❤
 

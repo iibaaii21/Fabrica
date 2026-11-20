@@ -64,7 +64,7 @@ def main():
           '3. Audiencia: «No, no es contenido creado para niños». Contenido alterado o sintético: lo que dice su PUBLICAR.txt.',
           '4. Miniatura: sube su miniatura-1280x720.png (en los Shorts a veces solo se elige un fotograma desde la app; si no aparece la opción, sáltalo).',
           '5. Visibilidad: Programar > la fecha y hora de la tabla > Programar.',
-          '(Los Shorts antiguos de estilo neón, s01 y s02, ya no se suben: el canal es ahora de dibujos stickman.)', '']
+          '(Las carpetas antiguas de estilo neón «s01-olvido-1-hora» y «s02-noche-en-vela», sin «es-» delante, ya no se suben: el canal es ahora de dibujos stickman.)', '']
     bloque = '\r\n'.join(L)
     lp = os.path.join(lote, 'LEEME.txt')
     t = open(lp, encoding='utf-8').read().replace('\r\n', '\n')
@@ -74,6 +74,7 @@ def main():
     nz = 2 + len(partes)
     pal = {3: 'TRES', 4: 'CUATRO', 5: 'CINCO'}[nz]
     t = re.sub(r'- El lote va en \w+ zips \([^)]*\)', f'- El lote va en {pal} zips ({", ".join(f"parte-{k}" for k in range(1, nz))} y parte-{nz})', t)
+    t = re.sub(r'descarga los \w+ y extráelos', 'descarga los ' + {3: 'tres', 4: 'cuatro', 5: 'cinco'}[nz] + ' y extráelos', t)
     tot = sum(int(x) for x in re.findall(r'^=== .*?\(~(\d+) min', t, re.M))
     t = re.sub(r'(LOTE DEL DOMINGO [^:]*: \d+ tareas, unos )\d+( minutos)', lambda m: m.group(1) + str(tot) + m.group(2), t)
     open(lp, 'w', encoding='utf-8', newline='').write(t.replace('\n', '\r\n'))

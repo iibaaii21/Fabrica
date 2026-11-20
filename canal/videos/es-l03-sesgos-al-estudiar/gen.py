@@ -12,7 +12,7 @@ def b(t, pose="stand", face="neutral", props=(), big=None, head=None, bg=None, p
         if isinstance(p,str): p={"k":p}
         p.setdefault("x",[0.66,0.78,0.56][i%3]); p.setdefault("y",[0.42,0.42,0.3][i%3]); p.setdefault("s",0.8); p.setdefault("d",0.15*i)
         pr.append(p)
-    if pr: v["props"]=pr
+    if pr and not kw.get("board"): v["props"]=pr  # con pizarra, nada delante del texto
     if big: v.update(big=big,bigx=kw.pop("bigx",0.66),bigy=kw.pop("bigy",0.32),bigs=kw.pop("bigs",130))
     if head: v["head"]=head; v["wipe"]=True
     if bg: v["bg"]=bg

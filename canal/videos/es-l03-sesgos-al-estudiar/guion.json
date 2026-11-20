@@ -1014,15 +1014,6 @@
       "flip": true
      }
     ],
-    "props": [
-     {
-      "k": "graph",
-      "x": 0.66,
-      "y": 0.42,
-      "s": 0.8,
-      "d": 0.0
-     }
-    ],
     "bg": "classroom",
     "ground": 0.82,
     "board": "A   B   C",
@@ -1856,22 +1847,6 @@
       "flip": true
      }
     ],
-    "props": [
-     {
-      "k": "book",
-      "x": 0.66,
-      "y": 0.42,
-      "s": 0.8,
-      "d": 0.0
-     },
-     {
-      "k": "cross",
-      "x": 0.78,
-      "y": 0.42,
-      "s": 0.8,
-      "d": 0.15
-     }
-    ],
     "bg": "classroom",
     "ground": 0.82,
     "board": "EXPLÍCALO TÚ",
@@ -2072,15 +2047,6 @@
       "pose": "shock",
       "face": "shock",
       "flip": true
-     }
-    ],
-    "props": [
-     {
-      "k": "exam",
-      "x": 0.66,
-      "y": 0.42,
-      "s": 0.8,
-      "d": 0.0
      }
     ],
     "bg": "classroom",

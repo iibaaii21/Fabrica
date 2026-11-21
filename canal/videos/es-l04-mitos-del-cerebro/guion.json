@@ -1,0 +1,2586 @@
+{
+ "titulo": "10 mitos del cerebro que te creíste en clase",
+ "lang": "es",
+ "cfg": 0.0,
+ "expresividad": 0.5,
+ "frases": [
+  {
+   "t": "Hay cosas sobre el cerebro que te enseñaron en clase, y son mentira.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "brain",
+      "float": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "!",
+    "bigx": 0.66,
+    "bigy": 0.32,
+    "bigs": 130,
+    "ground": 0.8,
+    "bigc": "#e8483f"
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y no te las contó cualquiera: muchas se las creen hasta los profesores.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "classroom",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Hoy vamos a ver diez mitos del cerebro, ordenados de menos a más dañinos para tus estudios.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "brain",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "arrowup",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Hoy vamos a ver 10 mitos del cerebro, ordenados de menos a más dañinos para tus estudios."
+  },
+  {
+   "t": "Cada uno con el experimento que lo desmonta.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "flask",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y el número uno seguramente te lo hicieron hacer en el colegio, con un test y todo.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "pointup",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "#1",
+    "bigx": 0.66,
+    "bigy": 0.32,
+    "bigs": 130,
+    "ground": 0.8,
+    "bigc": "#f6c23e"
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Vamos allá.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "walk",
+      "face": "happy"
+     }
+    ],
+    "ground": 0.8,
+    "walk": 0.05,
+    "pal": 1
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número diez: los peces de colores solo recuerdan tres segundos.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "fish",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "10. EL PEZ DE COLORES",
+    "wipe": true,
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Es el insulto favorito cuando alguien olvida algo: tienes memoria de pez.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shrug",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "fish",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "question",
+      "float": true,
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Pero en experimentos, a peces de colores se les ha enseñado a empujar una palanca para conseguir comida.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "fish",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "check",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "E incluso a usarla solo a la hora del día en que funcionaba.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "clock",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "fish",
+      "anim": true,
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "El biólogo Culum Brown, que estudia la mente de los peces, explica que recuerdan lo aprendido durante meses.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "calendar",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "meses",
+    "bigx": 0.66,
+    "bigy": 0.32,
+    "bigs": 120,
+    "ground": 0.8,
+    "bigc": "#3fb06b"
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Así que si olvidas a qué venías, no tienes memoria de pez. El pez te gana.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "facepalm",
+      "face": "sad"
+     }
+    ],
+    "props": [
+     {
+      "k": "fish",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número nueve: el azúcar te pone hiperactivo.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "candy",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "9. EL AZÚCAR",
+    "wipe": true,
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Cumpleaños, tarta, y alguien dice: normal que estén así, es el azúcar.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shock",
+      "face": "happy"
+     },
+     {
+      "id": "b",
+      "flip": true,
+      "x": 0.62,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "candy",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "exclaim",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En mil novecientos noventa y cinco, un análisis juntó dieciséis estudios en los que los niños tomaban azúcar o un sustituto sin saber cuál.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "16",
+    "bigx": 0.66,
+    "bigy": 0.32,
+    "bigs": 110,
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A",
+   "pantalla": "En 1995, un análisis juntó 16 estudios en los que los niños tomaban azúcar o un sustituto sin saber cuál."
+  },
+  {
+   "t": "Resultado: el azúcar no cambiaba ni su comportamiento ni su rendimiento.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shrug",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "cross",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y lo mejor: en otro experimento, todos los niños tomaron un placebo, pero a la mitad de las madres les dijeron que era azúcar.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "candy",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "question",
+      "float": true,
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Esas madres vieron a sus hijos mucho más movidos. El efecto estaba en quien miraba.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "eye",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "👀",
+    "bigx": 0.66,
+    "bigy": 0.32,
+    "bigs": 120,
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Al estudiar: un dulce no te arruina la tarde, pero tampoco te da superpoderes.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "candy",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "notes",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número ocho: solo usamos el diez por ciento del cerebro.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "brain",
+      "float": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "10 %",
+    "bigx": 0.66,
+    "bigy": 0.32,
+    "bigs": 130,
+    "head": "8. EL 10 %",
+    "wipe": true,
+    "ground": 0.8,
+    "bigc": "#e8483f"
+   },
+   "esc": "A",
+   "pantalla": "Número ocho: solo usamos el 10 % del cerebro."
+  },
+  {
+   "t": "Es la base de media película: si desbloqueas el resto, te vuelves un genio.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "bulb",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "stage",
+    "ground": 0.82,
+    "spot": 0.32
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Pero en los escáneres cerebrales nunca se ha encontrado una zona que esté siempre apagada.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "brain",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "graph",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "No todo trabaja a la vez, igual que no usas todos los músculos a la vez. Pero cada parte tiene su función.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "brain",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "check",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Además, el cerebro pesa más o menos el dos por ciento de tu cuerpo, y gasta alrededor del veinte por ciento de tu energía en reposo.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "battery",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "2 % → 20 %",
+    "bigx": 0.66,
+    "bigy": 0.32,
+    "bigs": 100,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Además, el cerebro pesa más o menos el 2 % de tu cuerpo, y gasta alrededor del 20 % de tu energía en reposo."
+  },
+  {
+   "t": "La evolución no mantiene un órgano tan caro para usar solo un trocito.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shrug",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "brain",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Al estudiar: no hay un noventa por ciento escondido. Lo que hay es práctica.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "pencil",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Al estudiar: no hay un 90 % escondido. Lo que hay es práctica."
+  },
+  {
+   "t": "Número siete: hay gente de cerebro izquierdo y gente de cerebro derecho.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "brain",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "7. IZQUIERDO O DERECHO",
+    "wipe": true,
+    "ground": 0.8,
+    "pal": 2
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Los de izquierdo serían lógicos y de números; los de derecho, creativos y de arte.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     },
+     {
+      "id": "b",
+      "flip": true,
+      "x": 0.62,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "scale",
+      "anim": "left",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Es verdad que algunas funciones están más en un lado. El lenguaje, por ejemplo, suele estar más a la izquierda.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Pero en dos mil trece, en la Universidad de Utah, analizaron escáneres de más de mil personas.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "1.011",
+    "bigx": 0.66,
+    "bigy": 0.32,
+    "bigs": 110,
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A",
+   "pantalla": "Pero en 2013, en la Universidad de Utah, analizaron escáneres de más de 1.000 personas."
+  },
+  {
+   "t": "Y no encontraron personas con un hemisferio entero dominante. Usamos los dos.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shrug",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "scale",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "check",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Al estudiar: que te digan que eres de letras no significa que tu cerebro no sirva para mates.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "arrowup",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número seis: la memoria fotográfica.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "eye",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "6. MEMORIA FOTOGRÁFICA",
+    "wipe": true,
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Ese compañero que mira el libro una vez y lo recuerda como una foto.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "happy"
+     },
+     {
+      "id": "b",
+      "flip": true,
+      "x": 0.62,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Pues nunca se ha demostrado que exista en adultos de verdad.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shrug",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "cross",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Lo más parecido es la imagen eidética: algunos niños mantienen una imagen unos segundos después de verla.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "eye",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "clock",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Según los estudios, pasa en torno al dos o al diez por ciento de los niños, y casi desaparece en adultos.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "graph",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "2-10 %",
+    "bigx": 0.66,
+    "bigy": 0.32,
+    "bigs": 110,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Según los estudios, pasa en torno al 2 o al 10 % de los niños, y casi desaparece en adultos."
+  },
+  {
+   "t": "Los campeones de memoria no tienen fotos en la cabeza: usan técnicas, como colocar cada dato en un lugar imaginario.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "trophy",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Al estudiar: tu compañero no es un escáner. Seguramente repasa más de lo que dice.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shrug",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número cinco: puedes aprender escuchando audios mientras duermes.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "headphones",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "zzz",
+      "float": true,
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "head": "5. APRENDER DURMIENDO",
+    "wipe": true,
+    "bg": "bedroom",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Lo vendían con cintas para aprender idiomas durmiendo.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "cd",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "bedroom",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En mil novecientos cincuenta y seis, Charles Simon y William Emmons lo probaron midiendo la actividad cerebral.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A",
+   "pantalla": "En 1956, Charles Simon y William Emmons lo probaron midiendo la actividad cerebral."
+  },
+  {
+   "t": "Leían palabras a gente dormida. Cuando estaban dormidos de verdad, al despertar no recordaban nada.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "bed",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "cross",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "bedroom",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Solo recordaban algo si estaban medio despiertos.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "alarm",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "bedroom",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Lo que sí hace el sueño es fijar lo que estudiaste despierto.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "pillow",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "check",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "bedroom",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Al estudiar: el audio de noche, fuera. Estudia de día y duerme bien.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "moon",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "notes",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número cuatro: los juegos de entrenamiento cerebral te hacen más listo.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "gamepad",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "brain",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "head": "4. JUEGOS DE CEREBRO",
+    "wipe": true,
+    "ground": 0.8,
+    "pal": 4
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Unos minutos al día de puzles en el móvil y tu cerebro sube de nivel. O eso dicen los anuncios.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "phone",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "arrowup",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En dos mil diez, la revista Nature publicó un experimento con un programa de la BBC.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A",
+   "pantalla": "En 2010, la revista Nature publicó un experimento con un programa de la BBC."
+  },
+  {
+   "t": "Más de once mil personas entrenaron durante seis semanas.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "calendar",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "11.430",
+    "bigx": 0.66,
+    "bigy": 0.32,
+    "bigs": 110,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Más de 11.000 personas entrenaron durante 6 semanas."
+  },
+  {
+   "t": "Mejoraron en los juegos que practicaban. Pero en las pruebas distintas, no mejoraron más que un grupo que solo buscaba respuestas en internet.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shrug",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "gamepad",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "cross",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Es decir: te haces bueno en el juego, no en todo lo demás.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "facepalm",
+      "face": "sad"
+     }
+    ],
+    "props": [
+     {
+      "k": "trophy",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Al estudiar: si quieres mejorar en física, practica física.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "check",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número tres: se te da bien hacer varias cosas a la vez.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "phone",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "book",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "head": "3. MULTITAREA",
+    "wipe": true,
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Apuntes, móvil, una serie de fondo y el grupo de clase sonando.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "phone",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "notes",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     },
+     {
+      "k": "exclaim",
+      "x": 0.56,
+      "y": 0.3,
+      "s": 0.8,
+      "d": 0.3
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En dos mil nueve, en Stanford, compararon a gente que hace mucha multitarea con gente que hace poca.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A",
+   "pantalla": "En 2009, en Stanford, compararon a gente que hace mucha multitarea con gente que hace poca."
+  },
+  {
+   "t": "Los multitarea lo hacían peor al cambiar de tarea y les costaba más ignorar lo que no importaba.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "cross",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "arrowdown",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Ojo: es una comparación, no prueba que la multitarea sea la causa. Pero no hay ninguna pista de que te haga mejor.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "scale",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Tu cerebro no hace dos cosas a la vez: salta de una a otra, y en cada salto pierdes algo.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "brain",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "arrowdown",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Al estudiar: el móvil en otra habitación, no boca abajo en la mesa.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "phone",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "cross",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número dos: estudiar con tu música favorita te ayuda a concentrarte.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "headphones",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "2. MÚSICA CON LETRA",
+    "wipe": true,
+    "bg": "hall",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y si es Mozart, mejor todavía. O eso dicen.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "piano",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "hall",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Lo del efecto Mozart ya lo desmontamos en un Short: el efecto era pequeño, duraba minutos y no se repite.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shrug",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "cd",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "cross",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Pero hay algo más importante: la letra.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "note",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "hall",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En dos mil catorce, unos estudiantes leyeron textos con música con letra, música sin letra o en silencio.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "library",
+    "ground": 0.82
+   },
+   "esc": "A",
+   "pantalla": "En 2014, unos estudiantes leyeron textos con música con letra, música sin letra o en silencio."
+  },
+  {
+   "t": "Con letra entendieron peor. Y daba igual que la canción les gustara o no.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "cross",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "note",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "library",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Tu cerebro procesa las palabras de la canción aunque no quieras, y compiten con las del libro.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "brain",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "book",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Al estudiar: silencio o música sin letra. La lista con letra, para el descanso.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "headphones",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "check",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Número uno: los estilos de aprendizaje.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "1. ESTILOS DE APRENDIZAJE",
+    "wipe": true,
+    "ground": 0.8,
+    "pal": 2
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Visual, auditivo o kinestésico. Haces un test, te dicen cuál eres, y te enseñan según tu estilo.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "eye",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "headphones",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     },
+     {
+      "k": "pencil",
+      "x": 0.56,
+      "y": 0.3,
+      "s": 0.8,
+      "d": 0.3
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En una encuesta de dos mil doce, más de nueve de cada diez profesores británicos creían que funciona.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.82,
+      "y": 0.5,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "93 %",
+    "bigx": 0.66,
+    "bigy": 0.32,
+    "bigs": 120,
+    "ground": 0.8,
+    "bigc": "#e8483f"
+   },
+   "esc": "A",
+   "pantalla": "En una encuesta de 2012, más de 9 de cada 10 profesores británicos creían que funciona."
+  },
+  {
+   "t": "Pero en dos mil ocho, cuatro psicólogos revisaron todas las pruebas.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A",
+   "pantalla": "Pero en 2008, cuatro psicólogos revisaron todas las pruebas."
+  },
+  {
+   "t": "Para demostrarlo, haría falta ver que los visuales aprenden mejor con imágenes y los auditivos con audio.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "scale",
+      "anim": "left",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y no encontraron casi ningún estudio bien hecho que lo mostrara. Algunos mostraban justo lo contrario.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "cross",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Que prefieras algo no significa que aprendas mejor así.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shrug",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "heart",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "question",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Lo que funciona es usar el formato que encaja con el contenido: un mapa se aprende viéndolo, un idioma, escuchándolo.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "eye",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "headphones",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Al estudiar: no te encierres en un estilo. Mezcla dibujos, palabras y ponerte a prueba.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "check",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Extra: ¿por qué nos creemos todo esto?",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "question",
+      "float": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "EXTRA: POR QUÉ NOS LOS CREEMOS",
+    "wipe": true,
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En esa misma encuesta de dos mil doce, los profesores se creían de media casi la mitad de los mitos.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.82,
+      "y": 0.5,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "49 %",
+    "bigx": 0.66,
+    "bigy": 0.32,
+    "bigs": 120,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "En esa misma encuesta de 2012, los profesores se creían de media casi la mitad de los mitos."
+  },
+  {
+   "t": "Y lo curioso: saber más sobre el cerebro en general no les protegía.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "brain",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "cross",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "classroom",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Los mitos que más se creían eran los que venían con productos para colegios.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "ticket",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Un mito sencillo, que suena a ciencia y que alguien vende, se pega mucho mejor que un estudio aburrido.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shrug",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "bulb",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Truco: cuando oigas una frase sobre el cerebro, pregunta: ¿qué experimento lo demostró?",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "pointup",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "flask",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "question",
+      "x": 0.78,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Resumen para tus estudios:",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "RESUMEN",
+    "wipe": true,
+    "ground": 0.8,
+    "pal": 3
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Uno: no te encierres en un estilo, mezcla formatos y ponte a prueba.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "check",
+      "x": 0.84,
+      "y": 0.5,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "big": "1",
+    "bigx": 0.66,
+    "bigy": 0.32,
+    "bigs": 110,
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Dos: silencio o música sin letra.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "headphones",
+      "x": 0.84,
+      "y": 0.5,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "2",
+    "bigx": 0.66,
+    "bigy": 0.32,
+    "bigs": 110,
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Tres: el móvil, fuera de la habitación.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "phone",
+      "x": 0.84,
+      "y": 0.5,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "3",
+    "bigx": 0.66,
+    "bigy": 0.32,
+    "bigs": 110,
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Cuatro: practica lo que vas a examinar, no juegos.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.84,
+      "y": 0.5,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "4",
+    "bigx": 0.66,
+    "bigy": 0.32,
+    "bigs": 110,
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y cinco: estudia de día y duerme de noche.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shrug",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "moon",
+      "x": 0.84,
+      "y": 0.5,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "5",
+    "bigx": 0.66,
+    "bigy": 0.32,
+    "bigs": 110,
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Si te ha gustado, aquí tienes los diez sesgos que te engañan al estudiar.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "brain",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Si te ha gustado, aquí tienes los 10 sesgos que te engañan al estudiar."
+  },
+  {
+   "t": "Y suscríbete. Eso sí que usa el cien por cien de tu dedo.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "gradeA",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8,
+    "confetti": true
+   },
+   "esc": "A",
+   "pantalla": "Y suscríbete. Eso sí que usa el 100 % de tu dedo."
+  }
+ ],
+ "fuentes": [
+  "Peces de colores: experimento de la Universidad de Plymouth (1994) con una palanca que daba comida a una hora concreta; Culum Brown (Universidad Macquarie) sobre memoria de peces de al menos tres meses.",
+  "Wolraich, M. L., Wilson, D. B. y White, J. W. (1995). The effect of sugar on behavior or cognition in children: a meta-analysis. JAMA, 274(20), 1617-1621. (16 estudios publicados; no descarta efectos pequeños en subgrupos.)",
+  "Hoover, D. W. y Milich, R. (1994). Effects of sugar ingestion expectancies on mother-child interactions. Journal of Abnormal Child Psychology, 22. (35 niños de 5-7 años; todos tomaron placebo.)",
+  "Mito del 10 %: Scientific American y Britannica, «Do we really use only 10 percent of our brains?»; ninguna región del cerebro aparece siempre inactiva en neuroimagen. Cerebro: ~2 % del peso corporal y ~20 % del metabolismo en reposo (Kety 1957; Sokoloff 1960; Attwell y Laughlin 2001).",
+  "Nielsen, J. A., Zielinski, B. A., Ferguson, M. A., Lainhart, J. E. y Anderson, J. S. (2013). An evaluation of the left-brain vs. right-brain hypothesis with resting state functional connectivity MRI. PLoS ONE, 8(8), e71275. (1.011 personas de 7 a 29 años.)",
+  "Haber, R. N. (1979). Twenty years of haunting eidetic imagery: where's the ghost? Behavioral and Brain Sciences, 2, 583-629. (Imagen eidética en ~2-10 % de los niños, casi nula en adultos.)",
+  "Simon, C. W. y Emmons, W. H. (1956). The non-recall of material presented during sleep. American Journal of Psychology, 69(1), 76-81.",
+  "Owen, A. M. y otros (2010). Putting brain training to the test. Nature, 465, 775-778. (11.430 participantes, 6 semanas.)",
+  "Ophir, E., Nass, C. y Wagner, A. D. (2009). Cognitive control in media multitaskers. PNAS, 106(37), 15583-15587.",
+  "Perham, N. y Currie, H. (2014). Does listening to preferred music improve reading comprehension performance? Applied Cognitive Psychology, 28, 279-284.",
+  "Pietschnig, J., Voracek, M. y Formann, A. K. (2010). Mozart effect–Shmozart effect: A meta-analysis. Intelligence, 38, 314-323.",
+  "Pashler, H., McDaniel, M., Rohrer, D. y Bjork, R. (2008). Learning styles: Concepts and evidence. Psychological Science in the Public Interest, 9(3), 105-119.",
+  "Dekker, S., Lee, N. C., Howard-Jones, P. y Jolles, J. (2012). Neuromyths in education: Prevalence and predictors of misconceptions among teachers. Frontiers in Psychology, 3, 429. (242 profesores de Reino Unido y Países Bajos; de media creían el 49 % de los mitos; 93 % de los británicos aceptó el de los estilos de aprendizaje.)"
+ ]
+}

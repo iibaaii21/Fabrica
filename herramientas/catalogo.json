@@ -140,6 +140,27 @@
   ]
  },
  {
+  "id": "ui-sounds",
+  "marca": "nimbloom",
+  "cat": "Para desarrolladores",
+  "nombre": "Soft UI Sounds Vol. 2",
+  "precio": "2,99 $",
+  "comprar": "",
+  "desc": "46 sonidos de interfaz suaves y modernos (WAV) para menús, apps y juegos tranquilos: clics, interruptores, notificaciones y recompensas. Uso comercial sin atribución.",
+  "lema": "Que cada botón de tu juego suene a terminado.",
+  "puntos": [
+   "46 sonidos en 11 categorías",
+   "WAV 44,1 kHz, recortados y normalizados",
+   "Muestra gratis de 6 sonidos",
+   "Uso comercial sin atribución"
+  ],
+  "img": "productos/ui-sounds-vol2/imagenes/cover.png",
+  "imgs": [
+   "productos/ui-sounds-vol2/imagenes/cover.png",
+   "productos/ui-sounds-vol2/imagenes/captura-1.png"
+  ]
+ },
+ {
   "id": "music",
   "cat": "Para desarrolladores",
   "nombre": "Synth Music Loops Vol. 1",

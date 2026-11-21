@@ -69,12 +69,16 @@ def main():
     lp = os.path.join(lote, 'LEEME.txt')
     t = open(lp, encoding='utf-8').read().replace('\r\n', '\n')
     a = t.index('=== 11-YouTube'); b = t.index('ÚLTIMO PASO')
+    nx = t.find('\n=== ', a + 5)
+    if nx != -1 and nx < b: b = nx + 1  # las tareas que van detrás de la 11 se conservan
     t = t[:a] + bloque.replace('\r\n', '\n') + '\n' + t[b:]
     # cabecera: número de zips
     nz = 2 + len(partes)
     pal = {3: 'TRES', 4: 'CUATRO', 5: 'CINCO'}[nz]
     t = re.sub(r'- El lote va en \w+ zips \([^)]*\)', f'- El lote va en {pal} zips ({", ".join(f"parte-{k}" for k in range(1, nz))} y parte-{nz})', t)
     t = re.sub(r'descarga los \w+ y extráelos', 'descarga los ' + {3: 'tres', 4: 'cuatro', 5: 'cinco'}[nz] + ' y extráelos', t)
+    nt = len(re.findall(r'^=== ', t, re.M))
+    t = re.sub(r'(LOTE DEL DOMINGO [^:]*: )\d+( tareas)', lambda m: m.group(1) + str(nt) + m.group(2), t)
     tot = sum(int(x) for x in re.findall(r'^=== .*?\(~(\d+) min', t, re.M))
     t = re.sub(r'(LOTE DEL DOMINGO [^:]*: \d+ tareas, unos )\d+( minutos)', lambda m: m.group(1) + str(tot) + m.group(2), t)
     open(lp, 'w', encoding='utf-8', newline='').write(t.replace('\n', '\r\n'))

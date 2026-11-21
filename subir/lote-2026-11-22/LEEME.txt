@@ -1,4 +1,4 @@
-LOTE DEL DOMINGO 22/11/2026: 11 tareas, unos 88 minutos
+LOTE DEL DOMINGO 22/11/2026: 12 tareas, unos 93 minutos
 
 Cómo usarlo (PC con Windows):
 - El lote va en CUATRO zips (parte-1, parte-2, parte-3 y parte-4) porque pesa mucho: descarga los cuatro y extráelos en la misma carpeta.
@@ -108,5 +108,14 @@ Sube todos los vídeos de golpe y programa cada uno en su día y hora:
 4. Miniatura: sube su miniatura-1280x720.png (en los Shorts a veces solo se elige un fotograma desde la app; si no aparece la opción, sáltalo).
 5. Visibilidad: Programar > la fecha y hora de la tabla > Programar.
 (Las carpetas antiguas de estilo neón «s01-olvido-1-hora» y «s02-noche-en-vela», sin «es-» delante, ya no se suben: el canal es ahora de dibujos stickman.)
+
+=== 12-itch-Soft-UI-Sounds  (~5 min, está en la PARTE 2) ===
+1. https://itch.io/game/new
+2. Title: Soft UI Sounds Vol. 2 — 46 gentle interface sounds · Classification: Assets · Kind of project: Downloadable.
+3. Pricing: Paid, 2,99 $, marca «Let people pay more».
+4. Uploads: arrastra Soft-UI-Sounds-Vol2.zip (sin extraer). Sube también Soft-UI-Sounds-Vol2-Free-Sample.zip y márcalo «This file is free».
+5. Cover image: cover.png · Screenshots: captura-1.png. En Edit theme > Banner: banner.png.
+6. Copia Short description, Descripción y Etiquetas de TEXTOS-PARA-COPIAR.txt. AI disclosure: Sí (audio).
+7. Visibility: Public > Save.
 
 ÚLTIMO PASO: escribe en esta sesión de Claude (la «sala de máquinas») las palabras «conectar estadísticas».

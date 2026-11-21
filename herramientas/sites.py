@@ -276,6 +276,7 @@ EN = {
     'lunavault': 'Tap to leap from moon to moon. Fly through the centre for perfect combos and see how high you can climb.',
     'sfx': '42 original retro sound effects for your game: UI, pickups, movement, combat and states. WAV, royalty-free.',
     'music': '6 seamless game music loops and 2 stingers, WAV + OGG. Menu, action, puzzle, dungeon, racer and town themes.',
+    'ui-sounds': '46 soft, modern interface sounds for menus, apps and cozy games: clicks, toggles, notifications and rewards. WAV, royalty-free.',
     'pixel-icons': '73 original 16×16 pixel-art icons: weapons, potions, gems, food, tools and UI buttons. PNG 16/32/64 px + spritesheet with JSON atlas.',
 }
 
@@ -291,7 +292,7 @@ def nb_foot():
 def build_estudio():
     site = 'estudio'
     cards = ''
-    paths = ['/', '/legal/', '/sounds/', '/music/', '/icons/']
+    paths = ['/', '/legal/', '/sounds/', '/music/', '/icons/', '/ui-sounds/']
     for g, name, chips in GAMES:
         img(site, P[g]['img'], f'{g}.jpg', 900)
         cards += f'<a class="card" href="/games/{g}/"><img src="/img/{g}.jpg" width="900" height="714" alt="{name}" loading="lazy"><div class="b"><div class="chips">{"".join(f"<span>{c}</span>" for c in chips)}</div><h3>{name}</h3><p>{EN[g]}</p></div></a>'
@@ -309,7 +310,7 @@ def build_estudio():
 <div class="shots">{shots}</div></main>''' + nb_foot())
         paths += [f'/games/{g}/', f'/play/{g}/']
     acards = ''
-    for k, href, label in [('sfx', '/sounds/', 'Listen to all 42'), ('music', '/music/', 'Listen to the preview'), ('pixel-icons', '/icons/', 'See all 73 + free sample')]:
+    for k, href, label in [('sfx', '/sounds/', 'Listen to all 42'), ('ui-sounds', '/ui-sounds/', 'Listen to all 46'), ('music', '/music/', 'Listen to the preview'), ('pixel-icons', '/icons/', 'See all 73 + free sample')]:
         img(site, P[k]['img'], f'{k}.jpg', 900)
         acards += f'<a class="card" href="{href}"><img src="/img/{k}.jpg" width="900" height="714" alt="{e(P[k]["nombre"])}" loading="lazy"><div class="b"><div class="chips"><span>{e(P[k]["precio"])}</span><span>royalty-free</span></div><h3>{e(P[k]["nombre"])}</h3><p>{EN[k]}</p><p style="color:var(--lime);font-weight:700">{label} →</p></div></a>'
     w(site, 'index.html', head(site, 'Nimbloom · Small games and game-ready audio', 'Nimbloom makes small, polished browser games you can play for free, plus original sound effects, music loops and pixel-art icons for game developers.', '/', NB_CSS) + nb_top() + f'''
@@ -328,6 +329,15 @@ def build_estudio():
     s = s.replace('</head>', f'<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="canonical" href="{BASE[site]}/sounds/"><meta property="og:image" content="{BASE[site]}/og.png">\n</head>', 1)
     s = s.replace('<body>', '<body><p style="margin:14px 16px 0;font:600 14px Inter,system-ui,sans-serif"><a href="/" style="color:inherit">← Nimbloom</a></p>', 1) if '<body>' in s else s
     open(os.path.join(dst, 'index.html'), 'w').write(s)
+    # Soft UI Sounds Vol. 2: página de escucha generada con sfx_ui.py
+    import sfx_ui
+    uk = P['ui-sounds']; dst = os.path.join(S, site, 'ui-sounds')
+    shutil.rmtree(dst, ignore_errors=True); shutil.copytree(os.path.join(R, 'productos/ui-sounds-vol2/wav'), os.path.join(dst, 'wav'))
+    top = f'<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="canonical" href="{BASE[site]}/ui-sounds/"><meta property="og:image" content="{BASE[site]}/og.png">'
+    if uk.get('comprar'): html = sfx_ui.preview(uk['comprar'], top=top)
+    else: html = sfx_ui.preview('/#assets', 'Coming soon to itch.io · see our other packs →', 'More assets from Nimbloom →', top=top)
+    html = html.replace('<body>', '<body><p style="margin:14px 16px 0;font:600 14px Inter,system-ui,sans-serif"><a href="/" style="color:inherit">← Nimbloom</a></p>', 1)
+    open(os.path.join(dst, 'index.html'), 'w').write(html)
     os.makedirs(os.path.join(S, site, 'media'), exist_ok=True)
     shutil.copy(os.path.join(R, 'productos/music-loops-vol1/preview.mp3'), os.path.join(S, site, 'media/music-loops-preview.mp3'))
     shots = ''

@@ -1,0 +1,2699 @@
+{
+ "titulo": "Cómo preparar un examen en 7 días (plan día por día)",
+ "lang": "es",
+ "frases": [
+  {
+   "t": "Tienes un examen en siete días y no has empezado.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "calendar",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "alarm",
+      "anim": true,
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "big": "7 DÍAS",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 130,
+    "ground": 0.8,
+    "bigc": "#e8483f"
+   },
+   "esc": "A",
+   "pantalla": "Tienes un examen en 7 días y no has empezado.",
+   "tono": "gancho, directo, un poco dramático"
+  },
+  {
+   "t": "Tranquilo. Siete días dan para mucho, si los usas bien.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shrug",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "check",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Tranquilo. 7 días dan para mucho, si los usas bien.",
+   "tono": "calma, de colega"
+  },
+  {
+   "t": "En este vídeo tienes el plan exacto, día por día. Qué hacer, cuánto tiempo, y con qué aplicaciones gratis.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "phone",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y al final, los cuatro errores que hacen que estudies mucho y apruebes poco.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "pointup",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "cross",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Y al final, los 4 errores que hacen que estudies mucho y apruebes poco."
+  },
+  {
+   "t": "Coge papel. Empezamos.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "walk",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "pencil",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8,
+    "walk": 0.05,
+    "pal": 1
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Antes del plan, dos reglas. Todo lo demás sale de aquí.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "LAS 2 REGLAS",
+    "wipe": true,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "tono": "explicativo"
+  },
+  {
+   "t": "Regla uno: ponte a prueba en vez de releer.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "pointup",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "check",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "big": "1",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 110,
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En dos mil seis, en la Universidad de Washington en San Luis, unos estudiantes leyeron un texto.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A",
+   "pantalla": "En 2006, en la Universidad de Washington en San Luis, unos estudiantes leyeron un texto."
+  },
+  {
+   "t": "Unos lo releyeron varias veces. Otros lo leyeron una vez y luego intentaron recordarlo, sin mirar, tres veces.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "pencil",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Una semana después, los que se pusieron a prueba recordaban el sesenta y uno por ciento. Los que releyeron, el cuarenta.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "graph",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "61 % vs 40 %",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 100,
+    "ground": 0.8,
+    "bigc": "#3fb06b"
+   },
+   "esc": "A",
+   "pantalla": "Una semana después, los que se pusieron a prueba recordaban el 61 %. Los que releyeron, el 40 %."
+  },
+  {
+   "t": "Lo curioso: cinco minutos después de estudiar, ganaban los que releían. Por eso releer engaña: parece que funciona.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "clock",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Lo curioso: 5 minutos después de estudiar, ganaban los que releían. Por eso releer engaña: parece que funciona.",
+   "tono": "como quien cuenta un secreto"
+  },
+  {
+   "t": "Regla dos: repasa con días de por medio.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "pointup",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "calendar",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "2",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 110,
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En dos mil ocho, un estudio con más de mil trescientas personas buscó el mejor momento para repasar.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "graph",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A",
+   "pantalla": "En 2008, un estudio con más de 1.300 personas buscó el mejor momento para repasar."
+  },
+  {
+   "t": "La conclusión: cuanto más lejos está el examen, más espacio debes dejar entre repasos.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "calendar",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "arrowup",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "lab",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Para un examen a una semana, eso es repasar cada uno o dos días. No todo el último día.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "calendar",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "check",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Para un examen a una semana, eso es repasar cada 1 o 2 días. No todo el último día."
+  },
+  {
+   "t": "Con estas dos reglas, vamos al plan.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "walk",
+      "face": "happy"
+     }
+    ],
+    "ground": 0.8,
+    "walk": 0.05
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Hoy. Día cero. Media hora para organizarte.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "clock",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "HOY: DÍA 0",
+    "wipe": true,
+    "ground": 0.8,
+    "pal": 2
+   },
+   "esc": "A",
+   "pantalla": "Hoy. Día 0. Media hora para organizarte.",
+   "tono": "enérgico, empieza el plan"
+  },
+  {
+   "t": "Primero: reúne todo lo que entra. Temas, apuntes, ejercicios y, sobre todo, exámenes de otros años.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "book",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y ponte un objetivo realista: qué nota quieres y cuántas horas al día puedes estudiar de verdad. Si son tres, son tres.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "clock",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "trophy",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Los exámenes antiguos te dicen qué preguntan y cómo. Son el mapa del tesoro.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "trophy",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Segundo: divide el temario en bloques pequeños, de una o dos horas cada uno.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "pencil",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Segundo: divide el temario en bloques pequeños, de 1 o 2 horas cada uno."
+  },
+  {
+   "t": "Tercero: mételos en el calendario. Yo uso Google Calendar, que es gratis: un evento por bloque, con hora de inicio y de fin.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "calendar",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "phone",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Si no está en el calendario, no existe. Estudiar cuando me apetezca no funciona.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shrug",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "cross",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y deja huecos libres. Algo saldrá mal, y es mejor que tengas sitio para recuperarlo.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "calendar",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Días uno y dos: primera vuelta al temario. Pero activa.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "DÍAS 1 Y 2",
+    "wipe": true,
+    "ground": 0.8,
+    "pal": 3
+   },
+   "esc": "A",
+   "pantalla": "Días 1 y 2: primera vuelta al temario. Pero activa."
+  },
+  {
+   "t": "Para cada bloque: lee una sección con calma, hasta entenderla.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "bg": "library",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Luego cierra el libro y escribe todo lo que recuerdes en una hoja en blanco. Sin mirar.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "pencil",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "library",
+    "ground": 0.82
+   },
+   "esc": "A",
+   "tono": "insistiendo en «sin mirar»"
+  },
+  {
+   "t": "Cuando no puedas más, abre el libro y compara. Lo que se te olvidó, en rojo.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "check",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "cross",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "library",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Ese hueco en rojo es justo lo que tienes que estudiar. Lo demás ya lo sabes.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "arrowup",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y mientras, haz tarjetas de pregunta y respuesta. Una idea por tarjeta.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "card",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "¿De qué? De lo que tienes que saber de memoria: definiciones, fechas, fórmulas, vocabulario. Lo que se entiende, se practica con ejercicios.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "card",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "pencil",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Para eso, Anki. Te enseña cada tarjeta justo antes de que la olvides.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "card",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "brain",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Cada día te dice cuántas tarjetas tocan. Hazlas todas, aunque sean pocas. La constancia es lo que funciona.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "card",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "check",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Es gratis en el ordenador, en Android y en la web. En iPhone la aplicación es de pago, un solo pago, unos veinticinco dólares en Estados Unidos. Pero puedes usar la web gratis.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "phone",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "check",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Es gratis en el ordenador, en Android y en la web. En iPhone la aplicación es de pago, un solo pago, unos 25 dólares en EE. UU. Pero puedes usar la web gratis.",
+   "tono": "informativo, honesto"
+  },
+  {
+   "t": "Si prefieres algo más sencillo, Quizlet. La versión gratis vale para hacer y repasar tarjetas. Algunos modos, como el de aprendizaje sin límites, son de pago.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "card",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "phone",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Nadie nos paga por nombrarlas. Son las que funcionan.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shrug",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "heart",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "¿Y cómo aguantas horas estudiando? No las aguantas. Haces bloques.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "clock",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "CÓMO CONCENTRARTE",
+    "wipe": true,
+    "ground": 0.8,
+    "pal": 4
+   },
+   "esc": "A"
+  },
+  {
+   "t": "La técnica Pomodoro: veinticinco minutos de estudio, cinco de descanso. Cada cuatro, un descanso largo.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "clock",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "coffee",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "big": "25 + 5",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 110,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "La técnica Pomodoro: 25 minutos de estudio, 5 de descanso. Cada 4, un descanso largo."
+  },
+  {
+   "t": "Vale cualquier temporizador. El del móvil, o uno de cocina.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shrug",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "alarm",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En los descansos, levántate, bebe agua y estira. Nada de redes: te comen el descanso y la cabeza.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "water",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "cross",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y el móvil, en otra habitación. Boca abajo en la mesa no basta: sigue llamándote.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "phone",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "cross",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Si lo necesitas cerca, Forest: plantas un árbol virtual que se muere si sales de la aplicación.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "phone",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "check",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "En iPhone cuesta unos cuatro dólares, un solo pago. En Android hay versión gratis. Y colaboran con una organización que planta árboles de verdad.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "heart",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "En iPhone cuesta unos 4 dólares, un solo pago. En Android hay versión gratis. Y colaboran con una organización que planta árboles de verdad."
+  },
+  {
+   "t": "Día tres: repaso y ejercicios.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "pencil",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "DÍA 3",
+    "wipe": true,
+    "ground": 0.8,
+    "pal": 5
+   },
+   "esc": "A",
+   "pantalla": "Día 3: repaso y ejercicios."
+  },
+  {
+   "t": "Empieza con las tarjetas de Anki que te toquen hoy. Diez o quince minutos.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "card",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "phone",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Empieza con las tarjetas de Anki que te toquen hoy. 10 o 15 minutos."
+  },
+  {
+   "t": "Y luego, ejercicios del tipo que cae en el examen. Si es de problemas, problemas. Si es de desarrollar, escribe respuestas de verdad.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "pencil",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Mezcla ejercicios de temas distintos. Así aprendes a reconocer qué te están pidiendo, como en el examen real.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "card",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "question",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y si uno te sale mal, no mires la solución enseguida. Inténtalo cinco minutos más. Ese esfuerzo es lo que te lo deja grabado.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "think",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "clock",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "brain",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Y si uno te sale mal, no mires la solución enseguida. Inténtalo 5 minutos más. Ese esfuerzo es lo que te lo deja grabado."
+  },
+  {
+   "t": "Y sigue con la primera vuelta a los bloques que te queden.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Día cuatro: el simulacro.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "DÍA 4: SIMULACRO",
+    "wipe": true,
+    "ground": 0.8,
+    "pal": 0
+   },
+   "esc": "A",
+   "pantalla": "Día 4: el simulacro.",
+   "tono": "serio, este día importa"
+  },
+  {
+   "t": "Coge un examen de otro año y hazlo entero, con el tiempo real, sin apuntes y sin móvil.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.8,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "bg": "classroom",
+    "ground": 0.82,
+    "board": "SIMULACRO",
+    "boards": 90,
+    "flip": true
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Da miedo. Por eso funciona: te dice dónde estás de verdad, no dónde crees que estás.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "eye",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Corrígelo con la solución delante. Y apunta cada fallo en una lista: la lista de errores.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "cross",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Esa lista vale más que todos tus apuntes juntos.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "trophy",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y no te agobies con la nota. Es un diagnóstico, no una sentencia.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shrug",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "heart",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A",
+   "tono": "tranquilizador"
+  },
+  {
+   "t": "Día cinco: a por tus puntos débiles.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "arrowup",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "DÍA 5",
+    "wipe": true,
+    "ground": 0.8,
+    "pal": 1
+   },
+   "esc": "A",
+   "pantalla": "Día 5: a por tus puntos débiles."
+  },
+  {
+   "t": "Coge la lista de errores y ataca primero lo que más falla. No lo que más te gusta.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "cross",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Para cada error, vuelve a la teoría, entiende por qué fallaste y haz dos o tres ejercicios parecidos.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "pencil",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Para cada error, vuelve a la teoría, entiende por qué fallaste y haz 2 o 3 ejercicios parecidos."
+  },
+  {
+   "t": "Un truco: explícalo en voz alta como si dieras la clase. Si te atascas, ahí hay un hueco.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.84,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "bg": "classroom",
+    "ground": 0.82,
+    "board": "EXPLÍCALO",
+    "boards": 80,
+    "flip": true
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y por supuesto, tus tarjetas del día.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "card",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Día seis: segundo simulacro.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "DÍA 6",
+    "wipe": true,
+    "ground": 0.8,
+    "pal": 2
+   },
+   "esc": "A",
+   "pantalla": "Día 6: segundo simulacro."
+  },
+  {
+   "t": "Otro examen distinto, en las mismas condiciones. Y compara la nota con la del día cuatro.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "graph",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Otro examen distinto, en las mismas condiciones. Y compara la nota con la del día 4."
+  },
+  {
+   "t": "Si has subido, el plan funciona. Si algo sigue fallando, ya sabes qué repasar mañana por la mañana.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "arrowup",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "check",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y antes de cenar, repasa la lista de errores. Los que ya no fallas, táchalos. Ver cómo se acorta da mucha moral.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "check",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Día siete: la víspera.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "neutral"
+     }
+    ],
+    "props": [
+     {
+      "k": "moon",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "DÍA 7: LA VÍSPERA",
+    "wipe": true,
+    "bg": "bedroom",
+    "ground": 0.82
+   },
+   "esc": "A",
+   "pantalla": "Día 7: la víspera.",
+   "tono": "más tranquilo"
+  },
+  {
+   "t": "Hoy no se aprende nada nuevo. Se repasa.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "cross",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "book",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "bedroom",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Por la mañana: tarjetas, la lista de errores y un resumen de una página por tema, hecho por ti y de memoria.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "card",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Por la tarde: prepara lo que necesitas. Bolígrafos, calculadora, documento de identidad, y cómo vas a llegar.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "pencil",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "check",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y por la noche, a dormir a tu hora.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "bed",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "zzz",
+      "float": true,
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "bedroom",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Dormir no es tiempo perdido: mientras duermes, el cerebro afianza lo que estudiaste.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "brain",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "moon",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "bg": "bedroom",
+    "ground": 0.82
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Hay estudios que muestran que después de una noche sin dormir, se aprende hasta un cuarenta por ciento peor al día siguiente.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "battery",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "−40 %",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 110,
+    "bg": "bedroom",
+    "ground": 0.82,
+    "bigc": "#e8483f"
+   },
+   "esc": "A",
+   "pantalla": "Hay estudios que muestran que después de una noche sin dormir, se aprende hasta un 40 % peor al día siguiente."
+  },
+  {
+   "t": "Y el día del examen, tres cosas.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "EL DÍA D",
+    "wipe": true,
+    "ground": 0.8,
+    "pal": 3
+   },
+   "esc": "A",
+   "pantalla": "Y el día del examen, 3 cosas."
+  },
+  {
+   "t": "Una: desayuna algo y llega con tiempo. Correr te sube los nervios.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "walk",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "coffee",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8,
+    "walk": 0.05
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Dos: lee todo el examen antes de empezar, y reparte el tiempo según lo que vale cada pregunta.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "clock",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Tres: empieza por lo que sabes. Coges confianza y aseguras puntos.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "check",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Y si te bloqueas en una pregunta, márcala y sigue. Vuelves al final con la cabeza más fría.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "question",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "arrowup",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Ahora, los cuatro errores que hacen que estudies mucho y apruebes poco.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "pointup",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "cross",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "4 ERRORES",
+    "wipe": true,
+    "ground": 0.8,
+    "pal": 4
+   },
+   "esc": "A",
+   "pantalla": "Ahora, los 4 errores que hacen que estudies mucho y apruebes poco."
+  },
+  {
+   "t": "Error uno: releer y subrayar. Es lo más cómodo y de lo que menos funciona. Una revisión de cientos de estudios lo puso de los últimos de la lista.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "facepalm",
+      "face": "sad"
+     }
+    ],
+    "props": [
+     {
+      "k": "book",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "cross",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "big": "1",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 100,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Error 1: releer y subrayar. Es lo más cómodo y de lo que menos funciona. Una revisión de cientos de estudios lo puso de los últimos de la lista."
+  },
+  {
+   "t": "Error dos: pasar horas haciendo apuntes bonitos. Si no te pones a prueba con ellos, son decoración.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "pencil",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "heart",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "big": "2",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 100,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Error 2: pasar horas haciendo apuntes bonitos. Si no te pones a prueba con ellos, son decoración."
+  },
+  {
+   "t": "Error tres: el atracón del último día. Lo que entra deprisa, sale deprisa.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "sitsad",
+      "face": "dead"
+     }
+    ],
+    "props": [
+     {
+      "k": "coffee",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "moon",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "big": "3",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 100,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Error 3: el atracón del último día. Lo que entra deprisa, sale deprisa."
+  },
+  {
+   "t": "Error cuatro: estudiar con el móvil al lado. Cada notificación te saca del tema, aunque no la mires.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "phone",
+      "anim": true,
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "4",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 100,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Error 4: estudiar con el móvil al lado. Cada notificación te saca del tema, aunque no la mires."
+  },
+  {
+   "t": "¿Y si solo tienes tres días? El mismo plan, comprimido.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shock",
+      "face": "shock"
+     }
+    ],
+    "props": [
+     {
+      "k": "calendar",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "alarm",
+      "anim": true,
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "head": "¿Y SI SOLO TENGO 3 DÍAS?",
+    "wipe": true,
+    "ground": 0.8,
+    "pal": 0
+   },
+   "esc": "A",
+   "pantalla": "¿Y si solo tienes 3 días? El mismo plan, comprimido."
+  },
+  {
+   "t": "Día uno: organízate, y primera vuelta activa a lo más importante. Lo que más cae en los exámenes antiguos.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "notes",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "big": "1",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 100,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Día 1: organízate, y primera vuelta activa a lo más importante. Lo que más cae en los exámenes antiguos."
+  },
+  {
+   "t": "Día dos: simulacro por la mañana y errores por la tarde.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "cross",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "big": "2",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 100,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Día 2: simulacro por la mañana y errores por la tarde."
+  },
+  {
+   "t": "Día tres: repaso de errores y tarjetas, y a dormir pronto. Sin trasnochar.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "moon",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     },
+     {
+      "k": "bed",
+      "x": 0.8,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.15
+     }
+    ],
+    "big": "3",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 100,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Día 3: repaso de errores y tarjetas, y a dormir pronto. Sin trasnochar."
+  },
+  {
+   "t": "No llegarás a todo. Pero llegarás a lo que más puntos da.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "shrug",
+      "face": "smirk"
+     }
+    ],
+    "props": [
+     {
+      "k": "trophy",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Resumen del plan:",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "notes",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "head": "RESUMEN",
+    "wipe": true,
+    "ground": 0.8,
+    "pal": 5
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Hoy, organiza y mételo en el calendario.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "calendar",
+      "x": 0.84,
+      "y": 0.5,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "0",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 110,
+    "ground": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Días uno y dos, primera vuelta activa y tarjetas.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "read",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "card",
+      "x": 0.84,
+      "y": 0.5,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "1-2",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 110,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Días 1 y 2, primera vuelta activa y tarjetas."
+  },
+  {
+   "t": "Día tres, ejercicios mezclados.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "pencil",
+      "x": 0.84,
+      "y": 0.5,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "3",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 110,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Día 3, ejercicios mezclados."
+  },
+  {
+   "t": "Día cuatro, simulacro y lista de errores.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "write",
+      "face": "focus"
+     }
+    ],
+    "props": [
+     {
+      "k": "exam",
+      "x": 0.84,
+      "y": 0.5,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "4",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 110,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Día 4, simulacro y lista de errores."
+  },
+  {
+   "t": "Día cinco, puntos débiles. Día seis, segundo simulacro.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "arrowup",
+      "x": 0.84,
+      "y": 0.5,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "5-6",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 110,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Día 5, puntos débiles. Día 6, segundo simulacro."
+  },
+  {
+   "t": "Y día siete, repaso ligero y a dormir.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "stand",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "moon",
+      "x": 0.84,
+      "y": 0.5,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "big": "7",
+    "bigx": 0.66,
+    "bigy": 0.3,
+    "bigs": 110,
+    "ground": 0.8
+   },
+   "esc": "A",
+   "pantalla": "Y día 7, repaso ligero y a dormir."
+  },
+  {
+   "t": "Si te sirve, guarda el vídeo para la próxima vez. Y cuéntame en los comentarios para qué examen lo vas a usar.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "point",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "heart",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8
+   },
+   "esc": "A",
+   "tono": "cercano"
+  },
+  {
+   "t": "Suerte. Aunque con este plan, la vas a necesitar menos.",
+   "v": {
+    "chars": [
+     {
+      "x": 0.32,
+      "pose": "cheer",
+      "face": "happy"
+     }
+    ],
+    "props": [
+     {
+      "k": "trophy",
+      "x": 0.66,
+      "y": 0.42,
+      "s": 0.8,
+      "d": 0.0
+     }
+    ],
+    "ground": 0.8,
+    "confetti": true
+   },
+   "esc": "A",
+   "tono": "remate con sonrisa"
+  }
+ ],
+ "fuentes": [
+  "Roediger, H. L. y Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. Psychological Science, 17(3), 249-255. (Nota de prensa de la Universidad de Washington en San Luis: a la semana, 61 % frente a 40 %; a los 5 minutos, releer 81 % frente a 75 %.)",
+  "Cepeda, N. J., Vul, E., Rohrer, D., Wixted, J. T. y Pashler, H. (2008). Spacing effects in learning: A temporal ridgeline of optimal retention. Psychological Science, 19(11), 1095-1102. (Más de 1.350 personas; el hueco óptimo entre repasos crece con la distancia al examen: en torno al 20-40 % para un examen a una semana.)",
+  "Dunlosky, J., Rawson, K. A., Marsh, E. J., Nathan, M. J. y Willingham, D. T. (2013). Improving students' learning with effective learning techniques. Psychological Science in the Public Interest, 14(1), 4-58. (Autoevaluación y práctica espaciada: utilidad alta; subrayar y releer: utilidad baja.)",
+  "Yoo, S.-S., Hu, P. T., Gujar, N., Jolesz, F. A. y Walker, M. P. (2007). A deficit in the ability to form new human memories without sleep. Nature Neuroscience, 10, 385-392. (Hasta un 40 % peor tras una noche sin dormir.)",
+  "Anki: escritorio, AnkiDroid y AnkiWeb gratis; AnkiMobile (iPhone) de pago único, 24,99 $ en EE. UU. (apps.ankiweb.net y docs.ankiweb.net, consultado el 21/11/2026).",
+  "Quizlet: plan gratis con tarjetas y repaso; Learn y Test limitados; Quizlet Plus de pago (quizlet.com, consultado el 21/11/2026).",
+  "Forest: 3,99 $ pago único en iOS; versión gratis en Android; colaboración con Trees for the Future (forestapp.cc y App Store, consultado el 21/11/2026).",
+  "Técnica Pomodoro: Francesco Cirillo (bloques de 25 minutos y pausas de 5)."
+ ]
+}

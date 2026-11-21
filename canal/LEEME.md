@@ -1,21 +1,38 @@
 # Canal de YouTube "Modo Examen": producción
 
-Canal educativo en español: explicaciones sencillas (ESO, Bachillerato, universidad), datos curiosos que ayudan a aprender y técnicas de estudio. Ganchos rápidos en el primer segundo ("¿No te acuerdas de lo que estudiaste hace una hora?"), voz calmada y clara, visuales 3D con movimiento fluido.
+Canal en español para AYUDAR A ESTUDIANTES a estudiar mejor, aprobar y aprovechar las clases y las horas de estudio: métodos paso a paso, organización, concentración, memoria, exámenes y herramientas reales (Anki, Quizlet, Notion, Google Calendar, Forest, Pomodoro…) descritas con honestidad. Ver `ESTRATEGIA.md`.
 
-## Decisiones de Ibai (19/11, definitivas; no cambiar sin que él lo pida)
+## Decisiones de Ibai (21/11, definitivas; no cambiar sin que él lo pida)
 - **Idioma: español.** Canal **"Modo Examen"**.
-- **Estilo: STICKMAN v2 colorido** (`herramientas/stick.html` + `stickframes.js`): fondos de color por sección, mucho movimiento, partículas, temblor, barridos, textos grandes con contorno y subtítulos palabra a palabra también en los vídeos largos. Formatos "Todas las X ordenadas / explicadas / qué pasaría si" (ver `ESTRATEGIA.md`). Más color, movimiento, dopamina y gancho que la competencia. El estilo neón 3D queda RETIRADO.
-- **Voz: "voz B".** Chatterbox con el timbre de `herramientas/voz-ref-B.wav` (100 % sintético: Kokoro `bm_george`), `language_id` "es", **cfg 0.0** (quita el acento inglés), expresividad 0.45-0.5. En el guion: `"lang": "es", "cfg": 0.0`.
-- **Ritmo:** 1 Short (vertical, `1080 1920 captions`) y 1 vídeo largo de más de 8 min (`1920 1080 captions`) al día.
+- **Enfoque: práctico y accionable** (ver `ESTRATEGIA.md`). Las curiosidades, solo como gancho al servicio del consejo. Sin enlaces de afiliado ocultos: si algún día los hay, se declaran.
+- **Estilo: STICKMAN v2 colorido** (`herramientas/stick.html` + `stickframes.js`): fondos de color por sección, mucho movimiento, textos grandes con contorno y subtítulos palabra a palabra. El estilo neón 3D queda RETIRADO.
+- **Voz: la de Ibai, grabada por él.** Las voces sintéticas (Chatterbox «voz B» y Kokoro) quedan RETIRADAS. **Mientras no haya grabación, no se publica nada en YouTube** (ni tarea de YouTube en el lote). Los vídeos es-s02…s04 y es-l02…l04 se quedan solo como referencia visual.
+- **Su voz es un dato personal**: nunca al repositorio (es público) ni a otro sitio. Solo en la sesión, fuera del repo (p. ej. `~/privado/`). En `.gitignore` de cada vídeo: `voz*.wav`, `grabacion*`.
+- **Ritmo:** guiones listos para grabar (1 largo y 2 Shorts por tanda); la producción va al ritmo de las grabaciones de Ibai.
+
+## Guion para grabar (cada vídeo nuevo)
+- `videos/<id>/guion.json` con las escenas, como siempre, y además `videos/<id>/GUION-PARA-GRABAR.txt`, generado con `python3 herramientas/guion_grabar.py videos/<id>`:
+  - texto limpio, una frase corta por línea, números escritos como se leen;
+  - una línea en blanco entre frases del guion (cada bloque es una escena);
+  - indicaciones de tono entre corchetes (campo `tono` de la frase) y la duración estimada (unas 2,5 palabras por segundo).
+- Instrucciones para Ibai (van al principio del archivo):
+  - grabar en un sitio silencioso, con el móvil a un palmo;
+  - si se equivoca, hacer una pausa y repetir la frase entera (se queda la última toma);
+  - dejar 1 s de silencio entre bloques.
+
+## Pipeline con la voz de Ibai
+1. Ibai sube la grabación de cada vídeo en la sección «Tu voz» de la app (`config/voz` o documentos en `voces/` con `assetId` y el id del vídeo).
+2. Descárgala con la herramienta Artifact (`action: "read"`, url del panel, `path` = assetId) **a una carpeta fuera del repo**.
+3. **Limpieza**: `ffmpeg -af "highpass=f=80,agate=threshold=0.02:ratio=2:attack=5:release=200,acompressor=threshold=-20dB:ratio=3:attack=5:release=100,loudnorm=I=-16:TP=-1.5"`, mono 48 kHz. La mezcla final queda a -14 LUFS.
+4. **Fallos y repeticiones**: transcribe con faster-whisper (modelo small o medium, CPU, `word_timestamps=True`; huggingface está permitido). Cuando una frase aparece repetida tras una pausa, se queda la ÚLTIMA toma. Se recortan las muletillas largas y los silencios de más de 0,6 s.
+5. **Alineado**: frase a frase del guion contra las palabras de whisper (comparación difusa del texto), lo que da `ini`/`fin` de cada frase. Con eso se escribe `tiempos.json` (`{dur, segs:[{ini, fin, texto, esc}]}`) y `voz.wav` limpia.
+6. Después, render, efectos y mezcla como siempre (pasos 4-5). `PUBLICAR.txt` dice «Contenido alterado o sintético: No» (voz real de Ibai y animación).
 
 ## Pipeline (gratis, sin GPU)
 1. **Guion**: `videos/<id>/guion.json`: `{titulo, frases: [{t (texto para la voz, números en letra), pantalla? (texto de subtítulos), esc (estación 3D A..E)}], fuentes: [...]}`. Cada dato, verificado con búsqueda web y con la fuente anotada; si un dato es dudoso, se quita.
-2. **Voz**:
-   - Instalación: `python3 -m venv cb-venv && cb-venv/bin/pip install chatterbox-tts "setuptools<81"`.
-   - Modelo en `cb-model/`: descarga con curl de `https://huggingface.co/ResembleAI/chatterbox/resolve/main/<archivo>` los archivos `ve.pt`, `t3_mtl23ls_v2.safetensors`, `s3gen.pt`, `grapheme_mtl_merged_expanded_v1.json`, `conds.pt` y `Cangjie5_TC.json`. No uses la API de Hugging Face: limita por IP.
-   - Uso: `cb-venv/bin/python tts_cb.py videos/<id> cb-model voz-ref.wav` → `voz.wav` + `tiempos.json`.
-   - El script repite sola cada frase que sale demasiado larga, demasiado corta o con silencios raros.
-   - Tarda unos 4 s de CPU por cada segundo de audio.
+2. **Voz**: la grabación de Ibai, limpia y alineada (ver «Pipeline con la voz de Ibai») → `voz.wav` + `tiempos.json`.
+   - (Retirado: `tts_cb.py` con Chatterbox y `tts.py` con Kokoro. Se conservan solo para pruebas de escenas, nunca para publicar.)
+   - Para probar escenas antes de tener la grabación: `tiempos.json` provisional a 2,5 palabras por segundo en una carpeta temporal.
 3. **Escenas (stickman v2)**: cada frase lleva `v: {chars:[{x,y?,pose,face,flip?}], props:[{k,x,y,s,d,anim?}], big, bigx, bigy, bigs, bigc, head, wipe, bg, board, boards, ground}`.
    - `head`: rótulo de sección (con `wipe`: barrido de 3 bandas de color al empezar).
    - `bg`: fondos dibujados `bedroom` (noche, estrellas), `classroom` (pizarra con `board`, tamaño `boards`), `lab` (estanterías con matraces) y `library`. Sin `bg`, paleta de color por sección.
@@ -32,6 +49,6 @@ Canal educativo en español: explicaciones sencillas (ESO, Bachillerato, univers
 7. **Ficha**: `videos/<id>/PUBLICAR.txt` (y `CAPITULOS.txt` en los largos, con los inicios de cada `head` sacados de `tiempos.json`) con título, descripción (con enlaces a OpoCalc o Cellmate cuando encaje), etiquetas, contenido alterado o sintético (No, salvo que se muestre algo realista inventado) y audiencia "no creado para niños".
 
 ## Ritmo y calidad
-- 1 Short (35-55 s, vertical) y 1 vídeo largo (más de 8 min, 1920x1080, capítulos) al día, de temas distintos.
+- Short: 35-55 s, vertical. Largo: más de 8 min, 1920x1080, con capítulos. Temas distintos y prácticos.
 - YouTube desmonetiza el contenido repetitivo hecho en serie: cada vídeo con guion original, datos comprobados y escena propia.
-- Publicación: en el Lote del domingo con `python3 herramientas/lote_youtube.py subir/lote-AAAA-MM-DD <lunes> <ids...>` (Shorts a las 14:00, largos a las 18:00, uno por día).
+- Publicación (cuando haya voz de Ibai): en el Lote del domingo con `python3 herramientas/lote_youtube.py subir/lote-AAAA-MM-DD <lunes> <ids...>` (Shorts a las 14:00, largos a las 18:00, uno por día).

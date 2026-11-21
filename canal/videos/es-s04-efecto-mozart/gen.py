@@ -8,7 +8,6 @@ def b(t, v, pant=None):
 G=0.64
 b("¿Estudiar escuchando a Mozart te hace más listo?",
   {"bg":"hall","chars":[{"x":0.32,"pose":"think","face":"smirk"}],"props":[{"k":"headphones","x":0.7,"y":0.34,"s":0.9,"anim":True},{"k":"question","x":0.82,"y":0.18,"s":0.6,"float":True,"d":0.3}],"ground":G})
-b("Hasta un gobernador se lo creyó.", {"chars":[{"x":0.5,"pose":"shrug","face":"smirk"}],"big":"🤔","bigx":0.5,"bigy":0.28,"bigs":150,"ground":G,"wipe":True})
 b("En mil novecientos noventa y tres, la revista Nature publicó un experimento.",
   {"head":"NATURE, 1993","bg":"lab","chars":[{"x":0.3,"pose":"read","face":"focus","hold":"notes"}],"props":[{"k":"flask","x":0.75,"y":0.42,"s":0.9,"anim":True}],"ground":G,"wipe":True},
   pant="En 1993, la revista Nature publicó un experimento.")
@@ -24,7 +23,7 @@ b("En mil novecientos noventa y ocho, el gobernador de Georgia pidió dinero par
   {"head":"GEORGIA, 1998","chars":[{"x":0.26,"pose":"point","face":"happy"}],"props":[{"k":"baby","x":0.62,"y":0.44,"s":0.9},{"k":"cd","x":0.82,"y":0.32,"s":0.7,"anim":True,"d":0.4}],"ground":G,"wipe":True},
   pant="En 1998, el gobernador de Georgia pidió dinero para regalar música clásica a cada bebé.")
 b("En dos mil diez se juntaron casi cuarenta estudios con más de tres mil personas.",
-  {"head":"2010","bg":"library","chars":[{"x":0.3,"pose":"read","face":"focus","hold":"book"}],"props":[{"k":"graph","x":0.72,"y":0.4,"s":0.9,"d":0.2}],"big":"+3.000","bigx":0.7,"bigy":0.18,"bigs":100,"ground":G,"wipe":True},
+  {"head":"2010","bg":"library","chars":[{"x":0.3,"pose":"read","face":"focus","hold":"book"}],"props":[{"k":"graph","x":0.72,"y":0.5,"s":0.9,"d":0.2}],"big":"+3.000","bigx":0.66,"bigy":0.31,"bigs":100,"ground":G,"wipe":True},
   pant="En 2010 se juntaron casi 40 estudios con más de 3.000 personas.")
 b("Conclusión: lo que ayudaba era estar más despierto y animado, no Mozart.",
   {"chars":[{"x":0.32,"pose":"stand","face":"happy"}],"props":[{"k":"coffee","x":0.7,"y":0.42,"s":0.8},{"k":"heart","x":0.82,"y":0.26,"s":0.6,"d":0.3},{"k":"cross","x":0.56,"y":0.24,"s":0.5,"d":0.6}],"ground":G})

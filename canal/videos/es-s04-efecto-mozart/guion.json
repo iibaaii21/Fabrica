@@ -37,25 +37,6 @@
    "esc": "A"
   },
   {
-   "t": "Hasta un gobernador se lo creyó.",
-   "v": {
-    "chars": [
-     {
-      "x": 0.5,
-      "pose": "shrug",
-      "face": "smirk"
-     }
-    ],
-    "big": "🤔",
-    "bigx": 0.5,
-    "bigy": 0.28,
-    "bigs": 150,
-    "ground": 0.64,
-    "wipe": true
-   },
-   "esc": "A"
-  },
-  {
    "t": "En mil novecientos noventa y tres, la revista Nature publicó un experimento.",
    "v": {
     "head": "NATURE, 1993",
@@ -246,14 +227,14 @@
      {
       "k": "graph",
       "x": 0.72,
-      "y": 0.4,
+      "y": 0.5,
       "s": 0.9,
       "d": 0.2
      }
     ],
     "big": "+3.000",
-    "bigx": 0.7,
-    "bigy": 0.18,
+    "bigx": 0.66,
+    "bigy": 0.31,
     "bigs": 100,
     "ground": 0.64,
     "wipe": true

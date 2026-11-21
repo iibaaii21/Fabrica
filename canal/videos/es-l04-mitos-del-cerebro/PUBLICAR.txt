@@ -1,4 +1,4 @@
-TIPO: Vídeo largo (horizontal, DURACION)
+TIPO: Vídeo largo (horizontal, 9:02)
 
 TÍTULO:
 10 mitos del cerebro que te creíste en clase (el nº 1 te lo enseñaron) 🧠
@@ -11,7 +11,19 @@ Hay cosas sobre el cerebro que te enseñaron en clase y son mentira. Repasamos 1
 · Pashler y colaboradores (2008): no hay pruebas sólidas de que enseñar según tu «estilo de aprendizaje» funcione. Aun así, en 2012 el 93 % de los profesores británicos encuestados lo creía (Dekker y colaboradores).
 
 CAPÍTULOS:
-CAPS
+0:00 Intro: los mitos que te enseñaron en clase
+0:26 10. Los peces de colores y los 3 segundos
+1:02 9. El azúcar te pone hiperactivo
+1:50 8. Solo usamos el 10 % del cerebro
+2:36 7. Cerebro izquierdo o derecho
+3:15 6. La memoria fotográfica
+4:00 5. Aprender mientras duermes
+4:39 4. Los juegos de entrenamiento cerebral
+5:22 3. La multitarea
+6:07 2. Estudiar con música con letra
+6:56 1. Los estilos de aprendizaje
+7:54 Extra: por qué nos los creemos
+8:30 Resumen: 5 consejos para estudiar
 
 FUENTES:
 Peces de colores: experimento de la Universidad de Plymouth (1994) con una palanca que daba comida a una hora concreta; Culum Brown (Universidad Macquarie) sobre memoria de peces de al menos tres meses.

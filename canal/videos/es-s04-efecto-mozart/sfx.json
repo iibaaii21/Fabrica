@@ -1,0 +1,56 @@
+[
+{
+"seg": 1,
+"off": 0.0,
+"s": "move_whoosh_01",
+"g": 0.45
+},
+{
+"seg": 3,
+"off": 0.25,
+"s": "pickup_coin_01",
+"g": 0.25
+},
+{
+"seg": 4,
+"off": 0.0,
+"s": "move_whoosh_01",
+"g": 0.45
+},
+{
+"seg": 6,
+"off": 0.0,
+"s": "move_whoosh_01",
+"g": 0.45
+},
+{
+"seg": 7,
+"off": 0.0,
+"s": "move_whoosh_01",
+"g": 0.45
+},
+{
+"seg": 8,
+"off": 0.3,
+"s": "ui_error_01",
+"g": 0.28
+},
+{
+"seg": 9,
+"off": 0.3,
+"s": "ui_confirm_01",
+"g": 0.3
+},
+{
+"seg": 10,
+"off": 0.12,
+"s": "combat_hit_01",
+"g": 0.3
+},
+{
+"seg": 10,
+"off": 0.2,
+"s": "state_win_01",
+"g": 0.3
+}
+]

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de tiempo por pregunta para exámenes tipo test y oposiciones</title>
+<meta name="description" content="Calcula cuánto tiempo tienes por pregunta en un examen tipo test y en qué minuto deberías ir por cada pregunta, dejando tiempo para repasar y pasar a la hoja de respuestas. Gratis, sin registro.">
+<link rel="canonical" href="https://calculadora-oposiciones.pages.dev/ritmo/">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--ink:#1f2a44;--muted:#5a6275;--line:#e2ddd1;--gold:#b08d4c;--ok:#2e8b57;--bad:#c0504d;--soft:#f3ead6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,"Segoe UI",Roboto,system-ui,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:28px 16px 60px;display:grid;gap:22px}
+nav{font-size:14px;display:flex;gap:14px;flex-wrap:wrap}
+nav a{color:var(--muted)}
+h1{font-size:clamp(26px,5vw,36px);line-height:1.15;margin:0;text-wrap:balance}
+.lead{color:var(--muted);margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;display:grid;gap:14px}
+h2{margin:0;font-size:21px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+label{display:grid;gap:4px;font-size:14px;color:var(--muted);font-weight:600}
+input,select{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fffdf8;color:var(--ink);width:100%}
+input:focus,select:focus{outline:2px solid var(--gold);outline-offset:1px}
+.out{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;padding:14px 16px;background:var(--soft);border-radius:12px}
+.big{font-size:34px;font-weight:800;line-height:1.1}
+.out span{color:var(--muted);font-size:14px}
+.ok{color:var(--ok)}.bad{color:var(--bad)}.neu{color:var(--muted)}
+.note{font-size:14px;color:var(--muted);margin:0}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:15px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{font-size:13px;color:var(--muted)}
+td,th{white-space:nowrap}
+@media (max-width:480px){table{font-size:13px}th,td{padding:7px 5px}}
+tr.sel td{background:var(--soft);font-weight:700}
+.scroll{overflow-x:auto}
+footer{font-size:13px;color:var(--muted);text-align:center}
+code{background:#f0ece2;padding:1px 6px;border-radius:6px}
+.chk{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.chk div{background:var(--soft);border-radius:10px;padding:10px 12px;font-size:14px}.chk b{display:block;font-size:20px}
+</style>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta property="og:type" content="website"><meta property="og:site_name" content="OpoCalc"><meta property="og:title" content="Calculadora de tiempo por pregunta para exámenes tipo test y oposiciones"><meta property="og:description" content="Calcula cuánto tiempo tienes por pregunta en un examen tipo test y en qué minuto deberías ir por cada pregunta, dejando tiempo para repasar y pasar a la hoja de respuestas. Gratis, sin registro."><meta property="og:url" content="https://calculadora-oposiciones.pages.dev/ritmo/"><meta property="og:image" content="https://calculadora-oposiciones.pages.dev/og.png"><meta name="twitter:card" content="summary_large_image"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"><style>.opbar{background:#1f2a44;color:#fff}.opbar .in{max-width:760px;margin:0 auto;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.opbar a{color:#fff;text-decoration:none}.opbar .lg{font:800 19px 'Inter Tight',Inter,sans-serif;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.opbar .lg i{font-style:normal;background:#f3c969;color:#1f2a44;border-radius:7px;padding:1px 7px;font-size:15px}.opbar .r{font-size:14px;opacity:.85}
+body{font-family:Inter,-apple-system,"Segoe UI",Roboto,system-ui,sans-serif}nav[aria-label="Herramientas"] a{margin-right:4px}
+.opfoot{max-width:760px;margin:0 auto;padding:0 16px 40px;font-size:13px;color:#5a6275;text-align:center}.opfoot a{color:#5a6275}</style>
+</head>
+<body>
+<div class="opbar"><div class="in"><a class="lg" href="/"><i>%</i>OpoCalc</a><span class="r">Calculadoras gratis para opositores · <a href="https://cellmate-plantillas.pages.dev/">Plantillas Cellmate</a></span></div></div>
+<main class="wrap">
+  <nav aria-label="Herramientas"><a href="../">Calculadora de nota y días</a><a href="../arriesgar/">¿Arriesgar o dejar en blanco?</a><a href="./" aria-current="page">Tiempo por pregunta</a><a href="../baremo/">Concurso-oposición</a><a href="https://cellmate-plantillas.pages.dev/" style="color:var(--muted)">Plantillas</a></nav>
+  <header style="display:grid;gap:8px">
+    <h1>Calculadora de tiempo por pregunta</h1>
+    <p class="lead">Mete la duración del examen y el número de preguntas: te dice cuánto tiempo tienes por pregunta y en qué minuto deberías ir por cada tramo, dejando margen para repasar. Gratis, sin registro.</p>
+  </header>
+
+  <section class="card" aria-labelledby="h-t">
+    <h2 id="h-t">Tu examen</h2>
+    <div class="grid">
+      <label>Duración del examen (minutos)<input id="dur" type="number" min="1" value="90" inputmode="numeric"></label>
+      <label>Preguntas<input id="n" type="number" min="1" value="100" inputmode="numeric"></label>
+      <label>Minutos para repasar al final<input id="rep" type="number" min="0" value="10" inputmode="numeric"></label>
+      <label>Minutos para pasar a la hoja de respuestas<input id="hoja" type="number" min="0" value="5" inputmode="numeric"></label>
+      <label>Preguntas de reserva (no puntúan, se contestan igual)<input id="res" type="number" min="0" value="0" inputmode="numeric"></label>
+      <label>Hora de inicio (opcional)<input id="ini" type="time"></label>
+    </div>
+    <div class="out" aria-live="polite"><div class="big" id="tpp">—</div><span id="tppd"></span></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-c">
+    <h2 id="h-c">Puntos de control</h2>
+    <p class="note">Apúntalos en el borrador al empezar. Si en un punto de control vas por detrás, acelera en las preguntas fáciles y marca las dudosas para el final.</p>
+    <div class="chk" id="chk"></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-faq">
+    <h2 id="h-faq">Cómo se calcula</h2>
+    <p><strong>Tiempo por pregunta</strong> = (duración − repaso − paso a la hoja) ÷ (preguntas + reserva). Con 90 minutos, 100 preguntas, 10 minutos de repaso y 5 de hoja: 75 ÷ 100 = 45 segundos por pregunta.</p>
+    <p><strong>Puntos de control</strong>: cada 10 % del examen, el minuto en que deberías haber terminado esa pregunta si vas a ritmo constante.</p>
+    <p><strong>Tres consejos</strong>: haz una primera pasada contestando solo lo que sabes seguro; marca las dudosas y vuelve después; y no dejes la hoja de respuestas para el último minuto. Si dudas entre contestar o dejar en blanco, mira la calculadora <a href="../arriesgar/">¿Arriesgar o dejar en blanco?</a></p>
+    <p><strong>Ojo:</strong> revisa las bases de tu convocatoria: algunas dan tiempo distinto a cada parte o no tienen hoja de respuestas aparte.</p>
+  </section>
+
+  <section class="card" aria-labelledby="h-plan" style="border-color:#b08d4c;background:#fffaf0">
+    <h2 id="h-plan">Entrena con simulacros cronometrados</h2>
+    <p class="note" style="color:#1f2a44;font-size:16px">El <strong>Planificador de Oposiciones</strong> (Excel y Google Sheets) guarda la nota de cada simulacro con su penalización, controla las vueltas de cada tema y te dice si vas por encima del corte.</p>
+    <a href="https://cellmate-plantillas.pages.dev/plantillas/planificador/" style="justify-self:start;background:#1f2a44;color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:999px">Ver el planificador →</a>
+  </section>
+  <footer>Herramienta gratuita. No guarda ningún dato: todo se calcula en tu navegador.</footer>
+</main>
+<div class="opfoot">OpoCalc es gratuito y no guarda ningún dato: todo se calcula en tu navegador. Las cifras son orientativas; revisa siempre las bases de tu convocatoria. · <a href="https://cellmate-plantillas.pages.dev/privacidad/">Privacidad</a></div>
+<script>
+const $=id=>document.getElementById(id);
+const num=id=>Math.max(0,parseFloat($(id).value)||0);
+function fmt(s){s=Math.round(s);const m=Math.floor(s/60),r=s%60;return m?`${m} min ${r} s`:`${r} s`}
+function hhmm(base,min){if(!base)return'';const [h,m]=base.split(':').map(Number);const t=h*60+m+Math.round(min);return ` · ${String(Math.floor(t/60)%24).padStart(2,'0')}:${String(t%60).padStart(2,'0')}`}
+function calc(){
+  const dur=num('dur'),n=Math.max(1,Math.round(num('n'))),rep=num('rep'),hoja=num('hoja'),res=Math.round(num('res')),ini=$('ini').value;
+  const util=dur-rep-hoja,tot=n+res;
+  if(util<=0){$('tpp').textContent='Revisa los minutos';$('tppd').textContent='El repaso y la hoja no pueden ocupar todo el examen.';$('chk').innerHTML='';return}
+  const s=util*60/tot;
+  $('tpp').textContent=fmt(s)+' por pregunta';
+  $('tppd').textContent=`${tot} preguntas en ${util} minutos útiles. Repaso: ${rep} min · hoja de respuestas: ${hoja} min.`;
+  let h='';for(let k=1;k<=10;k++){const q=Math.round(tot*k/10),m=q*s/60;h+=`<div>Pregunta <b>${q}</b>minuto ${Math.round(m)}${hhmm(ini,m)}</div>`}
+  h+=`<div>Repaso <b>${Math.round(util)}–${Math.round(util+rep)}</b>minutos${hhmm(ini,util)}</div><div>Hoja <b>${Math.round(util+rep)}–${Math.round(dur)}</b>minutos${hhmm(ini,util+rep)}</div>`;
+  $('chk').innerHTML=h;
+}
+document.querySelectorAll('input').forEach(i=>i.addEventListener('input',calc));calc();
+</script>
+</body>
+</html>

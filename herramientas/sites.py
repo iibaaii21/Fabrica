@@ -206,7 +206,7 @@ body{font-family:Inter,-apple-system,"Segoe UI",Roboto,system-ui,sans-serif}nav[
 def build_oposiciones():
     site = 'oposiciones'
     C = BASE['cellmate']
-    pages = [('index.html', '/', 'docs/index.html'), ('arriesgar/index.html', '/arriesgar/', 'docs/arriesgar/index.html'), ('baremo/index.html', '/baremo/', 'docs/baremo/index.html')]
+    pages = [('index.html', '/', 'docs/index.html'), ('arriesgar/index.html', '/arriesgar/', 'docs/arriesgar/index.html'), ('baremo/index.html', '/baremo/', 'docs/baremo/index.html'), ('ritmo/index.html', '/ritmo/', 'docs/ritmo/index.html')]
     for out, path, src in pages:
         s = open(os.path.join(R, src)).read()
         s = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{BASE[site]}{path}">', s)

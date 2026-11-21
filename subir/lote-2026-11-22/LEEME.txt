@@ -1,7 +1,7 @@
-LOTE DEL DOMINGO 22/11/2026: 12 tareas, unos 97 minutos
+LOTE DEL DOMINGO 22/11/2026: 10 tareas, unos 74 minutos
 
 Cómo usarlo (PC con Windows):
-- El lote va en CINCO zips (parte-1, parte-2, parte-3, parte-4 y parte-5) porque pesa mucho: descarga los cinco y extráelos en la misma carpeta.
+- El lote va en DOS zips (parte-1 y parte-2) porque pesa mucho: descarga los dos y extráelos en la misma carpeta.
 - Clic derecho en el zip del lote > Extraer todo.
 - Cada tarea tiene su carpeta con TODO lo que necesita: archivos, imágenes y TEXTOS-PARA-COPIAR.txt.
 - Los .zip que hay DENTRO de las carpetas se suben tal cual, sin extraerlos.
@@ -87,31 +87,7 @@ Tus 3 webs ya están hechas: Cellmate (tienda de plantillas), OpoCalc (calculado
 3. Copia Título y Descripción de TEXTOS-PARA-COPIAR.txt (deja la nota de que no calcula impuestos).
 4. Precio 6,90 € > Publish.
 
-=== 10-YouTube-crear-canal-Modo-Examen  (~5 min) ===
-1. Entra en https://www.youtube.com con tu cuenta de Google > foto de perfil > Configuración > «Añadir o administrar tus canales» > «Crear un canal».
-   (Así se crea como cuenta de marca, separado de tu canal personal.)
-2. Nombre: Modo Examen. Identificador: @ModoExamen (si está cogido, los alternativos de CANAL.txt).
-3. Personalizar canal > Imagen: sube avatar-800x800.png como foto y banner-2560x1440.png como banner.
-4. Información básica: pega la descripción y las palabras clave de CANAL.txt.
-5. Verifica el teléfono en https://www.youtube.com/verify (1 min, gratis): hace falta para miniaturas personalizadas y vídeos largos.
-
-=== 11-YouTube-programar-videos-de-la-semana  (~18 min, está en las PARTES 3, 4 y 5) ===
-Sube todos los vídeos de golpe y programa cada uno en su día y hora:
-   VÍDEO                      | FECHA Y HORA (Madrid)          | TÍTULO
-   es-s02-noche-en-vela       | lunes 23/11/2026 a las 14:00   | ¿Noche en vela antes del examen? Mira esto antes 😴 #shorts
-   es-l02-tipos-de-memoria    | lunes 23/11/2026 a las 18:00   | Los 11 tipos de memoria explicados (y cuál te hace aprobar) 🧠
-   es-s03-efecto-foco         | martes 24/11/2026 a las 14:00  | ¿Miedo a la exposición oral? Nadie se fijó en tu camiseta 👕 #shorts
-   es-l03-sesgos-al-estudiar  | martes 24/11/2026 a las 18:00  | 10 sesgos cognitivos que te engañan al estudiar (el nº 1 lo haces hoy) 🧠
-   es-s04-efecto-mozart       | miércoles 25/11/2026 a las 14:00| ¿Estudiar con Mozart te hace más listo? 🎧 #shorts
-   es-l04-mitos-del-cerebro   | miércoles 25/11/2026 a las 18:00| 10 mitos del cerebro que te creíste en clase (el nº 1 te lo enseñaron) 🧠
-1. En YouTube Studio (en el canal Modo Examen): Crear > Subir vídeos > arrastra a la vez el short.mp4 o video.mp4 de cada carpeta.
-2. Para cada vídeo, copia título, descripción y etiquetas de su PUBLICAR.txt (en los largos, los capítulos ya van dentro de la descripción: no los borres).
-3. Audiencia: «No, no es contenido creado para niños». Contenido alterado o sintético: lo que dice su PUBLICAR.txt.
-4. Miniatura: sube su miniatura-1280x720.png (en los Shorts a veces solo se elige un fotograma desde la app; si no aparece la opción, sáltalo).
-5. Visibilidad: Programar > la fecha y hora de la tabla > Programar.
-(Las carpetas antiguas de estilo neón «s01-olvido-1-hora» y «s02-noche-en-vela», sin «es-» delante, ya no se suben: el canal es ahora de dibujos stickman.)
-
-=== 12-itch-Soft-UI-Sounds  (~5 min, está en la PARTE 2) ===
+=== 10-itch-Soft-UI-Sounds  (~5 min, está en la PARTE 2) ===
 1. https://itch.io/game/new
 2. Title: Soft UI Sounds Vol. 2 — 46 gentle interface sounds · Classification: Assets · Kind of project: Downloadable.
 3. Pricing: Paid, 2,99 $, marca «Let people pay more».

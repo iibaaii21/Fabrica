@@ -1408,14 +1408,14 @@
      {
       "x": 0.8,
       "pose": "write",
-      "face": "focus"
+      "face": "focus",
+      "flip": true
      }
     ],
     "bg": "classroom",
     "ground": 0.82,
     "board": "SIMULACRO",
-    "boards": 90,
-    "flip": true
+    "boards": 90
    },
    "esc": "A"
   },
@@ -1614,14 +1614,14 @@
      {
       "x": 0.84,
       "pose": "point",
-      "face": "happy"
+      "face": "happy",
+      "flip": true
      }
     ],
     "bg": "classroom",
     "ground": 0.82,
     "board": "EXPLÍCALO",
-    "boards": 80,
-    "flip": true
+    "boards": 80
    },
    "esc": "A"
   },

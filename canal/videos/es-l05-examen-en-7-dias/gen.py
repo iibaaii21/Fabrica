@@ -4,6 +4,7 @@ F=[]
 def b(t, pose="stand", face="neutral", props=(), big=None, head=None, bg=None, pant=None, x=0.32, tono=None, two=None, hold=None, **kw):
     v={"chars":[{"x":x,"pose":pose,"face":face}]}
     if hold: v["chars"][0]["hold"]=hold
+    if kw.get("flip"): v["chars"][0]["flip"]=kw.pop("flip")
     if two: v["chars"].append(dict(id="b",flip=True,**two))
     pr=[]
     for i,p in enumerate(props):

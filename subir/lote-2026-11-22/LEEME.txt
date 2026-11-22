@@ -107,6 +107,6 @@ Vídeos originales (animación propia, sin imágenes de streamers ni del juego).
 1. Pásalo al móvil (o descárgalo con el enlace directo del panel) y en TikTok pulsa + > Subir > elige el vídeo.
 2. Deja el sonido original (ya lleva música propia).
 3. Pega el «TEXTO DEL POST» de su archivo -TEXTO.txt y publica.
-   Vídeos de este lote: gta6-5-records.mp4
+   Vídeos de este lote (uno al día, en este orden): gta6-5-records.mp4 (hoy) y gta6-vs-gta5.mp4 (lunes 23/11)
 
 ÚLTIMO PASO: escribe en esta sesión de Claude (la «sala de máquinas») las palabras «conectar estadísticas».

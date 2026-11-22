@@ -1,0 +1,222 @@
+{
+ "titulo": "GTA 6 contra GTA V en 5 cifras",
+ "lang": "es",
+ "frases": [
+  {
+   "t": "GTA 6 contra GTA V: 5 cifras que lo cambian todo",
+   "v": {
+    "head": "GTA 6 vs GTA V",
+    "big": "5 CIFRAS",
+    "bigy": 0.33,
+    "bigs": 150,
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "smirk",
+      "s": 0.85
+     },
+     {
+      "id": "b",
+      "x": 0.72,
+      "pose": "shock",
+      "face": "shock",
+      "s": 0.85,
+      "flip": true
+     }
+    ],
+    "shake": 1,
+    "sub": "GTA 6 contra GTA V: 5 cifras que lo cambian todo",
+    "ground": 0.7,
+    "suby": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "años entre GTA V (2013) y GTA 6 (2026). Media vida para muchos jugadores.",
+   "v": {
+    "head": "#5 LA ESPERA",
+    "big": "13 AÑOS",
+    "bigs": 150,
+    "bigc": "#8a5cd6",
+    "bigy": 0.33,
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "sitsad",
+      "face": "dead",
+      "s": 0.85
+     }
+    ],
+    "props": [
+     {
+      "k": "calendar",
+      "x": 0.75,
+      "y": 0.55,
+      "s": 0.9
+     }
+    ],
+    "sub": "años entre GTA V (2013) y GTA 6 (2026). Media vida para muchos jugadores.",
+    "ground": 0.7,
+    "suby": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "GTA V salió a 59,99 dólares. GTA 6 cuesta 79,99: 20 dólares más.",
+   "v": {
+    "head": "#4 EL PRECIO",
+    "big": "+20 $",
+    "bigs": 180,
+    "bigc": "#e8483f",
+    "bigy": 0.33,
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "shock",
+      "face": "shock",
+      "s": 0.85
+     }
+    ],
+    "props": [
+     {
+      "k": "exclaim",
+      "x": 0.75,
+      "y": 0.55,
+      "s": 0.9
+     }
+    ],
+    "sub": "GTA V salió a 59,99 dólares. GTA 6 cuesta 79,99: 20 dólares más.",
+    "ground": 0.7,
+    "suby": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "visualizaciones del primer tráiler en 24 horas. Récord Guinness.",
+   "v": {
+    "head": "#3 EL TRÁILER",
+    "big": "90,4 M",
+    "bigs": 170,
+    "bigc": "#3a7bd5",
+    "bigy": 0.33,
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "cheer",
+      "face": "happy",
+      "s": 0.85
+     }
+    ],
+    "props": [
+     {
+      "k": "eye",
+      "x": 0.8,
+      "y": 0.55,
+      "s": 0.8
+     }
+    ],
+    "sub": "visualizaciones del primer tráiler en 24 horas. Récord Guinness.",
+    "ground": 0.7,
+    "suby": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "de dólares el primer día, según Take-Two. GTA V hizo 800 millones.",
+   "v": {
+    "head": "#2 EL PRIMER DÍA",
+    "big": "3.790 M $",
+    "bigs": 120,
+    "bigc": "#3fb06b",
+    "bigy": 0.33,
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "cheer",
+      "face": "happy",
+      "s": 0.85
+     }
+    ],
+    "props": [
+     {
+      "k": "trophy",
+      "x": 0.8,
+      "y": 0.55,
+      "s": 0.9,
+      "float": 1
+     }
+    ],
+    "shake": 1,
+    "sub": "de dólares el primer día, según Take-Two. GTA V hizo 800 millones.",
+    "ground": 0.7,
+    "suby": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "copias de GTA V vendidas. Y sigue vendiendo.",
+   "v": {
+    "head": "#1 EL VETERANO",
+    "big": "+230 M",
+    "bigs": 170,
+    "bigc": "#f08a2c",
+    "bigy": 0.33,
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "pointup",
+      "face": "smirk",
+      "s": 0.85
+     }
+    ],
+    "props": [
+     {
+      "k": "arrowup",
+      "x": 0.8,
+      "y": 0.55,
+      "s": 1
+     }
+    ],
+    "sub": "copias de GTA V vendidas. Y sigue vendiendo.",
+    "ground": 0.7,
+    "suby": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Dímelo en los comentarios 👇",
+   "v": {
+    "big": "¿CUÁL TE QUEDAS?",
+    "bigs": 90,
+    "bigy": 0.33,
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "think",
+      "face": "smirk",
+      "s": 0.85
+     }
+    ],
+    "props": [
+     {
+      "k": "question",
+      "x": 0.8,
+      "y": 0.55,
+      "s": 1
+     }
+    ],
+    "sub": "Dímelo en los comentarios 👇",
+    "ground": 0.7,
+    "suby": 0.8
+   },
+   "esc": "A"
+  }
+ ],
+ "fuentes": [
+  "GTA V: salida el 17/09/2013, 59,99 $ (edición estándar en consolas de la época). GTA 6: salida el 19/11/2026, 79,99 $ edición estándar (Yahoo Tech, Dot Esports).",
+  "Guinness World Records: tráiler 1 de GTA 6, 90.421.491 visualizaciones en 24 h en YouTube (diciembre de 2023), revelación de videojuego más vista en 24 h.",
+  "Variety / The Escapist: 3.790 M$ el primer día (estimación de Take-Two). NBC (2013): GTA V, 800 M$ el primer día.",
+  "Take-Two, resultados del primer trimestre fiscal 2027 (agosto de 2026): GTA V supera los 230 M de unidades."
+ ]
+}

@@ -1,0 +1,228 @@
+{
+ "titulo": "GTA 6 ha roto 5 récords en 3 días",
+ "lang": "es",
+ "frases": [
+  {
+   "t": "GTA 6 ha roto 5 récords en solo 3 días",
+   "v": {
+    "head": "GTA 6 · 3 DÍAS",
+    "big": "5 RÉCORDS",
+    "bigy": 0.33,
+    "bigs": 150,
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "shock",
+      "face": "shock",
+      "s": 0.85
+     }
+    ],
+    "sub": "GTA 6 ha roto 5 récords en solo 3 días",
+    "shake": 1,
+    "ground": 0.7,
+    "suby": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "personas viendo GTA 6 a la vez en Twitch. Récord para un juego.",
+   "v": {
+    "head": "#5 TWITCH",
+    "big": "3,3 M",
+    "bigs": 170,
+    "bigc": "#8a5cd6",
+    "bigy": 0.33,
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "shock",
+      "s": 0.85
+     }
+    ],
+    "props": [
+     {
+      "k": "phone",
+      "x": 0.75,
+      "y": 0.55,
+      "s": 1
+     }
+    ],
+    "sub": "personas viendo GTA 6 a la vez en Twitch. Récord para un juego.",
+    "ground": 0.7,
+    "suby": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "a la vez entre Twitch, YouTube y Kick. El mayor lanzamiento jamás medido.",
+   "v": {
+    "head": "#4 TODAS LAS PLATAFORMAS",
+    "big": "7,9 M",
+    "bigs": 170,
+    "bigc": "#3a7bd5",
+    "bigy": 0.33,
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "cheer",
+      "face": "happy",
+      "s": 0.85
+     }
+    ],
+    "sub": "a la vez entre Twitch, YouTube y Kick. El mayor lanzamiento jamás medido.",
+    "ground": 0.7,
+    "suby": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "sobre 100 en Metacritic, con 152 críticas.",
+   "v": {
+    "head": "#3 LA NOTA",
+    "big": "99",
+    "bigs": 220,
+    "bigc": "#3fb06b",
+    "bigy": 0.33,
+    "chars": [
+     {
+      "x": 0.35,
+      "pose": "cheer",
+      "face": "happy",
+      "s": 0.85
+     }
+    ],
+    "props": [
+     {
+      "k": "gradeA",
+      "x": 0.75,
+      "y": 0.55,
+      "s": 1
+     }
+    ],
+    "sub": "sobre 100 en Metacritic, con 152 críticas.",
+    "ground": 0.7,
+    "suby": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Plot twist: la nota de los jugadores el día de salida fue un 4,8 sobre 10.",
+   "v": {
+    "big": "4,8",
+    "bigs": 200,
+    "bigc": "#e8483f",
+    "bigy": 0.33,
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "facepalm",
+      "face": "sad",
+      "s": 0.85
+     }
+    ],
+    "sub": "Plot twist: la nota de los jugadores el día de salida fue un 4,8 sobre 10.",
+    "ground": 0.7,
+    "suby": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "copias vendidas antes del lanzamiento, según Take-Two.",
+   "v": {
+    "head": "#2 ANTES DE SALIR",
+    "big": "32,5 M",
+    "bigs": 160,
+    "bigc": "#f08a2c",
+    "bigy": 0.33,
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "shock",
+      "face": "shock",
+      "s": 0.85
+     }
+    ],
+    "props": [
+     {
+      "k": "calendar",
+      "x": 0.8,
+      "y": 0.55,
+      "s": 0.8
+     }
+    ],
+    "sub": "copias vendidas antes del lanzamiento, según Take-Two.",
+    "ground": 0.7,
+    "suby": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "en 24 horas, según Take-Two. GTA V hizo 800 millones el suyo.",
+   "v": {
+    "head": "#1 EL PRIMER DÍA",
+    "big": "3.790 M $",
+    "bigs": 120,
+    "bigc": "#3fb06b",
+    "bigy": 0.33,
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "cheer",
+      "face": "happy",
+      "s": 0.85
+     }
+    ],
+    "props": [
+     {
+      "k": "trophy",
+      "x": 0.8,
+      "y": 0.55,
+      "s": 0.9,
+      "float": 1
+     }
+    ],
+    "sub": "en 24 horas, según Take-Two. GTA V hizo 800 millones el suyo.",
+    "shake": 1,
+    "ground": 0.7,
+    "suby": 0.8
+   },
+   "esc": "A"
+  },
+  {
+   "t": "Dímelo en los comentarios 👇",
+   "v": {
+    "big": "¿CUÁL ES MÁS BESTIA?",
+    "bigs": 90,
+    "bigy": 0.33,
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "think",
+      "face": "smirk",
+      "s": 0.85
+     }
+    ],
+    "props": [
+     {
+      "k": "question",
+      "x": 0.8,
+      "y": 0.55,
+      "s": 1
+     }
+    ],
+    "sub": "Dímelo en los comentarios 👇",
+    "ground": 0.7,
+    "suby": 0.8
+   },
+   "esc": "A"
+  }
+ ],
+ "fuentes": [
+  "Variety: GTA 6 $3.79B first-day sales",
+  "Escapist: Take-Two estimates",
+  "Streams Charts / Dot Esports: Twitch 3.29-3.31M, combined ~7.9M",
+  "Mneemo/Escapist: Metacritic 99 (152 críticas), usuarios 4.8 al lanzamiento",
+  "NBC 2013: GTA V $800M first day"
+ ]
+}

@@ -1,4 +1,4 @@
-LOTE DEL DOMINGO 22/11/2026: 11 tareas, unos 79 minutos
+LOTE DEL DOMINGO 22/11/2026: 12 tareas, unos 82 minutos
 
 Cómo usarlo (PC con Windows):
 - El lote va en DOS zips (parte-1 y parte-2) porque pesa mucho: descarga los dos y extráelos en la misma carpeta.
@@ -101,5 +101,12 @@ Tus 3 webs ya están hechas: Cellmate (tienda de plantillas), OpoCalc (calculado
 2. Arrastra Presupuesto-Familiar.xlsx y las 2 imágenes en este orden: portada, reparto.
 3. Copia Título y Descripción de TEXTOS-PARA-COPIAR.txt.
 4. Precio 4,90 € > Publish.
+
+=== 12-TikTok-subir-videos  (~3 min, está en la PARTE 2; más fácil desde el móvil) ===
+Vídeos originales (animación propia, sin imágenes de streamers ni del juego). Para cada vídeo de la carpeta:
+1. Pásalo al móvil (o descárgalo con el enlace directo del panel) y en TikTok pulsa + > Subir > elige el vídeo.
+2. Deja el sonido original (ya lleva música propia).
+3. Pega el «TEXTO DEL POST» de su archivo -TEXTO.txt y publica.
+   Vídeos de este lote: gta6-5-records.mp4
 
 ÚLTIMO PASO: escribe en esta sesión de Claude (la «sala de máquinas») las palabras «conectar estadísticas».

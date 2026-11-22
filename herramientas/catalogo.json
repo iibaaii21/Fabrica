@@ -119,6 +119,28 @@
   ]
  },
  {
+  "id": "presupuesto",
+  "cat": "Plantillas",
+  "nombre": "Presupuesto familiar y personal",
+  "precio": "4,90 €",
+  "img": "productos/presupuesto-familiar/imagenes/portada.png",
+  "desc": "Ingresos y gastos por categoría, presupuesto frente a real, tasa de ahorro, reparto 50/30/20 y metas de ahorro. Para una persona o toda la familia, sin macros.",
+  "comprar": "",
+  "marca": "cellmate",
+  "puntos": [
+   "23 categorías listas y editables (hasta 40)",
+   "Presupuesto frente a real del mes y del año",
+   "Tasa de ahorro y gráfico mes a mes",
+   "Reparto necesidades / deseos / ahorro (50/30/20)",
+   "Metas de ahorro con cuota mensual"
+  ],
+  "lema": "Sabe cada mes cuánto entra, en qué se va y cuánto ahorras.",
+  "imgs": [
+   "productos/presupuesto-familiar/imagenes/portada.png",
+   "productos/presupuesto-familiar/imagenes/reparto.png"
+  ]
+ },
+ {
   "id": "sfx",
   "cat": "Para desarrolladores",
   "nombre": "Synth SFX Pack Vol. 1",

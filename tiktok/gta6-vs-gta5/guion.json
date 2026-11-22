@@ -3,22 +3,22 @@
  "lang": "es",
  "frases": [
   {
-   "t": "GTA 6 contra GTA V: 5 cifras que lo cambian todo",
+   "t": "GTA 6 contra GTA V: 5 cifras",
+   "voz": "GTA 6 contra GTA V. Cinco cifras.",
    "v": {
     "head": "GTA 6 vs GTA V",
-    "big": "5 CIFRAS",
-    "bigy": 0.33,
-    "bigs": 150,
+    "big": "VS",
+    "bigs": 220,
     "chars": [
      {
-      "x": 0.3,
+      "x": 0.28,
       "pose": "point",
       "face": "smirk",
       "s": 0.85
      },
      {
       "id": "b",
-      "x": 0.72,
+      "x": 0.74,
       "pose": "shock",
       "face": "shock",
       "s": 0.85,
@@ -26,20 +26,53 @@
      }
     ],
     "shake": 1,
-    "sub": "GTA 6 contra GTA V: 5 cifras que lo cambian todo",
+    "flash": "#ffffff",
+    "punch": 0.12,
+    "sub": "GTA 6 contra GTA V: 5 cifras",
     "ground": 0.7,
-    "suby": 0.8
+    "suby": 0.8,
+    "bigy": 0.33
    },
    "esc": "A"
   },
   {
-   "t": "años entre GTA V (2013) y GTA 6 (2026). Media vida para muchos jugadores.",
+   "t": "Número cinco: la espera.",
+   "voz": "Número cinco: la espera.",
    "v": {
     "head": "#5 LA ESPERA",
+    "big": "#5",
+    "bigs": 200,
+    "bigc": "#8a5cd6",
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "think",
+      "face": "neutral",
+      "s": 0.85
+     }
+    ],
+    "pal": 1,
+    "flash": "#8a5cd6",
+    "sub": "Número cinco: la espera.",
+    "ground": 0.7,
+    "suby": 0.8,
+    "bigy": 0.33
+   },
+   "esc": "A",
+   "min": 1.6
+  },
+  {
+   "t": "13 años entre GTA V (2013) y GTA 6 (2026)",
+   "voz": "Trece años entre uno y otro.",
+   "v": {
     "big": "13 AÑOS",
+    "count": {
+     "to": 13,
+     "suf": " AÑOS",
+     "dur": 0.8
+    },
     "bigs": 150,
     "bigc": "#8a5cd6",
-    "bigy": 0.33,
     "chars": [
      {
       "x": 0.3,
@@ -56,20 +89,83 @@
       "s": 0.9
      }
     ],
-    "sub": "años entre GTA V (2013) y GTA 6 (2026). Media vida para muchos jugadores.",
+    "pal": 1,
+    "punch": 0.08,
+    "sub": "13 años entre GTA V (2013) y GTA 6 (2026)",
     "ground": 0.7,
-    "suby": 0.8
+    "suby": 0.8,
+    "bigy": 0.33
    },
    "esc": "A"
   },
   {
-   "t": "GTA V salió a 59,99 dólares. GTA 6 cuesta 79,99: 20 dólares más.",
+   "t": "Número cuatro: el precio.",
+   "voz": "Número cuatro: el precio.",
    "v": {
     "head": "#4 EL PRECIO",
-    "big": "+20 $",
-    "bigs": 180,
+    "big": "#4",
+    "bigs": 200,
     "bigc": "#e8483f",
-    "bigy": 0.33,
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "think",
+      "face": "neutral",
+      "s": 0.85
+     }
+    ],
+    "pal": 2,
+    "flash": "#e8483f",
+    "sub": "Número cuatro: el precio.",
+    "ground": 0.7,
+    "suby": 0.8,
+    "bigy": 0.33
+   },
+   "esc": "A",
+   "min": 1.6
+  },
+  {
+   "t": "GTA V salió a 59,99 $",
+   "voz": "GTA V costaba sesenta dólares.",
+   "v": {
+    "big": "59,99 $",
+    "count": {
+     "to": 59.99,
+     "dec": 2,
+     "suf": " $",
+     "dur": 0.8
+    },
+    "bigs": 160,
+    "bigc": "#3fb06b",
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "stand",
+      "face": "happy",
+      "s": 0.85
+     }
+    ],
+    "pal": 2,
+    "sub": "GTA V salió a 59,99 $",
+    "ground": 0.7,
+    "suby": 0.8,
+    "bigy": 0.33
+   },
+   "esc": "A"
+  },
+  {
+   "t": "GTA 6 cuesta 79,99 $: 20 $ más",
+   "voz": "GTA 6, ochenta. Veinte más.",
+   "v": {
+    "big": "79,99 $",
+    "count": {
+     "to": 79.99,
+     "dec": 2,
+     "suf": " $",
+     "dur": 0.8
+    },
+    "bigs": 160,
+    "bigc": "#e8483f",
     "chars": [
      {
       "x": 0.3,
@@ -81,25 +177,59 @@
     "props": [
      {
       "k": "exclaim",
-      "x": 0.75,
+      "x": 0.78,
       "y": 0.55,
       "s": 0.9
      }
     ],
-    "sub": "GTA V salió a 59,99 dólares. GTA 6 cuesta 79,99: 20 dólares más.",
+    "pal": 2,
+    "punch": 0.1,
+    "sub": "GTA 6 cuesta 79,99 $: 20 $ más",
     "ground": 0.7,
-    "suby": 0.8
+    "suby": 0.8,
+    "bigy": 0.33
    },
    "esc": "A"
   },
   {
-   "t": "visualizaciones del primer tráiler en 24 horas. Récord Guinness.",
+   "t": "Número tres: el tráiler.",
+   "voz": "Número tres: el tráiler.",
    "v": {
     "head": "#3 EL TRÁILER",
+    "big": "#3",
+    "bigs": 200,
+    "bigc": "#3a7bd5",
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "think",
+      "face": "neutral",
+      "s": 0.85
+     }
+    ],
+    "pal": 3,
+    "flash": "#3a7bd5",
+    "sub": "Número tres: el tráiler.",
+    "ground": 0.7,
+    "suby": 0.8,
+    "bigy": 0.33
+   },
+   "esc": "A",
+   "min": 1.6
+  },
+  {
+   "t": "90,4 M de vistas en 24 h: récord Guinness",
+   "voz": "Noventa millones de vistas en un día. Récord Guinness.",
+   "v": {
     "big": "90,4 M",
+    "count": {
+     "to": 90.4,
+     "dec": 1,
+     "suf": " M",
+     "dur": 0.9
+    },
     "bigs": 170,
     "bigc": "#3a7bd5",
-    "bigy": 0.33,
     "chars": [
      {
       "x": 0.5,
@@ -116,20 +246,81 @@
       "s": 0.8
      }
     ],
-    "sub": "visualizaciones del primer tráiler en 24 horas. Récord Guinness.",
+    "pal": 3,
+    "punch": 0.08,
+    "sub": "90,4 M de vistas en 24 h: récord Guinness",
     "ground": 0.7,
-    "suby": 0.8
+    "suby": 0.8,
+    "bigy": 0.33
    },
    "esc": "A"
   },
   {
-   "t": "de dólares el primer día, según Take-Two. GTA V hizo 800 millones.",
+   "t": "Número dos: el primer día.",
+   "voz": "Número dos: el primer día.",
    "v": {
     "head": "#2 EL PRIMER DÍA",
-    "big": "3.790 M $",
-    "bigs": 120,
+    "big": "#2",
+    "bigs": 200,
     "bigc": "#3fb06b",
-    "bigy": 0.33,
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "think",
+      "face": "neutral",
+      "s": 0.85
+     }
+    ],
+    "pal": 4,
+    "flash": "#3fb06b",
+    "sub": "Número dos: el primer día.",
+    "ground": 0.7,
+    "suby": 0.8,
+    "bigy": 0.33
+   },
+   "esc": "A",
+   "min": 1.6
+  },
+  {
+   "t": "GTA V: 800 M$ el primer día (2013)",
+   "voz": "GTA V hizo ochocientos millones de dólares.",
+   "v": {
+    "big": "800 M $",
+    "count": {
+     "to": 800,
+     "suf": " M $",
+     "dur": 0.9
+    },
+    "bigs": 160,
+    "bigc": "#f08a2c",
+    "chars": [
+     {
+      "x": 0.3,
+      "pose": "point",
+      "face": "happy",
+      "s": 0.85
+     }
+    ],
+    "pal": 4,
+    "sub": "GTA V: 800 M$ el primer día (2013)",
+    "ground": 0.7,
+    "suby": 0.8,
+    "bigy": 0.33
+   },
+   "esc": "A"
+  },
+  {
+   "t": "GTA 6: 3.790 M$ el primer día, según Take-Two",
+   "voz": "GTA 6: tres mil setecientos noventa millones, según Take-Two.",
+   "v": {
+    "big": "3.790 M $",
+    "count": {
+     "to": 3790,
+     "suf": " M $",
+     "dur": 1.1
+    },
+    "bigs": 130,
+    "bigc": "#3fb06b",
     "chars": [
      {
       "x": 0.5,
@@ -147,21 +338,55 @@
       "float": 1
      }
     ],
+    "pal": 4,
     "shake": 1,
-    "sub": "de dólares el primer día, según Take-Two. GTA V hizo 800 millones.",
+    "punch": 0.14,
+    "sub": "GTA 6: 3.790 M$ el primer día, según Take-Two",
     "ground": 0.7,
-    "suby": 0.8
+    "suby": 0.8,
+    "bigy": 0.33
    },
    "esc": "A"
   },
   {
-   "t": "copias de GTA V vendidas. Y sigue vendiendo.",
+   "t": "Y número uno: el veterano.",
+   "voz": "Y número uno: el veterano.",
    "v": {
     "head": "#1 EL VETERANO",
+    "big": "#1",
+    "bigs": 200,
+    "bigc": "#f6c23e",
+    "chars": [
+     {
+      "x": 0.5,
+      "pose": "think",
+      "face": "neutral",
+      "s": 0.85
+     }
+    ],
+    "pal": 5,
+    "flash": "#f6c23e",
+    "sub": "Y número uno: el veterano.",
+    "ground": 0.7,
+    "suby": 0.8,
+    "bigy": 0.33
+   },
+   "esc": "A",
+   "min": 1.6
+  },
+  {
+   "t": "GTA V: más de 230 M de copias",
+   "voz": "GTA V lleva más de doscientos treinta millones de copias.",
+   "v": {
     "big": "+230 M",
+    "count": {
+     "to": 230,
+     "pre": "+",
+     "suf": " M",
+     "dur": 0.9
+    },
     "bigs": 170,
     "bigc": "#f08a2c",
-    "bigy": 0.33,
     "chars": [
      {
       "x": 0.5,
@@ -178,18 +403,21 @@
       "s": 1
      }
     ],
-    "sub": "copias de GTA V vendidas. Y sigue vendiendo.",
+    "pal": 5,
+    "punch": 0.08,
+    "sub": "GTA V: más de 230 M de copias",
     "ground": 0.7,
-    "suby": 0.8
+    "suby": 0.8,
+    "bigy": 0.33
    },
    "esc": "A"
   },
   {
-   "t": "Dímelo en los comentarios 👇",
+   "t": "¿Con cuál te quedas? Dímelo en los comentarios 👇",
+   "voz": "¿Con cuál te quedas? Dímelo en los comentarios.",
    "v": {
     "big": "¿CUÁL TE QUEDAS?",
     "bigs": 90,
-    "bigy": 0.33,
     "chars": [
      {
       "x": 0.5,
@@ -206,11 +434,15 @@
       "s": 1
      }
     ],
-    "sub": "Dímelo en los comentarios 👇",
+    "pal": 0,
+    "flash": "#ffffff",
+    "sub": "¿Con cuál te quedas? Dímelo en los comentarios 👇",
     "ground": 0.7,
-    "suby": 0.8
+    "suby": 0.8,
+    "bigy": 0.33
    },
-   "esc": "A"
+   "esc": "A",
+   "min": 2.6
   }
  ],
  "fuentes": [

@@ -192,7 +192,7 @@ function drawStar(px, py, rr, col) { x.beginPath(); for (let n = 0; n < 10; n++)
 window.renderAt = (t) => {
   boil = Math.floor(t * 8); const i = beatAt(t), B = CFG.beats[i], v = B.v || {}; const bt = t - B.ini; const span = Math.max(0.5, B.fin - B.ini);
   // camera
-  const cut = Math.max(0, 1 - bt / 0.25); const zoom = (v.zoom || (H > W ? 1.0 : 1.22)) * (1 + 0.04 * ease(bt / (span + 0.4))) + cut * 0.035;
+  const cut = Math.max(0, 1 - bt / 0.25); const zoom = (v.zoom || (H > W ? 1.0 : 1.22)) * (1 + 0.04 * ease(bt / (span + 0.4))) + cut * 0.035 + (v.punch ? v.punch * Math.pow(Math.max(0, 1 - bt / 0.3), 2) : 0);
   x.setTransform(1, 0, 0, 1, 0, 0);
   const pal = (v.bg && BGPAL[v.bg]) || PALS[(v.pal ?? sectionOf(i)) % PALS.length];
   { const gr = x.createLinearGradient(0, 0, 0, H); gr.addColorStop(0, pal[0]); gr.addColorStop(1, pal[1]); x.fillStyle = gr; x.fillRect(0, 0, W, H);
@@ -223,9 +223,12 @@ window.renderAt = (t) => {
   // big text / numbers
   if (v.big) { const kin = back((bt - (v.bigd || 0.1)) / 0.35); if (kin > 0) { x.save(); const bx = (v.bigx ?? 0.5) * W, by = Math.max(v.bigy ?? 0.3, 0.27) * H; x.translate(bx, by); x.scale(kin, kin); x.rotate(-0.04);
     x.save(); x.rotate(t * 0.6); for (let n = 0; n < 12; n++) { x.rotate(Math.PI / 6); x.beginPath(); x.moveTo(0, 0); x.lineTo(-40 * S, -(v.bigs || 120) * 2.2 * S); x.lineTo(40 * S, -(v.bigs || 120) * 2.2 * S); x.closePath(); x.fillStyle = 'rgba(255,255,255,0.35)'; x.fill(); } x.restore();
-    let bfs = (v.bigs || 120) * S; x.font = `900 ${bfs}px "Inter Display", Inter, sans-serif`; const bw0 = x.measureText(v.big).width; if (bw0 > W * 0.86) { bfs *= W * 0.86 / bw0; x.font = `900 ${bfs}px "Inter Display", Inter, sans-serif`; } x.textAlign = 'center'; x.textBaseline = 'middle';
-    x.lineJoin = 'round'; x.lineWidth = 22 * S; x.strokeStyle = INK; x.fillStyle = 'rgba(0,0,0,0.25)'; x.fillText(v.big, 8 * S, 10 * S); x.strokeText(v.big, 0, 0); x.fillStyle = v.bigc || COL.red; x.fillText(v.big, 0, 0); x.restore(); } }
+    let BIG = v.big; if (v.count) { const c = v.count, k = Math.min(1, Math.max(0, (bt - (v.bigd || 0.1)) / (c.dur || 0.9))), e = 1 - Math.pow(1 - k, 3), d = c.dec || 0;
+      let [ip, dp] = (c.to * e).toFixed(d).split('.'); ip = ip.replace(/\B(?=(\d{3})+(?!\d))/g, '.'); BIG = (c.pre || '') + ip + (dp ? ',' + dp : '') + (c.suf || ''); }
+    let bfs = (v.bigs || 120) * S; x.font = `900 ${bfs}px "Inter Display", Inter, sans-serif`; const bw0 = x.measureText(v.count ? v.big : BIG).width; if (bw0 > W * 0.86) { bfs *= W * 0.86 / bw0; x.font = `900 ${bfs}px "Inter Display", Inter, sans-serif`; } x.textAlign = 'center'; x.textBaseline = 'middle';
+    x.lineJoin = 'round'; x.lineWidth = 22 * S; x.strokeStyle = INK; x.fillStyle = 'rgba(0,0,0,0.25)'; x.fillText(BIG, 8 * S, 10 * S); x.strokeText(BIG, 0, 0); x.fillStyle = v.bigc || COL.red; x.fillText(BIG, 0, 0); x.restore(); } }
   x.setTransform(1, 0, 0, 1, 0, 0);
+  if (v.flash) { const k = 1 - bt / 0.2; if (k > 0) { x.save(); x.globalAlpha = 0.65 * k; x.fillStyle = v.flash; x.fillRect(0, 0, W, H); x.restore(); } }
   // header (screen space)
   if (v.head) { const kin = ease(bt / 0.25); x.save(); x.globalAlpha = 1; let hs = 66 * S; x.font = `900 ${hs}px "Inter Display", Inter, sans-serif`; if (x.measureText(v.head).width + 60 * S > W * 0.9) { hs *= (W * 0.9 - 60 * S) / x.measureText(v.head).width; x.font = `900 ${hs}px "Inter Display", Inter, sans-serif`; } const tw = x.measureText(v.head).width + 60 * S;
     const hx = W / 2, hy = (H > W ? 300 : 100 * S); x.translate(0, (1 - kin) * -120 * S); x.fillStyle = 'rgba(0,0,0,0.25)'; x.fillRect(hx - tw / 2 + 10 * S, hy - hs * 0.85 + 10 * S, tw, hs * 1.7); rect(hx - tw / 2, hy - hs * 0.85, tw, hs * 1.7, '#ffffff', 7, 555); text(v.head, hx, hy + 2 * S, hs / S, INK, 900); x.restore(); }

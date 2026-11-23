@@ -159,7 +159,7 @@ def build_cellmate():
             wd, ht = img(site, src, f'{k}-{i}.jpg', 1200)
             gal += f'<img src="/img/{k}-{i}.jpg" width="{wd}" height="{ht}" alt="{e(p["nombre"])}: imagen {i + 1}"{" loading=lazy" if i else ""}>'
         if p.get('comprar'):
-            buy = f'<a class="btn" href="{e(p["comprar"])}" rel="noopener">Comprar · {e(p["precio"])}</a>'
+            buy = f'<a class="btn" href="{e(p["comprar"])}" rel="noopener">{"Descargar gratis" if p["precio"] == "Gratis" else "Comprar · " + e(p["precio"])}</a>'
         else:
             buy = '<span class="soon">Disponible muy pronto</span>'
         extra = ''

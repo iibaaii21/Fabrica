@@ -31,7 +31,7 @@
   "precio": "Gratis",
   "img": "productos/planificador-opositores-lite/imagenes/portada.png",
   "desc": "La versión gratuita: 20 temas y 20 tests con la nota con penalización calculada sola. Ideal para probar antes de comprar.",
-  "comprar": "",
+  "comprar": "https://payhip.com/Cellmate",
   "extra": [
    [
     "Calcula tu nota ahora",
@@ -49,7 +49,8 @@
   "imgs": [
    "productos/planificador-opositores-lite/imagenes/portada.png",
    "productos/planificador-opositores-lite/imagenes/lite-vs-completa.png"
-  ]
+  ],
+  "boton": "Ver en la tienda"
  },
  {
   "id": "boda",
@@ -58,7 +59,7 @@
   "precio": "5,90 €",
   "img": "productos/organizador-boda/imagenes/portada.png",
   "desc": "Presupuesto con pendiente y desviación automáticos, invitados con confirmaciones y menús, mesas con aviso de sillas y proveedores con fechas de pago.",
-  "comprar": "",
+  "comprar": "https://payhip.com/Cellmate",
   "marca": "cellmate",
   "puntos": [
    "Presupuesto con pendiente y desviación automáticos (15 partidas + 5 libres)",
@@ -72,7 +73,8 @@
    "productos/organizador-boda/imagenes/portada.png",
    "productos/organizador-boda/imagenes/invitados-mesas.png",
    "productos/organizador-boda/imagenes/proveedores-resumen.png"
-  ]
+  ],
+  "boton": "Ver en la tienda"
  },
  {
   "id": "autonomos",
@@ -81,7 +83,7 @@
   "precio": "5,90 €",
   "img": "productos/libro-autonomos/imagenes/portada.png",
   "desc": "Facturas y gastos con IVA y retención automáticos, estimación trimestral de los modelos 303 y 130 y resumen anual. Herramienta de control: no sustituye a un asesor.",
-  "comprar": "",
+  "comprar": "https://payhip.com/Cellmate",
   "marca": "cellmate",
   "puntos": [
    "Facturas emitidas con IVA, retención y total automáticos",
@@ -94,7 +96,8 @@
   "imgs": [
    "productos/libro-autonomos/imagenes/portada.png",
    "productos/libro-autonomos/imagenes/facturas.png"
-  ]
+  ],
+  "boton": "Ver en la tienda"
  },
  {
   "id": "alquileres",
@@ -189,13 +192,14 @@
   "precio": "3,99 $",
   "img": "productos/music-loops-vol1/imagenes/cover.png",
   "desc": "6 bucles de música sin corte + 2 jingles, en WAV y OGG, para menús, acción, puzles y más. Uso comercial sin atribución.",
-  "comprar": "",
+  "comprar": "https://iibaaii21.itch.io",
   "audio": "media/music-loops-preview.mp3",
   "marca": "nimbloom",
   "imgs": [
    "productos/music-loops-vol1/imagenes/cover.png",
    "productos/music-loops-vol1/imagenes/captura-1.png"
-  ]
+  ],
+  "boton": "Ver en itch.io"
  },
  {
   "id": "pixel-icons",

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>¿Arriesgar o dejar en blanco? Calculadora para tests de oposiciones</title>
+<meta name="description" content="Calcula si te conviene contestar una pregunta dudosa en un test de oposiciones con penalización (1/3, 1/4…), según las opciones que puedas descartar. Y cuántos aciertos necesitas para tu nota objetivo.">
+<link rel="canonical" href="https://iibaaii21.github.io/Fabrica/arriesgar/">
+<style>
+:root{--bg:#f7f5f0;--card:#fff;--ink:#1f2a44;--muted:#5a6275;--line:#e2ddd1;--gold:#b08d4c;--ok:#2e8b57;--bad:#c0504d;--soft:#f3ead6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,"Segoe UI",Roboto,system-ui,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:28px 16px 60px;display:grid;gap:22px}
+nav{font-size:14px;display:flex;gap:14px;flex-wrap:wrap}
+nav a{color:var(--muted)}
+h1{font-size:clamp(26px,5vw,36px);line-height:1.15;margin:0;text-wrap:balance}
+.lead{color:var(--muted);margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;display:grid;gap:14px}
+h2{margin:0;font-size:21px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+label{display:grid;gap:4px;font-size:14px;color:var(--muted);font-weight:600}
+input,select{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fffdf8;color:var(--ink);width:100%}
+input:focus,select:focus{outline:2px solid var(--gold);outline-offset:1px}
+.out{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;padding:14px 16px;background:var(--soft);border-radius:12px}
+.big{font-size:34px;font-weight:800;line-height:1.1}
+.out span{color:var(--muted);font-size:14px}
+.ok{color:var(--ok)}.bad{color:var(--bad)}.neu{color:var(--muted)}
+.note{font-size:14px;color:var(--muted);margin:0}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:15px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{font-size:13px;color:var(--muted)}
+td,th{white-space:nowrap}
+@media (max-width:480px){table{font-size:13px}th,td{padding:7px 5px}}
+tr.sel td{background:var(--soft);font-weight:700}
+.scroll{overflow-x:auto}
+footer{font-size:13px;color:var(--muted);text-align:center}
+code{background:#f0ece2;padding:1px 6px;border-radius:6px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <nav aria-label="Herramientas"><a href="../">Calculadora de nota y días</a><a href="./" aria-current="page">¿Arriesgar o dejar en blanco?</a><a href="../ritmo/">Tiempo por pregunta</a><a href="../baremo/">Concurso-oposición</a><a href="../catalogo/">Catálogo</a></nav>
+  <header style="display:grid;gap:8px">
+    <h1>¿Arriesgar o dejar en blanco?</h1>
+    <p class="lead">Descubre si te sale a cuenta contestar una pregunta dudosa en un test con penalización, y cuántos aciertos necesitas para llegar a tu nota. Gratis, sin registro.</p>
+  </header>
+
+  <section class="card" aria-labelledby="h-ev">
+    <h2 id="h-ev">Una pregunta dudosa: ¿contesto?</h2>
+    <div class="grid">
+      <label>Opciones por pregunta<select id="op"><option>2</option><option>3</option><option selected>4</option><option>5</option></select></label>
+      <label>Opciones que descarto seguro<select id="desc"></select></label>
+      <label>Penalización por fallo
+        <select id="pen"><option value="0.3333333333">1 fallo resta 1/3</option><option value="0.25">1 fallo resta 1/4</option><option value="0.5">1 fallo resta 1/2</option><option value="1">1 fallo resta 1 acierto</option><option value="0">Sin penalización</option></select>
+      </label>
+      <label>Mi confianza en la que marcaría (%)<input id="conf" type="number" min="0" max="100" step="1" inputmode="numeric" placeholder="al azar"></label>
+    </div>
+    <div class="out" aria-live="polite"><div class="big" id="ver">—</div><span id="evd"></span></div>
+    <p class="note">Si dejas vacío el campo de confianza, se supone que eliges al azar entre las opciones que quedan. Si escribes una confianza (por ejemplo 50 %), se usa ese porcentaje como probabilidad de acertar.</p>
+    <div class="scroll"><table aria-label="Valor esperado según opciones descartadas">
+      <thead><tr><th>Descarto</th><th>Acierto</th><th>Ganancia</th><th>Decisión</th></tr></thead>
+      <tbody id="tb"></tbody>
+    </table></div>
+  </section>
+
+  <section class="card" aria-labelledby="h-obj">
+    <h2 id="h-obj">¿Cuántos aciertos necesito para mi nota?</h2>
+    <div class="grid">
+      <label>Preguntas del test<input id="p" type="number" min="1" value="100" inputmode="numeric"></label>
+      <label>Nota objetivo<input id="obj" type="number" min="0" step="0.01" value="5" inputmode="decimal"></label>
+      <label>Nota máxima<input id="max" type="number" min="1" value="10" inputmode="decimal"></label>
+      <label>Fallos que espero<input id="f" type="number" min="0" value="10" inputmode="numeric"></label>
+      <label>Penalización
+        <select id="pen2"><option value="0.3333333333">1 fallo resta 1/3</option><option value="0.25">1 fallo resta 1/4</option><option value="0.5">1 fallo resta 1/2</option><option value="1">1 fallo resta 1 acierto</option><option value="0">Sin penalización</option></select>
+      </label>
+    </div>
+    <div class="out" aria-live="polite"><div class="big" id="nec">—</div><span id="necd"></span></div>
+    <p class="note">Fórmula: <code>aciertos ≥ nota objetivo ÷ nota máxima × preguntas + fallos × penalización</code>, redondeado hacia arriba. Muchas convocatorias puntúan cada fase de forma distinta o fijan la nota de corte después del examen: revisa siempre tus bases.</p>
+  </section>
+
+  <section class="card" aria-labelledby="h-faq">
+    <h2 id="h-faq">Cómo se calcula</h2>
+    <p><strong>Ganancia media de contestar.</strong> Si aciertas con probabilidad <em>p</em>, ganas 1 acierto; si fallas, pierdes la penalización <em>q</em>. La ganancia media es <code>p − (1 − p) × q</code>. Dejar en blanco vale 0. Si la ganancia es positiva, contestar sale a cuenta en promedio; si es negativa, mejor en blanco.</p>
+    <p><strong>Ejemplo con 4 opciones y penalización 1/3.</strong> Al azar puro: ¼ − ¾ × ⅓ = 0, da igual. Descartando una: ⅓ − ⅔ × ⅓ = +0,11 aciertos por pregunta. Descartando dos: ½ − ½ × ⅓ = +0,33.</p>
+    <p><strong>El umbral.</strong> Contestar compensa cuando tu probabilidad de acertar supera <code>q ÷ (1 + q)</code>: un 25 % con penalización 1/3, un 20 % con 1/4 y un 33,3 % con 1/2.</p>
+    <p><strong>Ojo:</strong> es un promedio. En un examen concreto puedes tener mala suerte, y la sensación de «descartar seguro» a veces falla. Úsalo como guía, no como garantía.</p>
+  </section>
+
+  <section class="card" aria-labelledby="h-plan" style="border-color:#b08d4c;background:#fffaf0">
+    <h2 id="h-plan">Lleva el control de todos tus tests</h2>
+    <p class="note" style="color:#1f2a44;font-size:16px">El <strong>Planificador de Oposiciones</strong> (Excel y Google Sheets) calcula la nota con penalización de cada test, controla las vueltas de cada tema y te dice si vas por encima del corte.</p>
+    <a href="https://payhip.com/Cellmate" style="justify-self:start;background:#1f2a44;color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:999px">Ver el planificador →</a>
+  </section>
+  <footer>Herramienta gratuita. No guarda ningún dato: todo se calcula en tu navegador.</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const num=id=>{const v=parseFloat(String($(id).value).replace(',','.'));return isNaN(v)?null:v};
+const fmt=(v,d=2)=>v.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d});
+function ev(p,q){return p-(1-p)*q}
+const sg=e=>(Math.abs(e)<0.005?'':e>0?'+':'−')+fmt(Math.abs(e));
+function verdict(e){return Math.abs(e)<1e-9?['Da igual','neu']:e>0?['Contesta','ok']:['Déjala en blanco','bad']}
+function fillDesc(){
+  const n=+$('op').value,cur=+$('desc').value||0;
+  $('desc').innerHTML='';
+  for(let k=0;k<=n-1;k++){const o=document.createElement('option');o.value=k;o.textContent=k===n-1?`${k} (la sé)`:k;$('desc').appendChild(o)}
+  $('desc').value=Math.min(cur,n-1);
+}
+function calc(){
+  const n=+$('op').value,k=+$('desc').value,q=+$('pen').value;
+  let c=num('conf'); const manual=c!==null&&$('conf').value!=='';
+  const p=manual?Math.min(100,Math.max(0,c))/100:1/(n-k);
+  const e=ev(p,q),[t,cl]=verdict(e);
+  $('ver').textContent=t;$('ver').className='big '+cl;
+  const thr=q/(1+q);
+  $('evd').textContent=`Prob. de acertar ${fmt(p*100,1)} % · ganancia media ${sg(e)} aciertos por pregunta · compensa a partir del ${fmt(thr*100,1)} %`;
+  let h='';
+  for(let j=0;j<=n-1;j++){const pj=1/(n-j),ej=ev(pj,q),[tj,cj]=verdict(ej);
+    h+=`<tr${j===k&&!manual?' class="sel"':''}><td>${j}${j===n-1?' (sé)':''}</td><td>${fmt(pj*100,1)} %</td><td class="${cj}">${sg(ej)}</td><td class="${cj}">${tj.replace('Déjala en blanco','En blanco')}</td></tr>`}
+  $('tb').innerHTML=h;
+}
+function need(){
+  const p=num('p'),o=num('obj'),mx=num('max'),f=num('f'),q=+$('pen2').value;
+  if(!p||p<=0||mx===null||mx<=0||o===null||o<0||f===null||f<0){$('nec').textContent='—';$('necd').textContent='Revisa los datos.';return}
+  const a=Math.ceil(o/mx*p+f*q-1e-9);
+  if(o>mx){$('nec').textContent='—';$('necd').textContent='La nota objetivo supera la máxima.';return}
+  if(a+f>p){$('nec').textContent='Imposible';$('nec').className='big bad';$('necd').textContent=`Con ${f} fallos no llegas: harían falta ${a} aciertos y solo hay ${p-f} preguntas restantes.`;return}
+  $('nec').textContent=a.toLocaleString('es-ES');$('nec').className='big ok';
+  const real=(a-f*q)/p*mx;
+  $('necd').textContent=`aciertos como mínimo · dejarías ${p-a-f} en blanco · nota resultante ${fmt(real)} sobre ${mx}`;
+}
+$('op').addEventListener('input',()=>{fillDesc();calc()});
+['desc','pen','conf'].forEach(i=>$(i).addEventListener('input',calc));
+['p','obj','max','f','pen2'].forEach(i=>$(i).addEventListener('input',need));
+fillDesc();calc();need();
+</script>
+</body>
+</html>

@@ -206,7 +206,7 @@ body{font-family:Inter,-apple-system,"Segoe UI",Roboto,system-ui,sans-serif}nav[
 def build_oposiciones():
     site = 'oposiciones'
     C = BASE['cellmate']
-    pages = [('index.html', '/', 'docs/index.html'), ('arriesgar/index.html', '/arriesgar/', 'docs/arriesgar/index.html'), ('baremo/index.html', '/baremo/', 'docs/baremo/index.html'), ('ritmo/index.html', '/ritmo/', 'docs/ritmo/index.html')]
+    pages = [('index.html', '/', 'herramientas/fuentes/opocalc/index.html'), ('arriesgar/index.html', '/arriesgar/', 'herramientas/fuentes/opocalc/arriesgar/index.html'), ('baremo/index.html', '/baremo/', 'herramientas/fuentes/opocalc/baremo/index.html'), ('ritmo/index.html', '/ritmo/', 'herramientas/fuentes/opocalc/ritmo/index.html')]
     for out, path, src in pages:
         s = open(os.path.join(R, src)).read()
         s = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{BASE[site]}{path}">', s)
@@ -321,7 +321,7 @@ def build_estudio():
 <section class="s w" id="games"><h2>Games</h2><p class="sub">Free to play on desktop and mobile. No downloads, no sign-up.</p><div class="grid">{cards}</div></section>
 <section class="s w" id="assets"><h2>Assets for developers</h2><p class="sub">Original, made from scratch, royalty-free for commercial games.</p><div class="grid">{acards}</div></section></main>''' + nb_foot())
     # sonidos: demo existente reubicada
-    src = os.path.join(R, 'docs/sfx')
+    src = os.path.join(R, 'herramientas/fuentes/sfx-demo')
     dst = os.path.join(S, site, 'sounds')
     shutil.rmtree(dst, ignore_errors=True)
     shutil.copytree(src, dst)

@@ -1,3 +1,6 @@
+"""Antes generaba docs/catalogo/. Desde el 23/11 docs/ redirige a las webs nuevas (el catálogo está en Cellmate y Nimbloom, generado por sites.py), así que no hace nada."""
+import sys
+print("catalogo.py: docs/ ya redirige a las webs nuevas; no hay nada que generar"); sys.exit(0)
 """Genera docs/catalogo/ desde herramientas/catalogo.json. Uso: python3 herramientas/catalogo.py"""
 import json, os, html
 from PIL import Image

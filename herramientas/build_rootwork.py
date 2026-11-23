@@ -3,7 +3,7 @@
   - Rootwork-crazygames.zip : con el script del SDK v3 de CrazyGames (el juego funciona igual si no carga).
   - Rootwork-web.zip        : sin recursos externos (GameDistribution, itch.io, otros portales).
   - itch/index.html + Rootwork-itch.zip : versión web con enlace discreto «More games».
-Copia también la versión web a docs/juegos/rootwork/ (catálogo público)."""
+(docs/ redirige a las webs nuevas desde el 23/11: Nimbloom sirve el juego desde juegos/rootwork/index.html.)"""
 import os, zipfile, shutil
 R = os.path.abspath(os.path.join(os.path.dirname(__file__), '..')); D = os.path.join(R, 'juegos', 'rootwork')
 src = open(os.path.join(D, 'index.html'), encoding='utf-8').read()
@@ -21,5 +21,4 @@ def z(name, html):
     with zipfile.ZipFile(p, 'w', zipfile.ZIP_DEFLATED) as f: f.writestr('index.html', html.encode('utf-8'))
     print(name, os.path.getsize(p), 'bytes')
 z('Rootwork-crazygames.zip', cg); z('Rootwork-web.zip', web); z('Rootwork-itch.zip', itch)
-os.makedirs(os.path.join(R, 'docs', 'juegos', 'rootwork'), exist_ok=True)
-open(os.path.join(R, 'docs', 'juegos', 'rootwork', 'index.html'), 'w', encoding='utf-8').write(web)
+

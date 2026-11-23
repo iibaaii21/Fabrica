@@ -1,0 +1,67 @@
+LOTE DEL DOMINGO 29/11/2026: 8 tareas, unos 51 minutos
+
+Cómo usarlo (PC con Windows):
+- Descarga el zip del lote (enlace del panel) y extráelo.
+- Clic derecho en el zip del lote > Extraer todo.
+- Cada tarea tiene su carpeta con TODO lo que necesita: archivos, imágenes y TEXTOS-PARA-COPIAR.txt.
+- Los .zip que hay DENTRO de las carpetas se suben tal cual, sin extraerlos.
+- Al terminar, en el panel marca «Lote del domingo» como hecho. Si algo falla, escríbelo en «Orden para Claude».
+
+=== 1-CrazyGames-4-juegos  (~13 min) ===
+1. https://developer.crazygames.com > Submit game (uno por juego; si ya enviaste alguno, sáltalo).
+2. Archivo: HTML5 > arrastra el zip del juego SIN extraer (p. ej. Lumen-Drift-web.zip). Hay 4 carpetas: lumen, loomlines, rootwork y lunavault (nuevo).
+3. Imágenes: las 3 crazygames-*.png. Vídeos: landscape-1920x1080.mp4 y portrait-1080x1620.mp4.
+4. Copia cada campo de TEXTOS-PARA-COPIAR.txt de la carpeta del juego. SDK: No (Basic Launch). IA: Sí.
+   ROOTWORK va en VERSIÓN 2 (rehecho para cumplir lo que piden los portales): sube Rootwork-web.zip («SDK: No», Basic Launch). Si ya lo habías enviado, actualízalo y pega CAMBIOS-V2.txt en la nota de reenvío. Los otros 3 juegos, solo si aún no los enviaste.
+5. Prueba en la Preview > Submit.
+
+=== 2-itch-4-juegos  (~13 min) ===
+1. https://itch.io/game/new (uno por juego).
+2. Kind of project: HTML > arrastra el zip del juego SIN extraer y marca «This file will be played in the browser».
+3. Pricing: No payments + «Accept donations». Lunavault es vertical: en Embed options pon 720 × 1100 y orientación Portrait (lo pone en su TEXTOS).
+4. Cover: cover.png · Screenshots: captura-1, 2 y 3.
+5. Copia el resto de campos de TEXTOS-PARA-COPIAR.txt > Public > Save.
+   Rootwork va en versión 2: si ya estaba en itch, Edit game > Uploads > cambia el zip y actualiza descripción, portada y capturas.
+
+=== 3-itch-Pixel-Icons  (~6 min) ===
+1. https://itch.io/game/new
+2. Title: Pixel Icons Vol. 1 — 73 RPG & UI icons (16×16) · Classification: Assets · Kind of project: Downloadable.
+3. Pricing: Paid, 2,99 $, marca «Let people pay more».
+4. Uploads: arrastra Pixel-Icons-Vol1.zip (sin extraer). Sube también Pixel-Icons-Vol1-Free-Sample.zip y márcalo «This file is free».
+5. Cover image: cover.png · Screenshots: captura-1, captura-2 y captura-3.
+6. Copia Short description, Descripción y Etiquetas de TEXTOS-PARA-COPIAR.txt. AI disclosure: Sí (gráficos).
+7. Visibility: Public > Save.
+
+=== 4-Payhip-Control-Alquileres  (~5 min) ===
+1. https://payhip.com/dashboard > Add product > Digital product.
+2. Arrastra Control-Alquileres.xlsx y las 2 imágenes en este orden: portada, cobros.
+3. Copia Título y Descripción de TEXTOS-PARA-COPIAR.txt (deja la nota de que no calcula impuestos).
+4. Precio 6,90 € > Publish.
+
+=== 5-itch-Soft-UI-Sounds  (~5 min) ===
+1. https://itch.io/game/new
+2. Title: Soft UI Sounds Vol. 2 — 46 gentle interface sounds · Classification: Assets · Kind of project: Downloadable.
+3. Pricing: Paid, 2,99 $, marca «Let people pay more».
+4. Uploads: arrastra Soft-UI-Sounds-Vol2.zip (sin extraer). Sube también Soft-UI-Sounds-Vol2-Free-Sample.zip y márcalo «This file is free».
+5. Cover image: cover.png · Screenshots: captura-1.png. En Edit theme > Banner: banner.png.
+6. Copia Short description, Descripción y Etiquetas de TEXTOS-PARA-COPIAR.txt. AI disclosure: Sí (audio).
+7. Visibility: Public > Save.
+
+=== 6-Payhip-Presupuesto-Familiar  (~5 min) ===
+1. https://payhip.com/dashboard > Add product > Digital product.
+2. Arrastra Presupuesto-Familiar.xlsx y las 2 imágenes en este orden: portada, reparto.
+3. Copia Título y Descripción de TEXTOS-PARA-COPIAR.txt.
+4. Precio 4,90 € > Publish.
+
+=== 7-TikTok-subir-videos  (~3 min; más fácil desde el móvil) ===
+Vídeos originales (animación propia, sin imágenes de streamers ni del juego). Para cada vídeo de la carpeta:
+1. Pásalo al móvil (o descárgalo con el enlace directo del panel) y en TikTok pulsa + > Subir > elige el vídeo.
+2. Deja el sonido original (ya lleva música propia).
+3. Pega el «TEXTO DEL POST» de su archivo -TEXTO.txt y publica.
+   Vídeos de este lote (uno al día, en este orden): gta6-5-records.mp4 (hoy) y gta6-vs-gta5.mp4 (lunes 23/11)
+
+=== 8-Pegar-las-URLs-de-tus-productos  (~1 min) ===
+1. Abre tus productos en Payhip (https://payhip.com/Cellmate) e itch.io (https://iibaaii21.itch.io): Organizador de Boda, Libro de autónomos, Planificador LITE, Synth Music Loops y los que subas hoy.
+2. Copia la dirección de cada uno y pégalas todas en el panel, en «Orden para Claude». Con eso pongo el botón de compra exacto en tus webs.
+
+ÚLTIMO PASO: escribe en esta sesión de Claude (la «sala de máquinas») las palabras «conectar estadísticas».
